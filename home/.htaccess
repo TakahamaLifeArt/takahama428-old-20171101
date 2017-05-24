@@ -1,0 +1,142 @@
+Options -Indexes
+AddType application/x-httpd-php .php .htm .html
+
+php_value max_execution_time 200
+php_value max_input_time 200
+php_value memory_limit 256M
+php_value post_max_size 150M
+php_value upload_max_filesize 100M
+php_value mbstring.internal_encoding EUC-JP
+php_value mbstring.detect_order EUC-JP,UTF-8,SJIS,JIS,ASCII
+php_flag mbstring.encoding_translation off
+php_value session.gc_maxlifetime 3600
+php_value default_charset "EUC-JP"
+
+# Not found
+ErrorDocument 404 /err/
+
+
+# Enable RewriteEngine.
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST} ^takahama428.com
+RewriteRule ^(.*)$ http://www.takahama428.com/$1 [R=301,L]
+
+RewriteCond %{THE_REQUEST} ^.*/index.html
+RewriteRule ^(.*)index.html$ http://www.takahama428.com/$1 [R=301,L]
+
+
+# 404 Error for Multidomain Directories.
+RewriteCond %{HTTP_HOST} ^www.takahama428.com$
+RewriteCond %{REQUEST_URI} ^/(test.takahama428.com)/
+RewriteRule ^(.*)$ /$1 [L,R=404]
+
+# Main RewriteRule for multidomain.
+RewriteCond %{HTTP_HOST} ^(test.takahama428.com)
+RewriteCond %{REQUEST_URI} !^/(test.takahama428.com)/
+RewriteRule ^(.*)$ /%{HTTP_HOST}/$1/ [L]
+
+
+<Files ~ "^.(htaccess|htpasswd)$">
+deny from all
+</Files>
+
+Redirect permanent /tsyatu.html http://www.takahama428.com/items/t-shirts/
+Redirect permanent /polo.html http://www.takahama428.com/items/polo-shirts/
+Redirect permanent /trainer.html http://www.takahama428.com/items/sweat/
+Redirect permanent /mesh.html http://www.takahama428.com/items/sportswear/
+Redirect permanent /blouson.html http://www.takahama428.com/items/outer/
+Redirect permanent /estimate/index.html http://www.takahama428.com/price/estimate.html
+Redirect permanent /point/index.html http://www.takahama428.com/price/standard.html
+Redirect permanent /order_flow/index.html http://www.takahama428.com/guide/orderflow.html
+Redirect permanent /how_to_print/index.html http://www.takahama428.com/design/printing.html
+Redirect permanent /ink/index.html http://www.takahama428.com/design/fontcolor.html
+Redirect permanent /font/index.html http://www.takahama428.com/design/fontcolor.html
+Redirect permanent /designSample/index.html http://www.takahama428.com/design/designtemp.html
+Redirect permanent /designguide.html http://www.takahama428.com/design/designguide.html
+Redirect permanent /faq/index.html http://www.takahama428.com/guide/faq.html
+Redirect permanent /first/index.html http://www.takahama428.com/guide/
+
+order deny,allow
+
+#smartphone
+#RewriteEngine On
+#RewriteCond %{REQUEST_URI} !^smp.*$
+#RewriteCond %{REQUEST_URI} !^/(m3)/
+#RewriteCond %{REQUEST_URI} !/img/
+#RewriteCond %{REQUEST_URI} !^/items/sweat/
+#RewriteCond %{HTTP_USER_AGENT} (iPhone|iPod|Android|BlackBerry|Windows.Phone) [NC]
+#ipadはPC版に。
+#RewriteCond %{HTTP_USER_AGENT} !iPad [NC]
+#viewmode=pc
+#RewriteCond %{HTTP_COOKIE} !viewmode=pc
+#RewriteCond %{QUERY_STRING} !viewmode=pc
+#RewriteRule ^$ http://www.takahama428.com/m3/ [R=301,L]
+
+#old mobile page
+#RewriteEngine On
+#RewriteCond %{REQUEST_URI} ^/m/
+#RewriteCond %{HTTP_USER_AGENT} (iPhone|iPod|Android|BlackBerry|Windows.Phone) [NC]
+#ipadはPC版に。
+#RewriteCond %{HTTP_USER_AGENT} !iPad [NC]
+#RewriteRule ^(.*)$ /m3/ [R=301,L]
+
+#RewriteEngine On
+#RewriteCond %{REQUEST_URI} m3/items/
+
+#RewriteCond %{REQUEST_FILENAME} !\itemdetail.html$ 
+#RewriteCond %{QUERY_STRING} ^c=t-shirts
+#RewriteRule ^(.*)$ /m3/items/t-shirts.html? [R=301,L]
+#RewriteCond %{REQUEST_FILENAME} !\itemdetail.html$ 
+#RewriteCond %{QUERY_STRING} ^c=polo-shirts
+#RewriteRule ^(.*)$ /m3/items/polo-shirts.html? [R=301,L]
+#RewriteCond %{REQUEST_FILENAME} !\itemdetail.html$ 
+#RewriteCond %{QUERY_STRING} ^c=sportswear
+#RewriteRule ^(.*)$ /m3/items/sportswear.html? [R=301,L]
+#RewriteCond %{REQUEST_FILENAME} !\itemdetail.html$ 
+#RewriteCond %{QUERY_STRING} ^c=sweat
+#RewriteRule ^(.*)$ /m3/items/sweat.html? [R=301,L]
+#RewriteCond %{REQUEST_FILENAME} !\itemdetail.html$ 
+#RewriteCond %{QUERY_STRING} ^c=long-shirts
+#RewriteRule ^(.*)$ /m3/items/long-shirts.html? [R=301,L]
+#RewriteCond %{REQUEST_FILENAME} !\itemdetail.html$ 
+#RewriteCond %{QUERY_STRING} ^c=outer
+#RewriteRule ^(.*)$ /m3/items/outer.html? [R=301,L]
+#RewriteCond %{REQUEST_FILENAME} !\itemdetail.html$ 
+#RewriteCond %{QUERY_STRING} ^c=workwear
+#RewriteRule ^(.*)$ /m3/items/workwear.html? [R=301,L]
+
+
+#item page
+#RewriteEngine On
+#RewriteCond %{REQUEST_URI} ^/items/sweat/
+#RewriteCond %{HTTP_USER_AGENT} (iPhone|iPod|Android|BlackBerry|Windows.Phone) [NC]
+#ipadはPC版に。
+#RewriteCond %{HTTP_USER_AGENT} !iPad [NC]
+#RewriteRule ^(.*)$ /m3/items/index.html?c=sweat [R=301,L]
+
+#chace
+<ifModule mod_expires.c>
+ExpiresActive On
+ExpiresDefault "access plus 1 seconds"
+ExpiresByType text/html "access plus 1 seconds"
+ExpiresByType image/gif "access plus 1 month"
+ExpiresByType image/jpeg "access plus 1 month"
+ExpiresByType image/png "access plus 1 month"
+ExpiresByType image/x-icon "access plus 1 month"
+ExpiresByType text/css "access plus 1 days"
+ExpiresByType text/javascript "access plus 7 days"
+ExpiresByType application/javascript "access plus 7 days"
+ExpiresByType application/x-javascript "access plus 7 days"
+</ifModule>
+
+# 圧縮を有効
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript
