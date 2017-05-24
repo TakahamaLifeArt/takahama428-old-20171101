@@ -149,24 +149,12 @@
 			
 				<!-- facebook -->
 				<div class="facebook"><div class="fb-like" data-href="https://www.facebook.com/takahamalifeart" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div></div>
-				
-				<!-- LINE -->
-				<div class="line-it-button" data-lang="ja" data-type="like" data-url="http://www.takahama428.com/" style="display: none;"></div>
- <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
- 
-				 <!-- instagrum -->
- <div class="insta"><a class="ig-b- ig-b-v-24"  href="https://www.instagram.com/takahamalifeart/?ref=badge" ><img src="../../common/img/header/c2f23494e67d.png"  alt="Instagram"" /></a></div>
-
- 
-				  <!-- hatena -->
-<div class="hatena"><a href="http://b.hatena.ne.jp/entry/www.takahama428.com/" class="hatena-bookmark-button" data-hatena-bookmark-layout="touch-counter" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></div><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
- 
 			</div>
 		</div>
 	</div>
 	
 	<div class="inner">
-		<div class="h_wrap hw_1"><a href="http://www.takahama428.com/"><img src="/common/img/header/logo.png" alt="オリジナルTシャツ屋"></a></div>
+		<div class="h_wrap hw_1"><a href="/"><img src="/common/img/header/logo.png" alt="オリジナルTシャツ屋"></a></div>
 		<div class="h_wrap hw_2"><img src="/common/img/header/no1_mark.png" alt="業界NO.1！スピード仕上げ 親切対応！"></div>
 		
 		<div class="h_wrap hw_3">

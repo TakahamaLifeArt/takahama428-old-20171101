@@ -10,6 +10,7 @@
 	
 	log
 	2012.01.18	 : created
+	2017.05.25	 : カレンダーの休日のスタイルを追加
 		
 --------------------------------------------------------------*/
 
@@ -136,11 +137,11 @@ h3 {
 	font-weight: bold;
 }
 
-.syousai{
-    font-size: 106%;
-    font-weight: bold;
-    border-left: 5px solid #ff9135;
-    padding: 0 0 0 10px;
+.syousai {
+	font-size: 106%;
+	font-weight: bold;
+	border-left: 5px solid #ff9135;
+	padding: 0 0 0 10px;
 }
 
 h4,
@@ -495,6 +496,35 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 
 }
 
+
+
+
+
+	/*		カレンダー
+	===============================================================*/
+
+	/*--------------------------
+	祝祭日のスタイルを追加
+	----------------------------*/
+	.days_red,
+	.ui-datepicker-calendar .days_red a {
+		color: #000;
+		background-image: none;
+		background-color: #f09;
+	}
+	.days_blue,
+	.ui-datepicker-calendar .days_blue a {
+		color: #fff;
+		background-image: none;
+		background-color:blue;
+	}
+	.days_black {
+		background-image: none;
+		background-color:black;
+	}
+
+
+	
 @media screen and (min-width: 768px){
 a {
 	color: #1055e0;

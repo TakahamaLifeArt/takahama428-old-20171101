@@ -13,6 +13,10 @@ class Conndb extends HTTP {
 		parent::__construct($args);
 	}
 	
+public function takahama_log($logContext) {
+//	$now = date('Y/m/d H:i:s');
+//	error_log($now.": ".$logContext."\n\r", 3, $_SERVER['DOCUMENT_ROOT'].'/debug.log.txt');
+}
 
 	/*
 	*	商品名とカラーごとのコード一覧データ
@@ -70,6 +74,7 @@ class Conndb extends HTTP {
 	public function getProgress($args){
 		$res = parent::request('POST', array('act'=>'getprogress', 'args'=>$args));
 		$data = unserialize($res);
+//$this->takahama_log("getProgress ".$data);
 		
 		return $data;
 	}
@@ -133,8 +138,10 @@ class Conndb extends HTTP {
 	*	reutrn	true:OK　false:NG
 	*/
 	public function setUser($args) {
+//$this->takahama_log("conndb setUser");
 		$res = parent::request('POST', array('act'=>'setuser', 'args'=>$args));
 		$data = unserialize($res);
+//$this->takahama_log("conndb setUser");
 
 		return $data;
 	}
@@ -173,7 +180,9 @@ class Conndb extends HTTP {
 	*	reutrn	[お届け先情報]
 	*/
 	public function getDeli($args) {
+//$this->takahama_log("conndb getDeli  333333 ".serialize($args));
 		$res = parent::request('POST', array('act'=>'getdeli', 'args'=>$args));
+//$this->takahama_log("conndb getDeli   ".$res);
 		$data = unserialize($res);
 
 		return $data;
@@ -237,13 +246,13 @@ class Conndb extends HTTP {
 
 	/*
 	*	メールアドレスの重複チェック
-	*	@args	[メールアドレス, reg_site]
+	*	@args	[メールアドレス]
 	*	return	ユーザー情報:重複　false:新規
 	*/
-	public function checkExistEmail($email,$reg_site){
-		$res = parent::request('POST', array('act'=>'checkexistemail', 'email'=>$email, 'reg_site'=>$reg_site));
+	public function checkExistEmail($args){
+		$res = parent::request('POST', array('act'=>'checkexistemail', 'args'=>$args));
 		$data = unserialize($res);
-		
+
 		return $data;
 	}
 	
@@ -266,11 +275,14 @@ class Conndb extends HTTP {
 	*/
 	public function getDesigned($order_id) {
 		$res = parent::request('POST', array('act'=>'showDesignImg', 'order_id'=>$order_id, 'folder'=>'imgfile'));
+		//$this->takahama_log("conndb getDesigned   ".$res);
+		//$res = mb_convert_encoding($res,'euc-jp','utf-8');
 
 		$json = new Services_JSON();
 		$data = $json->decode($res);
 
 //$data = $res;
+//$this->takahama_log("conndb getDesigned   ".$data);
 
 		return $data;
 

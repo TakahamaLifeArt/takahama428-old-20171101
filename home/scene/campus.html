@@ -14,7 +14,7 @@ require_once dirname(__FILE__).'/../php_libs/pageinfo.php';
 	<meta name="keywords" content="文化祭,体育祭,tシャツ,オリジナル,プリント" />
 	<link rel="shortcut icon" href="/icon/favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="../common/css/common.css" media="all" />
-	<link rel="stylesheet" type="text/css" href="../common/css/base_format.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="../common/css/base.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="../common/js/modalbox/css/jquery.modalbox.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="../common/css/printposition.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="../common/css/popup/mailform.css" media="screen" />
@@ -85,7 +85,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </ul>
            
 			
-			<div class="contents-lv2">
+			<div id="contents-lv2">
             	<h2 id="design">例えば、こんなデザイン。</h2><div class="dotted"></div>
                 <ul class="design_ex">
                 	<li class="firstex"><img src="img/campus/campus_ex01_s.jpg" width="228" height="112"><br>メンバーの顔写真を使ってデザイン</li>
@@ -106,13 +106,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             	どんなデザインでもオリジナルプリントしますので気軽にお申し付けください。
 			</p>
 			
-			<div class="contents-lv2">
+			<div id="contents-lv2">
             	<h2 id="recommend">文化祭・体育祭に オススメのアイテム。</h2><div class="dotted"></div>
                 <p>高校生や大学生の文化祭・体育祭では、メインでは着るのがイベント当日の１回きりの場合も多いので
                 比較的コストパフォーマンスが高いTシャツやポロシャツが人気です。
                 今回はその中でも当店で売れ筋のおすすめ商品をピックアップさせていただきました。</p>
                 
-                <ul id="recommend_item" class="clearfix">
+                <ul id="recommend_item">
                 	<li class="recommend_item_ex firstrecommend">
                     	<ul>
                         	<li class="point">業界売上No1!</li>
@@ -134,7 +134,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                 </dl>
                                 <p class="lbl">Comment</p>
 								<p class="comment">
-                                	1枚<?php echo $res['085-cvt']['minprice']; ?>円〜、カラーバリエーションは<?php echo $res['085-cvt']['colors']; ?>色をご用意。
+                                	1枚<?php echo $res['085-cvt']['minprice']; ?>円~、カラーバリエーションは<?php echo $res['085-cvt']['colors']; ?>色をご用意。
                                 	誰もが着やすい素材で適度な厚みが気崩れを防ぎ、快適さが持続するように作られた定番のTシャツです。業界売上No1で人気の素材です。
 								</p>
                             </li>
@@ -164,7 +164,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                 </dl>
                                 <p class="lbl">Comment</p>
 								<p class="comment">
-                                	1枚<?php echo $res['141-nvp']['minprice']; ?>円〜、カラーバリエーションは<?php echo $res['141-nvp']['colors']; ?>色をご用意。
+                                	1枚<?php echo $res['141-nvp']['minprice']; ?>円~、カラーバリエーションは<?php echo $res['141-nvp']['colors']; ?>色をご用意。
                                 	プリントがすっきり映えるポケット無しのタイプで、部活動のチームユニフォームにぴったりです。サッカーユニフォームやテニスユニフォームにいかがでしょう。
                             	</p>
                             </li>
@@ -194,7 +194,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                 </dl>
                                 <p class="lbl">Comment</p>
 								<p class="comment">
-                                	1枚<?php echo $res[$param['itemcode'][2]]['minprice']; ?>円〜、カラーバリエーションは<?php echo $res[$param['itemcode'][2]]['colors']; ?>色をご用意。
+                                	1枚<?php echo $res[$param['itemcode'][2]]['minprice']; ?>円~、カラーバリエーションは<?php echo $res[$param['itemcode'][2]]['colors']; ?>色をご用意。
                                 	サラッとした生地のドライTシャツでやわらかな肌触りが人気です。柔らかい着心地とシンプルなデザインが好評のTシャツです。
                             	</p>
                             </li>
@@ -215,7 +215,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				を制作することも可能です。また、Tシャツだけでなくオリジナルのサッカーユニフォームの作成も承っております。
 			</p> 			
             
-            <div class="contents-lv2">
+            <div id="contents-lv2">
             	<h2 id="howmuch">いくらになるか、計算してみる。</h2><div class="dotted"></div>
                 <h3 id="hmguide">枚数やプリント位置などを指定して、<span>お値段を計算します。</span>※概算となります。</h3>
 

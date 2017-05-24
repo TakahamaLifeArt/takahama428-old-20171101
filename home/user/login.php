@@ -15,12 +15,13 @@ if(isset($_REQUEST['login']) && empty($_SESSION['me'])){
 	// エラーチェック
 	if(empty($_REQUEST['email'])) {
 		$err = 'メールアドレスを入力して下さい。';
-	}else if(!$conndb->checkExistEmail($_REQUEST['email'], _SITE)) {
+	}else if(!$conndb->checkExistEmail($args)) {
 		$err = "このメールアドレスは登録されていません。";
 	}else if(empty($_REQUEST['pass'])) {
 		$err = 'パスワードを入力して下さい。';
 	}else{
-		$me = $conndb->getUser($_REQUEST);
+		$args = array('email'=>$_REQUEST['email'], 'pass'=>$_REQUEST['pass']);
+		$me = $conndb->getUser($args);
 		if(!$me){
 			$err = "メールアドレスかパスワードが認識できません。ご確認下さい。";
 		}

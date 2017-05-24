@@ -12,7 +12,32 @@ class HTTP {
 		$this->url = $args;
 	}
 	
+	
+	/**
+	 * TEST
+	 */
+	private function requestHTTP($params = array()) {
+		$context = stream_context_create(array(
+			"http" => array(
+				'method'  => 'POST',
+				'header'  => implode("\r\n", array(
+					'Content-Type: application/x-www-form-urlencoded',
+				)),
+				'content' => http_build_query($params),
+			)
+		));
+		$res = file_get_contents($this->url, false, $context);
+		return $res;
+	}
+	
     public function request($method, $params = array()){
+		
+		//===== TEST =========
+//		$res = $this->requestHTTP($params);
+//		return $res;
+		//====================
+		
+		
     	$url = $this->url;
 	    $data = http_build_query($params);
 	    if($method == 'GET') {
@@ -20,13 +45,13 @@ class HTTP {
 	    }
 	 
 	    $ch = curl_init($url);
-	 
+		
 	    if($method == 'POST'){
 	        curl_setopt($ch,CURLOPT_POST,1);
 	        curl_setopt($ch,CURLOPT_POSTFIELDS,$data);
 	    }
 	 
-	    //curl_setopt($ch, CURLOPT_HEADER,true); //header情報も一緒に欲しい場合
+	    curl_setopt($ch, CURLOPT_HEADER,false); //header情報も一緒に欲しい場合はtrue
 	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 //	    curl_setopt($ch, CURLOPT_TIMEOUT_MS, 500);
 	    curl_setopt($ch, CURLOPT_TIMEOUT_MS, 60000);

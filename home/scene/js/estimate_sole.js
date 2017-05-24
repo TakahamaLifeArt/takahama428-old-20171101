@@ -133,7 +133,12 @@ $(function(){
 						if(img.is('.cur')){
 							img.attr('src', src).removeClass('cur');
 							$('#inktarget'+posid).find('.pos-'+img.attr('class')).remove();
-						}else{							
+						}else{			
+							var cur = img.siblings('.cur');
+							if (cur.length) {
+								cur.attr('src',cur.attr('src').replace(/_on.png/,'.png')).removeClass('cur');
+								$('#inktarget'+posid).find('.pos-'+cur.attr('class')).remove();
+							}
 							var ink = '<div class="inks pos-'+img.attr('class')+'">';
 							ink += '<p class="posname_'+posid+'">'+img.attr('alt')+'</p>';
 							ink += '<p>使用インク<select class="ink_'+posid+'" onchange="$.addOrder();"><option value="0" selected="selected">選択してください</option>';
@@ -387,18 +392,25 @@ $(function(){
 				amount[j] = tmpVol;
 			}
 			
-			var args = {'sheetsize':'1', 
-						'act':'printfee', 
-						'output':'jsonp', 
-						'itemid':$.printparam.itemid, 
-						'amount':amount, 
-						'pos':$.printparam.pos, 
-						'ink':$.printparam.ink,
-						'color':$.printparam.color
-						};
-			$.getJSON($.TLA.api+'?callback=?', args, function(r){
-				var str = new String(r.volume);
-				if(!str.match(/^\d+$/)) return;
+			var optionId = $.printparam.color[0]!='ホワイト'? 1: 0;
+			var inkjetOption = {};
+			inkjetOption[optionId] = amount[0];
+			var param = {'act':'printfee', 'output':'jsonp', 'args':[]};
+			var args = [];
+			for (var i=0; i<$.printparam.itemid.length; i++) {
+				args[i] = { 
+					'itemid':$.printparam.itemid[i], 
+					'amount':amount[i], 
+					'pos':$.printparam.pos[i], 
+					'ink':$.printparam.ink[i],
+					'size':0,
+					'option':inkjetOption
+				};
+			}
+			param['args'] = args;
+			$.getJSON($.TLA.api+'?callback=?', param, function(r){
+//				var str = new String(r.volume);
+//				if(!str.match(/^\d+$/)) return;
 				
 			    var base = itemsum + (r.printfee-0);
 			    var tax = Math.floor( base * (r.tax/100) );

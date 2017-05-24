@@ -161,11 +161,11 @@ $.getScript('/common/js/phonedata.js');
 				var isMove = false;	// カーソル移動が出来たかどうかのチェック
 				var elem = my.form.elements;
 			    for(var i=0; i<elem.length; i++){
-			    	if( first==-1 && elem[i].type=="text" && !$(elem[i]).attr('readonly') && elem[i].style.display!='none' ) first = i;
+			    	if( first==-1 && elem[i].type=="text" && !$(elem[i]).prop('readonly') && elem[i].style.display!='none' ) first = i;
 			    	if( elem[i]==my ){
 		    			while(i<elem.length-1){
 		    				i++;
-			    			if( elem[i].type=="text" && !$(elem[i]).attr('readonly') && elem[i].style.display!='none' ){
+			    			if( elem[i].type=="text" && !$(elem[i]).prop('readonly') && elem[i].style.display!='none' ){
 			    				elem[i].focus();
 			    				isMove = true;
 			    				break;
@@ -674,7 +674,8 @@ $.getScript('/common/js/phonedata.js');
 		},
 		TLA: {
 			'api':'http://takahamalifeart.com/v1/api',
-			'show_site':'1'
+			'show_site':'1',
+			'holidayInfo':{}			// カレンダーの祝祭日情報
 		}
 	});
 	

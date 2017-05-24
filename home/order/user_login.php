@@ -5,31 +5,26 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/user/php_libs/funcs.php';
 
 // ログイン処理
-if(isset($_REQUEST['login'])){
-
-	
+if (isset($_REQUEST['login'])) {
 	$args = array($_REQUEST['email']);
 	$conndb = new Conndb(_API_U);
 
 	// エラーチェック
-	if(empty($_REQUEST['email'])) {
+	if (empty($_REQUEST['email'])) {
 		$err = 'メールアドレスを入力して下さい。';
-	}
-
-else if(!$conndb->checkExistEmail($_REQUEST['email'], _SITE)) {
-		$err = "このメールアドレスは登録されていません。";
-	}
-
-else if(empty($_REQUEST['pass'])) {
+	} else if (!$conndb->checkExistEmail($args)) {
+		$err = 'このメールアドレスは登録されていません。';
+	} else if (empty($_REQUEST['pass'])) {
 		$err = 'パスワードを入力して下さい。';
-	}else{
-		$me = $conndb->getUser($_REQUEST);
-		if(!$me){
-			$err = "メールアドレスかパスワードが認識できません。ご確認下さい。";
+	} else {
+		$args = array('email'=>$_REQUEST['email'], 'pass'=>$_REQUEST['pass']);
+		$me = $conndb->getUser($args);
+		if (!$me) {
+			$err = "メールアドレス（".$_REQUEST['email']."）かパスワードが認識できません。ご確認下さい。";
 		}
 	}
 	
-	if(empty($err)){
+	if (empty($err)) {
 		$_SESSION['me'] = $me;
 		//注文画面でログインした場合、注文情報にもセッションを設定する必要がある
 		$_SESSION['orders']['customer']['member'] = $me['id'];
@@ -54,10 +49,10 @@ else if(empty($_REQUEST['pass'])) {
 }
 
 // ログインしている顧客のデータ取得処理
-if(isset($_REQUEST['getcustomer'])){
+if (isset($_REQUEST['getcustomer'])) {
 	// ログイン状態のチェック
 	$me = checkLogin();
-	if(!$me){
+	if (!$me) {
 		$json = new Services_JSON();
 		$res = $json->encode("");
 		header("Content-Type: text/javascript; charset=utf-8");

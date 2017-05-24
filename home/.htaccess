@@ -27,14 +27,14 @@ RewriteRule ^(.*)index.html$ http://www.takahama428.com/$1 [R=301,L]
 
 
 # 404 Error for Multidomain Directories.
-RewriteCond %{HTTP_HOST} ^www.takahama428.com$
-RewriteCond %{REQUEST_URI} ^/(test.takahama428.com)/
-RewriteRule ^(.*)$ /$1 [L,R=404]
+#RewriteCond %{HTTP_HOST} ^www.takahama428.com$
+#RewriteCond %{REQUEST_URI} ^/(test.takahama428.com)/
+#RewriteRule ^(.*)$ /$1 [L,R=404]
 
 # Main RewriteRule for multidomain.
-RewriteCond %{HTTP_HOST} ^(test.takahama428.com)
-RewriteCond %{REQUEST_URI} !^/(test.takahama428.com)/
-RewriteRule ^(.*)$ /%{HTTP_HOST}/$1/ [L]
+#RewriteCond %{HTTP_HOST} ^(test.takahama428.com)
+#RewriteCond %{REQUEST_URI} !^/(test.takahama428.com)/
+#RewriteRule ^(.*)$ /%{HTTP_HOST}/$1/ [L]
 
 
 <Files ~ "^.(htaccess|htpasswd)$">

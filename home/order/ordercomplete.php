@@ -1,6 +1,6 @@
 <?php
 	ini_set('memory_limit', '256M');
-	require_once dirname(__FILE__).'/../php_libs/orders.php';
+	require_once dirname(__FILE__).'/../php_libs/t_orders.php';
 	require_once dirname(__FILE__).'/ordermail.php';
 	
 	if( isset($_POST['ticket'], $_SESSION['ticket'], $_SESSION['orders']) && $_POST['ticket']==$_SESSION['ticket'] ) {

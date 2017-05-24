@@ -11,6 +11,10 @@ require_once dirname(__FILE__).'/categorypage.php';
 $conn = new Conndb();
 
 
+function takahama_log($logContext) {
+//	$now = date('Y/m/d H:i:s');
+//	error_log($now.": ".$logContext."\n\r", 3, $_SERVER['DOCUMENT_ROOT'].'/debug.log.txt');
+}
 
 /*
 *	商品一覧ページ
@@ -23,6 +27,8 @@ $conn = new Conndb();
 *	return	商品情報の配列
 */
 function getCategoryInfo($id, $tag=null, $mode='category', $sort='index', $limit=null){
+//takahama_log("getCategoryInfo begin");
+//takahama_log("id:".$id.",tag:".$tag.",mode:".$mode.",limit:".$limit);
 
 	// 商品情報を取得
 	$conn = new Conndb();
@@ -31,6 +37,7 @@ function getCategoryInfo($id, $tag=null, $mode='category', $sort='index', $limit
 	$tmp = array();
 	$res = array();
 	$cnt = count($data);
+//takahama_log("getCategoryInfo cnt=".$cnt);
 
 	if($cnt==0) return $res;
 	
@@ -167,6 +174,7 @@ function getStar($args){
 
 
 if(isset($_REQUEST['act'])){
+//takahama_log("111:".$_REQUEST['act']);
 	switch($_REQUEST['act']){
 	case 'price';
 	/* 見積ページ */
@@ -201,24 +209,23 @@ if(isset($_REQUEST['act'])){
 			$res .= '<tr>'.$ink.'</tr>';
 		}else{
 
-$posdiv = "";
-	for($i=0; $i<count($files); $i++){
-		$imgfile = file_get_contents($files[$i]['filename']);
-		$f = preg_replace('/.\/img\//', _IMG_PSS, $imgfile);
-		$posname = '<div class="posname_'.$i.'"></div>';
-		$ink = '<div><select class="ink_'.$i.'"><option value="0" selected="selected">選択してください</option>';
-		$ink .= '<option value="1">1色</option><option value="2">2色</option><option value="3">3色</option>';
-		$ink .= '<option value="9">4色以上</option></select></div>';
-			$posdiv .= '<li class="pntposition">';
-				$posdiv .= '<div class="psnv">';
-					$posdiv .= '<div class="pos_'.$i.'">'.$f.'</div>';
-					$posdiv .= $posname;
-					$posdiv .= $ink;
-					$posdiv .= '</div>';
-			$posdiv .= '</li>';
-	}
-//$posdiv = mb_convert_encoding($posdiv,'euc-jp','utf-8');
-$res = '<figure><div></div><ul>' .$posdiv .'</ul></figure>';
+			$posdiv = "";
+			for($i=0; $i<count($files); $i++){
+				$imgfile = file_get_contents($files[$i]['filename']);
+				$f = preg_replace('/.\/img\//', _IMG_PSS, $imgfile);
+				$posname = '<div class="posname_'.$i.'"></div>';
+				$ink = '<div><select class="ink_'.$i.'"><option value="0" selected="selected">選択してください</option>';
+				$ink .= '<option value="1">1色</option><option value="2">2色</option><option value="3">3色</option>';
+				$ink .= '<option value="9">4色以上</option></select></div>';
+					$posdiv .= '<li class="pntposition">';
+						$posdiv .= '<div class="psnv">';
+							$posdiv .= '<div class="pos_'.$i.'">'.$f.'</div>';
+							$posdiv .= $posname;
+							$posdiv .= $ink;
+							$posdiv .= '</div>';
+					$posdiv .= '</li>';
+			}
+			$res = '<figure><div></div><ul>' .$posdiv .'</ul></figure>';
 
 /*			
 			$res = '<tr>';
@@ -286,17 +293,18 @@ $res = '<figure><div></div><ul>' .$posdiv .'</ul></figure>';
 		break;
 		
 	case 'eachprice':
-	/* 料金の目安ページ */
-		$area = array('f');
+	/* 
+	 * 料金の目安ページ 
+	 * 2017-05-25 プリント代計算の仕様変更に伴い廃止
+	 */
+		$dat = array();
 		for($i=0; $i<count($_REQUEST['itemcode']); $i++){
-			$p1 = array($_REQUEST['itemcode'][$i]);
-			$p2 = array($_REQUEST['amount'][$i]);
-			$p3 = array($_REQUEST['ink'][$i]);
-			$price = $conn->estimateEach($p1, $p2, $p3, $area, $sheetsize='1');
-			$dat[$i] = $price[$_REQUEST['itemcode'][$i]];
+			$args[] = array('itemcode'=>$_REQUEST['itemcode'][$i], 'amount'=>$_REQUEST['amount'][$i], 'ink'=>$_REQUEST['ink'][$i], 'pos'=>'前', 'size'=>0);
+			$price = $conn->printfee($args);
+			$dat['perone'] = ceil($price['printfee'] / $_REQUEST['amount'][$i]);
 		}
 		
-		$json = new Services_JSON();
+		$json = new Services_JSON(SERVICES_JSON_LOOSE_TYPE);
 		$res = $json->encode($dat);
 		header("Content-Type: text/javascript; charset=utf-8");
 		
@@ -368,6 +376,7 @@ $res = '<figure><div></div><ul>' .$posdiv .'</ul></figure>';
 	echo $res;
 
 }else if(isset($_PAGE_ESTIMATION_1)){
+//takahama_log("222:".$_PAGE_ESTIMATION_1);
 	/*
 	*	カンタン見積ページ
 	*/
@@ -386,7 +395,7 @@ $res = '<figure><div></div><ul>' .$posdiv .'</ul></figure>';
 	$files = $conn->positionFor($curitemid);
 	// 見積り計算フォームのプリント位置指定
 
-$posdiv = "";
+	$posdiv = "";
 	for($i=0; $i<count($files); $i++){
 		$imgfile = file_get_contents($files[$i]['filename']);
 		$f = preg_replace('/.\/img\//', _IMG_PSS, $imgfile);
@@ -406,7 +415,7 @@ $posdiv = "";
 					$posdiv .= '</div>';
 			$posdiv .= '</li>';
 	}
-$posdiv = mb_convert_encoding($posdiv,'euc-jp','utf-8');
+	$posdiv = mb_convert_encoding($posdiv,'euc-jp','utf-8');	
 
 	$pos = '<tr>';
 	$pos .= '<th>プリント位置</th>';
@@ -425,57 +434,13 @@ $posdiv = mb_convert_encoding($posdiv,'euc-jp','utf-8');
 
 	$pos = mb_convert_encoding($pos,'euc-jp','utf-8');
 
-	// 個別のアイテム指定がある場合
-	if(isset($param['itemcode'], $param['amount'], $param['ink'])){
-		for($t=0; $t<count($param['itemcode']); $t++){
-			$area[]='f';
-			
-			// size
-			$data = $conn->itemSize($param['itemcode'][$t],null,'code');
-			$s = array();
-			for($i=0; $i<count($data); $i++){
-				if($data[$i]['id']<11){								// 70-160
-					$s[0][] = $data[$i]['name'];
-				}else if($data[$i]['id']<17 || $data[$i]['id']>28){	// JS-JL, GS-GL, WS-WL
-					$s[1][] = $data[$i]['name'];
-				}else{												// XS-8L
-					$s[2][] = $data[$i]['name'];
-				}
-			}
-			for($i=0; $i<3; $i++){
-				if(!empty($s[$i])){
-					if($s[$i][0]!=$s[$i][count($s[$i])-1]){
-						$s[3][] = $s[$i][0].'-'.$s[$i][count($s[$i])-1];
-					}else{
-						$s[3][] = $s[$i][0];
-					}
-				}
-			}
-			$size[$param['itemcode'][$t]] = implode(', ', $s[3]);
-		
-		}
-		$res = $conn->estimateEach($param['itemcode'], $param['amount'], $param['ink'], $area, $sheetsize='1');
-	}
-
 }else if(isset($_PAGE_STANDARD)){
+//takahama_log("333:".$_PAGE_STANDARD);
 	/* 
 	*	料金の目安
 	*	一枚あたりの料金の目安を取得する
-	*	@itemcode	アイテムコード
-	*	@amount		枚数
-	*	@int		インク色数
-	*
-	*	@return		[['price':見積金額, 'perone':1枚あたり],[...]]
-	*				引数の配列インデックスに対応した商品の料金を返す
+	*	（未使用）
 	*/
-	$area = array('f');
-	for($i=0; $i<count($param['itemcode']); $i++){
-		$p1 = array($param['itemcode'][$i]);
-		$p2 = array($param['amount'][$i]);
-		$p3 = array($param['ink'][$i]);
-		$price = $conn->estimateEach($p1, $p2, $p3, $area, $sheetsize='1');
-		$res[$i] = $price[$param['itemcode'][$i]];
-	}
 	
 	$data = $conn->categoryList();
 	$category_selector = '<select id="category_selector" onchange="$.changeCategory(this)">';
@@ -487,6 +452,7 @@ $posdiv = mb_convert_encoding($posdiv,'euc-jp','utf-8');
 	$category_selector .= '</select>';
 	
 }else if(isset($_PAGE_ESTIMATION)){
+//takahama_log("444:".$_PAGE_ESTIMATION);
 	/*
 	*	シーン別ページ
 	*/
@@ -553,10 +519,14 @@ $posdiv = mb_convert_encoding($posdiv,'euc-jp','utf-8');
 	$pos = mb_convert_encoding($pos,'euc-jp','utf-8');
 		
 	if(isset($param['itemcode'], $param['amount'], $param['ink'])){
-		for($t=0; $t<count($param['itemcode']); $t++){
-			$area[]='f';
+		
+		for($i=0; $i<count($param['itemcode']); $i++){
+			$args[] = array('itemcode'=>$param['itemcode'][$i], 'amount'=>$param['amount'][$i], 'ink'=>$param['ink'][$i], 'pos'=>'前', 'size'=>0);
+			$price = $conn->printfee($args);
+			$cost = $conn->itemPrice($param['itemcode'][$i], 'code');
+			$res[$param['itemcode'][$i]]['price'] = $price['printfee'] + ($cost[0]['price_white'] * $param['amount'][$i]);
+			$res[$param['itemcode'][$i]]['perone'] = ceil($price['printfee'] / $param['amount'][$i]) + $cost[0]['price_white'];
 		}
-		$res = $conn->estimateEach($param['itemcode'], $param['amount'], $param['ink'], $area, $sheetsize='1');
 		
 		for($t=0; $t<count($param['itemcode']); $t++){			
 			// サイズ展開
@@ -597,6 +567,7 @@ $posdiv = mb_convert_encoding($posdiv,'euc-jp','utf-8');
 	}
 	
 }else if(isset($_PAGE_CATEGORIES)){
+//takahama_log("555:".$_PAGE_CATEGORIES);
 	/*
 	*	商品一覧ページ
 	*/
@@ -859,6 +830,7 @@ $posdiv = mb_convert_encoding($posdiv,'euc-jp','utf-8');
 	
 	
 }else if(isset($_PAGE_ITEMDETAIL)){
+//takahama_log("666:".$_PAGE_ITEMDETAIL);
 	/*
 	*	商品詳細ページ
 	*/
@@ -880,6 +852,7 @@ $_ITEM_CODE = $_GET['id'];
 	}
 	$data['itemid'] = $conn->itemID($data['itemcode']);
 	
+//takahama_log("itemid:".$data['itemid']);
 
 	// アイテム情報取得
 	$itemattr = $conn->itemAttr($data['itemid']);
@@ -943,6 +916,7 @@ $_ITEM_CODE = $_GET['id'];
 				$tblHash[$key] .= '<tfoot><tr><td colspan="'.$columns[$key].'">(cm)</td></tr></tfoot><tbody>';
 				$tblHash[$key] .= $tblHead[$key].="</tr>";
 			}
+//	takahama_log("tblHash111=".$tblHead[$key]);
 			if($value[$i]["measure_id"]!=$curMeasure){
 				if($curMeasure!=0){
 					if($col==1){
@@ -956,6 +930,7 @@ $_ITEM_CODE = $_GET['id'];
 					$tblHash[$key] .= "</tr>";
 				}
 				$tblHash[$key] .= "<tr><td>".mb_convert_encoding($value[$i]["measure_name"], 'euc-jp', 'utf-8')."</td>";
+//	takahama_log("tblHash222=".$tblHead[$key]);
 				$curMeasure = $value[$i]["measure_id"];
 			}
 			if($preDimension!="" && $preDimension!=$value[$i]["dimension"]){
@@ -979,7 +954,9 @@ $_ITEM_CODE = $_GET['id'];
 		}
 		$tblHash[$key] .= mb_convert_encoding($preDimension, 'euc-jp', 'utf-8').'</td>';
 		$itemsize_table .= $tblHash[$key].'</tr></tbody></table>';
+//	takahama_log("itemsize_table111=".$itemsize_table);
 	}
+//	takahama_log("itemsize_table=".$itemsize_table);
 	$ite = new Items($categorykey);
 	$_PAGE_CATEGORYID = $ite->getCategoryID();
 	$posid = $itemattr['ppid'];
@@ -1245,7 +1222,9 @@ $_ITEM_CODE = $_GET['id'];
 	
 	// プリント可能範囲の絵型
 	$files = $conn->positionFor($data['itemid']);
+//takahama_log("files:".$files);
 	$position_type = trim($files[0]["ppdata"]["pos"]);
+//takahama_log("position_type:".$position_type);
 	$baseName = array(
 		"前"=>"front",
 		"後"=>"back",
@@ -1271,6 +1250,7 @@ $_ITEM_CODE = $_GET['id'];
 		$printAreaImage .= '</div>';
 	}
 */
+//takahama_log("printAreaImage:".$printAreaImage);
 
 	// 見積り計算フォームのプリント位置指定
 $posdiv = "";
@@ -1290,6 +1270,8 @@ $posdiv = "";
 					$posdiv .= '</div>';
 			$posdiv .= '</li>';
 	}
+//takahama_log("---------wwwwwwwwwww-------");	
+//takahama_log($posdiv);	
 
 
     $pos = '<tr class="posid_'.$files[0]['posid'].'"><td colspan="3" class="pos_step ps1">(1)プリントする位置を選択してください。</td></tr>';
@@ -1302,6 +1284,8 @@ $posdiv = "";
 		$ink .= '</td>';
 	}
 	$pos .= '</tr>';
+//takahama_log("---------------------");	
+//takahama_log($pos);	
 	$pos .= '<tr>';
 	$pos .= '<td colspan="3" class="pos_step">(2)選択した位置のプリントに使用する、インクの色数を選択してください。';
 	$pos .= '<span class="questions"><a class="info_icon" target="_new" href="/design/fontcolor.html#navi2">使用インク色？</a></span>';

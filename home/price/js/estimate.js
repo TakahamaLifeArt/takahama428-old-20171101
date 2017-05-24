@@ -665,11 +665,12 @@ $(function(){
 		*	アイテムコード、枚数、インク色数、プリント位置の配列　[itemcode, amount, ink, pos][...]
 		*/
 			var vol = $('#order_amount').val();
-			var pos_id = 0;
+			var pos_count = 0;
 			var itemid = [];
 			var amount = [];
 			var pos = [];
 			var ink = [];
+			var size = [];
 			var option = [];
 			var optionValue = 0;
 			var ppID = $('.check_body:checked', '#boxwrap').val();	// 絵型ID
@@ -683,28 +684,28 @@ $(function(){
 			// デザインの数
 //			$('#pos_wrap table tbody tr:last td').each( function(){
 			$('#pos_wrap select').each( function(){
-				//var ink_count = $(this).find('select').val();
+				var pos_name = $(this).parent().prev().text();
 				var ink_count = $(this).val();
 				if(ink_count==0) return true;		// continue
 				for(var i=0; i<$.items.itemid.length; i++){
 					if($.items.hash[$.items.itemid[i]][5]!=ppID) continue;	// 指定されたシルエットの絵型に対応したアイテムのみ
 					itemid.push($.items.itemid[i]);
 					amount.push(vol);
-					pos.push(pos_id);
+					pos.push(pos_name);
 					ink.push(ink_count);
+					size.push(0);
 					option.push(optionValue);
 				}
-				pos_id++;
+				pos_count++;
 			});
 			
 			$.init_result();
 			
-			if(pos_id==0){
-				//$.msgbox('デザインの色数を指定してください。');
+			if(pos_count==0){
 				return;
 			}
 			
-			var args = {'sheetsize':'1', 'act':'printfeelist','show_site':$.TLA.show_site, 'output':'jsonp', 'itemid':itemid, 'amount':amount, 'pos':pos, 'ink':ink, 'option':option};
+			var args = {'sheetsize':'1', 'act':'printfeelist','show_site':$.TLA.show_site, 'output':'jsonp', 'itemid':itemid, 'amount':amount, 'pos':pos, 'ink':ink, 'size':size, 'option':option};
 			$.getJSON($.TLA.api+'?callback=?', args, function(r){
 				// 見積り額と表示順を設定
 				var costIndex = 2;	// 白色
@@ -742,7 +743,7 @@ $(function(){
 					var base = val.base-0;
 				    var tax = Math.floor( base * (val.tax/100) );
 				    var result = Math.floor( base * (1+val.tax/100) );
-				    var perone = Math.ceil(result/val.volume);
+				    var perone = Math.ceil(result/vol);
 				    var itemHash = $.getStorage("itemhash", itemcode);
 				    //var tc = $.getStorage("thumbcolor", itemcode);
 				    num++;
@@ -776,7 +777,7 @@ $(function(){
 					base = r2[key].base-0;
 				    tax = Math.floor( base * (r2[key].tax/100) );
 				    result = Math.floor( base * (1+r2[key].tax/100) );
-				    perone = Math.ceil(result/r2[key].volume);
+				    perone = Math.ceil(result/vol);
 				    itemHash = $.getStorage("itemhash", itemcode);
 				    //tc = $.getStorage("thumbcolor", itemcode);
 						TR[idx] +=  '<td>';
@@ -794,7 +795,6 @@ $(function(){
 //							TR[idx] +=  '<p class="detail"><a href="/items/'+category_key+'/'+itemcode+'.html">詳細を見る</a></p>';
 							TR[idx] +=  '<p class="detail"><a href="/items/'+category_key+'/item.html?id='+itemcode+'">詳細を見る</a></p>';
 							TR[idx] +=  '<p class="apply"><a href="/order/?item_id='+itemid+'&update=1">お申し込みへ</a></p>';
-//item.html?id=085-cvt
 						TR[idx] +=  '</td>';
 					TR[idx] +=  '</tr>';
 				});

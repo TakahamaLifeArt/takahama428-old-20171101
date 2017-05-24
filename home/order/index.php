@@ -25,7 +25,7 @@
 	// カテゴリー情報を取得
 	//$itemattr = $conn->itemAttr($_FLG_ITEM_ID);
 	list($itemattr, $categories) = $order->getCategoryData($_FLG_ITEM_ID);
-
+	
 	list($categorykey, $categoryname) = each($itemattr['category']);
 	$categoryname = mb_convert_encoding($categoryname,'euc-jp','utf-8');
 	list($itemcode, $itemname) = each($itemattr['name']);
@@ -266,7 +266,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                                     <div class="sizes">'.$v['sizes'].'</div>
                                                     <p class="price_s" style="white-space: nowrap;">
                                                         <p style="display:inline-block;">TAKAHAMA価格<p/>
-                                                        <span id="price_cost" style="white-space: nowrap;"><span>'.$v['minprice'].'</span>円〜</span>
+                                                        <span id="price_cost" style="white-space: nowrap;"><span>'.$v['minprice'].'</span>円~</span>
                                                     </p>
 
                                                 </li>
@@ -300,7 +300,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                                 <div class="size">'.$v['sizes'].'</div>
                                                 <p class="price" style="white-space: nowrap;">
                                                   	<p style="display:inline-block;">TAKAHAMA価格<p/>
-                                                    <span id="price_cost" style="white-space: nowrap;"><span>'.$v['minprice'].'</span>円〜</span>
+                                                    <span id="price_cost" style="white-space: nowrap;"><span>'.$v['minprice'].'</span>円~</span>
                                                 </p>
                                             </li>
                                         </ul>
@@ -382,7 +382,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							<div class="step_next goto_position">次へ進む</div>
 						</div>
 					</div>
-        </div>
+        		</div>
 
 				<div id="step3">
 					<div class="heading clearfix"><p class="arrow prev" data-back="1"><span>戻る</span></p></div>
@@ -421,7 +421,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 						</div>
 
 						<div id="pos_wrap"></div>
-
+						
+						<div>
+							<h3 class="heading_mark">刺繍をご希望の方はご記入ください</h3>
+							<p class="note">例　左そで：刺繍</p>
+							<textarea id="note_printmethod"  name="note_printmethod"></textarea>
+						</div>
 						<div class="arrow_line"><div class="arrow prev" data-back="1"><span>戻る</span></div><div class="step_next goto_cart">カートに入れる</div></div>
                     </div>
 				</div>
@@ -466,10 +471,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 								</thead>
 								<tfoot>
 									<tr><td colspan="3">商品代計</td><td class="ac"><ins class="totamount">0</ins> 枚</td><td class="itemsum">0</td></tr>
-									<tr><td colspan="1">プリント代</td><td colspan="3" class="printing"></td><td class="printfee">0</td></tr>
+									<tr><td colspan="1">プリント代</td><td class="print_size ac"></td><td class="print_pos ac"></td><td class="ink_count ac"></td><td class="printfee">0</td></tr>
 									<tr><td colspan="4">送料</td><td class="carriage">0</td></tr>
 									<tr><td colspan="4">代引手数料</td><td class="codfee">0</td></tr>
-									<!--<tr><td colspan="4">コンビニ手数料</td><td class="conbifee">0</td></tr> -->
+									<tr><td colspan="4">コンビニ手数料</td><td class="conbifee">0</td></tr>
 									<tr><td colspan="4">袋詰代</td><td class="package">0</td></tr>
 									<tr><td colspan="1">割引</td><td colspan="3" class="discountname"></td><td class="discountfee">0</td></tr>
 									<tr><td colspan="1">特急料金</td><td colspan="3" class="expressinfo"></td><td class="expressfee">0</td></tr>
@@ -522,7 +527,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 										</td>
 									</tr>
 									<tr class="separate">
-										<th>袋詰め<span class="anchor" id="pop_pack">袋詰めとは</span></th>
+										<th>袋詰め　<span class="anchor" id="pop_pack">袋詰めとは</span></th>
 										<td>
 											<label><input type="radio" name="pack" value="0" <?php if(empty($regist['options']['pack'])) echo 'checked="checked"'; ?> />希望しない</label>
 											<label><input type="radio" name="pack" value="2" <?php if($regist['options']['pack']==2) echo 'checked="checked"'; ?> />袋のみ同封（10円/1枚）</label>
@@ -539,7 +544,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 											<label><input type="radio" name="payment" value="1" <?php if($regist['options']['payment']==1) echo 'checked="checked"'; ?> />代金引換（手数料800円）</label>
 											<br>
 											<label><input type="radio" name="payment" value="3" <?php if($regist['options']['payment']==3) echo 'checked="checked"'; ?> />カード決済（システム利用料5％）</label>
-										<!--	<label><input type="radio" name="payment" value="4" <?php if($regist['options']['payment']==4) echo 'checked="checked"'; ?> />コンビニ決済（手数料800円）</label> -->
+<!--											<label><input type="radio" name="payment" value="4" <?php if($regist['options']['payment']==4) echo 'checked="checked"'; ?> />コンビニ決済（手数料800円）</label>-->
 										</td>
 									</tr>
 								</tbody>
@@ -573,7 +578,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 						<div class="inner">
 							<h3 class="heading_mark">デザインの画像ファイルをお持ちの方はこちらから添付してください</h3>
-							<form enctype="multipart/form-data" method="post" target="upload_iframe" action="/php_libs/orders.php" name="uploaderform" id="uploaderform">
+							<form enctype="multipart/form-data" method="post" target="upload_iframe" action="/php_libs/t_orders.php" name="uploaderform" id="uploaderform">
 								<input type="hidden" value="update" name="act" />
 								<input type="hidden" value="attach" name="mode" />
 								<input type="hidden" value="<?php echo $regist['attach'][0]['img']['name']; ?>" name="attachname[]" />
@@ -636,7 +641,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 								<div class="g_ft" style="width=98%;border-bottom: 1px solid #d8d8d8;margin-top:20px;padding-bottom:20px;">
 									<div class="ft">
 										<ul>
-											<h1 class="login_nodisplay">2回目以降注文の方はこちら</p></h1>
+											<h1 class="login_nodisplay">2回目以降注文の方はこちら</h1>
 											<li id= "login_email" class="login_nodisplay"><h2>メールアドレス:<span class="fontred">※</span></h2><input type="text" id="login_input_email" name="login_input_email" value="<?php echo $user['email']; ?>" /></li>
 											<li class="login_nodisplay"><h2>パスワード　　:<span class="fontred">※</span></h2><input type="password" value="<?php echo $user['password']; ?>" id="login_input_pass"  name="login_input_pass" /></li>
 										</ul>
@@ -651,10 +656,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 									<div class="ft">
 										<ul>
 											<div style="margin-top:35px;margin-bottom:10px;color: #1520d9;"><li class="login_nodisplay"><p>☆☆会員の方:新規ご登録の方はログイン不要、注文完了時に会員自動登録されます。☆☆</p></li></div>
-											<h1 class="login_nodisplay">新規登録の方はこちら</p></h1>
+											<h1 class="login_nodisplay">新規登録の方はこちら</h1>
 											<li id= "login_email"><h2>メールアドレス:<span class="fontred">※</span></h2><input type="text" id="email" name="email" value="<?php echo $user['email']; ?>" /></li>
 											<li class="login_nodisplay"><h2>新規 パスワード:<span class="fontred">※</span></h2><input type="password" value="<?php echo $user['password']; ?>" id="pass"  name="pass" /></li>
-											<li class="login_nodisplay"><span class="fontred">※</span>新規の方は、新しくパスワードを入力します。半角英数字4文字以上16文字以内。</div>
+											<li class="login_nodisplay"><span class="fontred">※</span>新規の方は、新しくパスワードを入力します。半角英数字4文字以上16文字以内。</li>
 										</ul>
 									</div>
 								<div class="fl">
@@ -707,6 +712,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 						</div>
 
 						<div class="arrow_line"><div class="arrow prev" data-back="3"><span>戻る</span></div><div class="step_next goto_confirm">確認画面へ</div></div>
+					</div>
 				</div>
 
 				<div id="step6">
@@ -772,7 +778,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 									<caption>プリント情報</caption>
 									<thead>
 										<tr>
-											<th>アイテム</th><th>プリント位置</th><th>プリントするデザインの色数</th>
+											<th>アイテム</th><th>プリント位置</th><th>デザインのサイズ</th><th>デザインの色数</th>
 										</tr>
 									</thead>
 									<tbody></tbody>
@@ -838,7 +844,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			</div>
 
 		</div>
-
+		
 		<div id="floatingbox">
 			<table>
 				<caption>お見積り</caption>

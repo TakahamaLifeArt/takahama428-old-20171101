@@ -1,8 +1,8 @@
 /**
-*	Takahama Life Art
-*	料金の目安
-*	charset euc-jp
-*/
+ * Takahama Life Art
+ * 料金の目安
+ * charset euc-jp
+ */
 
 $(function(){
 	
@@ -29,35 +29,68 @@ $(function(){
 		},
 		changeCategory: function(my){
 		/*
-		*	商品カテゴリーの変更
-		*/
+		 * 商品カテゴリーの変更
+		 */
 			var categoryid = my.options[my.selectedIndex].value;
 			$('#item_image img').attr('src', _IMG_PSS+'items/'+$.prop.iteminfo[categoryid]['path']);
 			$.calc($.prop.iteminfo[categoryid]['itemcode']);
 		},
 		calc: function(itemcode){
 		/*
-		 *	目安の計算
+		 * 目安の計算
+		 * 一番小さいサイズのホワイトで計算
 		 */
-			var amount = $('#amount_selector').val();
-			var prm1 = [itemcode, itemcode];
-			var prm2 = [amount, amount];
-			var prm3 = ['1','3'];
-			$.ajax({url:'../php_libs/pageinfo.php', async:false, data:'post', dataType:'json', 
-				data:{'act':'eachprice','itemcode':prm1, 'amount':prm2, 'ink':prm3}, success: function(r){
-					$('#std_01').text($.addFigure(r[0]['perone']));
-					$('#std_02').text($.addFigure(r[1]['perone']));
-				}
+			var amount = $('#amount_selector').val() - 0;
+//			var prm1 = [itemcode, itemcode];
+//			var prm2 = [amount, amount];
+//			var prm3 = ['1','3'];
+			
+			var ink = ['1','3'];
+			var args = [];
+			for (var i=0; i<2; i++) {
+				args[i] = {'act':'printfee', 'output':'jsonp', 'args':[]};
+				args[i]['args'][0] = {
+						   'show_site' : $.TLA.show_site, 
+						   'itemcode' : itemcode, 
+						   'amount' : amount, 
+						   'pos' : '前', 
+						   'ink' : ink[i], 
+						   'size' : 0
+						  };
+			}
+			$.when(
+				$.getJSON($.TLA.api+'?callback=?', args[0]),
+				$.getJSON($.TLA.api+'?callback=?', args[1]),
+				$.getJSON($.TLA.api+'?callback=?', {'act':'price', 'output':'jsonp', 'itemid':itemcode, 'mode':'code', 'show_site' : $.TLA.show_site}),
+			).then(function(r1,r2,r3){
+				var perone_1 = Math.ceil(r1[0]['printfee']/amount)+(r3[0][0]['price_white']-0);
+				var perone_2 = Math.ceil(r2[0]['printfee']/amount)+(r3[0][0]['price_white']-0);
+				$('#std_01').text($.addFigure(perone_1));
+				$('#std_02').text($.addFigure(perone_2));
 			});
+//			
+//			$.ajax({url:'../php_libs/pageinfo.php', async:false, data:'post', dataType:'json', data:{'act':'eachprice','itemcode':prm1, 'amount':prm2, 'ink':prm3}, 
+//				success: function(r){
+//					$('#std_01').text($.addFigure(r[0]['perone']));
+//					$('#std_02').text($.addFigure(r[1]['perone']));
+//				},
+//				error: function(XMLHttpRequest, textStatus, errorThrown){
+//					alert('Error: p52\n'+textStatus+'\n'+errorThrown);
+//				}
+//			});
 		}
 	});
 	
-	/*
-	*	枚数の変更
-	*/
+	/**
+	 * 枚数の変更
+	 */
 	$('#amount_selector').change( function(){
 		var categoryid = $('#category_selector').val();
 		$.calc($.prop.iteminfo[categoryid]['itemcode']);
 	});
 	
+	/**
+	 * 初期表示
+	 */
+	$.calc('085-cvt');
 });

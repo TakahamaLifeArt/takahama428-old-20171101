@@ -7,10 +7,15 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/../cgi-bin/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/../cgi-bin/JSON.php';
 require_once dirname(__FILE__).'/http.php';
-require_once dirname(__FILE__).'/../../../dev_takahamalifeart.com/www/cgi-bin/review.php';
-require_once dirname(__FILE__).'/../../../dev_takahamalifeart.com/www/cgi-bin/master.php';
+//require_once dirname(__FILE__).'/../../../dev_takahamalifeart.com/www/cgi-bin/review.php';
+//require_once dirname(__FILE__).'/../../../dev_takahamalifeart.com/www/cgi-bin/master.php';
 
 class Conndb extends HTTP {
+
+public function takahama_log($logContext) {
+//	$now = date('Y/m/d H:i:s'. '.' . substr(explode('.', (microtime(true) . ''))[1], 0, 3));
+//	error_log($now.": ".$logContext."\n\r", 3, $_SERVER['DOCUMENT_ROOT'].'/debug.log.txt');
+}
 	
 	public function __construct($args=_API){
 		parent::__construct($args);
@@ -40,8 +45,10 @@ class Conndb extends HTTP {
 	*	@return		[id:category_id, code:category_key, name:category_name][...]
 	*/
 	public function categoryList(){
+//$this->takahama_log("categoryList");
 		$res = parent::request('POST', array('act'=>'category'));
 		$data = unserialize($res);
+		
 		return $data;
 	}
 
@@ -54,8 +61,10 @@ class Conndb extends HTTP {
 	*	@return			[id:item_id, code:item_code, name:item_name, posid:printposition_id][...]
 	*/
 	public function itemList($categoryid=1, $mode=NULL){
+//$this->takahama_log("itemList");
 		$res = parent::request('POST', array('act'=>'item', 'categoryid'=>$categoryid, 'mode'=>$mode, 'show_site'=>_SITE));
 		$data = unserialize($res);
+//$this->takahama_log("商品情報を返す3".$res);
 		return $data;
 	}
 	
@@ -69,8 +78,10 @@ class Conndb extends HTTP {
 	*	@return			[id:size_from, name:size_name][...]
 	*/
 	public function itemSize($id, $colorcode=NULL, $mode='id'){
+//$this->takahama_log("itemSize");
 		$res = parent::request('POST', array('act'=>'size', 'itemid'=>$id, 'colorcode'=>$colorcode, 'mode'=>$mode, 'show_site'=>_SITE));
 		$data = unserialize($res);
+//$this->takahama_log("商品情報を返す4".$res);
 		return $data;
 	}
 	
@@ -84,8 +95,10 @@ class Conndb extends HTTP {
 	*	@return			[sizeid:size_from, price_color:price_0, price_white:price_1, maker_color:price_0, maker_white:price_1]
 	*/
 	public function itemPrice($id, $mode='id', $amount=NULL){
+//$this->takahama_log("itemPrice");
 		$res = parent::request('POST', array('act'=>'price', 'itemid'=>$id, 'mode'=>$mode, 'show_site'=>_SITE));
 		$data = unserialize($res);
+//$this->takahama_log("商品情報を返す5".$res);
 		return $data;
 	}
 	
@@ -97,8 +110,10 @@ class Conndb extends HTTP {
 	*	@return			item_id
 	*/
 	public function itemID($itemcode){
+//$this->takahama_log("itemID");
 		$res = parent::request('POST', array('act'=>'itemid', 'itemcode'=>$itemcode, 'show_site'=>_SITE));
 		$data = unserialize($res);
+//$this->takahama_log("商品情報を返す6".$res);
 		return $data;
 	}
 	
@@ -115,8 +130,10 @@ class Conndb extends HTTP {
 	*	@return		{item_code:['price':見積金額, 'perone':1枚あたり],[...]}　引数に配列以外を設定した時はNULL
 	*/
 	public function estimateEach($itemcode, $amount, $ink, $pos, $sheetsize='1'){
+//$this->takahama_log("estimateEach");
 		$res = parent::request('POST', array('act'=>'estimateeach', 'sheetsize'=>$sheetsize, 'itemcode'=>$itemcode, 'amount'=>$amount, 'ink'=>$ink, 'pos'=>$pos));
 		$data = unserialize($res);
+//$this->takahama_log("商品情報を返す7".$res);		
 		return $data;
 	}
 		
@@ -129,8 +146,10 @@ class Conndb extends HTTP {
 	*	@return			[プリント位置の絵型を配置するタグのテキストファイルへのパス, 位置名, position_id, ディレクトリ情報][...]
 	*/
 	public function positionFor($curitemid, $mode='id'){
+//$this->takahama_log("positionFor");
 		$res = parent::request('POST', array('act'=>'position', 'itemid'=>$curitemid, 'mode'=>$mode));
 		$data = unserialize($res);
+//$this->takahama_log("商品情報を返す8".$res);		
 		/*---------------------------------------------------
 		*	2013-10-24 
 		*	下記2点のパーカーの絵型（フード前なし）の暫定的対応
@@ -186,6 +205,7 @@ class Conndb extends HTTP {
 	*	@return			[[サイズ - サイズ　0,000円～, ...],白色が安い商品はture,[size_id:price,...]]
 	*/
 	public function priceFor($curitemid, $colormode='white', $mode='id'){
+//$this->takahama_log("priceFor");
 		$res = parent::request('POST', array('act'=>'price', 'itemid'=>$curitemid, 'mode'=>$mode));
 		$data = unserialize($res);
 		$isSwitch = false;
@@ -231,6 +251,7 @@ class Conndb extends HTTP {
 		for($i=0; $i<count($rows); $i++){
 			$line .= '<tr>'.$rows[$i].'<td><input type="number" value="0" min="0" class="forNum" /> '.'枚'.'</td></tr>';
 		}
+//$this->takahama_log("diaocha--------");
 		return array($line, $isSwitch, $price);
 	}
 
@@ -247,6 +268,7 @@ class Conndb extends HTTP {
 	*					codeのフォーマットは、「アイテムコード＿カラーコード」　ex) 085-cvt_001
 	*/
 	public function itemAttr($itemid=1){
+//$this->takahama_log("itemAttr");
 		$res = parent::request('POST', array('act'=>'itemattr', 'itemid'=>$itemid, 'show_site'=>_SITE));
 		$data = unserialize($res);
 		
@@ -264,6 +286,7 @@ class Conndb extends HTTP {
 	*	@return			[商品情報]
 	*/
 	public function itemOf($id, $tag=array(), $mode="category", $limit=0, $output=''){
+//$this->takahama_log("itemOf");
 		$res = parent::request('POST', array('act'=>'itemof', 'id'=>$id, 'tag'=>$tag, 'mode'=>$mode, 'limit'=>$limit, 'show_site'=>_SITE, 'output'=>$output));
 		if ($output === 'json') {
 			$json = new Services_JSON(SERVICES_JSON_LOOSE_TYPE);
@@ -289,6 +312,7 @@ class Conndb extends HTTP {
 	*	@return		[アイテムID, ...]
 	*/
 	public function itemIdOf($id, $tag=null, $mode='category', $target=null, $limit=null, $curdate=null){
+//$this->takahama_log("itemIdOf");
 		$res = parent::request('POST', array('act'=>'itemidof', 'id'=>$id, 'tag'=>$tag, 'mode'=>$mode, 'target'=>$target, 'limit'=>$limit, 'curdate'=>$curdate, 'show_site'=>_SITE));
 		$data = unserialize($res);
 		//------------------------
@@ -304,6 +328,7 @@ class Conndb extends HTTP {
 	*	@return			{tagid, tag_name, tag_type, tagtype_name, tagtype_key}
 	*/
 	public function tagInfo($id){
+//$this->takahama_log("tagInfo");
 		$res = parent::request('POST', array('act'=>'taginfo', 'id'=>$id));
 		$data = unserialize($res);
 		
@@ -319,6 +344,7 @@ class Conndb extends HTTP {
 	*	@return			[category_key,item_id,item_name,item_code,size_id,size_from,size_to,colors,cost,pos_id][...]
 	*/
 	public function categories($categoryid, $mode='id'){
+//$this->takahama_log("categories");
 //----------------------------------------
 		$res = parent::request('POST', array('act'=>'categories', 'id'=>$categoryid, 'mode'=>$mode ,'curdate'=>$curdate, 'show_site'=>_SITE ));
 		$data = unserialize($res);
@@ -335,6 +361,7 @@ class Conndb extends HTTP {
 	*	@return			{'item_name':item_name, 'sizes':size_count, 'colors':color_count, 'mincost':mincost}
 	*/
 	public function itemPageInfo($id, $mode='id'){
+//$this->takahama_log("itemPageInfo");
 		$res = parent::request('POST', array('act'=>'itempageinfo', 'id'=>$id, 'mode'=>$mode));
 		$data = unserialize($res);
 		
@@ -354,6 +381,7 @@ class Conndb extends HTTP {
 	*	@return			['id':サイズID, 'name':サイズ名, 'cost':販売価格, 'series':サイズシリーズID][...]
 	*/
 	public function sizePrice($itemid=1, $colorcode=''){
+//$this->takahama_log("sizePrice");
 		$res = parent::request('POST', array('act'=>'sizeprice', 'itemid'=>$itemid, 'colorcode'=>$colorcode));
 		$data = unserialize($res);
 		
@@ -369,7 +397,7 @@ class Conndb extends HTTP {
 	*	@return		['printfee':プリント代, 'volume':枚数, 'tax':消費税率]　引数に配列以外を設定した時はNULL
 	*/
 	public function printfee($args, $sheetsize='1'){
-		$res = parent::request('POST', array('act'=>'printfee', 'sheetsize'=>$sheetsize, 'args'=>$args));
+		$res = parent::request('POST', array('act'=>'printfee', 'sheetsize'=>$sheetsize, 'args'=>$args, 'show_site'=>_SITE));
 		$data = unserialize($res);
 		
 		return $data;
@@ -386,6 +414,7 @@ class Conndb extends HTTP {
 	*	@return			成功：ID　失敗：null
 	************************************************/
 	public function acceptingorder($args){
+//$this->takahama_log("acceptingorder");
 		$res = parent::request('POST', array('act'=>'acceptingorder', 'args'=>$args));
 		$data = unserialize($res);
 		
@@ -403,6 +432,7 @@ class Conndb extends HTTP {
 	*	@return			成功：ID　失敗：null
 	************************************************/
 	public function requestmail($args){
+//$this->takahama_log("requestmail");
 		$res = parent::request('POST', array('act'=>'requestmail', 'args'=>$args));
 		$data = unserialize($res);
 		
@@ -420,6 +450,7 @@ class Conndb extends HTTP {
 	*	@return			成功：ID　失敗：null
 	************************************************/
 	public function setEnquete($args){
+//$this->takahama_log("setEnquete");
 		$res = parent::request('POST', array('act'=>'enquete', 'args'=>$args));
 		$data = unserialize($res);
 		
@@ -440,7 +471,9 @@ class Conndb extends HTTP {
 	*	reutrn	OK:{ユーザー情報}　NG:false
 	*/
 	public function getUser($args) {
+//$this->takahama_log("getUser");
 		$res = parent::request('POST', array('act'=>'getuser', 'args'=>$args));
+//$this->takahama_log('conndb get user res = '.$res);
 		$data = unserialize($res);
 		
 		return $data;
@@ -455,6 +488,7 @@ class Conndb extends HTTP {
 	*	@return			[顧客情報]
 	************************************************/
 	public function getUserList($args=null) {
+//$this->takahama_log("getUserList");
 		$res = parent::request('POST', array('act'=>'getuserlist', 'args'=>$args));
 		$data = unserialize($res);
 		
@@ -471,6 +505,7 @@ class Conndb extends HTTP {
 	*	@return			[お届け先情報]
 	************************************************/
 	public function getDeliveryList($args=null) {
+//$this->takahama_log("getDeliveryList");
 		$res = parent::request('POST', array('act'=>'getdeliverylist', 'args'=>$args));
 		$data = unserialize($res);
 		
@@ -482,12 +517,12 @@ class Conndb extends HTTP {
 	/*
 	*	メールアドレスの存在確認
 	*	
-	*	@args			[e-mail, reg_site]
+	*	@args			[e-mail]
 	*
 	*	@return			[顧客情報]
 	************************************************/
-	public function checkExistEmail($email,$reg_site){
-		$res = parent::request('POST', array('act'=>'checkexistemail', 'email'=>$email, 'reg_site'=>$reg_site));
+	public function checkExistEmail($args){
+		$res = parent::request('POST', array('act'=>'checkexistemail', 'args'=>$args));
 		$data = unserialize($res);
 		
 		return $data;
@@ -502,6 +537,7 @@ class Conndb extends HTTP {
 	*	@return			成功:true  失敗:false
 	************************************************/
 	public function unsubscribe($args){
+//$this->takahama_log("unsubscribe");
 		$res = parent::request('POST', array('act'=>'unsubscribe', 'args'=>$args));
 		$data = unserialize($res);
 		
@@ -521,10 +557,12 @@ class Conndb extends HTTP {
 	*	@return			[]
 	************************************************/
 	public function getUserReview($args){
-//		$res = parent::request('POST', array('act'=>'userreview', 'args'=>$args));
-//		$data = unserialize($res);
-		$rev = new Review();
-		$data=$rev->getUserReview($args);
+//$this->takahama_log("getUserReview");
+		$res = parent::request('POST', array('act'=>'userreview', 'args'=>$args));
+		$data = unserialize($res);
+//		$rev = new Review();
+//		$data=$rev->getUserReview($args);
+//$this->takahama_log("getUserReview".$data);
 		return $data;
 	}
 	
@@ -537,11 +575,11 @@ class Conndb extends HTTP {
 	*	@return			[]
 	************************************************/
 	public function getItemReview($args){
-//		$res = parent::request('POST', array('act'=>'itemreview', 'args'=>$args));
-//		$data = unserialize($res);
-		$rev = new Review();
-		$data=$rev->getItemReview($args);
-		
+//$this->takahama_log("getItemReview");
+		$res = parent::request('POST', array('act'=>'itemreview', 'args'=>$args));
+		$data = unserialize($res);
+//		$rev = new Review();
+//		$data=$rev->getItemReview($args);
 		return $data;
 	}
 	
@@ -553,6 +591,7 @@ class Conndb extends HTTP {
 	*	@return			[]
 	************************************************/
 	public function getItemDetail($args){
+//$this->takahama_log("getItemDetail");
 		$res = parent::request('POST', array('act'=>'itemdetail', 'args'=>$args));
 		$data = unserialize($res);
 		
@@ -567,10 +606,11 @@ class Conndb extends HTTP {
 	*	@return			[]
 	************************************************/
 	public function getItemMeasure($args){
-//		$res = parent::request('POST', array('act'=>'itemmeasure', 'args'=>$args));
-//		$data = unserialize($res);
-		$mst = new Master();
-		$data=$mst->getItemMeasure($args);
+//$this->takahama_log("getItemMeasure");
+		$res = parent::request('POST', array('act'=>'itemmeasure', 'args'=>$args));
+		$data = unserialize($res);
+//		$mst = new Master();
+//		$data=$mst->getItemMeasure($args);
 		return $data;
 	}
 	
@@ -583,6 +623,7 @@ class Conndb extends HTTP {
 	*	@return			[]
 	************************************************/
 	public function getModelPhoto($cat, $code){
+//$this->takahama_log("getModelPhoto");
 		$res = parent::request('POST', array('act'=>'modelphoto', 'categorykey'=>$cat, 'itemcode'=>$code));
 		$data = unserialize($res);
 		
@@ -598,6 +639,7 @@ class Conndb extends HTTP {
 	*	@return			[]
 	************************************************/
 	public function getStylePhoto($cat, $code){
+//$this->takahama_log("getStylePhoto");
 		$res = parent::request('POST', array('act'=>'stylephoto', 'categorykey'=>$cat, 'itemcode'=>$code));
 		$data = unserialize($res);
 		

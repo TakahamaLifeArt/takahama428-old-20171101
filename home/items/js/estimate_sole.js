@@ -9,11 +9,11 @@ $(function(){
 	jQuery.extend({
 		init: function(){
 			$('#color_thumb li img').imagesLoaded(function(){$('#item_colors').fadeIn();});
-			$.prop.curitemid = _ITEM_ID;
+			$.my.curitemid = _ITEM_ID;
 			$.setPrintposEvent();
 			var colorcode = $('#item_image_l').attr('src');
 			colorcode = colorcode.slice(colorcode.lastIndexOf('_')+1, colorcode.lastIndexOf('.'));
-			$.showSizeform($.prop.curitemid, colorcode, []);
+			$.showSizeform($.my.curitemid, colorcode, []);
 		},
 		changeThumb: function(my){
 		/*
@@ -31,7 +31,7 @@ $(function(){
 				tmp[sizeid] = $(this).find('input.forNum').val();
 			});
 			
-			$.showSizeform($.prop.curitemid, colorcode, tmp);
+			$.showSizeform($.my.curitemid, colorcode, tmp);
 		},
 		//inputボックスをクリックすると「0」を消す
 		focusNumber: function(my){
@@ -100,46 +100,6 @@ $(function(){
 		/*
 		*	プリント位置と色数の変更イベント設定
 		*/
-			$('#pos_wrap table tr:eq(1) div').each( function(){
-				$(this).children('img:not(:nth-child(1))').each(function() {
-					var postfix = '_on';
-					var img = $(this);
-					var posid = img.parent().attr('class').split('_')[1];
-					var src = img.attr('src');
-					var src_on = src.substr(0, src.lastIndexOf('.'))
-					           + postfix
-					           + src.substring(src.lastIndexOf('.'));
-					$('<img>').attr('src', src_on);
-					img.hover(
-						function() {
-							img.not('.cur').attr('src', src_on);
-						},
-						function() {
-							img.not('.cur').attr('src', src);
-						}
-					).click( function(e){
-						var tbl = img.parent().next().children('table');
-						var tbody = tbl.children('tbody');
-						var base = tbl.children('caption').text();
-						if(img.is('.cur')){
-							img.attr('src', src).removeClass('cur');
-							$('#inktarget'+posid).find('.pos-'+img.attr('class')).remove();
-						}else{							
-							var ink = '<div class="inks pos-'+img.attr('class')+'">';
-							ink += '<p class="posname_'+posid+'">'+img.attr('alt')+'</p>';
-							ink += '<p>使用インク<select class="ink_'+posid+'" onchange="$.addOrder();"><option value="0" selected="selected">選択してください</option>';
-							ink += '<option value="1">1色</option><option value="2">2色</option><option value="3">3色</option>';
-							ink += '<option value="9">4色以上</option></select></p>';
-							ink += '</div>';
-							
-							img.attr('src', src_on).addClass('cur');
-							$('#inktarget'+posid).append(ink);
-						}
-						
-						$.addOrder();
-					});
-				});
-			});
 			$('#pos_wrap div').each( function(){
 				$(this).children('img:not(:nth-child(1))').each(function() {
 					var postfix = '_on';
@@ -158,13 +118,15 @@ $(function(){
 							img.not('.cur').attr('src', src);
 						}
 					).click( function(e){
-						var tbl = img.parent().next().children('table');
-						var tbody = tbl.children('tbody');
-						var base = tbl.children('caption').text();
 						if(img.is('.cur')){
 							img.attr('src', src).removeClass('cur');
 							$('#inktarget'+posid).find('.pos-'+img.attr('class')).remove();
-						}else{							
+						}else{
+							var cur = img.siblings('.cur');
+							if (cur.length) {
+								cur.attr('src',cur.attr('src').replace(/_on.png/,'.png')).removeClass('cur');
+								$('#inktarget'+posid).find('.pos-'+cur.attr('class')).remove();
+							}
 							var ink = '<div class="inks pos-'+img.attr('class')+'">';
 							ink += '<p class="posname_'+posid+'">'+img.attr('alt')+'</p>';
 							ink += '<p>使用インク<select class="ink_'+posid+'" onchange="$.addOrder();"><option value="0" selected="selected">選択してください</option>';
@@ -204,9 +166,9 @@ $(function(){
 		/*
 		*	商品の変更
 		*
-			$.prop.curitemid = $('#item_selector').val();
+			$.my.curitemid = $('#item_selector').val();
 			$.ajax({url:'/php_libs/pageinfo.php', async:false, type:'POST', dataType:'text', 
-				data:{'act':'price','itemid':$.prop.curitemid}, success: function(r){
+				data:{'act':'price','itemid':$.my.curitemid}, success: function(r){
 					var dat = r.split('|');
 					if(dat[1]){
 						$('#switch_color').show();
@@ -226,7 +188,7 @@ $(function(){
 		*	プリント位置画像（絵型）とインク色数指定の生成
 		*
 			$.ajax({url:'/php_libs/pageinfo.php', async:false, type:'POST', dataType:'text', 
-				data:{'act':'position','itemid':$.prop.curitemid}, success: function(r){
+				data:{'act':'position','itemid':$.my.curitemid}, success: function(r){
 					$('#pos_wrap tbody').html(r);
 					$.setPrintposEvent();
 					$.resetResult();
@@ -234,7 +196,7 @@ $(function(){
 			});
 		*/
 		},
-		prop:{
+		my:{
 		/*
 		*	アイテムが固定の場合に対応
 		*/
@@ -272,7 +234,7 @@ $(function(){
 		*	見積計算のハッシュを生成する
 		*	@第一引数　false: 枚数のチェックを行なわない
 		*/
-			var item_id = $.prop.curitemid;
+			var item_id = $.my.curitemid;
 			var size_id = [];
 			var size = [];
 			var cost = [];
@@ -382,29 +344,36 @@ $(function(){
 				amount[j] = tmpVol;
 			}
 			
-			var args = {'sheetsize':'1', 
-						'act':'printfee', 
-						'output':'jsonp', 
-						'itemid':$.printparam.itemid, 
-						'amount':amount, 
-						'pos':$.printparam.pos, 
-						'ink':$.printparam.ink,
-						'color':$.printparam.color
-						};
-			$.getJSON($.TLA.api+'?callback=?', args, function(r){
-				var str = new String(r.volume);
-				if(!str.match(/^\d+$/)) return;
+			var optionId = $.printparam.color[0]!='ホワイト'? 1: 0;
+			var inkjetOption = {};
+			inkjetOption[optionId] = amount[0];
+			var param = {'act':'printfee', 'output':'jsonp', 'args':[]};
+			var args = [];
+			for (var i=0; i<$.printparam.itemid.length; i++) {
+				args[i] = { 
+					'itemid':$.printparam.itemid[i], 
+					'amount':amount[i], 
+					'pos':$.printparam.pos[i], 
+					'ink':$.printparam.ink[i],
+					'size':0,
+					'option':inkjetOption
+				};
+			}
+			param['args'] = args;
+			$.getJSON($.TLA.api+'?callback=?', param, function(r){
+//				var str = new String(r.volume);
+//				if(!str.match(/^\d+$/)) return;
 				
 			    var base = itemsum + (r.printfee-0);
 			    var tax = Math.floor( base * (r.tax/100) );
 			    var result = Math.floor( base * (1+r.tax/100) );
-			    var perone = Math.ceil(result/r.volume);
+				var perone = Math.ceil(result/tmpVol);
 				
 				if(!output){
 					$('#baseprice span').text($.addFigure(base));
 					$('#salestax span').text($.addFigure(tax));
 					$('#result span').text($.addFigure(result));
-					$('#totamount span').text(r.volume);
+					$('#totamount span').text(tmpVol);
 					$('#perone span').text($.addFigure(perone));
 				}else{
 					if(typeof output.attr('value')=='undefined') output.text($.addFigure(perone));
@@ -474,7 +443,7 @@ $(function(){
 			postData.categoryid = _CAT_ID;
 			postData.categorykey = _CAT_KEY;
 			postData.categoryname = _CAT_NAME;
-			postData.itemid = $.prop.curitemid;
+			postData.itemid = $.my.curitemid;
 			postData.itemcode = _ITEM_CODE;
 			postData.itemname = _ITEM_NAME;
 			postData.posid = _POS_ID;
@@ -574,15 +543,11 @@ $(function(){
 	
 	/* 注文フォームへ遷移 */
 	$('#btnOrder, #btnOrder_up').click( function(){
-//alert("11111");
 		var f = $(this).closest("form");
 		var func = function(){
 			var step = 1;
-//alert("2222");
 			if($('#result span').text()!='0'){
-//alert("3333");
 				if($.updateItem()){
-//alert("4444");
 					if($.updatePosition()){
 						step = 3;
 					}
@@ -719,7 +684,7 @@ $(function(){
 		});
 		var colormode = $(this).val();
 		$.ajax({url:'/php_libs/pageinfo.php', async:false, type:'POST', dataType:'text', 
-			data:{'act':'price','itemid':$.prop.curitemid, 'colormode':colormode}, success: function(r){
+			data:{'act':'price','itemid':$.my.curitemid, 'colormode':colormode}, success: function(r){
 				var dat = r.split('|');
 				$('#price_wrap table tbody').html(dat[0]);
 				$('#price_wrap table tbody tr').each( function(index){

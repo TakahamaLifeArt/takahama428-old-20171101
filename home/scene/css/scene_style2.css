@@ -416,6 +416,7 @@ ul.other li a.box{
 .contents-lv2{
 	clear:both;
 	padding:0px;
+	margin-top: 2em;
 }
 #contents-lv2 h2,
 .contents-lv2 h2{
@@ -489,6 +490,7 @@ ul.design_ex li img{
 
 ul#recommend_item{
 	padding:10px 0;
+	overflow: hidden;
 }
 li.recommend_item_ex{
 	border:1px solid #BFBFBF;

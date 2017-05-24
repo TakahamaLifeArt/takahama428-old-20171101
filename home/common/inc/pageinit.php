@@ -3,7 +3,7 @@
 *	カートの状態取得とセッション開始
 *	charset utf-8
 */
-	require_once $_SERVER['DOCUMENT_ROOT'].'/php_libs/orders.php';
+	require_once $_SERVER['DOCUMENT_ROOT'].'/php_libs/t_orders.php';
 	$order = new Orders();
 	$tax = $order->salestax();
 	$tax /= 100;

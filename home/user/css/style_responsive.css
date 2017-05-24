@@ -551,7 +551,6 @@ input[type="date"] {
     text-decoration: none;
     text-align: center;
     color: #803300;
-    font-size: 0.8em;
 }
 
 .toolbar .toolbar_inner .menu span {
@@ -731,109 +730,34 @@ div.inner1 {
     width: 200px;
 }
 
-.contents .lightbox {
-    display: none;
+#animatedModal{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background-color: #000;
+    overflow-y: auto;
+    z-index: 9999;
+    opacity: 1;
+    animation-duration: 0.6s;
 }
 
-.fl-page h1,
-.fl-page h3,
-.fl-page h4 {
-    font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    font-weight: 100;
-    letter-spacing: 1px;
+.modal-content{
+    width: 50%;
+    margin: 0 auto;
+    background: #fff;
+    padding: 10px;
 }
 
-.fl-page h1 {
-    font-size: 110px;
-    margin-bottom: 0.5em;
+#btn-close-modal {
+    padding-top: 20px;
+    font-size: 1.2em;
+    text-align: center;
+    cursor: pointer;
 }
 
-.fl-page h1 i {
-    font-style: normal;
-    color: #ddd;
-}
-
-.fl-page h1 span {
-    font-size: 30px;
-    color: #333;
-}
-
-.fl-page h3 {
-    text-align: right;
-}
-
-.fl-page h3 {
-    font-size: 15px;
-}
-
-.fl-page h4 {
-    font-size: 2em;
-}
-
-.fl-page .jumbotron {
-    margin-top: 2em;
-}
-
-.fl-page .doc {
-    margin: 2em 0;
-}
-
-.fl-page .btn-download {
-    float: right;
-}
-
-.fl-page .btn-default {
-    vertical-align: bottom;
-}
-
-.fl-page .btn-lg span {
-    font-size: 0.7em;
-}
-
-.fl-page .footer {
-    margin-top: 3em;
-    color: #aaa;
-    font-size: 0.9em;
-}
-
-.fl-page .footer a {
-    color: #999;
-    text-decoration: none;
-    margin-right: 0.75em;
-}
-
-.fl-page .github {
-    margin: 2em 0;
-}
-
-.fl-page .github a {
-    vertical-align: top;
-}
-
-.fl-page .marketing a {
-    color: #999;
-}
-
-
-/* override default feather style... */
-
-.fixwidth {
-    background: rgba(256, 256, 256, 0.8);
-}
-
-.fixwidth .featherlight-content {
-    width: 500px;
-    padding: 25px;
-    color: #fff;
-    background: #111;
-}
-
-.fixwidth .featherlight-close {
-    color: #fff;
-    background: #333;
-}
-
-.btn-default {
+#demo01 {
     -webkit-appearance: textfield;
     background-color: white;
     -webkit-rtl-ordering: logical;
@@ -854,16 +778,26 @@ div.inner1 {
     text-decoration: none;
     color: #000;
 }
+/*-----------------------------------------
 
-/*--------------------------------------- 2017-2-14 ------------------------------------------*/ @media screen and (max-width: 768px) {
+
+2017-2-14
+
+------------------------------------------*/
+
+@media screen and (max-width: 768px) {
     /*------------------MENU------------------*/
-    .fl-page h1 span {
-        display: block;
-    }
-    .fl-page .btn-download {
-        float: none;
-        margin-bottom: 1em;
-    }
+    /*
+    .toolbar {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 20px;
+    padding-bottom: 30px;
+    background: url(/common/img/dotted.png) repeat-x bottom;
+    z-index: 1000;
+    margin-top: 20px;
+}
+    */
     .contents .section h2#topttl {
         text-align: center;
         font-size: 18px;
@@ -902,6 +836,7 @@ div.inner1 {
         margin: 0 auto;
         display: table;
     }
+
     .section ul li.mms:first-child {
         display: inline-block;
         float: none;
@@ -912,6 +847,7 @@ div.inner1 {
         text-align: center;
         padding-left: 20px;
     }
+
     .toolbar .toolbar_inner .menu {
         /*	float: right; */
         position: relative;
@@ -939,6 +875,7 @@ div.inner1 {
         background: none;
     }
     /*------------------TABLE------------------*/
+
     .section {
         width: 90%;
         border: 1px solid #ddd;
@@ -948,10 +885,12 @@ div.inner1 {
         overflow: visible;
         padding: 10px;
     }
+
     .section p {
         text-align: left;
         margin-bottom: 10px;
     }
+
     .section ul li {
         display: inline-block;
         float: none;
@@ -971,11 +910,13 @@ div.inner1 {
         font-weight: bold;
         height: 25px;
     }
+
     .section ul li:first-child {
         display: inline-block;
         float: none;
         width: 100%;
     }
+
     #list_itemname {
         width: 100%;
     }
@@ -1015,6 +956,7 @@ div.inner1 {
     .form_table tfoot tr:first-child td {
         padding-top: 0px;
     }
+
     .contents .cretxt {
         margin: 0px;
         width: 100%;
@@ -1051,6 +993,7 @@ div.inner1 {
         line-height: 4em;
         color: #777;
     }
+
     .section ul li.mms {
         display: inline-block;
         float: left;
@@ -1059,50 +1002,31 @@ div.inner1 {
         height: 25px;
         display: none;
     }
-    .modal-content {
-        width: 90%;
+    .modal-content{
+        width: 70%;
         margin: 0 auto;
         background: #fff;
         padding: 10px;
     }
-    #demo01 {
-        -webkit-appearance: textfield;
-        background-color: white;
-        -webkit-rtl-ordering: logical;
-        user-select: text;
-        cursor: auto;
-        padding: 3px;
-        border-width: 2px;
-        border-style: inset;
-        border-color: initial;
-        border-image: initial;
-        display: block;
-        width: 180px;
-        text-align: center;
-        margin: 0 auto;
-        position: relative;
-        left: auto;
-        top: -30px;
-        text-decoration: none;
-        color: #000;
-    }
-    .section {
-        width: 95%;
-        margin: 20px auto 50px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        background: #fff;
-    }
-    .contents .cretxt {
-        margin: 0px 10px 20px;
-        width: 95%;
-    }
-    .btn-group {
-        width: 100%;
-        margin-bottom: 30px;
-    }
-    .btn-default {
-        margin: 0 auto;
-        position: static;
-    }
+#demo01 {
+    -webkit-appearance: textfield;
+    background-color: white;
+    -webkit-rtl-ordering: logical;
+    user-select: text;
+    cursor: auto;
+    padding: 3px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+    display: block;
+    width: 180px;
+    text-align: center;
+    margin: 50px auto;
+    position: relative;
+    left: auto;
+    top: -30px;
+    text-decoration: none;
+    color: #000;
+}
 }
