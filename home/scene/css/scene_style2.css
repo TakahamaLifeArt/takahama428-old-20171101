@@ -1,0 +1,659 @@
+@charset "euc-jp";
+
+h1#sh1{
+	font-size:200%;
+	font-weight:bold;
+	color:#707070;
+	width:100%;
+}
+#sh1 span{
+	font-size:70%;
+	padding-left:10px;
+}
+
+div.dotted{
+	height:3px;
+	background:url(../img/dotted.png) repeat-x;
+	margin-bottom:15px;
+}
+
+#campus_img{
+	height:190px;
+	width:730px;
+	background:url(../img/campus/campus_img.jpg) no-repeat;
+	color:#fff;
+	font-size:80%;
+	text-align:right;
+	padding:110px 0 0 0;
+}
+#campus_img p{
+	margin-right:20px;
+	margin-bottom:10px;
+}
+
+#sports_img{
+	height:190px;
+	width:730px;
+	background:url(../img/sports/sports_img.jpg) no-repeat;
+	color:#fff;
+	font-size:80%;
+	padding:110px 0 0 20px;
+	font-weight:bold;
+}
+#sports_img p{
+	margin-bottom:8px;
+}
+
+#dance_img{
+	height:190px;
+	width:730px;
+	background:url(../img/dance/dance_img.jpg) no-repeat;
+	color:#fff;
+	font-size:80%;
+	padding:110px 0 0 20px;
+	font-weight:bold;
+}
+#dance_img p{
+	margin-bottom:8px;
+}
+
+#team_img{
+	height:220px;
+	width:730px;
+	background:url(../img/team/team_img.jpg) no-repeat;
+	color:#212121;
+	font-size:80%;
+	padding:80px 0 0 20px;
+	font-weight:bold;
+}
+#team_img p{
+	margin-bottom:8px;
+}
+
+#event_img{
+	height:230px;
+	width:730px;
+	background:url(../img/event/event_img.jpg) no-repeat;
+	color:#ffffff;
+	font-size:80%;
+	padding:70px 0 0 20px;
+	font-weight:bold;
+}
+#event_img p{
+	margin-bottom:5px;
+}
+
+#uniform_img{
+	height:230px;
+	width:730px;
+	background:url(../img/uniform/uniform_img.jpg) no-repeat;
+	color:#ffffff;
+	font-size:80%;
+	padding:70px 0 0 20px;
+	font-weight:bold;
+}
+#uniform_img p{
+	margin-bottom:10px;
+}
+
+#promotion_img{
+	height:220px;
+	width:730px;
+	background:url(../img/promotion/promotion_img.jpg) no-repeat;
+	color:#ffffff;
+	font-size:80%;
+	padding:80px 0 0 20px;
+	font-weight:bold;
+}
+#promotion_img p{
+	margin-bottom:10px;
+}
+
+#gift_img{
+	height:260px;
+	width:730px;
+	background:url(../img/gift/gift_img.jpg) no-repeat;
+	color:#969696;
+	font-size:80%;
+	padding:60px 0 0 20px;
+	font-weight:bold;
+}
+#gift_img p{
+	margin-bottom:5px;
+}
+
+#wedding_img{
+	height:380px;
+	width:780px;
+	background:url(../img/wedding/w_img_01.jpg) no-repeat;
+	color:#000;
+	font-size:80%;
+	font-weight:bold;
+	text-indent:0.5%;
+}
+
+#wedding_img p{
+	margin-bottom:10px;
+	padding:230px 0 0 470px;
+}
+
+#flow_banner{
+	margin:10px 0 20px;
+	border:1px solid #BFBFBF;
+}
+ul#sceane_point li{
+	/*font-size:90%;*/
+	color: #666;
+	list-style:inside square;
+	margin-right: 20px;
+}
+
+
+ul#sceane_point_2 li{
+	font-size:90%;
+	color:#E88037;
+	list-style:inside square;
+	float:left;
+	padding-right:20px;
+}
+p#sceane_point_3{
+	clear:both;
+	padding:10px 0;
+	font-size:70%;
+	color:#6B6B6B;
+}
+
+ul#sceane_point b{
+	color:#C60;
+}
+
+.contents-h{
+	background-color:#D6EDE3;
+	padding: 8px 0 0;
+	height:30px;
+	margin-top:20px;
+}
+
+#design2{
+	font-size:20px;
+}
+
+#flow_inf{
+	background:url(../img/wedding/w_img_02.png) no-repeat;
+	width:780px;
+	height:225px;
+	margin:20px 10px;
+}
+
+#flow_inf #point{
+	padding:155px 0 0 0px;
+}
+
+#flow_inf #point li{
+	float:left;
+	list-style-type:none;
+	margin:9px;
+	font-size:12px;
+	text-align:center;
+	width:138px;
+}
+	
+.text1{
+	margin:20px;
+}
+
+#photo_img{
+	height:380px;
+	width:780px;
+	background:url(../img/wedding/w_img_03.jpg) no-repeat;
+	color:#000;
+	font-size:130%;
+	font-weight:bold;
+	text-indent:0.5%;]
+	margin-bottom:20px;
+}
+
+#photo_img p{
+    padding: 315px 0 0 395px;
+}
+
+#phone_img{
+	margin-top:20px;
+	background: url(../img/wedding/w_Inq.png) no-repeat 0 0;
+  width: 780px;
+  height: 200px;
+  display:block;
+}
+
+a:hover #phone_img {
+	background-position: 0 -200px;
+}
+
+
+#mail_img{
+	margin:20px 0;
+}
+
+ul.other li.first0{
+	background: url(../img/wedding/w_lmp_pattern.png) no-repeat 0 0;
+	width:780px;
+
+}
+
+ul.other li.first0 p{
+	text-align:left;
+	margin:15px;
+	color:#ff4f6e;
+	font-size:1.5em;
+}
+
+ul.other li p.min{
+	margin:10px;
+}
+
+ul.other li.first1{
+	margin-left:0;
+	background: url(../img/wedding/w_lmp_01.png) no-repeat 0 0;
+	width:780px;
+	height:240px;
+	text-align:center;
+	font-size:80%;
+	padding:0 0 5px;
+}
+
+
+ul.other li.first2{
+	margin-left:0;
+	background: url(../img/wedding/w_lmp_02.png) no-repeat 0 0;
+	width:780px;
+	height:240px;
+	text-align:center;
+	font-size:80%;
+	padding:0 0 5px;
+}
+
+
+ul.other li.first3{
+	margin-left:0;
+	background: url(../img/wedding/w_lmp_03.png) no-repeat 0 0;
+	width:780px;
+	height:240px;
+	text-align:center;
+	font-size:80%;
+}
+
+ul.other li p.text{
+	padding-top:70px;
+	padding-left:300px;
+	text-align:left;
+	font-size:1.2em;
+}
+
+
+ul.other li img{
+	padding-bottom:5px;
+}
+
+ul.other li a.box{
+    display: block;
+    width: 780px;
+    height: 240px;
+    text-decoration:none;
+}
+
+
+
+.contents-lv2 .text2{
+	margin:10px;
+}
+
+
+.contents-lv2 .text3{
+	margin:10px;
+	font-size:1.4em;
+	color:#ff4f6e;
+}
+
+
+
+.contents-lv2 .text4{
+	margin:0px 10px 10px;
+	font-size:1em;
+}
+
+
+.contents-lv2 #mame{
+	background:url(../img/wedding/w_img_05.png) no-repeat;
+	width:780px;
+	height:465px;
+	padding-top:10px;
+}
+
+.contents-lv2 #mame ul li.first{
+	height:50px;
+	margin:20px 30px 42px 33px;
+	padding-left:100px;
+}
+
+
+.contents-lv2 #mame ul li{
+	height:50px;
+	margin:40px 30px 25px 33px;
+	padding-left:100px;
+	font-size:0.9em;
+}
+
+.contents-lv2 #mame ul li.end{
+	height:50px;
+	margin:40px 30px 5px 33px;
+	padding-left:100px;
+}
+
+.contents-lv2 #mame ul li.last-cild{
+	height:50px;
+	margin:40px 30px 5px 33px;
+	padding-left:100px;
+}
+
+.contents-lv2 #mame ul li .texta{
+	float:left;
+	width:280px;
+    padding-top: 10px;
+}
+
+.contents-lv2 #mame ul li .textb{
+	float:right;
+	width:320px;
+}
+
+.line{
+	margin-bottom:30px;
+}
+
+.line .line_qrl{
+	float:left;
+	margin:0px;
+}
+
+
+.line .line_qrr{
+	float:right;
+	margin:0px;
+	margin-bottom: 30px;	
+}
+
+.line .text5{
+	background-color:#464D66;
+    padding: 18px 25px;
+    height: 130px;
+    width: 335px;
+  	margin:0 auto;
+	text-align:center;
+}
+
+.line .text5 .yellow{
+	font-size:1.2em;
+	color:#FFCF06;
+	margin:10px;
+}
+
+.line .text5 .text6{
+	font-size:1em;
+	color:#FFFFFF;
+	text-align:left;
+}
+
+
+.contents-lv2 h2#price{
+	font-size:2.5em;
+	font-weight:bold;
+	margin:5px;
+	text-align:center;
+}
+	
+
+#contents-lv2,
+.contents-lv2{
+	clear:both;
+	padding:0px;
+}
+#contents-lv2 h2,
+.contents-lv2 h2{
+	font-size:120%;
+	color:#707070;
+	font-weight:bold;
+	padding-left:30px;	
+}
+#contents-lv2 h2#design,
+.contents-lv2 h2#design{
+	background:url(../img/pen_icon.png) no-repeat;
+}
+#contents-lv2 h2#recommend,
+.contents-lv2 h2#recommend{
+	background:url(../img/love_icon.png) no-repeat;
+}
+#contents-lv2 h2#howmuch,
+.contents-lv2 h2#howmuch{
+	background:url(../img/yen_icon.png) no-repeat;
+}
+#contents-lv2 h2#voice,
+.contents-lv2 h2#voice{
+	background:url(../img/voice_icon.png) no-repeat;
+}
+
+#contents-lv2 p,
+.contents-lv2 p{
+	font-size:80%;
+}
+p.mores{
+	padding-top:10px;
+	clear:both;	
+	text-align:right;
+	margin-bottom:20px;
+}
+span.more{
+	background:url(../img/more_orange.png) no-repeat;
+	padding-left:20px;
+	height:14px;
+	line-height:14px;
+	font-size:12px;
+}
+span.more a{
+	color:#7A7A7A;
+}
+
+ul.design_ex li{
+	border:1px solid #DBDBDB;
+	width:228px;
+	height:135px;
+	float:left;
+	margin-left:20px;
+	margin-bottom:20px;
+	text-align:center;
+	font-size:80%;
+	padding:0 0 5px;
+	background:#fff;
+}
+ul.design_ex li:first-child{
+	margin-left:0;
+}
+ul.design_ex li.firstex{
+	margin-left:0;
+}
+/*ul.design_ex li:hover{
+	border:1px solid #3F3F3F;	
+}*/
+ul.design_ex li img{
+	padding-bottom:5px;
+}
+
+ul#recommend_item{
+	padding:10px 0;
+}
+li.recommend_item_ex{
+	border:1px solid #BFBFBF;
+	width:214px;
+	float:left;
+	margin-left:20px;
+	margin-bottom:20px;
+	font-size:80%;
+	padding:7px;
+	background:#fff;
+}
+li.firstrecommend{
+	margin-left:0;
+}
+.point{
+	background:url(../img/ribbon.png) no-repeat;
+	height:32px;
+	width:191px;
+	color:#fff;
+	font-size:16px;
+	line-height:34px;
+	margin:5px 0 0 -7px;
+	padding-left:10px;
+	font-weight:bold;
+}
+.item_name{
+	margin:10px 0;
+}
+.item_name_kata{
+	color:#7A7A7A;
+}
+.item_name_name{
+	font-size:110%;
+}
+.item_image{
+	width:100%;
+	text-align:center;
+	padding:0 0 10px;
+}
+.item_info dl dt{
+	font-weight:bold;
+	padding-right:5px;
+	float:left;
+}
+.item_info dl dd span.per1{
+	display:block;
+	width:100%;
+	text-align:center;
+	font-size:110%;
+}
+.item_info .lbl {
+	font-weight: bold;
+}
+.item_info .comment {
+	height: 80px;
+	line-height:14px;
+	background:#DDD;
+	border-radius:3px;
+	padding:5px;
+}
+
+
+li.dotted{
+	height:3px;
+	background:url(../img/dotted.png) repeat-x;
+	margin:10px 0;
+}
+li.detail{
+	padding:7px 45px;
+}
+li.detail_s{
+	padding:6px 7px;
+}
+span.detail_btn{
+	display:block;
+	height:25px;
+	width:122px;
+	text-align:center;
+	line-height:25px;
+	font-size:12px;
+	color:#fff;
+	background-image:url(../img/detail_blue_btn.png);
+	background-repeat:no-repeat;
+	background-position:top left;
+}
+span.detail_btn_s{
+	display:block;
+	height:25px;
+	width:93px;
+	text-align:center;
+	line-height:25px;
+	font-size:12px;
+	color:#fff;
+	background-image:url(../img/detail_blue_btn_s.png);
+	background-repeat:no-repeat;
+	background-position:top left;
+	float:left;
+	margin:0 2px 6px;
+}
+
+span.detail_btn:hover,
+span.detail_btn_s:hover{
+	background-position:bottom left;
+}
+span.detail_btn a,
+span.detail_btn_s a{
+	display:block;
+	width:100%;
+	height:100%;
+	color:#fff;
+}
+span.detail_btn a:hover,
+span.detail_btn_s a:hover{
+	color:#fff;
+	text-decoration:none;
+}
+
+div#cul{
+	border:1px solid #DBDBDB;
+	background:#fff;
+	padding:10px;
+}
+
+
+
+
+/*		
+===============================================================*/
+/*.txt {
+	margin:1em 0;
+}
+.txt_min {
+	margin:1em 0;
+	font-size:80%;
+}*/
+
+
+.txt_min{
+	font-size:11px;
+	line-height:13px;
+	color:#555;
+	background-color:#eee;
+	padding:7px;
+	border-radius:3px;
+}
+.txt_min_end{
+	margin-bottom:100px;
+}
+.txt_end{
+	font-size: 14px;
+	line-height: 20px;
+	margin: 50px 5px;
+	color: #F60;
+	font-weight: bold;
+	text-shadow: 1px 1px 0 #ccc;
+}
+
+
+a.info_icon{
+	background:url(/common/img/question.png) no-repeat;
+	padding-left:14px;
+	color:#999;
+	text-decoration:underline;
+	font-size:10px;
+}
+a.info_icon:hover{
+	color:#04c;
+}

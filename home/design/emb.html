@@ -1,0 +1,1031 @@
+<?php
+include $_SERVER['DOCUMENT_ROOT']."/common/inc/pageinit.php";
+$ticket = htmlspecialchars(md5(uniqid().mt_rand()), ENT_QUOTES);
+$_SESSION['ticket'] = $ticket;
+$fin = $order->getDelidate();
+
+$ua=$_SERVER['HTTP_USER_AGENT'];
+if((strpos($ua,' iPhone')!==false)||(strpos($ua,' iPod')!==false)||(strpos($ua,' Android')!==false)) {
+$txt_SP02 = '<p><a href="tel:0120130428" style="margin-left:0px;font-size:60px;font-weight:bold;">0120-130-428</a></p>';
+$txt_SP02 .= '<p class="note" style="margin-left:95px;">受付時間：平日10:00-18:00</p>';
+}else{
+$txt_SP02 = '<img src="img/phoneno.png" width="456" height="104" alt="TEL:0120-130-428 受付時間：平日10:00-18:00"><br>';
+}
+
+$conn = new Conndb();
+
+// category selector
+$data = $conn->categoryList();
+$category_selector = '<select id="category_selector" name="category">';
+$category_selector .= '<option value="" selected="selected">-</option>';
+for($i=0; $i<count($data); $i++){
+$categoryName = mb_convert_encoding($data[$i]['name'], 'euc-jp','utf-8');
+$category_selector .= '<option value="'.$data[$i]['code'].'" rel="'.$data[$i]['id'].'"';
+$category_selector .= '>'.$categoryName.'</option>';
+}
+$category_selector .= '</select>';
+?>
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <meta charset="euc-jp" />
+        <title>刺繍・名入れサービス【最短2日】｜ オリジナルTシャツ作成が早い、タカハマライフアート</title>
+        <meta name="Description" content="業界最速Tシャツへの刺繍ならタカハマライフアート！最短2日で納品が可能、一枚からでも簡単注文。ロゴや名入れネーム、持ち込みにも対応！ポロシャツ、エプロン、はっぴ、キャップ、スタッフジャンパーにも刺繍作成可能です。オリジナルTシャツ作成が早い" />
+        <meta name="keywords" content="オリジナル,刺繍,Tシャツ,早い,ポロシャツ" />
+        <meta name="google-site-verification" content="PfzRZawLwE2znVhB5M7mPaNOKFoRepB2GO83P73fe5M" />
+        <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1" />
+        <link rel="shortcut icon" href="/icon/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="/common/js/ui/flick/jquery.ui.core.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="/common/js/ui/flick/jquery.ui.datepicker.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="/common/js/ui/flick/jquery.ui.theme.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="/common/js/modalbox/css/jquery.modalbox.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="/order/express/css/express.css" media="screen" />
+
+
+
+        <link rel="stylesheet" href="/m3/common/css/import2.css">
+        <link rel="stylesheet" type="text/css" href="/m3/common/css/common_responsive.css" media="all">
+        <link rel="stylesheet" type="text/css" href="/m3/common/css/slidebars_responsive.css" media="all">
+        <link rel="stylesheet" href="/m3/common/css/import_responsive.css">
+        <link rel="stylesheet" href="/m3/items/css/detail_responsive.css">
+        <!-- m3 end -->
+
+        <link rel="stylesheet" type="text/css" href="/common/css/common_responsive.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="/common/css/base_responsive.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="/contact/css/custom_responsive.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="css/style_emb.css">
+        <!-- m3 begin -->
+        <!-- m3 begin -->
+
+        <script type="text/javascript" src="/common/js/jquery.js"></script>
+        <script type="text/javascript" src="/common/js/ui/jquery.ui.core.js"></script>
+        <script type="text/javascript" src="/common/js/ui/jquery.ui.datepicker.js"></script>
+        <script type="text/javascript" src="/common/js/ui/i18n/jquery.ui.datepicker-ja.js"></script>
+        <script type="text/javascript" src="/common/js/modalbox/jquery.modalbox-min.js"></script>
+        <script type="text/javascript" src="/common/js/tlalib.js"></script>
+        <script type="text/javascript" src="/order/express/js/express.js"></script>
+        <script src="/m3/common/js/common1.js"></script>
+
+
+
+    </head>
+
+    <body>
+
+        <!-- Google Tag Manager -->
+        <noscript>
+            <iframe src="//www.googletagmanager.com/ns.html?id=GTM-T5NQFM" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+        <script>
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({
+                    'gtm.start': new Date().getTime(),
+                    event: 'gtm.js'
+                });
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s),
+                    dl = l != 'dataLayer' ? '&l=' + l : '';
+                j.async = true;
+                j.src =
+                    '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-T5NQFM');
+        </script>
+        <!-- End Google Tag Manager -->
+
+        <?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/header.php"; ?>
+
+            <!-- m3 begin -->
+            <header id="header" class="head2">
+                <?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/inc/header.html"); ?>
+            </header>
+            <?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/inc/gnavi.html"); ?>
+                <!-- m3 end -->
+
+
+                <div id="container">
+
+                    <?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/globalmenu.php"; ?>
+
+
+                        <div class="contents">
+                            <ul class="pan">
+                                <li><a href="/">オリジナルＴシャツ屋ＴＯＰ</a></li>
+                                <li>デザイン</li>
+                                <li>刺繍・名入れサービス</li>
+                            </ul>
+
+                            <div class="toolbar">
+                                <div class="toolbar_inner clearfix">
+                                    <h1>刺繍・名入れサービス</h1>
+                                </div>
+                            </div>
+                            <div id="main" class="delivery">
+                                <div class="banner"><img src="img/other/st_main_img.jpg" width="100%" alt="刺繍・名入れサービス"></div>
+                                <div class="heading1_wrapper">
+
+                                </div>
+                                <div class="button_menu">
+                                    <ul>
+                                        <li class="button_left">
+                                            <a class="button" href="#emb_date">刺繍の種類</a>
+                                        </li>
+                                        <li class="button_left">
+                                            <a class="button" href="#emb_date2">価格一覧</a>
+                                        </li>
+                                        <li class="button_left">
+                                            <a class="button" href="#itoiro">糸色一覧</a>
+                                        </li>
+                                        <li class="button_left">
+                                            <a class="button" href="#font">書体一覧</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div id="delivery_date">
+                                    <h2>納期</h2>
+                                    <div class="dotted"></div>
+                                    <div class="derileft"><img src="img/other/shi_date_img.jpg" alt="最短明日お届け" width="100%"></div>
+                                    <div class="derileft_2">
+                                        <p class="nouki_text">弊社では、刺繍商品を最短翌日仕上げが可能です！</p>
+										<p><span class="smtxt">お急ぎの方は特急対応で翌日仕上げまたは2日仕上げでご対応致します。<br>それぞれ別途料金が発生します。<br>通常納期でも3営業日で発送するスピーディーな対応が可能です。</span></p>
+                                    </div>
+
+                                </div>
+
+                                <div id="delivery_date_wrapper">
+                                    <div id="delivery_date1">
+                                        <p class="txt1">今すぐ
+                                            <span class="red">注文確定</span>した場合の<span class="red">お届け日</span>(注文〆13時まで)
+                                        </p>
+
+                                        <div class="time">
+                                            <ul class="box_time">
+                                                <li class="block1">
+                                                    <section class="round2">
+                                                        <div class="block_sq">
+                                                            <p class="text"><span class=red>翌日</span>仕上げ</p>
+                                                        </div>
+                                                        <div class="block_sq1">
+                                                            <div class="block_sq2">
+                                                                <table class="bk_table">
+                                                                    <tr id="result_date3">
+                                                                        <td class="dt">
+                                                                            <p></p>
+                                                                        </td>
+                                                                        <td>/</td>
+                                                                        <td class="dt">
+                                                                            <p></p>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                                </li>
+                                                <li class="block1">
+                                                    <section class="round3">
+                                                        <div class="block_sq">
+                                                            <p class="text"><span class=red>2日</span>仕上げ</p>
+                                                        </div>
+                                                        <div class="block_sq1">
+                                                            <div class="block_sq2">
+                                                                <table class="bk_table">
+                                                                    <tr id="result_date2">
+                                                                        <td class="dt">
+                                                                            <p></p>
+                                                                        </td>
+                                                                        <td>/</td>
+                                                                        <td class="dt">
+                                                                            <p></p>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                                </li>
+                                                <li class="block1">
+                                                    <section class="round4">
+                                                        <div class="block_sq">
+                                                            <p class="text">通常<span class=red>3日</span>仕上げ</p>
+                                                        </div>
+                                                        <div class="block_sq1">
+                                                            <div class="block_sq2">
+                                                                <table class="bk_table">
+                                                                    <tr id="result_date">
+                                                                        <td class="dt">
+                                                                            <p class="date">
+                                                                                <?php echo $fin['Month'];?>
+                                                                            </p>
+                                                                        </td>
+                                                                        <td>/</td>
+                                                                        <td class="dt">
+                                                                            <p class="date">
+                                                                                <?php echo $fin['Day'];?>
+                                                                            </p>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <p class="undertxt">(※) お届け先が、北海道、九州、沖縄、東京離島、島根隠岐郡　のいずれかとなる場合は表示日数より１日多くかかります。</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="offpc">
+                                <h4 class="red">詳しくお調べになりたい方はこちら！</h4>
+                                <p class="itembtn">
+                                    <a class="anchor_1" href="http://www.takahama428.com/delivery/">お届け日を確認する</a>
+                                </p>
+                            </div>
+
+                            <div id="emb_date">
+                                <h2>刺繍の種類</h2>
+                                <div class="dotted"></div>
+                                <div class="derileft">
+									<h3>ネーム刺繍</h3>
+									<img src="img/other/shi_type_01.jpg" alt="最短明日お届け" width="100%">
+									<p class="undertxt"><span style="color:red;">※</span>糸色1色のみ</p>
+									<p class="mid">文字の方(1行のみ)</p>
+									<p>型代不要！<br>当社指定のフォントをお選びいただき、お好きな文言を刺繍できます。</p>
+									<li class="syotaibtn">
+										<a class="button_2" href="#font">書体を選ぶ</a>
+									</li>
+								</div>
+								
+                                <div class="derileft_2">
+									<h3>オリジナル刺繍</h3>
+                                    <img src="img//other/shi_type_02.jpg" alt="最短明日お届け" width="100%">
+									<p class="undertxt"><span style="color:red;">※</span>糸色12色まで</p>
+                                    <p class="mid">デザインの方(ネーム刺繍以外)</p>
+									<p>箇所・大きさ・デザイン・色を指定してオリジナルの刺繍が製作できます。</p>
+                                </div>
+								
+								
+								
+								<div class="nuikata">
+									<h3>縫い方</h3>
+                                    <p>刺繍の縫い方には「サテン縫い」「タタミ縫い」「ステッチ縫い」があり、この3種類を使い分けて刺繍していきます。</p>
+										<ul class="nuikata_list">
+										<li class="block2"><img src="img/other/shi_sewing_01.jpg" alt="サテン縫い" width="100%"><figcaption class="nui">デザインの端と端を縫う方法です。<br>ネームなど基本的にはこの縫い方で刺繍表現した方が綺麗に仕上がります。綺麗に縫える幅は1mm〜10mm程です。<br>10mm以上の場合には、タタミ縫いを用います。</figcaption></li>
+										<li class="block2"><img src="img/other/shi_sewing_02.jpg" alt="タタミ縫い" width="100%"><figcaption class="nui">畳みの目の様に細かく縫う方法です。<br>縫い幅が10mm以上の時や、刺繍を立体的に見せたい場合に土台部分で使われます。<br>
+サテン縫いより強度が良い縫い方になります。</figcaption></li>
+										<li class="block2"><img src="img/other/shi_sewing_03.jpg" alt="ステッチ縫い" width="100%"><figcaption class="nui">点線で表現する方法です。<br>1mm以下のデザインを表現する場合に使われます。<br>小さなマークや文字にも、よく使われます。</figcaption></li>
+										</ul>
+								</div>
+
+                            </div>
+							
+                         <div id="emb_date2">
+                            <div id="emb_date">
+                                <h2>価格一覧</h2>
+                                <div class="dotted"></div>
+								<p class="kakaku_text">ご希望のサイズの価格表をご覧ください。同じデザインの場合、次回からは刺繍代のみ(型代無料)でご注文いただけます。</p>
+								<p class="katadaibtn">
+									<abbr title="お客様からいただいたデザインを
+刺繍専用ソフトを用いて刺繍データを
+設計する費用が「型代」です。
+型は半永久に保存しますので、
+リピートのお客様は無料になります。
+" rel="tooltip"><a class="anchor_1"><img src="img/other/st_question_icon.png">型代とは</a></abbr>
+								</p>
+						
+								<table border="1" class="sisyuudai">
+									<tr class="line" align="center">
+										<th class="thin_1"></th>
+										<th style="text-align:center;" bgcolor="E0E0E2" height="10">刺繍サイズ</th>
+										<th class="td-css1"style="text-align:center;" bgcolor="E0E0E2" height="10">型代</th>
+										<th class="td-css1"style="text-align:center;" bgcolor="E0E0E2" height="10">刺繍代</th>
+									</tr>
+		   
+									<tr align="center">
+										<td class="thin"　bgcolor="E0E0E2" rowspan="3">ネーム刺繍</td> 　
+										<td bgcolor="FDB985">大25×25cm以内</td> 
+										<td class="td-css"></td> 
+										<td class="td-css2" bgcolor="FDB985">大3,000円</td> 
+									</tr>
+		
+									<tr align="center">　　　　　　　　　　　　　　　　　　　　　 　　　
+										<td bgcolor="FED5B6">中18×18cm以内</td> 
+										<td class="td-css" style="color:#FF0000">無料</td> 
+										<td class="td-css2" bgcolor="FED5B6">中1,500円</td> 
+									</tr>
+									
+									<tr align="center">　　　　　　　　　　　　　　　　　　　　　 　　　
+										<td class="td-css3"bgcolor="FEE6D3">小10×10cm以内</td> 
+										<td class="td-css"></td> 
+										<td class="td-css2" bgcolor="FEE6D3">小900円</td> 
+									</tr>
+									
+									<tr align="center">
+										<td class="thin"　bgcolor="E0E0E2" rowspan="3">オリジナル刺繍</td> 　
+										<td bgcolor="FDB985">大25×25cm以内</td> 
+										<td class="td-css4" bgcolor="FDB985">大7,000円</td> 
+										<td class="td-css4" bgcolor="FDB985">大3,000円</td> 
+									</tr>
+		
+									<tr align="center">　　　　　　　　　　　　　　　　　　　　　 　　　
+										<td bgcolor="FED5B6">中18×18cm以内</td> 
+										<td class="td-css1" bgcolor="FED5B6">中5,000円</td> 
+										<td class="td-css2" bgcolor="FED5B6">中1,500円</td> 
+									</tr>
+									
+									<tr align="center">　　　　　　　　　　　　　　　　　　　　　 　　　
+										<td bgcolor="FEE6D3">小10×10cm以内</td> 
+										<td class="td-css1" bgcolor="FEE6D3">小4,000円</td> 
+										<td class="td-css2" bgcolor="FEE6D3">小900円</td> 
+									</tr>
+									</table>
+									<p class="undertxt"><span style="color:red;">※</span>表示は税抜き価格です</p>
+
+								
+							<div class="price_masi">
+								<h3>素材別<span style="border-bottom:solid 2px red;">割り増し</span>金額</h3>
+								<p class="kakaku_text">刺繍を施すアイテムの素材によって追加の料金が発生致します。</p>
+								
+								<table border class="sozaitable">
+									<tr>
+										<th width="70px;">綿素材</th>
+										<th style="text-align:right; "width="20px">＋0円</th>
+										<th width="70px;" class="th-css3"></th>
+										<th class="th-css3" width="20px;"></th>
+									</tr>
+									<tr align="center">
+										<td align="left">スウェット素材</td>
+										<td align="right">＋50円</td>
+										<td align="left">ブルゾン(1枚生地)</td>
+										<td align="right">＋80円</td>
+									</tr>
+									<tr align="center">
+										<td align="left">ポリエステル素材</td>
+										<td align="right">＋80円</td>
+										<td align="left">ブルゾン(厚手生地)</td>
+										<td align="right">＋230円</td>
+									</tr>
+									<tr align="center">
+										<td align="left">キャップ</td>
+										<td align="right">＋80円</td>
+										<td align="left">つなぎ</td>
+										<td align="right">＋230円</td>
+									</tr>
+								</table>
+							</div>
+							
+							
+<div class="price_masi_2">							
+<table>
+	<tbody>
+		<tr>
+			<td class="ritno">綿素材</td>
+			<td class="lftno">＋0円</td>
+		</tr>
+		<tr>
+			<td class="ritno">スウェット素材</td>
+			<td class="lftno">＋50円</td>
+		</tr>
+		<tr>
+			<td class="ritno">ポリエステル素材</td>
+			<td class="lftno">＋80円</td>
+		</tr>
+		<tr>
+			<td class="ritno">キャップ</td>
+			<td class="lftno">＋80円</td>
+		</tr>
+		<tr>
+			<td class="ritno">ブルゾン(1枚生地)</td>
+			<td class="lftno">＋80円</td>
+		</tr>
+		<tr>
+			<td class="ritno">ブルゾン(厚手生地)</td>
+			<td class="lftno">＋230円</td>
+		</tr>
+		<tr>
+			<td class="ritno">つなぎ</td>
+			<td class="lftno">＋230円</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+							<div class="example">
+								<h3>ご注文例</h3>
+								
+								<div class="item_1"> 
+									<div class="item_1_img">
+									<img src="img/other/shi_example_01.jpg" alt="100-VP" width="100%" >
+									</div>
+									<div class="item_1_txt">
+										<div class="item_name">
+											<p><span style="font-size: 17px; font-weight: bold;">100-VP TCポロシャツ（ポケ付）</span></p>
+											<p>ボディカラー：ネイビー</p>
+											<p>サイズ：L</p>
+										</div>
+										<ul class="item_syousai">
+											<li>枚数　　　：30枚</li>
+											<li>箇所　　　：ポケ上</li>
+											<li>刺繍　　　：ネーム（W8cm H1cm）</li>
+											<li>糸色　　　：ホワイト</li>
+										</ul>
+										<ul class="item_syousai_2">
+											<li>型代</li>
+											<li>刺繍代　　：900円×30枚</li>
+											<li>ボディ代　：1,020円×30枚</li>
+										</ul>
+										<ul class="item_syousai_2_2">
+											<li>0円</li>
+											<li>27,000円</li>
+											<li>30,600円</li>
+										</ul>
+									
+										
+										<div class="item_price">
+											<p class="big">合計金額&nbsp;&nbsp;<span style="color:#DD0000;">62,208円</span></p>
+											<p class="kasen">（税込）</p>
+											<p class="red">1枚あたり：2,074円</p>
+										</div>
+										
+										
+									</div>
+								</div>
+								
+								
+								<div class="item_2"> 
+									<div class="item_1_img">
+									<img src="img/other/shi_example_02.jpg" alt="193-CP" width="100%" >
+									</div>
+									<div class="item_1_txt">
+										<div class="item_name">
+											<p><span style="font-size: 17px; font-weight: bold;">193-CP カジュアルポロシャツ</span></p>
+											<p>ボディカラー：ホワイト</p>
+											<p>サイズ：M</p>
+										</div>
+										<ul class="item_syousai">
+											<li>枚数　　　：20枚</li>
+											<li>箇所　　　：首後</li>
+											<li>刺繍　　　：オリジナル（W14cm H13cm）</li>
+											<li>糸色　　　：ベージュ・ブラック</li>
+										</ul>
+										<ul class="item_syousai_2">
+											<li>型代</li>
+											<li>刺繍代　　：1,500円×20枚</li>
+											<li>ボディ代　：840円×20枚</li>
+										</ul>
+										<ul class="item_syousai_2_2">
+											<li>5,000円</li>
+											<li>30,000円</li>
+											<li>16,800円</li>
+										</ul>
+									
+										
+										<div class="item_price">
+											<p class="big">合計金額&nbsp;&nbsp;<span style="color:#DD0000;">55,944円</span></p>
+											<p class="kasen">（税込）</p>
+											<p class="red">1枚あたり：2,798円</p>
+										</div>
+										
+										
+									</div>
+								</div>
+							</div>
+									
+							<div id="itoiro">
+									<div class="itoiro">
+										
+									<h2>糸色・書体一覧</h2>
+									<div class="dotted"></div>
+									<p class="sisyu_text">刺繍糸の色を決める際に、参考としてご活用ください。</p>
+									<img src="img/other/shi_list_img.jpg" alt="" width="100%" >
+									
+									<p class="itoiro_title">糸色</p>
+									<p class="sisyu_text_2">こちらから糸色をお選び下さい。</p>
+									<p class="sisyu_text">全46色/レーヨン糸</p>
+									
+									<div class="color">
+										<ul>
+											<li>
+											<img src="img/color_font/st_1_1197.jpg" alt="">
+											<figcaption>C22<br>ブラック</figcaption>
+											</li>
+											<li>
+											
+											<img src="img/color_font/st_2_2944.jpg" alt="">
+											<figcaption>C23<br>ダークグレー</figcaption>
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_3_1142.jpg" alt="">
+											<figcaption>C24<br>ライトグレー</figcaption>
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_4_1198.jpg" alt="">
+											<figcaption>C21<br>ホワイト</figcaption>
+											</li>
+										</ul>
+										
+										<ul>
+											<li>
+											<img src="img/color_font/st_5_1329.jpg" alt="">
+											<figcaption>C51<br>ワインレッド</figcaption>
+											
+											</li>
+											<li>
+											
+											<img src="img/color_font/st_6_9300.jpg" alt="">
+											<figcaption>C25<br>ラディッシュ</figcaption>
+											
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_7_1022.jpg" alt="">
+											<figcaption>C26<br>レッド</figcaption>
+											
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_8_1114.jpg" alt="">
+											<figcaption>C29<br>オレンジ</figcaption>
+											
+											</li>
+										</ul>
+										
+										<ul>
+											<li>
+											<img src="img/color_font/st_9_1250.jpg" alt="">
+											<figcaption>C55<br>アプリコット</figcaption>
+											
+											</li>
+											<li>
+											
+											<img src="img/color_font/st_10_1359.jpg" alt="">
+											<p>C71</p><p>ショッキングピンク</p>
+											
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_11_1358.jpg" alt="">
+											<figcaption>C27<br>ホットピンク</figcaption>
+											
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_12_1326.jpg" alt="">
+											<figcaption>C68<br>ピンク</figcaption>
+											
+											</li>
+										</ul>
+										
+										<ul>
+											<li>
+											<img src="img/color_font/st_13_1242.jpg" alt="">
+											<figcaption>C28<br>ライトピンク</figcaption>
+											
+											</li>
+											<li>
+											
+											<img src="img/color_font/st_14_1177.jpg" alt="">
+											<figcaption>C67<br>サーモンピンク</figcaption>
+											
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_15_1710.jpg" alt="">
+											<figcaption>C50<br>ゴールドイエロー</figcaption>
+											
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_16_1111.jpg" alt="">
+											<figcaption>C30<br>サンフラワー</figcaption>
+											
+											</li>
+										</ul>
+										
+										<ul>
+											<li>
+											<img src="img/color_font/st_17_1095.jpg" alt="">
+											<figcaption>C31<br>イエロー</figcaption>
+											
+											</li>
+											<li>
+											
+											<img src="img/color_font/st_18_1249.jpg" alt="">
+											<figcaption>C60<br>パステルイエロー</figcaption>
+											
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_19_1855.jpg" alt="">
+											<figcaption>C39<br>ダークブラウン</figcaption>
+											
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_20_1859.jpg" alt="">
+											<figcaption>C40<br>ライトブラウン</figcaption>
+											
+											</li>
+										</ul>
+										
+										<ul>
+											<li>
+											<img src="img/color_font/st_21_1171.jpg" alt="">
+											<figcaption>C65<br>ベージュ</figcaption>
+											
+											</li>
+											<li>
+											
+											<img src="img/color_font/st_22_2602.jpg" alt="">
+											<figcaption>C61<br>フレッシュ</figcaption>
+											
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_23_1011.jpg" alt="">
+											<figcaption>C43<br>クリーム</figcaption>
+											
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_24_1427.jpg" alt="">
+											<figcaption>C54<br>オリーブ</figcaption>
+											
+											</li>
+										</ul>
+										
+										<ul>
+											<li>
+											<img src="img/color_font/st_25_1058.jpg" alt="">
+											<figcaption>C58<br>グラスグリーン</figcaption>
+											
+											</li>
+											<li>
+											
+											<img src="img/color_font/st_26_1418.jpg" alt="">
+											<figcaption>C59<br>ライム</figcaption>
+											
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_27_1057.jpg" alt="">
+											<figcaption>C34<br>イエローグリーン</figcaption>
+											
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_28_1407.jpg" alt="">
+											<figcaption>C66<br>ストロー</figcaption>
+											
+											</li>
+										</ul>
+										
+										<ul>
+											<li>
+											<img src="img/color_font/st_29_1063.jpg" alt="">
+											<figcaption>C32<br>ダークグリーン</figcaption>
+											
+											</li>
+											<li>
+											
+											<img src="img/color_font/st_30_1405.jpg" alt="">
+											<figcaption>C33<br>グリーン</figcaption>
+											
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_31_1413.jpg" alt="">
+											<figcaption>C70<br>グリーンティ</figcaption>
+											
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_32_1084.jpg" alt="">
+											<figcaption>C64<br>ペールグリーン</figcaption>
+											
+											</li>
+										</ul>
+										
+										<ul>
+											<li>
+											<img src="img/color_font/st_33_1047.jpg" alt="">
+											<figcaption>C53<br>オーシャン</figcaption>
+											
+											</li>
+											<li>
+											
+											<img src="img/color_font/st_34_1246.jpg" alt="">
+											<p>C57</p><p>エメラルドグリーン</p>
+											
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_35_1244.jpg" alt="">
+											<figcaption>C63<br>ミントグリーン</figcaption>
+											
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_36_1522.jpg" alt="">
+											<figcaption>C35<br>ネイビー</figcaption>
+											
+											</li>
+										</ul>
+										
+										<ul>
+											<li>
+											<img src="img/color_font/st_37_2521.jpg" alt="">
+											<p>C44</p><p>リフレックスブルー</p>
+											
+											</li>
+											<li>
+											
+											<img src="img/color_font/st_38_1036.jpg" alt="">
+											<figcaption>C36<br>ブルー</figcaption>
+											
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_39_1035.jpg" alt="">
+											<figcaption>C37<br>サックス</figcaption>
+											
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_40_2815.jpg" alt="">
+											<figcaption>C52<br>バイオレット</figcaption>
+											
+											</li>
+										</ul>
+										
+										<ul>
+											<li>
+											<img src="img/color_font/st_41_1803.jpg" alt="">
+											<figcaption>C38<br>パープル</figcaption>
+											
+											</li>
+											<li>
+											
+											<img src="img/color_font/st_42_2613.jpg" alt="">
+											<figcaption>C56<br>ラベンダー</figcaption>
+											
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_43_2612.jpg" alt="">
+											<figcaption>C62<br>ライラック</figcaption>
+											
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_44_1043.jpg" alt="">
+											<figcaption>C69<br>ラベンダーグレイ</figcaption>
+											
+											</li>
+										</ul>
+										
+										<ul>
+											<li>
+											<img src="img/color_font/st_45_f107n.jpg" alt="">
+											<figcaption>C42<br>ゴールド</figcaption>
+											
+											</li>
+											<li>
+											
+											<img src="img/color_font/st_46_f101n.jpg" alt="">
+											<figcaption>C41<br>シルバー</figcaption>
+											
+											</li>
+										</ul>
+										
+										<p class="undertxt"><span style="color:red;">※</span>実際の色と異なって見える場合があります。</p>
+									</div>
+								</div>
+									
+								<div id="font">
+									<p class="itoiro_title">書体</p>
+									<p class="sisyu_text">こちらから書体をお選び下さい。</p>
+									<p class="itoiro_title_2">日本語</p>
+									<div class="japanese">
+									<li>
+										<img src="img/color_font/st_font_j_01.jpg" alt="">
+										<figcaption style="margin:10px 0 0 5px;">1.平成楷書</figcaption>
+									</li>
+									</div>
+									
+									<p class="itoiro_title_2">アルファベット</p>
+									<div class="alphabet">
+										<ul>
+											<li>
+											<img src="img/color_font/st_font_a_01.jpg" alt="">
+											<figcaption>1.アデル</figcaption>
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_font_a_02.jpg" alt="">
+											<figcaption>2.ボドニー</figcaption>
+											</li>
+										</ul>
+										
+										<ul>
+											<li>
+											<img src="img/color_font/st_font_a_03.jpg" alt="">
+											<figcaption>3.トゥシ</figcaption>
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_font_a_04.jpg" alt="">
+											<figcaption>4.カジュアルセリフ</figcaption>
+											</li>
+										</ul>
+										
+										<ul>
+											<li>
+											<img src="img/color_font/st_font_a_05.jpg" alt="">
+											<figcaption>5.エイリアルラウンデッド</figcaption>
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_font_a_06.jpg" alt="">
+											<figcaption>6.アバンギャルド</figcaption>
+											</li>
+										</ul>
+										
+										<ul>
+											<li>
+											<img src="img/color_font/st_font_a_07.jpg" alt="">
+											<figcaption>7.ゴーディーサンズ</figcaption>
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_font_a_08.jpg" alt="">
+											<figcaption>8.コロンボ</figcaption>
+											</li>
+										</ul>
+										
+										<ul>
+											<li>
+											<img src="img/color_font/st_font_a_09.jpg" alt="">
+											<figcaption>9.ブックスクリプト</figcaption>
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_font_a_10.jpg" alt="">
+											<figcaption>10.イージースクリプト</figcaption>
+											</li>
+										</ul>
+										
+										<ul>
+											<li>
+											<img src="img/color_font/st_font_a_11.jpg" alt="">
+											<figcaption>11.バランタインスクリプト</figcaption>
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_font_a_12.jpg" alt="">
+											<figcaption>12.ケイマン</figcaption>
+											</li>
+										</ul>
+										
+										<ul>
+											<li>
+											<img src="img/color_font/st_font_a_13.jpg" alt="">
+											<figcaption>13.オールドイングリッシュ</figcaption>
+											</li>
+											
+											<li>
+											<img src="img/color_font/st_font_a_14.jpg" alt="">
+											<figcaption>14.オリエントエクスプレス</figcaption>
+											</li>
+										</ul>
+										
+										<ul>
+											<li>
+											<img src="img/color_font/st_font_a_15.jpg" alt="">
+											<figcaption>15.アガサ</figcaption>
+											</li>
+											
+										</ul>
+									</div>
+								</div>
+							</div>
+									
+								<div class="caution">
+                                <h2>ご注意点</h2>
+                                <div class="dotted"></div>
+								<p class="top">刺繍加工時に糸によって生地面が多少引っ張られるため、刺繍サイズは若干ですが縮む場合がございます。また縮小幅は生地素材や各個体によっても異なります。予めご了承ください。また、刺繍加工時に出来るシワを防ぎ、綺麗に仕上げるために下地に専用の紙を入れております。</p>
+								<br>
+								<p class="last">加工箇所の裏面に出ている糸は刺繍の強度維持のために残してあるものです。短く切りすぎると糸がほどけてしまう可能性がございます。残っている紙は取り除いても問題はございませんが、糸を切らないようにご注意ください。</p>
+								</div>
+
+
+
+							<div class="content-lv2">
+                            <section>
+								<h4 class="ctr_bld">まずはアイテムを選んで注文を開始 ！</h4>
+								<p class="komoji">（Web上でお見積もり可能）</p>
+                                <ul class="designUl1">
+                                    <li><a href="/items/t-shirts/"><img src="img/position/item/pi_item_tshirt.png" width="100%" alt="Tシャツ"></a></li>
+                                    <li><a href="/items/sweat/"><img src="img/position/item/pi_item_parkersweat.png" width="100%" alt="パーカー・スウェット"></a></li>
+                                    <li><a href="/items/polo-shirts/"><img src="img/position/item/pi_item_poro.png" width="100%" alt="ポロシャツ"></a></li>
+                                    <li><a href="/items/sportswear/"><img src="img/position/item/pi_item_sport.png" width="100%" alt="スポーツウェア"></a></li>
+                                    <li><a href="/items/long-shirts/"><img src="img/position/item/pi_item_longt.png" width="100%" alt="ロングTシャツ"></a></li>
+                                </ul>
+                                <ul class="designUl1">
+                                    <li><a href="/items/outer/"><img src="img/position/item/pi_item_blousonjanpa.png" width="100%" alt="ブルゾン"></a></li>
+                                    <li><a href="/items/ladys/"><img src="img/position/item/pi_item_lady.png" width="100%" alt="レディースウェア"></a></li>
+                                    <li><a href="/items/towel/"><img src="img/position/item/pi_item_towel.png" width="100%" alt="タオル"></a></li>
+                                    <li><a href="/items/tote-bag/"><img src="img/position/item/pi_item_bag.png" width="100%" alt="バッグ・トートバッグ"></a></li>
+                                    <li><a href="/items/apron/"><img src="img/position/item/pi_item_apron.png" width="100%" alt="エプロン"></a></li>
+                                </ul>
+                                <ul class="designUl1">
+                                    <li><a href="/items/baby/"><img src="img/position/item/pi_item_baby.png" width="100%" alt="ベビーウェア"></a></li>
+                                    <li><a href="/items/overall/"><img src="img/position/item/pi_item_tsunagi.png" width="100%" alt="つなぎ"></a></li>
+                                    <li><a href="/items/workwear/"><img src="img/position/item/pi_item_work.png" width="100%" alt="ワークウェア"></a></li>
+                                    <li><a href="/items/cap/"><img src="img/position/item/pi_item_capbandanna.png" width="100%" alt="キャップ・バンダナ"></a></li>
+                                    <li><a href="/items/goods/"><img src="img/position/item/pi_item_present.png" width="100%" alt="記念品・プレゼント"></a></li>
+                                </ul>
+                            </section>
+							</div>
+                        </div>
+                    </div>
+            </div>
+			
+			 <div class="section clearfix">
+                            <div>
+                                <p class="comment1_fo">データを送りたい方や相談はこちら！</p>
+                                <a class="button1" href="/contact/"><img src="/common/img/header/mail.png" alt="注意">お問い合わせ</a>
+								 <a class="button2" href="/m3/items/category.html"><img src="img/other/st_item_icon.png" alt="注意">アイテムはこちら</a>
+                            </div>
+                        </div>
+                        <div>
+                            <ul class="cal_red">
+                                <li>
+                                    <div class="phone_txt">
+                                        <p class="red">お気軽にお電話ください</p>
+                                        <p class="timetx">受付時間：平日 10:00-18:00</p>
+                                        <p class="red"><img alt="電話" src="../sameday/img/tel_mark.png" width="40px" height="50px" style="padding-bottom:5px; padding-right:10px;">0120-130-428</p>
+										<p class="comment1">疑問点はお電話またはメールでお気軽にお問い合わせください！</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+
+
+
+
+
+									
+								</div>
+								
+							</div>
+                               
+                              
+                               
+                                    </div>
+                                </div>
+							</div>
+                        </div>
+					</div>
+
+                <p class="scroll_top"><a href="#header">お問い合わせ　ページトップへ</a></p>
+
+                <?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/footer.php"; ?>
+
+
+                    <!--Yahoo!タグマネージャー導入 2014.04 -->
+                    <script type="text/javascript">
+                        (function () {
+                            var tagjs = document.createElement("script");
+                            var s = document.getElementsByTagName("script")[0];
+                            tagjs.async = true;
+                            tagjs.src = "//s.yjtag.jp/tag.js#site=bTZi1c8";
+                            s.parentNode.insertBefore(tagjs, s);
+                        }());
+                    </script>
+                    <noscript>
+                        <iframe src="//b.yjtag.jp/iframe?c=bTZi1c8" width="1" height="1" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                    </noscript>
+
+
+                    <!-- m3 begin -->
+                    <div id="phonepage">
+                        <div id="fb-root"></div>
+                        <div id="container">
+                            <?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/inc/footer.html"); ?>
+                                <div class="sb-slidebar sb-right">
+                                    <?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/sidemenu.html"); ?>
+                                </div>
+                                <!-- /container -->
+                        </div>
+                    </div>
+                    <!-- m3 end -->
+    </body>
+
+    </html>
