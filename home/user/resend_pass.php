@@ -12,9 +12,9 @@ if($_SERVER['REQUEST_METHOD']!='POST'){
 		$param['email'] = trim(mb_convert_kana($_POST['email'],"s", "utf-8"));
 		$args = array($param['email']);
 
-		if(empty($args['email'])){
+		if(empty($param['email'])){
 			$err['email'] = 'メールアドレスを入力して下さい。';
-		}else if(!isValidEmailFormat($args['email'])){
+		}else if(!isValidEmailFormat($param['email'])){
 			$err['email'] = 'メールアドレスが正しくありません。';
 		}else{
 			$user = $conndb->checkExistEmail($args);
