@@ -8,15 +8,16 @@ if($_SERVER['REQUEST_METHOD']!='POST'){
 	
 	if(isset($_POST['resend'])){
 		$conndb = new Conndb(_API_U);
-		
-		$args['email'] = trim(mb_convert_kana($_POST['email'],"s", "utf-8"));
-		
+
+		$param['email'] = trim(mb_convert_kana($_POST['email'],"s", "utf-8"));
+		$args = array($param['email']);
+
 		if(empty($args['email'])){
 			$err['email'] = 'メールアドレスを入力して下さい。';
 		}else if(!isValidEmailFormat($args['email'])){
 			$err['email'] = 'メールアドレスが正しくありません。';
 		}else{
-			$user = $conndb->checkExistEmail($args['email'], _SITE);
+			$user = $conndb->checkExistEmail($args);
 			$userid = $user['id'];
 			if(!$userid) $err['email'] = 'メールアドレスのご登録がありません。';
 		}
