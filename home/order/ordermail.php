@@ -135,7 +135,7 @@ class Ordermail extends Conndb{
 						if($a2[$i]['ink']>=9) $ink = "フルカラー\n";
 						else $ink = $a2[$i]['ink']."色\n";
 						$tmp = $a2[$i]['posname']."　".$ink;
-						$printinfo .= "◇プリント方法：　".$printName[$a2[$i]['printing']]."\n";
+						// $printinfo .= "◇プリント方法：　".$printName[$a2[$i]['printing']]."\n";
 						$printinfo .= "◇プリント位置：　".$base."\n";
 						$printinfo .= "◇デザインサイズ：　".$sizeName[$a2[$i]['areasize']]."\n";
 						$printinfo .= "◇デザインの色数：　".$tmp."\n";
