@@ -22,8 +22,6 @@
 	define('_INFO_EMAIL', 'info@takahama428.com');	// for resend password
 	define('_OFFICE_TEL', '03-5670-0787');
 	
-	define('_PASSWORD_SALT', 'Rx-o:akLK)ZEs!qE');
-	
 	define('_API_PSS', 'http://takahama428.co-site.jp/v1/api');
 	define('_API_U', 'http://takahamalifeart.com/v1/apiu');
 	

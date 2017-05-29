@@ -6,7 +6,7 @@ require_once dirname(__FILE__).'/php_libs/conndbpost.php';
 if( isset($_REQUEST['ticket'], $_REQUEST['u']) ) {
 	$conndb = new Conndbpost();
 	
-	$newpass = substr(sha1(_PASSWORD_SALT.time().mt_rand()),0,10);
+	$newpass = substr(sha1(time().mt_rand()),0,10);
 	$args = array('userid'=>$_REQUEST['u'], 'pass'=>$newpass);
 	$res = $conndb->updatePass($args);
 	if($res){
