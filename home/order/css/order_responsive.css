@@ -262,15 +262,17 @@ dl.list dd {
 	font-size:14px;
 }
 
-.item_name p{
-	padding-top: 12px;
-	font-weight:bold;
-	color:#C60;
-	font-size:16px;
-	text-align: center;
-	background: #fff9f3;
-	border: 1px solid #feefe2;
+.item_name p {
+    padding-top: 12px;
+    font-weight: bold;
+    color: #C60;
+    font-size: 16px;
+    text-align: center;
+    background: #fff9f3;
+    border: 1px solid #feefe2;
+    padding-left: 45px;
 }
+
 .rankno{
 	position:absolute;
 	/*margin-top: -40px;*/
