@@ -45,7 +45,7 @@
 					<li><a href="/design/emb.html">刺繍・名入れサービス</a></li>
 					<li><a href="/design/designposition.html">プリント位置について</a></li>
 					<li><a href="/design/fontcolor.html">インクカラーとフォント種類</a></li>
-					<li><a href="/design/gallery.html">製作実例</a></li>
+					<li><a href="/design/gallery.html">デザイン実例</a></li>
 					<li><a href="/design/support/">デザインサポート</a></li>
 					
 					<li><a href="/design/template_illust.html">イラレ入稿テンプレート</a></li>

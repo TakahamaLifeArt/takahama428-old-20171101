@@ -266,7 +266,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                                     <div class="sizes">'.$v['sizes'].'</div>
                                                     <p class="price_s" style="white-space: nowrap;">
                                                         <p style="display:inline-block;">TAKAHAMA価格<p/>
-                                                        <span id="price_cost" style="white-space: nowrap;"><span>'.$v['minprice'].'</span>円~</span>
+                                                        <span id="price_cost" style="white-space: nowrap;"><span>'.$v['minprice'].'</span>円&#12316;</span>
                                                     </p>
 
                                                 </li>
@@ -300,7 +300,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                                 <div class="size">'.$v['sizes'].'</div>
                                                 <p class="price" style="white-space: nowrap;">
                                                   	<p style="display:inline-block;">TAKAHAMA価格<p/>
-                                                    <span id="price_cost" style="white-space: nowrap;"><span>'.$v['minprice'].'</span>円~</span>
+                                                    <span id="price_cost" style="white-space: nowrap;"><span>'.$v['minprice'].'</span>円&#12316;</span>
                                                 </p>
                                             </li>
                                         </ul>
@@ -361,7 +361,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 							<div class="sizeprice">
 								<h3>
-									<ins>2.</ins>サイズと枚数の指定　　　<span class="anchor pop_size">サイズの目安を見る</span>
+									<ins>2.</ins>サイズと枚数の指定　　　
+<!--<span class="anchor pop_size">サイズの目安を見る</span> -->
 								</h3>
 								<table class="size_table">
 									<caption></caption>
