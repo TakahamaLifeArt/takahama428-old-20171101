@@ -2337,6 +2337,12 @@ $(function(){
 			
 			if(isError){
 				$.msgbox("通信エラーが発生しています。<br>お手数ですがStep1に戻ってください。");
+				$.updateItem(["","","",""]);
+				$.back(0);
+				$('tr.total td span', '#floatingbox, #showcart_box').text("0");
+				$('tr:first td span', '#floatingbox, #showcart_box').text("0");
+				$('tr:last td span', '#floatingbox').text("0");
+				$.back(0);
 				return;
 			}
 			
