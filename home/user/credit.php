@@ -131,7 +131,9 @@ if(!empty($ls)){
         <link rel="stylesheet" type="text/css" media="screen" href="/common/js/modalbox/css/jquery.modalbox.css">
         <link rel="stylesheet" type="text/css" media="screen" href="./css/style_responsive.css" />
         <link rel="stylesheet" type="text/css" media="screen" href="./css/featherlight.min.css" />
-
+		<style>
+			.lightbox {display: none;}
+		</style>
 
 
 
@@ -159,7 +161,7 @@ if(!empty($ls)){
             </script>
 
             <!--m3 begin-->
-            <script src="/m3/common/js/common1.js"></script>
+<!--            <script src="/m3/common/js/common1.js"></script>-->
             <!--m3 end-->
 
 
