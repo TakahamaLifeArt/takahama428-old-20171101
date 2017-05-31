@@ -332,6 +332,7 @@ $(function(){
 					i++;
 				}
 				ls += '</ul>';
+				$('#h3_itemlist span').text('（'+i+'アイテム）');
 				
 				if(tmp.length>0){
 				// 人気商品がある場合
@@ -369,7 +370,6 @@ $(function(){
 					ls = recomend+ls;
 				}
 				$('#itemlist_wrap').html(ls);
-				$('#h3_itemlist span').text('（'+i+'アイテム）');
 			}
 		});
 		
@@ -2314,7 +2314,7 @@ $(function(){
 					for(var i=0; i<r.design.length; i++){
 						if(curitemname!=r.design[i]['itemname']){
 							if(curitemname!='' && inks==0){
-								tbody = '<tr><th>'+curitemname+'</th><td colspan="2">プリントなし</td></tr>';
+								tbody = '<tr><th>'+curitemname+'</th><td colspan="3">プリントなし</td></tr>';
 							}
 							curitemname = r.design[i]['itemname'];
 						}
@@ -2330,7 +2330,7 @@ $(function(){
 						inks += r.design[i]['ink'];
 					}
 					
-					if(inks==0) tbody = '<tr><th>'+curitemname+'</th><td colspan="2">プリントなし</td></tr>';
+					if(inks==0) tbody = '<tr><th>'+curitemname+'</th><td colspan="3">プリントなし</td></tr>';
 					$('#conf_print tbody').html(tbody);
 				}
 			});
@@ -2342,7 +2342,6 @@ $(function(){
 				$('tr.total td span', '#floatingbox, #showcart_box').text("0");
 				$('tr:first td span', '#floatingbox, #showcart_box').text("0");
 				$('tr:last td span', '#floatingbox').text("0");
-				$.back(0);
 				return;
 			}
 			
