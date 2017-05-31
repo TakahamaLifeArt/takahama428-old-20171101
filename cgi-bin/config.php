@@ -32,7 +32,12 @@ define('_API', 'http://takahamalifeart.com/v1/api');
 define('_API_U', 'http://takahamalifeart.com/v1/apiu');
 define('_API_PSS', 'http://takahama428.co-site.jp/v1/api');		// Photo Sharing Service Member
 define('_IMG_PSS', 'http://takahamalifeart.com/weblib/img/');
+
+// 注文情報の登録
 define('_ORDER_INFO', 'http://original-sweat.com/system/php_libs/ordersinfo.php');
+
+// マイページのイメージ画像で使用
+define('_ORDER_DOMAIN', 'http://original-sweat.com');
 
 // PASSWORD KEY
 define('_PASSWORD_KEY', 'Rxjo:akLK(SEs!8E');
