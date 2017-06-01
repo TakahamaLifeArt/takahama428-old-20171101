@@ -334,7 +334,7 @@ class Orders Extends Conndb {
 //							$a=0;
 //						}
 						$_SESSION['orders']['items'][$catid]['item'][$itemid]['design'][$base[$i]] = array();
-						if ($_REQUEST['ink'][$i]!=0) {
+//						if ($_REQUEST['ink'][$i]!=0) {
 							$tmp = array('poskey'=>$_REQUEST['poskey'][$i],
 										 'posname'=>$_REQUEST['posname'][$i],
 										 'ink'=>$_REQUEST['ink'][$i],
@@ -344,7 +344,7 @@ class Orders Extends Conndb {
 										 'areasize'=>$_REQUEST['areasize'][$i],
 										);
 							$_SESSION['orders']['items'][$catid]['item'][$itemid]['design'][$base[$i]][$a] = $tmp;
-						}
+//						}
 					}
 				}
 			}
@@ -866,7 +866,7 @@ class Orders Extends Conndb {
 	*/	
 	public function reqPrintfee($sheetsize='1'){
 		$args = array();
-		if(!empty($_SESSION['orders']['items'])){
+		if($_SESSION['orders']['options']['noprint']==0 && !empty($_SESSION['orders']['items'])){
 			foreach($_SESSION['orders']['items'] as $catid=>$val){
 				foreach($val['item'] as $itemid=>$val2){
 

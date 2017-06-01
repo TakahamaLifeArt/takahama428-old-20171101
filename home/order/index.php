@@ -266,7 +266,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                                     <div class="sizes">'.$v['sizes'].'</div>
                                                     <p class="price_s" style="white-space: nowrap;">
                                                         <p style="display:inline-block;">TAKAHAMA²Á³Ê<p/>
-                                                        <span id="price_cost" style="white-space: nowrap;"><span>'.$v['minprice'].'</span>±ßxA·¼/span>
+                                                        <span id="price_cost" style="white-space: nowrap;"><span>'.$v['minprice'].'</span>±ß&#12316;</span>
                                                     </p>
 
                                                 </li>
@@ -300,7 +300,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                                 <div class="size">'.$v['sizes'].'</div>
                                                 <p class="price" style="white-space: nowrap;">
                                                   	<p style="display:inline-block;">TAKAHAMA²Á³Ê<p/>
-                                                    <span id="price_cost" style="white-space: nowrap;"><span>'.$v['minprice'].'</span>±ßxA·¼/span>
+                                                    <span id="price_cost" style="white-space: nowrap;"><span>'.$v['minprice'].'</span>±ß&#12316;</span>
                                                 </p>
                                             </li>
                                         </ul>
