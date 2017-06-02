@@ -31,7 +31,7 @@
 			<li><img src="/common/img/header/gnavi_03.png" alt="料金" class="gnimg"><p class="gntxt">料金</p>
 				<ul>
 					<li><a href="/price/estimate.html" onclick="ga('send','event','estimate','click','global');">10秒見積もり</a></li>
-					<li><a href="/price/fee/">プリント料金案内</a></li>
+					<!--<li><a href="/price/fee/">プリント料金案内</a></li>-->
 					<li><a href="/guide/#payment">お支払い方法・送料</a></li>
 					<li><a href="/guide/bring.html">持ち込みについて</a></li>
 					<li><a href="/guide/#discount">割引プラン</a></li>
