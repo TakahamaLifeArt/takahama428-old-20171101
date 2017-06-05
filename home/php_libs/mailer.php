@@ -17,6 +17,7 @@
  				   2015.06.19 大口注文お問い合わせ
 				   2016.01.28 お悩み、解決フォーム
 				   2016.11.08 アンケート項目変更
+				   2017.07.05 サーバー移行に伴い文字コード設定を更新
 				   
 -------------------------------------------------------------- */
 
@@ -583,6 +584,7 @@ class Mailer{
 	*/
 	protected function send_mail($mail_text, $name, $to, $attach, $mailuser='info'){
 		mb_language("japanese");
+		mb_internal_encoding("EUC-JP");
 		
 		switch($mailuser){
 		case 'request':	$receiver = _INFO_EMAIL;
@@ -643,7 +645,7 @@ class Mailer{
 		$boundary = md5(uniqid(rand())); 					// バウンダリー文字（メールメッセージと添付ファイルの境界とする文字列を設定）
 		
 		$fromname = "タカハマ428";
-		$from = mb_encode_mimeheader(mb_convert_encoding($fromname,"JIS","EUC-JP"))."<".$sendto.">";
+		$from = mb_encode_mimeheader($fromname,"JIS")."<".$sendto.">";
 		$header = "From: $from\n";
 		$header .= "Reply-To: $from\n";
 		$header .= "X-Mailer: PHP/".phpversion()."\n";
@@ -677,7 +679,7 @@ class Mailer{
 		}
 		
 		// 件名のマルチバイトをエンコード
-		$subject  = mb_encode_mimeheader(mb_convert_encoding($subject,"JIS","EUC-JP"));
+		$subject  = mb_encode_mimeheader($subject,"JIS");
 		
 		// メール送信
 		if(mail($sendto, $subject, $msg, $header)){
@@ -689,10 +691,10 @@ class Mailer{
 			}else{
 				$title = $subtitle."のご利用ありがとうございます";
 			}
-			$subject = mb_encode_mimeheader(mb_convert_encoding($title,"JIS","EUC-JP"));
+			$subject = mb_encode_mimeheader($title,"JIS");
 			$from = $receiver;
 			$fromname = "タカハマライフアート";
-			$from = mb_encode_mimeheader(mb_convert_encoding($fromname,"JIS","EUC-JP"))."<".$from.">";
+			$from = mb_encode_mimeheader($fromname,"JIS")."<".$from.">";
 			
 			$header = "From: $from\n";
 			$header .= "Reply-To: $from\n";
@@ -825,7 +827,6 @@ class Mailer{
 			$boundary = md5(uniqid(rand())); 					// バウンダリー文字（メールメッセージと添付ファイルの境界とする文字列を設定）
 			
 			$fromname = "タカハマ428";
-//			$from = mb_encode_mimeheader(mb_convert_encoding($fromname,"JIS","EUC-JP"))."<".$sendto.">";
 			$from = mb_encode_mimeheader($fromname,"JIS")."<".$sendto.">";
 			$header = "From: $from\n";
 			$header .= "Reply-To: $from\n";
@@ -837,7 +838,6 @@ class Mailer{
 			$msg .= mb_convert_encoding($mail_info,"JIS","EUC-JP");	// ここで本文をエンコードして設定
 			
 			// 件名のマルチバイトをエンコード
-//			$subject = mb_encode_mimeheader(mb_convert_encoding($subject,"JIS","EUC-JP"));
 			$subject = mb_encode_mimeheader($subject,"JIS");
 			
 			// メール送信
@@ -888,8 +888,8 @@ class Mailer{
 		$autoReply = false;					// 返信メールの有無（trueで返信する）
 		$msg = "";							// 送信文
 		$boundary = md5(uniqid(rand())); 	// バウンダリー文字（メールメッセージと添付ファイルの境界とする文字列を設定）
-		$from = mb_encode_mimeheader(mb_convert_encoding($fromname,"JIS","utf-8"))."<"._ESTIMATE_EMAIL.">";
-		$replay = mb_encode_mimeheader(mb_convert_encoding($fromname,"JIS","utf-8"))."<".$formaddr.">";
+		$from = mb_encode_mimeheader($fromname,"JIS")."<"._ESTIMATE_EMAIL.">";
+		$replay = mb_encode_mimeheader($fromname,"JIS")."<".$formaddr.">";
 		$header = "From: $from\n";
 		$header .= "Reply-To: $replay\n";
 		if(!empty($bcc)){
@@ -922,8 +922,8 @@ class Mailer{
 		$footer .= "　Web site：　"._DOMAIN."/\n\n";
 		$footer .= "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
 		
-		$mail_info .= mb_convert_encoding($footer,'utf-8','euc-jp');
-		$msg .= mb_convert_encoding($mail_info,"JIS","utf-8");	// ここで本文をエンコードして設定
+		$mail_info .= mb_convert_encoding($footer,'JIS','euc-jp');
+		$msg .= mb_convert_encoding($mail_info,"JIS","euc-jp");	// ここで本文をエンコードして設定
 
 		if(!empty($attach)){		// 添付ファイル情報
 			for($i=0; $i<count($attach); $i++){
@@ -939,7 +939,7 @@ class Mailer{
 		}
 
 		// 件名のマルチバイトをエンコード
-		$subject  = mb_encode_mimeheader(mb_convert_encoding($subject,"JIS","utf-8"));
+		$subject  = mb_encode_mimeheader($subject,"JIS");
 
 		// メール送信
 		$res = array();
