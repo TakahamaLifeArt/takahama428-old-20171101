@@ -1,2 +1,2 @@
 # takahama428
-takahama428.com
+www.takahama428.com
