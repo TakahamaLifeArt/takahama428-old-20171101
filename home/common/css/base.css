@@ -389,7 +389,7 @@ p.scroll_top a:hover{color:#333;}
 #gnavi ul li:hover{background:#f0f0f0;}
 #gnavi ul li img{margin:3px 0;}
 #gnavi ul li img.gnimg{margin:10px 10px 10px 20px;float:left;width:30px;}
-#gnavi .inner p.gntxt{position:absolute;top:15px;left:54px;font-weight:bold;}
+#gnavi .inner p.gntxt{position:absolute;top:15px;left:60px;font-weight:bold;}
 #gnavi ul li a,
 #gnavi ul li a:hover{display:block;text-decoration:none;color:#383838;filter:alpha(opacity=100);-moz-opacity:1;opacity:1;}
 #gnavi ul li ul{box-shadow:0 0px 3px 0 rgba(0,0,55,.55);display:none;width:99%;list-style:none;position:absolute;z-index:999;left:0px;margin:51px 0;padding:0;background:#fff;border:solid 1px #f0f0f0;overflow:visible;}

@@ -1,0 +1,286 @@
+@charset "euc-jp";
+
+/*------------------------------------------------------------
+
+2012 takahama web css
+
+	File_name	: designguide.css
+	Description	: デザイン方法
+	Version		: 1.0
+	
+	log
+	2012.02.08	: created
+	2012.05.16	: edit navigation
+	2012.10.10	: ページ分割
+	2013.11.20	: 手描きデザインの注釈（.remark）を追加
+	2014-02.01	: イラレ入稿テンプレート、手描きシートのバナー設置
+		
+--------------------------------------------------------------
+
+
+
+
+/*		design guide
+===============================================================*/
+.section {
+    margin: 20px 0 20px;
+    position: relative;
+}
+
+.section h3.ttl{
+    text-align: center;
+    margin: 20px;
+    font-size: 1.2em;
+}
+
+.section .lft_img {
+    float: left;
+    margin: 4px;
+}
+
+.section a.button:hover{
+    opacity: .80;
+}
+.fl {
+    float: left;
+    width: 48%;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.fl .point1, .inner .point1{
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
+.inner{
+    margin-bottom:40px;
+}
+
+.inner .point_num{
+    list-style-type: decimal;
+    list-style-position: inside;
+    width: 95%;
+    margin: 0 auto;
+    text-indent: -1.2em;
+    padding: 5px;
+}
+
+.inner .spc{
+    margin-top:20px;
+}
+
+.inner h4{
+    margin-top: 20px;
+}
+
+/*
+.inner p{
+    text-indent: 1em;
+}
+*/
+
+.desc {
+	padding: 2em 1em;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	background: #fff url(../img/designguide/top/staff.png) right center no-repeat;
+	background-size: contain;
+}
+
+.icon_wrap h3{
+    text-align: center;
+    margin: 20px 15px 10px;
+    font-size: 1.2em;
+}
+
+.section .subtitle {
+	font-size: 150%;
+	margin-bottom: .5em;
+	padding-left: 1em;
+}
+.section .remark {
+	font-size: 12px;
+	text-indent: -1em;
+	padding-left: 1em;
+}
+.section .colum {
+	float: left;
+	width: 33%;
+}
+.section .colum a {
+	display: block;
+	border: 1px solid #fffdfc;
+	border-radius: 3px;
+	cursor: pointer;
+}
+.section .colum a:hover {
+	border: 1px solid #e5f6fd;
+	background-color: #f6fbfd;
+}
+.section .colum img {
+	width: 80%;
+	height: auto;
+	margin: 10px 10%;
+}
+
+.section .alert {
+	font-size: 250%;
+	color: #666;
+}
+
+.section .title_notice {
+	font-size: 200%;
+	color: #c33;
+	padding-left: 60px;
+	background: url(../img/designguide/top/alert_mark.png) no-repeat left center;
+}
+.section .inner .icon_wrap {
+	margin: 20px 0;
+}
+.section .inner .icon_wrap td {
+	width: 25%;
+}
+.section .inner {
+	margin: 30px 0 60px 0;
+}
+.section .inner h4 {
+	font-size: 150%;
+	margin-bottom: 1em;
+}
+.section .inner h5 {
+	font-size: 115%;
+	font-weight: bold;
+	color: #666;
+}
+.section .inner p,
+.section .inner .note {
+	margin-bottom: 1em;
+	line-height: 1.5;
+}
+.section .inner ol {
+	margin-left: 2em;
+}
+.section .inner ol li {
+	list-style-type: decimal;
+}
+
+.section .inner .leftside {
+	float: left;
+	width: 200px;
+}
+.section .inner .leftside div {
+	margin-bottom: 15px;
+}
+.section .inner .leftside img {
+	margin-right: 15px;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+}
+.section .inner .rightside {
+	float:left;
+	width: 500px;
+}
+.section .inner .rightside ul {
+	margin-left: 2em;
+}
+.section .inner .rightside ul li {
+	list-style-type: square;
+}
+
+.cal_red {
+    margin-top: 20px;
+}
+
+.phone_txt {
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.phone_txt .red {
+    margin: 0 auto;
+    text-align: center;
+    color: #ff0000;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.phone_txt .timetx {
+    font-size: 1.5em;
+}
+
+.ptxt {
+    font-size: 1.8em;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+/*		banner
+===============================================================*/
+.bigbanner {
+	margin-bottom: 12px;
+}
+
+
+.ai_template {
+	float: right;
+	background: url(/img/banner/ai_template.png) no-repeat center top;
+}
+.freehand_sheet {
+	float: left;
+	background: url(/img/banner/freehand_sheet.png) no-repeat center top;
+}
+.ai_template,
+.freehand_sheet {
+	display: block;
+	width: 361px;
+	height: 80px;
+	cursor: pointer;
+}
+.ai_template:hover,
+.freehand_sheet:hover {
+	background-position: center bottom;
+}
+
+/*		form
+===============================================================*/
+.button_area input.btn {
+    margin: 0 auto;
+    padding: 3px 0;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+}
+
+#sendmail:hover {
+    filter: alpha(opacity=80);
+    opacity: 0.8;
+    cursor: pointer;
+}
+#sendmail {
+    background-image: url(/contact/quickcontact/img/next_btn.png);
+    background-position: top;
+    background-repeat: no-repeat;
+    width: 192px;
+    height: 43px;
+    display: block;
+    font-size: 20px;
+    line-height: 40px;
+    color: #fff;
+    text-align: center;
+    margin: 20px auto 10px;
+}
+form {
+    margin-bottom: 10px;
+}
+
+p.scroll_top {
+    clear: both;
+    width: 1000px;
+    margin: 20px auto;
+    text-align: center;
+    padding-left: 150px;
+}
