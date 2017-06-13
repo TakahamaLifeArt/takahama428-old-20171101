@@ -651,7 +651,7 @@ class Ordermail extends Conndb{
 				foreach($v2['color'] as $colorcode=>$v3){
 					foreach($v3['size'] as $sizeid=>$v4){
 						if(empty($v4['amount'])) continue;
-						$tempData4 = $v3['master_id']."|1|1|".$sizeid."|".$v4['amount']."|".$v4['cost']."|0|0|||||||" ;
+						$tempData4 = $v3['master_id']."|1|1|".$sizeid."|".$v4['amount']."|".$v4['cost']."|0|0|".$itemid."||||||" ;
 						array_push($data4, $tempData4);
 					}
 			  	}
