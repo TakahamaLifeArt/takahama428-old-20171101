@@ -346,7 +346,23 @@
         display: none;
     }
     
-    .comment2{
+    .comment2 {
+        display: block;
+        border: 2px solid #eb5c02;
+        padding: 10px;
+        text-align: center;
+        margin: 10px 5px;
+        color: #eb5c02;
+        font-weight: bold;
+        font-size: 1.2em;
+    }
+    
+    .banner{
+        display: block;
+    }
+    
+
+    .banner2{
         display: none;
     }
 }
@@ -432,5 +448,14 @@
         margin: 0 auto;
         border-radius: 4px;
         background-color: inherit;
+    }
+    
+    .banner{
+        display: none;
+    }
+
+
+    .banner2{
+        display: block;
     }
 }
