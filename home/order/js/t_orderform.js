@@ -1984,7 +1984,7 @@ $(function(){
 			$('#estimation_wrap .itemsum').text($.addFigure(r.itemprice));
 			$('#estimation_wrap .printfee').text($.addFigure(r.printprice));
 			$('#estimation_wrap .totamount').text(r.amount);
-			var sizeName = ['大', '中', '小'];
+//			var sizeName = ['大', '中', '小'];
 			var printName = {'silk':'シルク', 'digit':'転写', 'inkjet':'インクジェット'};
 			var print_size = '';
 			var print_pos = '';
@@ -1996,11 +1996,11 @@ $(function(){
 //					ink_count += '<p>'+printName[printCode]+':'+fee+'円</p>';
 //				}
 				var ink = r.design[i]['ink']==9? '4色以上': r.design[i]['ink']+'色';
-				print_size += '<p>'+sizeName[r.design[i]['size']]+'</p>';
+//				print_size += '<p>'+sizeName[r.design[i]['size']]+'</p>';
 				print_pos += '<p>'+r.design[i]['pos']+'</p>';
 				ink_count += '<p>'+ink+'</p>';
 			}
-			$('#estimation_wrap .print_size').html(print_size);
+//			$('#estimation_wrap .print_size').html(print_size);
 			$('#estimation_wrap .print_pos').html(print_pos);
 			$('#estimation_wrap .ink_count').html(ink_count);
 			
