@@ -634,6 +634,7 @@ class Ordermail extends Conndb{
 		//商品カテゴリーごとのプリント情報
 		//data6
 		$orderprint = array();
+		$isExistOrderPrint = array();	// 同じカテゴリで且つ同じプリントポジションIDの有無をチェック
 		//data7
 		$orderarea = array();
 		//data8
@@ -648,7 +649,10 @@ class Ordermail extends Conndb{
 			foreach($v1['item'] as $itemid=>$v2){
 				$posid = $v2['posid'];
 				$orderprintTemp =$catid."|".$posid."|0";
-				array_push($orderprint , $orderprintTemp);
+				if (array_key_exists($catid.'-'.$posid, $isExistOrderPrint)===false) {
+					array_push($orderprint , $orderprintTemp);
+					$isExistOrderPrint[$catid.'-'.$posid] = true;
+				}
 
 				foreach($v2['color'] as $colorcode=>$v3){
 					foreach($v3['size'] as $sizeid=>$v4){
@@ -657,9 +661,7 @@ class Ordermail extends Conndb{
 						array_push($data4, $tempData4);
 					}
 			  	}
-//				$origin[$catid][$posid] = array();
 				foreach($v2['design'] as $base=>$a2){
-//					$origin[$catid][$posid][$base] = array("silk"=>1, "digit"=>1);
 					for($i=0; $i<count($a2); $i++){
 						if ($a2[$i]['ink']==0 && $opts['noprint']==0) continue;
 						if ($opts['noprint']==1 && $i>0) continue;
