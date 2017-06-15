@@ -4,6 +4,7 @@
 *	charset euc-jp
 *	log
 *	2017-05-25	プリント代計算の仕様変更
+*	2017-06-16	デザインサイズの指定を廃止
 */
 
 $(function(){
@@ -2309,7 +2310,7 @@ $(function(){
 					var tbody = '';
 					var curitemname = '';
 					var inks = 0;
-					var sizeName = ['大', '中', '小'];
+//					var sizeName = ['大', '中', '小'];
 //					var printMethod = {'silk':'シルク', 'digit':'デジタル転写','inkjet':'インクジェット'};
 					for(var i=0; i<r.design.length; i++){
 						if(curitemname!=r.design[i]['itemname']){
@@ -2322,7 +2323,7 @@ $(function(){
 						tbody += '<tr>';
 						tbody += '<th>'+r.design[i]['itemname']+'</th>';
 						tbody += '<td class="ac">'+r.design[i]['posname']+'</td>';
-						tbody += '<td class="ac">'+sizeName[r.design[i]['areasize']]+'</td>';
+//						tbody += '<td class="ac">'+sizeName[r.design[i]['areasize']]+'</td>';
 //						tbody += '<td class="ac">'+printMethod[r.design[i]['printing']]+': '+sizeName[r.design[i]['areasize']]+'</td>';
 						tbody += '<td class="ac">'+r.design[i]['ink']+'</td>';
 						tbody += '</tr>';

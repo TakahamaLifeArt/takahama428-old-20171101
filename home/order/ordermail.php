@@ -16,6 +16,8 @@
 				  2014.05.12 支払方法にカード決済を追加
 				  2014.08.13 特急料金の有無を追加
 				  2017-05-25 プリント代計算の仕様変更によるプリント情報の更新
+				  2017-06-16 デザインサイズの指定を廃止して「大」で固定
+
 	
 -------------------------------------------------------------- */
 require_once dirname(__FILE__).'/../php_libs/http.php';
@@ -122,7 +124,7 @@ class Ordermail extends Conndb{
 			$order_info .= "┏━━━━━━━━━┓\n";
 			$order_info .= "◆　　プリント情報\n";
 			$order_info .= "┗━━━━━━━━━┛\n";
-			$sizeName = array('大', '中', '小');
+//			$sizeName = array('大', '中', '小');
 			$printName = array('silk'=>'シルク','digit'=>'デジタル転写','inkjet'=>'インクジェット');
 			foreach($attach_info as $posid=>$a1){
 				$order_item = "◇アイテム：　".implode('、', $a1['item'])."\n";
@@ -137,7 +139,7 @@ class Ordermail extends Conndb{
 						$tmp = $a2[$i]['posname']."　".$ink;
 						// $printinfo .= "◇プリント方法：　".$printName[$a2[$i]['printing']]."\n";
 						$printinfo .= "◇プリント位置：　".$base."\n";
-						$printinfo .= "◇デザインサイズ：　".$sizeName[$a2[$i]['areasize']]."\n";
+//						$printinfo .= "◇デザインサイズ：　".$sizeName[$a2[$i]['areasize']]."\n";
 						$printinfo .= "◇デザインの色数：　".$tmp."\n";
 					}
 				}
@@ -665,6 +667,7 @@ class Ordermail extends Conndb{
 						if (empty($a2[$i]['printing'])) continue;
 						$sizeFrom = $a2[$i]['printing']!='silk'? 0: 35;
 						$sizeTo = $a2[$i]['printing']!='silk'? 0: 27;
+						$areasize = 0;	// 大で固定
 						$ink = 0;
 						if ($a2[$i]['printing']=='silk') {
 							$ink = $a2[$i]['ink']==9 ? "4" : $a2[$i]['ink'];
@@ -673,7 +676,7 @@ class Ordermail extends Conndb{
 						if ($i>0) {
 							$origin = "0";
 						}
-						$tempData7 = "0|".$idx6."|". $a2[$i]['areakey']."|".$a2[$i]['categorytype']."/".$a2[$i]['itemtype']."|".$origin."|".$ink."|".$a2[$i]['printing']."|".$sizeFrom."|".$sizeTo."|".$a2[$i]['areasize']."|0|0|1|".(empty($opts['illust'])? "": "イラレ")."||0|1";
+						$tempData7 = "0|".$idx6."|". $a2[$i]['areakey']."|".$a2[$i]['categorytype']."/".$a2[$i]['itemtype']."|".$origin."|".$ink."|".$a2[$i]['printing']."|".$sizeFrom."|".$sizeTo."|".$areasize."|0|0|1|".(empty($opts['illust'])? "": "イラレ")."||0|1";
 						array_push($orderarea , $tempData7);
 						if($a2[$i]['ink']>0){
 							$data8[$idx8]['area_id'] = $idx7;
