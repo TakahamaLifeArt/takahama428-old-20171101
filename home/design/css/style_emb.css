@@ -252,6 +252,7 @@ table {
 
 .color li img {
     width: 100%;
+    margin-bottom: 15px;
 }
 
 .alphabet li {
@@ -268,7 +269,21 @@ table {
 
 .alp_fi {
     position: absolute;
-    top: 171px;
+    top: 21px;
+    left: 0;
+    z-index: 1;
+}
+
+.alp_fi_2 {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    z-index: 1;
+}
+
+.alp_fi_3 {
+    position: absolute;
+    top: -8px;
     left: 0;
     z-index: 1;
 }
@@ -2151,9 +2166,22 @@ h4.ctr_bld {
     border: 1px solid black;
 }
 
-.alphabet figcaption {
+.alp_fi {
     font-size: 12px;
-    position: initial;
+    position: absolute;
+    top: -1px;
+}
+
+.alp_fi_2 {
+    font-size: 12px;
+    position: absolute;
+    top: -6px;
+}
+
+.alp_fi_3 {
+    font-size: 12px;
+    position: absolute;
+    top: -9px;
 }
 
 .japanese figcaption {
