@@ -1754,9 +1754,9 @@ $(function(){
 							var posname = img.attr('alt');
 							var tr = '<tr class="pos-'+img.attr('class')+'">';
 							tr += '<th>'+posname+'</th>';
-							tr += '<td><select class="areasize">';
-							tr += '<option value="0" selected="selected">大</option><option value="1">中</option><option value="2">小</option>';
-							tr += '</select></td>';
+//							tr += '<td><select class="areasize">';
+//							tr += '<option value="0" selected="selected">大</option><option value="1">中</option><option value="2">小</option>';
+//							tr += '</select></td>';
 							tr += '<td><select class="ink"><option value="0" selected="selected">選択してください</option>';
 							tr += '<option value="1">1色</option><option value="2">2色</option><option value="3">3色</option>';
 							tr += '<option value="9">4色以上</option></select></td>';
