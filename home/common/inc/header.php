@@ -50,7 +50,7 @@
 		}
 	 */
 		if($_SERVER['SCRIPT_NAME']!=DIRECTORY_SEPARATOR.'order'.DIRECTORY_SEPARATOR.'index.php'){
-			echo '<a href="/order/express/" id="oisogi"></a>';
+			echo '<a href="/order/express/"  id="oisogi"></a>';
 		}
 	?>
 	
@@ -154,12 +154,12 @@
 	</div>
 	
 	<div class="inner">
-		<div class="h_wrap hw_1"><a href="/"><img src="/common/img/header/logo.png" alt="オリジナルTシャツ屋"></a></div>
+		<div class="h_wrap hw_1"><a href="/"onclick="ga('send','event','logo','click','header');"><img src="/common/img/header/logo.png" alt="オリジナルTシャツ屋"></a></div>
 		<div class="h_wrap hw_2"><img src="/common/img/header/no1_mark.png" alt="業界NO.1！スピード仕上げ 親切対応！"></div>
 		
 		<div class="h_wrap hw_3">
 			<div class="h_tel">
-				<a href="/contact/guide/">
+				<a href="/contact/guide/"onclick="ga('send','event','guide','click','header');">
 					<p class="p1">お急ぎの方は<br>お電話下さい！</p>
 					<p class="p2"></p>
 					<p class="p3"><img src="/common/img/header/tel.png" alt="電話"></p>
@@ -171,7 +171,7 @@
 			</div>
 				
 			<div class="h_mail">
-				<a href="/contact/">
+				<a href="/contact/"onclick="ga('send','event','contact','click','header');">
 					<img src="/common/img/header/mail.png" alt="メール">
 					<span></span>
 					<p>お問い合わせ（相談）はこちら</p>
@@ -202,10 +202,10 @@
 			
 			
 			<ul>
-				<li><a href="/guide/orderflow.html">ご注文の流れ</a></li>
-				<li><a href="/contact/request.html">無料！資料<!-- サンプル -->請求</a></li>
+				<li><a href="/guide/orderflow.html"onclick="ga('send','event','orderflow','click','header');">ご注文の流れ</a></li>
+				<li><a href="/contact/request.html"onclick="ga('send','event','request','click','header');">無料！資料<!-- サンプル -->請求</a></li>
 				<li><a href="/design/template_illust.html" onclick="ga('send','event','template_illust','click','header');">Ai入稿テンプレート</a></li>
-				<li class="no_bd"><a href="/guide/faq.html">よくあるご質問</a></li>
+				<li class="no_bd"><a href="/guide/faq.html"onclick="ga('send','event','faq','click','header');">よくあるご質問</a></li>
 			</ul>
 			<div class="login_btn"><a href="/user/history.php" id="mypage_btn"><img src="/common/img/header/login_btn.png">マイページ</a></div>
 			<?php
