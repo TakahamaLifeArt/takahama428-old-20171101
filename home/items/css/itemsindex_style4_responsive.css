@@ -1,0 +1,1776 @@
+@charset "euc-jp";
+
+/*===============================================
+●画面の横幅が769px以上
+===============================================*/
+
+/*------------------------------------------------------------
+
+2012 takahama web css
+
+	File_name	: itemsindex_style.css
+	Description	: 商品一覧ページ（スウェット、スポーツウェア、アウター、グッズ）
+	Version		: 1.0
+	
+	log
+	2012.12.20	: リライトとSEOによるヘッダータグの修正
+	2013.05.29	: 条件で探す機能を実装
+	2013.10.09	: 人気商品のレイアウト変更
+	2014.04.08	: タグごとにページを分けるため条件で探すのボタンをアンカーにする
+	2014.04.25	: 条件で探すボタンのスタイルを更新
+	2014.08.14	: アイテム一覧に各アイテムレビューへのアンカーを設置
+	2014.11.04	: スウェットページにお届け日一覧を表示
+	2014.11.25	: スウェットページのメイン画像にスライド機能を実装
+		
+--------------------------------------------------------------*/
+/*
+h1#sh1{
+	clear:both;
+	margin-bottom:5px;
+	height:50px;
+}
+h1#baby{
+	clear:both;
+	background:url(../../common/img/dotted.png) repeat-x bottom;
+	margin-bottom:5px;
+	height:50px;
+}
+*/
+@media screen and (min-width: 769px){
+
+h2 {
+	font-size: 160%;
+	font-weight: bold;
+	color: #777;
+}
+h2 strong {
+	font-size: 120%;
+}
+h2 strong ins {
+	font-size: 110%;
+}
+
+.note.min {
+
+	font-size: 12px;
+	margin-top:3px;
+
+}
+
+.sweat{
+	height:195px;
+	width:730px;
+/*	background:url(/items/img/index/parka3.png) no-repeat; */
+	color:#fff;
+	font-size:90%;
+/*	padding:3px 0 0 0px;*/
+	font-weight:bold;
+    margin-bottom: 80px;
+}
+
+.sweat img{
+	height:190px;
+	width:780px;
+}
+.sweat a:hover{
+	filter:alpha(opacity=85%);
+    -moz-opacity: .85;
+    opacity: .85;
+}
+
+
+
+
+
+
+/*		条件で探す
+===============================================================*/
+.tag {
+	width: 100%;
+	table-layout: fixed;
+	margin-top: 10px;
+	background: #fff;
+	/*border: 1px solid #bfbfbf;*/
+	box-shadow:1px 1px 1px #ccc;
+	-moz-box-shadow:1px 1px 1px #ccc;
+	-webkit-box-shadow:1px 1px 1px #ccc;
+	border-radius: 3px;
+}
+.tag td {
+	padding: 10px 5px;
+}
+.tag td p,
+.tag td a {
+	display: block;
+	padding: 0 .3em;
+	height: 2em;
+	line-height: 2em;
+	text-align: center;
+
+	color: #7d4900;
+	box-shadow: 1px 1px 1px rgba(218,218,218,.5);
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px solid #dddac7;
+	background: #fcfbf7;
+	background: linear-gradient(top,  #ffffff,  #f4f2e1);
+	background: -ms-linear-gradient(top,  #ffffff,  #f4f2e1);
+	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f4f2e1));
+	background: -moz-linear-gradient(top,  #ffffff,  #f4f2e1);
+	/*
+	background: #f7f4de;
+	background: -moz-linear-gradient(top,  #ffffff 1%, #f7f4de 50%, #f4f0d4 51%, #f4f3e8 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ffffff), color-stop(50%,#f7f4de), color-stop(51%,#f4f0d4), color-stop(100%,#f4f3e8));
+	background: -webkit-linear-gradient(top,  #ffffff 1%,#f7f4de 50%,#f4f0d4 51%,#f4f3e8 100%);
+	background: -o-linear-gradient(top,  #ffffff 1%,#f7f4de 50%,#f4f0d4 51%,#f4f3e8 100%);
+	background: -ms-linear-gradient(top,  #ffffff 1%,#f7f4de 50%,#f4f0d4 51%,#f4f3e8 100%);
+	background: linear-gradient(to bottom,  #ffffff 1%,#f7f4de 50%,#f4f0d4 51%,#f4f3e8 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f4f3e8',GradientType=0 );
+
+background: #f7f4de;
+background: -moz-linear-gradient(top,  #ffffff 1%, #f4f2e1 50%, #f4f0d2 50%, #fcfbf7 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ffffff), color-stop(50%,#f4f2e1), color-stop(50%,#f4f0d2), color-stop(100%,#fcfbf7));
+background: -webkit-linear-gradient(top,  #ffffff 1%,#f4f2e1 50%,#f4f0d2 50%,#fcfbf7 100%);
+background: -o-linear-gradient(top,  #ffffff 1%,#f4f2e1 50%,#f4f0d2 50%,#fcfbf7 100%);
+background: -ms-linear-gradient(top,  #ffffff 1%,#f4f2e1 50%,#f4f0d2 50%,#fcfbf7 100%);
+background: linear-gradient(to bottom,  #ffffff 1%,#f4f2e1 50%,#f4f0d2 50%,#fcfbf7 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#fcfbf7',GradientType=0 );
+*/
+	cursor: pointer;
+}
+.tag p.act,
+.tag a.act,
+.tag p:hover,
+.tag a:hover {
+	/*color: #14396A !important;*/
+	color: #fff;
+	background: #468CCF;
+	background: linear-gradient(top,  #468CCF,  #63B8EE);
+	background: -ms-linear-gradient(top,  #468CCF,  #63B8EE);
+	background: -webkit-gradient(linear, left top, left bottom, from(#468CCF), to(#63B8EE));
+	background: -moz-linear-gradient(top,  #468CCF,  #63B8EE);
+	/*
+	color: #b36900;
+	background: #fff5ea;
+	background: linear-gradient(top,  #ffffff,  #fff5ea);
+	background: -ms-linear-gradient(top,  #ffffff,  #fff5ea);
+	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#fff5ea));
+	background: -moz-linear-gradient(top,  #ffffff,  #fff5ea);
+	*/
+}
+.tag td p:hover,
+.tag td a:hover {
+	box-shadow: 1px 1px 1px rgba(218,218,218,.5), 0px 2px 3px rgba(218,218,218,.5) inset;
+}
+
+.tag p,
+.tag a {
+	display: block;
+	padding: 0 .3em;
+	height: 2em;
+	line-height: 2em;
+	text-align: center;
+
+	color: #7d4900;
+	box-shadow: 1px 1px 1px rgba(218,218,218,.5);
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px solid #dddac7;
+	background: #fcfbf7;
+	background: linear-gradient(top,  #ffffff,  #f4f2e1);
+	background: -ms-linear-gradient(top,  #ffffff,  #f4f2e1);
+	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f4f2e1));
+	background: -moz-linear-gradient(top,  #ffffff,  #f4f2e1);
+	/*
+	background: #f7f4de;
+	background: -moz-linear-gradient(top,  #ffffff 1%, #f7f4de 50%, #f4f0d4 51%, #f4f3e8 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ffffff), color-stop(50%,#f7f4de), color-stop(51%,#f4f0d4), color-stop(100%,#f4f3e8));
+	background: -webkit-linear-gradient(top,  #ffffff 1%,#f7f4de 50%,#f4f0d4 51%,#f4f3e8 100%);
+	background: -o-linear-gradient(top,  #ffffff 1%,#f7f4de 50%,#f4f0d4 51%,#f4f3e8 100%);
+	background: -ms-linear-gradient(top,  #ffffff 1%,#f7f4de 50%,#f4f0d4 51%,#f4f3e8 100%);
+	background: linear-gradient(to bottom,  #ffffff 1%,#f7f4de 50%,#f4f0d4 51%,#f4f3e8 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f4f3e8',GradientType=0 );
+
+background: #f7f4de;
+background: -moz-linear-gradient(top,  #ffffff 1%, #f4f2e1 50%, #f4f0d2 50%, #fcfbf7 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ffffff), color-stop(50%,#f4f2e1), color-stop(50%,#f4f0d2), color-stop(100%,#fcfbf7));
+background: -webkit-linear-gradient(top,  #ffffff 1%,#f4f2e1 50%,#f4f0d2 50%,#fcfbf7 100%);
+background: -o-linear-gradient(top,  #ffffff 1%,#f4f2e1 50%,#f4f0d2 50%,#fcfbf7 100%);
+background: -ms-linear-gradient(top,  #ffffff 1%,#f4f2e1 50%,#f4f0d2 50%,#fcfbf7 100%);
+background: linear-gradient(to bottom,  #ffffff 1%,#f4f2e1 50%,#f4f0d2 50%,#fcfbf7 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#fcfbf7',GradientType=0 );
+*/
+	cursor: pointer;
+}
+
+.tag_btn {
+	display:block;
+	width:20%;
+	float:left;
+	margin:5px 15px;
+}
+
+/* 価格順 */
+.price_order {
+	margin: 30px 0px 10px 0px;
+	text-align: right;
+}
+
+
+
+
+
+#baby{
+	padding-top:150px;
+}
+
+
+#contents-lv2,
+.contents-lv2{
+	clear:both;
+	padding:3px 0 0;
+}
+#contents-lv2 h2,
+.contents-lv2 h2{
+	font-size:20px;
+	line-height:26px;
+	color:#000;
+	font-weight:bold;
+	padding-left:30px;	
+}
+
+#contents-lv2 h2.recommend,
+.contents-lv2 h2.recommend{
+	background:url(../../common/img/love_icon_b.png) no-repeat;
+}
+#contents-lv2 h2#list,
+.contents-lv2 h2#list,
+#contents-lv2 h2.list,
+.contents-lv2 h2.list{
+	background:url(../../common/img/list_icon_b.png) no-repeat;
+}
+.contents-lv2 h2.tokucho,
+.contents-lv2 h2.popu,
+.contents-lv2 h2.list2{
+	background:url(../../common/img/list_icon_b.png) no-repeat;
+}
+
+.contents-lv2 h2.tokucho{
+	padding-bottom:5px;
+}
+.contents-lv2 h2 span{
+	margin-left:20px;
+	font-size:16px;
+}
+
+.contclv2{
+	padding:0;
+}
+
+
+.recommend_item,
+.listitems{
+	padding:10px 0;
+	clear:both;
+}
+
+.recommend_item>li{
+	width:235px;
+	float:left;
+	margin-left:12px;
+}
+.recommend_item>li:first-child {
+	margin: 0;
+}
+
+*html .recitembox{
+	float:left;
+	margin-right:6px;
+}
+*html .recommend_item{
+	margin-top:30px;
+}
+
+/*
+.recommend_item li.lastli{
+	margin-right:0px;
+}
+*/
+
+.recommend_item_ex{
+	border:1px solid #BFBFBF;
+	font-size:80%;
+	background:#fff;
+	box-shadow:1px 1px 1px #ccc;
+	-moz-box-shadow:1px 1px 1px #ccc;
+	-webkit-box-shadow:1px 1px 1px #ccc;
+	margin-top:40px;
+}
+
+*html .recommend_item_ex{
+	width:235px;
+}
+
+.popu_item_ex {
+	border: 1px solid #BFBFBF;
+	font-size: 80%;
+	background: white;
+	box-shadow: 1px 1px 1px #CCC;
+	-moz-box-shadow: 1px 1px 1px #ccc;
+	-webkit-box-shadow: 1px 1px 1px #CCC;
+}
+*html .popu_item_ex{
+	width:235px;
+}
+*+html .popu_item_ex{
+	padding-top:20px;
+}
+
+
+.listitems_ex{
+	border:1px solid #BFBFBF;
+	width:173px;
+	float:left;
+	margin-left:20px;
+	margin-bottom:20px;
+	font-size:70%;
+	background:#fff;
+	box-shadow:1px 1px 1px #ccc;
+	-moz-box-shadow:1px 1px 1px #ccc;
+	-webkit-box-shadow:1px 1px 1px #ccc;
+}
+
+ul.recommend_item li.firstrecommend,
+li.firstlist{
+	margin-left:10;
+}
+
+.recommend_item a,
+.listitems a{
+	display:block;
+	width:100%;
+	/* height:100%; */
+	color:#7A7A7A;
+	font-weight:bold;
+}
+.recommend_item a:hover,
+.listitems a:hover{
+	text-decoration:none;
+	filter: alpha(opacity=65);
+	-moz-opacity: .65;
+	opacity: .65;
+}
+
+.point{
+	background:url(../img/index/point.png) no-repeat;
+	background-position:right;
+	height:52px;
+	width:238px;
+	color:#fff;
+	font-size:18px;
+	line-height:40px;
+	font-weight:bold;
+	text-indent:10px;
+	position:absolute;
+	margin-top:-40px;
+}
+.rank{
+	height:27px;
+}
+
+*+html .point{
+	margin-top:0px;
+}
+
+.point_s{
+	height: 22px;
+	font-weight:bold;
+	color:#C60;
+	font-size:14px;
+	margin:5px 5px 0;
+}
+.listindex{
+	background:url(../img/index/pointL.png) no-repeat;
+	background-position:left;
+	height:40px;
+	width:251px;
+	color:#fff;
+	font-size:18px;
+	line-height:40px;
+	font-weight:bold;
+	text-indent:10px;
+	margin-top:20px;
+}
+.item_name{
+	margin:10px 10px 0 10px;
+	font-size:14px;
+}
+.item_name_kata{
+	font-weight:normal;
+	font-size:11px;
+}
+.item_name_name{
+	height: 5em;
+}
+*+html .item_name{
+	margin-top:-10px;
+	text-decoration:underline;
+	color:#1055e0;	
+}
+*+html .item_name:hover{
+	cursor:pointer;
+}
+*html .item_name{
+	margin-top:-10px;
+	text-decoration:underline;
+	color:#1055e0;		
+}
+*html .item_name:hover{
+	cursor:pointer;
+}
+
+.item_name_s{
+	margin:0 6px;
+	font-size:12px;
+}
+*+html .item_name_s{
+	margin-top:-20px;
+	text-decoration:underline;
+	color:#1055e0;		
+}
+*html .item_name_s{
+	margin-top:-20px;
+	text-decoration:underline;
+	color:#1055e0;		
+}
+.item_image_s{
+	width:100%;
+	text-align:center;
+	padding:5px 0;
+}
+
+.item_info{
+	background:url(../../common/img/dotted.png) repeat-x top;	
+	height:20px;
+	padding:10px 5px;
+}
+
+*+html .item_info{
+	padding-bottom:20px;
+}
+*+html .item_info>ul{
+	margin-top:-20px;
+}
+*html .item_info ul{
+	margin-top:-10px;
+}
+.cs li{
+	display:block;
+	float:left;
+	width:44px;
+	height:45px;
+	color:#fff;
+	font-size:16px;
+	text-align:center;	
+	margin-right:3px;
+}
+.color{
+	background:url(../img/index/color.png) no-repeat;
+}
+.size{
+	background:url(../img/index/size.png) no-repeat;
+}
+.price{
+	text-align:right;
+	padding-right:10px;
+}
+.price span{
+	color:#000;
+	font-size:14px;
+	line-height:22px;
+}
+.price span span{
+	font-size:20px;
+}
+
+.cs_s li{
+	display:block;
+	float:left;
+	width:34px;
+	height:31px;
+	color:#fff;
+	font-size:16px;
+	text-align:center;	
+	margin-right:3px;
+}
+.colors{
+	background:url(../img/index/color_s.png) no-repeat;
+}
+.sizes{
+	background:url(../img/index/size_s.png) no-repeat;
+}
+.price_s{
+	padding-right:5px;
+	text-align:right;
+	line-height:14px;
+}
+.item_info_s{
+	background:url(../../common/img/dotted.png) repeat-x top;	
+	height:22px;
+	padding:8px 3px;
+	margin-bottom:5px;
+}
+*+html .item_info_s>ul{
+	margin-top:-16px;
+}
+
+.item_info_s span span{
+	font-size:17px;
+	line-height:16px;
+	color:#ff0000;
+}
+
+/* アイテムレビューへのアンカー */
+.review_anchor {
+	padding: 5px;
+	font-size: 12px;
+	border-top: 1px solid #d8d8d8;
+}
+.review_anchor a {
+	color: #1055e0;
+}
+.review_anchor a:hover {
+	text-decoration: underline;
+	color: #04c;
+}
+
+
+/*itemindex*/
+.indexmsg{
+	border:1px solid #999;
+	border-radius:3px;
+	padding:50px;
+	background:#fff;
+	margin-top:20px;
+}
+.indeximg{
+	position:absolute;
+	margin-top:-220px;
+	right:30px;
+}
+.tokucholist{
+	background:url(../img/index/tokucholistbg.png) no-repeat bottom;
+	padding:10px 1px 10px;
+	height:160px;
+}
+.tokucholist li{
+	float:left;
+	display:block;
+	width:121px;
+	height:154px;
+	text-align: center;
+	line-height: 0px;	
+}
+
+    /*
+.tokucholist li:hover,
+.hide{
+	cursor:pointer; 
+	display:none;
+}
+    */
+
+.popu_item_name{
+	float:right;
+	width:170px;
+	margin-bottom:10px;
+}
+.popu_item_name .item_name_name {
+	height: 3em;
+}
+.item_image {
+	width: 233px;
+	height: 165px;
+	overflow: hidden;
+}
+
+.recommend_item{
+/*	background:url(../../common/img/dotted.png) repeat-x top;	
+*/	margin-top:5px;		
+}
+
+.rankno{
+	position:absolute;
+	margin-left: -10px;
+	margin-top: -10px;
+}
+.dotted{
+	background:url(../../common/img/dotted.png) repeat-x top;
+	height:10px;
+}
+/*tab*/
+
+.disnon,
+.changetokucho {
+  display: none;
+}
+.tokucho_block{
+	display: none;
+	background:url(../img/index/tokuchobase.png);
+	border:1px solid #CCC;
+	box-shadow:0 0 1px #999;
+	margin:0 1px;
+	padding:10px 0 0;
+}
+.itokucho:hover,
+.nowtokucho{
+	margin-top:5px;
+	background:url(../img/index/indexarrow.png) no-repeat bottom;
+	padding-bottom:5px;
+}
+
+#tokucho_wrap{
+	padding:0;
+}
+.tokuchoimg{
+	padding:10px;
+}
+.tokuchoitems h3{
+	font-size:20px;
+	color:#666;
+	margin:0 10px;
+}
+.tokuchodt{
+	font-size: 16px;
+	line-height: 18px;
+	font-weight: bold;
+	color: #d28837;
+	margin: 7px;
+	background:url(../../common/img/dotted.png) repeat-x bottom;	
+	background:url(../../common/img/dotted.png) repeat-x bottom;
+	padding-bottom:10px;
+}
+.tokucho_item_ex .price{
+	font-size:12px;
+}
+.tokuchoitembox{
+	background:#fff;
+	border:1px solid #BFBFBF;
+}
+*+html .tokucho_item_name{
+	margin-top:-15px;
+	padding-bottom:5px;
+}
+.tokucho_item{
+	margin:0 10px;
+	padding-top: 20px;
+}
+.tokucho_item > li {
+	margin-right:3px;
+	width:230px;
+}
+.pickup1{
+	margin-left:50px;
+}
+.pickup2{
+	margin-left:250px;
+}
+.pickup3{
+	margin-left:550px;
+}
+.pickup{
+	padding:0 11px;
+}
+.pickupitem_wrap{
+	padding: 5px;
+	background:#F08837;;
+	border-radius:5px;
+	margin-bottom:30px;
+	margin-top:-1px;
+}
+.pickup h4{
+	font-size: 24px;
+	color: white;
+	padding: 7px 10px 5px;
+	font-weight: bold;
+	text-shadow:1px 1px 1px #666;
+}
+.pickupitem{
+	background:#fff;
+	border-radius:5px;
+	margin:0 3px 3px;
+	padding:20px;
+}
+.pickup h5{
+	font-size:18px;
+	font-weight:bold;
+	color:#666;
+}
+.piciupitem_img{
+	margin:20px 0 10px 10px;
+}
+.pickupimgul{
+	float:right;
+	width:240px;
+}
+.pickupimgul li{
+	float:left;
+	margin:0 2px 4px;	
+	display:block;
+	width:112px;
+	height:102px;
+	text-align:center;
+	border:1px solid #999;	
+	padding:1px;	
+}
+.pickupimgul li:hover,
+.pickupimgul li.nowpimg{
+	border:1px solid #333;
+}
+.pickupimgul li:hover{
+	cursor:pointer;
+}
+.changetokucho{
+	text-align:right;
+	padding:10px;
+}
+.pickupimgL{
+	display:block;
+	width:376px;
+	height:304px;
+	text-align:center;
+	border:1px solid #333;
+	float: left;
+	padding:10px 0;
+}
+.pickup_desc{
+	padding: 0 10px 10px;
+}
+.pickupbtn{
+	margin-left:310px;
+}
+.pickupbtn a{
+	background-image:url(../img/index/tokuchomore.png);
+	display:block;
+	width:340px;
+	height:60px;
+	backgrond-position:top;
+	font-weight:bold;
+	text-decoration:none;
+	color:#fff;
+	text-indent:28px;
+	font-size:22px;
+	line-height:60px;
+}
+.pickupbtn a:hover{
+	background-position:bottom;
+}
+
+
+
+
+div.up {
+	text-align: right;
+	padding: 10px 0;
+}
+a.up_icon {
+	background: url(../../common/img/up.png) no-repeat;
+	padding-left: 14px;
+	color: #999;
+	text-decoration: underline;
+	font-size: 10px;
+}
+
+
+h3.tokucho {
+	font-size: 26px;
+	background: url(../../common/img/list_icon_b.png) no-repeat left;
+	padding-left: 30px;
+	margin-left: 3px;
+	color: #d95;
+	text-shadow: 1px 1px 1px #000;
+	letter-spacing: 2px;
+}
+h3.heading {
+	font-size: 26px;
+	color: #d95;
+	text-shadow: 1px 1px 1px #000;
+	letter-spacing: 2px;
+}
+.txt_min{
+	font-size:11px;
+	color:#fff;
+	background-color:#c3c3c3;
+	padding:7px;
+	border-radius:3px;
+	float: left;
+	width: 100%;
+}
+.txt_min .number {
+	border:1px solid: #fff;
+	padding: 2px 5px;
+	font-weight: bold;
+}
+
+.txt_min_end{
+	margin-bottom:100px;
+}
+.txt_end{
+	font-size: 14px;
+	line-height: 20px;
+	margin: 50px 5px;
+	color: #F60;
+	font-weight: bold;
+	text-shadow: 1px 1px 0 #ccc;
+}
+
+
+
+/* お届け日一覧 */
+#topbanner_txt {
+	position: absolute;
+	bottom: 6px;
+	left: 5px;
+}
+ul#cal li p:first-child {
+	font-size: 10px;
+	font-weight: bold;
+	color: #DF3C31;
+}
+ul#cal li {
+	float: left;
+	display: block;
+	background: #fff;
+	margin: 0 2px;
+	padding: 5px 3px;
+	height: 42px;
+	box-shadow: 0 0 1px #ccc;
+	color: #DF3C31;
+	font-weight: bold;
+	text-align: center;
+}
+ul#cal li .mm {font-size: 13px;}
+ul#cal li .dd {font-size: 24px;}
+
+
+
+/* スライド */
+#mainvisual {
+	position: relative;
+	height: 200px;
+	margin-bottom: 1em;
+}
+.main_image {
+	height: 200px;
+}
+
+/* スライドのナビゲーション */
+#nav {
+	height: 24px;
+	margin-top: 2px;
+	text-align: center;
+}
+#nav a {
+	padding: 0 .5em;
+	margin: 0 2px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	background: #efefef;
+}
+#nav a.activeSlide {
+	color: #333;
+	font-weight: bold;
+	background: #fff;
+}
+}
+
+/* 画面幅768以下*/
+
+@media screen and (max-width: 768px){
+
+h2 {
+	font-size: 160%;
+	font-weight: bold;
+	color: #777;
+}
+h2 strong {
+	font-size: 120%;
+}
+h2 strong ins {
+	font-size: 110%;
+}
+
+.note.min {
+
+	font-size: 12px;
+	margin-top:3px;
+
+}
+
+.sweat{
+	height:195px;
+	width:730px;
+	background-size:100%;
+	color:#fff;
+	font-size:90%;
+	/*padding:3px 0 0 260px;*/
+	font-weight:bold;
+	display:none;
+}
+.sweat img{
+	height:auto;
+	width:100%;
+}
+.sweat a:hover{
+	filter:alpha(opacity=85%);
+    -moz-opacity: .85;
+    opacity: .85;
+}
+
+
+
+
+
+/*		条件で探す
+===============================================================*/
+.tag {
+	width: 100%;
+	table-layout: fixed;
+	margin-top: 10px;
+	background: #fff;
+	/*border: 1px solid #bfbfbf;*/
+	box-shadow:1px 1px 1px #ccc;
+	-moz-box-shadow:1px 1px 1px #ccc;
+	-webkit-box-shadow:1px 1px 1px #ccc;
+	border-radius: 3px;
+}
+.tag {
+	padding: 10px 5px;
+}
+.tag p,
+.tag a {
+	display: block;
+	padding: 0 .3em;
+	height: 3em;
+	line-height: 3em;
+	text-align: center;
+
+	color: #7d4900;
+	box-shadow: 1px 1px 1px rgba(218,218,218,.5);
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px solid #dddac7;
+	background: #fcfbf7;
+	background: linear-gradient(top,  #ffffff,  #f4f2e1);
+	background: -ms-linear-gradient(top,  #ffffff,  #f4f2e1);
+	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f4f2e1));
+	background: -moz-linear-gradient(top,  #ffffff,  #f4f2e1);
+	/*
+	background: #f7f4de;
+	background: -moz-linear-gradient(top,  #ffffff 1%, #f7f4de 50%, #f4f0d4 51%, #f4f3e8 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ffffff), color-stop(50%,#f7f4de), color-stop(51%,#f4f0d4), color-stop(100%,#f4f3e8));
+	background: -webkit-linear-gradient(top,  #ffffff 1%,#f7f4de 50%,#f4f0d4 51%,#f4f3e8 100%);
+	background: -o-linear-gradient(top,  #ffffff 1%,#f7f4de 50%,#f4f0d4 51%,#f4f3e8 100%);
+	background: -ms-linear-gradient(top,  #ffffff 1%,#f7f4de 50%,#f4f0d4 51%,#f4f3e8 100%);
+	background: linear-gradient(to bottom,  #ffffff 1%,#f7f4de 50%,#f4f0d4 51%,#f4f3e8 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f4f3e8',GradientType=0 );
+
+background: #f7f4de;
+background: -moz-linear-gradient(top,  #ffffff 1%, #f4f2e1 50%, #f4f0d2 50%, #fcfbf7 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ffffff), color-stop(50%,#f4f2e1), color-stop(50%,#f4f0d2), color-stop(100%,#fcfbf7));
+background: -webkit-linear-gradient(top,  #ffffff 1%,#f4f2e1 50%,#f4f0d2 50%,#fcfbf7 100%);
+background: -o-linear-gradient(top,  #ffffff 1%,#f4f2e1 50%,#f4f0d2 50%,#fcfbf7 100%);
+background: -ms-linear-gradient(top,  #ffffff 1%,#f4f2e1 50%,#f4f0d2 50%,#fcfbf7 100%);
+background: linear-gradient(to bottom,  #ffffff 1%,#f4f2e1 50%,#f4f0d2 50%,#fcfbf7 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#fcfbf7',GradientType=0 );
+*/
+	cursor: pointer;
+}
+.tag p.act,
+.tag a.act,
+.tag p:hover,
+.tag a:hover {
+	/*color: #14396A !important;*/
+	color: #fff;
+	background: #468CCF;
+	background: linear-gradient(top,  #468CCF,  #63B8EE);
+	background: -ms-linear-gradient(top,  #468CCF,  #63B8EE);
+	background: -webkit-gradient(linear, left top, left bottom, from(#468CCF), to(#63B8EE));
+	background: -moz-linear-gradient(top,  #468CCF,  #63B8EE);
+	/*
+	color: #b36900;
+	background: #fff5ea;
+	background: linear-gradient(top,  #ffffff,  #fff5ea);
+	background: -ms-linear-gradient(top,  #ffffff,  #fff5ea);
+	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#fff5ea));
+	background: -moz-linear-gradient(top,  #ffffff,  #fff5ea);
+	*/
+}
+.tag td p:hover,
+.tag td a:hover {
+	box-shadow: 1px 1px 1px rgba(218,218,218,.5), 0px 2px 3px rgba(218,218,218,.5) inset;
+}
+
+
+/* 価格順 */
+.price_order {
+	margin: 30px 0px 10px 0px;
+	text-align: right;
+}
+
+
+
+
+
+#baby{
+	padding-top:150px;
+}
+
+
+#contents-lv2,
+.contents-lv2{
+	clear:both;
+	padding:3px 0 0;
+}
+#contents-lv2 h2,
+.contents-lv2 h2{
+	font-size:20px;
+	line-height:26px;
+	color:#000;
+	font-weight:bold;
+	padding-left:30px;	
+}
+
+#contents-lv2 h2.recommend,
+.contents-lv2 h2.recommend{
+	background:url(../../common/img/love_icon_b.png) no-repeat;
+}
+#contents-lv2 h2#list,
+.contents-lv2 h2#list,
+#contents-lv2 h2.list,
+.contents-lv2 h2.list{
+	background:url(../../common/img/list_icon_b.png) no-repeat;
+}
+.contents-lv2 h2.tokucho,
+.contents-lv2 h2.popu,
+.contents-lv2 h2.list2{
+	background:url(../../common/img/list_icon_b.png) no-repeat;
+}
+
+.contents-lv2 h2.tokucho{
+	padding-bottom:5px;
+}
+.contents-lv2 h2 span{
+	margin-left:20px;
+	font-size:16px;
+}
+
+.contclv2{
+	padding:0;
+}
+
+
+.recommend_item,
+.listitems{
+	padding:10px 0;
+	clear:both;
+}
+
+.recommend_item>li{
+	width:235px;
+	float:left;
+	margin-left:12px;
+}
+.recommend_item>li:first-child {
+	margin: 0;
+}
+
+*html .recitembox{
+	float:left;
+	margin-right:6px;
+}
+*html .recommend_item{
+	margin-top:30px;
+}
+
+/*
+.recommend_item li.lastli{
+	margin-right:0px;
+}
+*/
+
+.recommend_item_ex{
+	border:1px solid #BFBFBF;
+	font-size:80%;
+	background:#fff;
+	box-shadow:1px 1px 1px #ccc;
+	-moz-box-shadow:1px 1px 1px #ccc;
+	-webkit-box-shadow:1px 1px 1px #ccc;
+	margin-top:40px;
+}
+
+*html .recommend_item_ex{
+	width:235px;
+}
+
+.popu_item_ex {
+	border: 1px solid #BFBFBF;
+	font-size: 80%;
+	background: white;
+	box-shadow: 1px 1px 1px #CCC;
+	-moz-box-shadow: 1px 1px 1px #ccc;
+	-webkit-box-shadow: 1px 1px 1px #CCC;
+}
+*html .popu_item_ex{
+	width:235px;
+}
+*+html .popu_item_ex{
+	padding-top:20px;
+}
+
+/*
+.listitems_ex{
+	border:1px solid #BFBFBF;
+	width:173px;
+	float:left;
+	margin-left:20px;
+	margin-bottom:20px;
+	font-size:70%;
+	background:#fff;
+	box-shadow:1px 1px 1px #ccc;
+	-moz-box-shadow:1px 1px 1px #ccc;
+	-webkit-box-shadow:1px 1px 1px #ccc;
+}
+*/
+
+ul.recommend_item li.firstrecommend,
+li.firstlist{
+	/*margin-left:10px;*/
+}
+
+.recommend_item a,
+.listitems a{
+	display:block;
+	width:100%;
+	/* height:100%; */
+	color:#7A7A7A;
+	font-weight:bold;
+}
+.recommend_item a:hover,
+.listitems a:hover{
+	text-decoration:none;
+	filter: alpha(opacity=65);
+	-moz-opacity: .65;
+	opacity: .65;
+}
+
+.point{
+	background:url(../img/index/point.png) no-repeat;
+	background-position:right;
+	height:52px;
+	width:238px;
+	color:#fff;
+	font-size:18px;
+	line-height:40px;
+	font-weight:bold;
+	text-indent:10px;
+	position:absolute;
+	margin-top:-40px;
+}
+.rank{
+	height:27px;
+}
+
+*+html .point{
+	margin-top:0px;
+}
+
+.point_s{
+	height: 22px;
+	font-weight:bold;
+	color:#C60;
+	font-size:14px;
+	margin:5px 5px 0;
+}
+.listindex{
+	background:url(../img/index/pointL.png) no-repeat;
+	background-position:left;
+	height:40px;
+	width:251px;
+	color:#fff;
+	font-size:18px;
+	line-height:40px;
+	font-weight:bold;
+	text-indent:10px;
+	margin-top:20px;
+}
+.item_name{
+	margin:10px 10px 0 10px;
+	font-size:14px;
+}
+.item_name_kata{
+	font-weight:normal;
+	font-size:11px;
+}
+.item_name_name{
+	height: 5em;
+	font-weight:800;
+
+}
+*+html .item_name{
+	margin-top:-10px;
+	text-decoration:underline;
+	color:#1055e0;	
+}
+*+html .item_name:hover{
+	cursor:pointer;
+}
+*html .item_name{
+	margin-top:-10px;
+	text-decoration:underline;
+	color:#1055e0;		
+}
+*html .item_name:hover{
+	cursor:pointer;
+}
+
+.item_name_s{
+	margin:0 6px;
+	font-size:12px;
+}
+*+html .item_name_s{
+	margin-top:-20px;
+	text-decoration:underline;
+	color:#1055e0;		
+}
+*html .item_name_s{
+	margin-top:-20px;
+	text-decoration:underline;
+	color:#1055e0;		
+}
+.item_image_s{
+	width:100%;
+	text-align:center;
+	padding:5px 0;
+}
+
+.item_info{
+	background:url(../../common/img/dotted.png) repeat-x top;	
+	height:20px;
+	padding:10px 5px;
+}
+
+*+html .item_info{
+	padding-bottom:20px;
+}
+*+html .item_info>ul{
+	margin-top:-20px;
+}
+*html .item_info ul{
+	margin-top:-10px;
+}
+.cs li{
+	display:block;
+	float:left;
+	width:44px;
+	height:45px;
+	color:#fff;
+	font-size:16px;
+	text-align:center;	
+	margin-right:3px;
+}
+.color{
+	background:url(../img/index/color.png) no-repeat;
+}
+.size{
+	background:url(../img/index/size.png) no-repeat;
+}
+.price{
+	text-align:right;
+	padding-right:10px;
+}
+.price span{
+	color:#000;
+	font-size:14px;
+	line-height:22px;
+}
+.price span span{
+	font-size:20px;
+}
+
+.cs_s li{
+	display:block;
+	float:left;
+	width:34px;
+	height:31px;
+	color:#fff;
+	font-size:16px;
+	text-align:center;	
+	margin-right:3px;
+}
+.colors{
+	background:url(../img/index/color_s.png) no-repeat;
+}
+.sizes{
+	background:url(../img/index/size_s.png) no-repeat;
+}
+.price_s{
+	padding-right:5px;
+	text-align:right;
+	line-height:14px;
+	font-weight:bold;
+	display:block;
+}
+
+*+html .item_info_s>ul{
+	margin-top:-16px;
+}
+
+
+
+/* アイテムレビューへのアンカー */
+.review_anchor {
+	/*height: 26px;*/
+	padding:5px 0px;
+	border-top: 1px solid #d8d8d8;
+	white-space: nowrap;
+
+}
+.review_anchor a {
+	font-size: 12px;
+	color: #1055e0;
+}
+
+.review_anchor p {
+	font-size: 12px;
+}
+
+.review_anchor a:hover {
+	text-decoration: underline;
+	color: #04c;
+}
+
+
+/*itemindex*/
+.indexmsg{
+	border:1px solid #999;
+	border-radius:3px;
+	padding:50px;
+	background:#fff;
+	margin-top:20px;
+}
+.indeximg{
+	position:absolute;
+	margin-top:-220px;
+	right:30px;
+}
+.tokucholist{
+	background:url(../img/index/tokucholistbg.png) no-repeat bottom;
+	padding:10px 1px 10px;
+	height:160px;
+}
+.tokucholist li{
+	float:left;
+	display:block;
+	width:121px;
+	height:154px;
+	text-align: center;
+	line-height: 0px;	
+}
+.tokucholist li:hover,
+.hide{
+/*	cursor:pointer; */
+	display:none;
+}
+
+
+.popu_item_name{
+	float:right;
+	width:170px;
+	margin-bottom:10px;
+}
+.popu_item_name .item_name_name {
+	height: 3em;
+}
+.item_image {
+	width: 233px;
+	height: 165px;
+	overflow: hidden;
+}
+
+.recommend_item{
+/*	background:url(../../common/img/dotted.png) repeat-x top;	
+*/	margin-top:5px;		
+}
+
+.rankno{
+	position:absolute;
+	margin-left: -10px;
+	margin-top: -10px;
+}
+.dotted{
+	background:url(../../common/img/dotted.png) repeat-x top;
+	height:10px;
+}
+/*tab*/
+
+.disnon,
+.changetokucho {
+  display: none;
+}
+.tokucho_block{
+	display: none;
+	background:url(../img/index/tokuchobase.png);
+	border:1px solid #CCC;
+	box-shadow:0 0 1px #999;
+	margin:0 1px;
+	padding:10px 0 0;
+}
+.itokucho:hover,
+.nowtokucho{
+	margin-top:5px;
+	background:url(../img/index/indexarrow.png) no-repeat bottom;
+	padding-bottom:5px;
+}
+
+#tokucho_wrap{
+	padding:0;
+}
+.tokuchoimg{
+	padding:10px;
+}
+.tokuchoitems h3{
+	font-size:20px;
+	color:#666;
+	margin:0 10px;
+}
+.tokuchodt{
+	font-size: 16px;
+	line-height: 18px;
+	font-weight: bold;
+	color: #d28837;
+	margin: 7px;
+	background:url(../../common/img/dotted.png) repeat-x bottom;	
+	background:url(../../common/img/dotted.png) repeat-x bottom;
+	padding-bottom:10px;
+}
+.tokucho_item_ex .price{
+	font-size:12px;
+}
+.tokuchoitembox{
+	background:#fff;
+	border:1px solid #BFBFBF;
+}
+*+html .tokucho_item_name{
+	margin-top:-15px;
+	padding-bottom:5px;
+}
+.tokucho_item{
+	margin:0 10px;
+	padding-top: 20px;
+}
+.tokucho_item > li {
+	margin-right:3px;
+	width:230px;
+}
+.pickup1{
+	margin-left:50px;
+}
+.pickup2{
+	margin-left:250px;
+}
+.pickup3{
+	margin-left:550px;
+}
+.pickup{
+	padding:0 11px;
+}
+.pickupitem_wrap{
+	padding: 5px;
+	background:#F08837;;
+	border-radius:5px;
+	margin-bottom:30px;
+	margin-top:-1px;
+}
+.pickup h4{
+	font-size: 24px;
+	color: white;
+	padding: 7px 10px 5px;
+	font-weight: bold;
+	text-shadow:1px 1px 1px #666;
+}
+.pickupitem{
+	background:#fff;
+	border-radius:5px;
+	margin:0 3px 3px;
+	padding:20px;
+}
+.pickup h5{
+	font-size:18px;
+	font-weight:bold;
+	color:#666;
+}
+.piciupitem_img{
+	margin:20px 0 10px 10px;
+}
+.pickupimgul{
+	float:right;
+	width:240px;
+}
+.pickupimgul li{
+	float:left;
+	margin:0 2px 4px;	
+	display:block;
+	width:112px;
+	height:102px;
+	text-align:center;
+	border:1px solid #999;	
+	padding:1px;	
+}
+.pickupimgul li:hover,
+.pickupimgul li.nowpimg{
+	border:1px solid #333;
+}
+.pickupimgul li:hover{
+	cursor:pointer;
+}
+.changetokucho{
+	text-align:right;
+	padding:10px;
+}
+.pickupimgL{
+	display:block;
+	width:376px;
+	height:304px;
+	text-align:center;
+	border:1px solid #333;
+	float: left;
+	padding:10px 0;
+}
+.pickup_desc{
+	padding: 0 10px 10px;
+}
+.pickupbtn{
+	margin-left:310px;
+}
+.pickupbtn a{
+	background-image:url(../img/index/tokuchomore.png);
+	display:block;
+	width:340px;
+	height:60px;
+	backgrond-position:top;
+	font-weight:bold;
+	text-decoration:none;
+	color:#fff;
+	text-indent:28px;
+	font-size:22px;
+	line-height:60px;
+}
+.pickupbtn a:hover{
+	background-position:bottom;
+}
+
+
+
+
+div.up {
+	text-align: right;
+	padding: 10px 0;
+}
+a.up_icon {
+	background: url(../../common/img/up.png) no-repeat;
+	padding-left: 14px;
+	color: #999;
+	text-decoration: underline;
+	font-size: 10px;
+}
+
+
+h3.tokucho {
+	font-size: 26px;
+	background: url(../../common/img/list_icon_b.png) no-repeat left;
+	padding-left: 30px;
+	margin-left: 3px;
+	color: #d95;
+	text-shadow: 1px 1px 1px #000;
+	letter-spacing: 2px;
+}
+h3.heading {
+	font-size: 26px;
+	color: #d95;
+	text-shadow: 1px 1px 1px #000;
+	letter-spacing: 2px;
+}
+
+.txt_min .number {
+	border:1px solid: #fff;
+	padding: 2px 5px;
+	font-weight: bold;
+}
+
+.txt_min_end{
+	margin-bottom:100px;
+}
+.txt_end{
+	font-size: 14px;
+	line-height: 20px;
+	margin: 50px 5px;
+	color: #F60;
+	font-weight: bold;
+	text-shadow: 1px 1px 0 #ccc;
+}
+
+
+
+/* お届け日一覧 */
+#topbanner_txt {
+	position: absolute;
+	bottom: 6px;
+	left: 5px;
+}
+ul#cal li p:first-child {
+	font-size: 10px;
+	font-weight: bold;
+	color: #DF3C31;
+}
+ul#cal li {
+	float: left;
+	display: block;
+	background: #fff;
+	margin: 0 2px;
+	padding: 5px 3px;
+	height: 42px;
+	box-shadow: 0 0 1px #ccc;
+	color: #DF3C31;
+	font-weight: bold;
+	text-align: center;
+}
+ul#cal li .mm {font-size: 13px;}
+ul#cal li .dd {font-size: 24px;}
+
+
+
+/* スライド */
+#mainvisual {
+	position: relative;
+	height: 200px;
+	margin-bottom: 1em;
+}
+.main_image {
+	height: 200px;
+}
+
+/* スライドのナビゲーション */
+#nav {
+	height: 24px;
+	margin-top: 2px;
+	text-align: center;
+}
+#nav a {
+	padding: 0 .5em;
+	margin: 0 2px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	background: #efefef;
+}
+#nav a.activeSlide {
+	color: #333;
+	font-weight: bold;
+	background: #fff;
+}
+/*
+.tag p,a{
+	font-size:8px;
+}
+*/
+
+
+.tag {
+	/*display:block;*/
+	/*width:120;*/
+	padding:0px;
+}
+
+.tag_btn {
+/*
+	display:block;
+	width:50%;
+	float:left;*/
+	display:block;
+	width:40%;
+	float:left;
+	margin:5px 15px;
+}
+
+p.tag_btn {
+	font-size: 15px;
+}
+
+.tag{
+	 text-align: center;
+}
+
+h3.tokucho {
+	font-size: 18px;
+	background: url(../../common/img/list_icon_b.png) no-repeat left;
+	padding-left: 30px;
+	margin-left: 3px;
+	color: #d95;
+	text-shadow: 1px 1px 1px #000;
+	letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.txt_min{
+	font-size:14px;
+	color:#fff;
+	background-color:#c3c3c3;
+	padding:7px;
+	border-radius:3px;
+	text-align: center;
+	float:left;
+	width:98%;
+}
+
+
+.txt_min .number {
+	border:1px solid: #fff;
+	padding: 2px 5px;
+	font-weight: bold;
+}
+
+.txt_min_end{
+	margin-bottom:100px;
+}
+.txt_end{
+	font-size: 14px;
+	line-height: 20px;
+	margin: 50px 5px;
+	color: #F60;
+	font-weight: bold;
+	text-shadow: 1px 1px 0 #ccc;
+}
+
+.price_s span {
+	padding-right: 10px;
+	display:block;
+	white-space: nowrap;
+}
+
+.item_info_s span span{
+	font-size:17px;
+	line-height:16px;
+	color:#000;
+}
+
+.item_info_s{
+	background:url(../../common/img/dotted.png) repeat-x top;	
+	/*height:22px;*/
+	padding:8px 3px 3px 3px;
+	margin-bottom:5px;
+}
+
+}
