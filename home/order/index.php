@@ -779,7 +779,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 									<caption>プリント情報</caption>
 									<thead>
 										<tr>
-											<th>アイテム</th><th>プリント位置</th><th>デザインのサイズ</th><th>デザインの色数</th>
+											<th>アイテム</th><th>プリント位置</th><th>デザインの色数</th>
 										</tr>
 									</thead>
 									<tbody></tbody>

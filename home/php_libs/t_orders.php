@@ -341,7 +341,7 @@ class Orders Extends Conndb {
 										 'categorytype'=>$_REQUEST['categorytype'][$i],
 										 'itemtype'=>$_REQUEST['itemtype'][$i],
 										 'areakey'=>$_REQUEST['areakey'][$i],
-										 'areasize'=>$_REQUEST['areasize'][$i],
+										 'areasize'=>0,
 										);
 							$_SESSION['orders']['items'][$catid]['item'][$itemid]['design'][$base[$i]][$a] = $tmp;
 //						}
@@ -1506,7 +1506,7 @@ if(isset($_REQUEST['act'])){
 				$res .= '<div class="posimg">'.$f.'</div>';
 				$res .= '<div class="inkbox">';
 				$res .= '<table><caption>'.$base_name.'</caption>';
-				$res .= '<thead><tr><th>プリント位置</th><th>デザインの大きさ</th><th>デザインの色数</th></tr></thead>';
+				$res .= '<thead><tr><th>プリント位置</th><th colspan="2">デザインの色数</th></tr></thead>';
 				$res .= '<tfoot><tr><td>'.$ppData['category'].'</td><td>'.$ppData['item'].'</td><td>'.$posname_key.'</td></tr></tfoot>';
 				$res .= '<tbody>';
 				
@@ -1531,15 +1531,15 @@ if(isset($_REQUEST['act'])){
 						$size = $v['design'][$base_name][$j]['areasize'];
 						$res .= '<tr>';
 						$res .= '<th>'.$posname.'</th>';
-						$res .= '<td>';
-						if ($posid!=46) {
-							$res .= '<select class="areasize">';
-							$select = '<option value="0">大</option><option value="1">中</option><option value="2">小</option>';
-							$res .= str_replace('value="'.$size.'"', 'value="'.$size.'" selected="selected"', $select);
-							$res .= '</select>';
-						}
-						$res .= '</td>';
-						$res .= '<td>';
+//						$res .= '<td>';
+//						if ($posid!=46) {
+//							$res .= '<select class="areasize">';
+//							$select = '<option value="0">大</option><option value="1">中</option><option value="2">小</option>';
+//							$res .= str_replace('value="'.$size.'"', 'value="'.$size.'" selected="selected"', $select);
+//							$res .= '</select>';
+//						}
+//						$res .= '</td>';
+						$res .= '<td colspan="2">';
 						if($posid!=46){
 							$res .= '<select class="ink">';
 							$select = '<option value="0">選択してください</option>';
@@ -1570,14 +1570,14 @@ if(isset($_REQUEST['act'])){
 				}else{
 					$res .= '<tr>';
 					$res .= '<th>'.$first_posname.'</th>';
-					$res .= '<td>';
-					if ($posid!=46) {
-						$res .= '<select class="areasize">';
-						$res .= '<option value="0" selected="selected">大</option><option value="1">中</option><option value="2">小</option>';
-						$res .= '</select>';
-					}
-					$res .= '</td>';
-					$res .= '<td>';
+//					$res .= '<td>';
+//					if ($posid!=46) {
+//						$res .= '<select class="areasize">';
+//						$res .= '<option value="0" selected="selected">大</option><option value="1">中</option><option value="2">小</option>';
+//						$res .= '</select>';
+//					}
+//					$res .= '</td>';
+					$res .= '<td colspan="2">';
 					if($posid!=46){
 						$res .= '<select class="ink">';
 						$res .= '<option value="0" selected="selected">選択してください</option>';
