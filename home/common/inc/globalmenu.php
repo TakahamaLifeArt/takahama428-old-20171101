@@ -41,12 +41,12 @@
 				<ul class="wide">
 					<li><a href="/design/designtemp.html" onclick="ga('send','event','designtemp','click','global');">無料！デザイン素材集</a></li>
 					<li><a href="/design/designguide.html" onclick="ga('send','event','designguide','click','global');">デザインの入稿・作り方</a></li>
-					<li><a href="/design/printing.html"onclick="ga('send','event','printing','click','global');">プリント方法の種類</a></li>
-					<li><a href="/design/emb.html"onclick="ga('send','event','emb','click','global');">刺繍・名入れサービス</a></li>
-					<li><a href="/design/designposition.html"onclick="ga('send','event','designposition','click','global');">プリント位置について</a></li>
-					<li><a href="/design/fontcolor.html"onclick="ga('send','event','fontcolor','click','global');">インクカラーとフォント種類</a></li>
-					<li><a href="/design/gallery.html"onclick="ga('send','event','gallery','click','global');">デザイン実例</a></li>
-					<li><a href="/design/support/"onclick="ga('send','event','support','click','global');">デザインサポート</a></li>
+					<li><a href="/design/printing.html" onclick="ga('send','event','printing','click','global');">プリント方法の種類</a></li>
+					<li><a href="/design/emb.html" onclick="ga('send','event','emb','click','global');">刺繍・名入れサービス</a></li>
+					<li><a href="/design/designposition.html" onclick="ga('send','event','designposition','click','global');">プリント位置について</a></li>
+					<li><a href="/design/fontcolor.html" onclick="ga('send','event','fontcolor','click','global');">インクカラーとフォント種類</a></li>
+					<li><a href="/design/gallery.html" onclick="ga('send','event','gallery','click','global');">デザイン実例</a></li>
+					<li><a href="/design/support/" onclick="ga('send','event','support','click','global');">デザインサポート</a></li>
 					
 					<li><a href="/design/template_illust.html" onclick="ga('send','event','template_illust','click','global');">イラレ入稿テンプレート</a></li>
 					<li><a href="/design/designguide_freehand.html" onclick="ga('send','event','designguide_freehand','click','global');">手描き入稿用紙（FAX）</a></li>
@@ -56,13 +56,13 @@
 			</li>
 			<li class="adjust"><img src="/common/img/header/gnavi_06.png" alt="オリジナルTシャツ屋について" class="gnimg"><p class="gntxt">タカハマについて</p>
 				<ul>
-					<li><a href="/reason/"onclick="ga('send','event','reason','click','global');">選ばれる理由</a></li>
+					<li><a href="/reason/" onclick="ga('send','event','reason','click','global');">選ばれる理由</a></li>
 					<li><a href="/userreviews/" onclick="ga('send','event','userreviews','click','global');">レビュー・評価</a></li>
 					<li><a href="/blog/thanks_blog/" onclick="ga('send','event','thanks_blog','click','global');">お客様ブログ</a></li>
-					<li><a href="/app/WP/?cat=4"onclick="ga('send','event','staff-blog','click','global');">スタッフブログ</a></li>
-					<li><a href="/corporate/profile/staff.html"onclick="ga('send','event','staff','click','global');">スタッフ紹介</a></li>
-					<li><a href="/corporate/profile/manager.html"onclick="ga('send','event','manager','click','global');">代表挨拶</a></li>
-					<li><a href="/corporate/overview.html"onclick="ga('send','event','overview','click','global');">会社概要</a></li>
+					<li><a href="/app/WP/?cat=4" onclick="ga('send','event','staff-blog','click','global');">スタッフブログ</a></li>
+					<li><a href="/corporate/profile/staff.html" onclick="ga('send','event','staff','click','global');">スタッフ紹介</a></li>
+					<li><a href="/corporate/profile/manager.html" onclick="ga('send','event','manager','click','global');">代表挨拶</a></li>
+					<li><a href="/corporate/overview.html" onclick="ga('send','event','overview','click','global');">会社概要</a></li>
 				</ul>
 			</li>
 		</ul>
