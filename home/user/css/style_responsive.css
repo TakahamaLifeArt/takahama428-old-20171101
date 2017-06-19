@@ -467,6 +467,22 @@ input[type="date"] {
 }
 
 
+.btn-f{
+    -webkit-appearance: textfield;
+    background-color: #fff;
+    -webkit-rtl-ordering: logical;
+    user-select: text;
+    cursor: auto;
+    padding: 1px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: #1055e0;
+    border-image: initial;
+    border-radius: 1px;
+    padding: 1px 8%;
+}
+
+
 /*		?????????????
 ===============================================================*/
 
