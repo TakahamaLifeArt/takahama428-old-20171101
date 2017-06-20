@@ -1050,7 +1050,7 @@ class Orders Extends Conndb {
 		$options['publish'] = $opt['publish'];
 		$options['noprint'] = $opt['noprint'];
 		
-		$delitime = array('', '午前中', '12:00-14:00', '14:00-16:00', '16:00-18:00', '18:00-20:00', '20:00-21:00');
+		$delitime = array('', '午前中', '12:00-14:00', '14:00-16:00', '16:00-18:00', '18:00-20:00', '19:00-21:00');
 		$options['deliverytime'] = $delitime[$opt['deliverytime']];
 		
 		foreach($options as $key=>$val){
