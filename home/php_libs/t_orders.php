@@ -998,11 +998,16 @@ class Orders Extends Conndb {
 			if ($workday<1 || ($workday==1 && $isPack)) {
 				$options['expressError'] = '製作日数が足りません！';
 			} else if($workday==1) {
-				$options['expressError'] = '<a href="/sameday/">当日仕上げの専用ページ</a>をご利用ください。';
+//				$options['expressError'] = '<a href="/sameday/">当日仕上げの専用ページ</a>をご利用ください。';
+				$options['expressError'] = '製作日数が足りません！';
 			} else if($workday==2) {
 				if ($isPack) $opt['pack'] = 0;
 			} else if($isPack) {
 				$workday--;
+			}
+			
+			if (!empty($options['expressError'])) {
+				$_SESSION['orders']['options']['deliveryday'] = '';
 			}
 
 			$express = 0;
