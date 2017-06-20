@@ -57,7 +57,7 @@ class Ordermail extends Conndb{
 				'14:00-16:00',
 				'16:00-18:00',
 				'18:00-20:00',
-				'20:00-21:00'
+				'19:00-21:00'
 			);
 			$order_info .= "◇　配達時間指定　：　".$delitime[$opts['deliverytime']]."\n\n";
 			$order_info .= "━━━━━━━━━━━━━━━━━━━━━\n\n";
