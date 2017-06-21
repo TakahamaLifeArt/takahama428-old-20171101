@@ -1,0 +1,346 @@
+<?php
+include $_SERVER['DOCUMENT_ROOT']."/common/inc/pageinit.php"; 
+$ticket = htmlspecialchars(md5(uniqid().mt_rand()), ENT_QUOTES);
+$_SESSION['ticket'] = $ticket;
+?>
+
+
+<?php
+	include $_SERVER['DOCUMENT_ROOT']."/m3/php_libs/orders.php";
+	$order = new Orders();
+	$workday = array(1,4);
+	$delidate = array();	// [当日特急, 通常３日]
+	for($i=0; $i<count($workday); $i++){
+		$fin = $order->getDelidate(null, 1, $workday[$i], 'simple');
+		$delidate[$i]["month"] = $fin['Month'];
+		$delidate[$i]["day"] = $fin['Day'];
+		$delidate[$i]["weekname"] = mb_convert_encoding($fin['weekname'], 'utf-8', 'euc-jp');
+	}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="euc-jp" />
+	<title>当日特急プラン ｜ オリジナルTシャツが早い、タカハマライフアート</title>
+	<meta name="Description" content="早い！当日発送可能！オリジナルTシャツ作成を業界最速当日仕上げで即日発送します！お急ぎのお客様は今すぐお電話してください。当日午前１２までが〆切りになります。お早めに！業界最速短納期制作、特急のお急きプリントは早い、丁寧、東京都で作る高品質タカハマライフアートへ！" />
+	<meta name="keywords" content="早い,即日,tシャツ,オリジナル,プリント" />
+	<link rel="shortcut icon" href="/icon/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="../common/css/common.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="../common/css/base.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="../common/js/modalbox/css/jquery.modalbox.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="../common/js/uniform/css/uniform.default.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="../common/css/printposition.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="./css/style.css" media="screen" />
+<!--	<link rel="stylesheet" type="text/css" href="../common/js/ui/flick/jquery.ui.datepicker.css" media="screen" /> -->
+	
+	<script type="text/javascript" src="../common/js/jquery.js"></script>
+	<script type="text/javascript" src="../common/js/modalbox/jquery.modalbox-min.js"></script>
+	<script type="text/javascript" src="../contact/js/contact.js"></script>
+	<script type="text/javascript" src="../common/js/uniform/jquery.uniform.js"></script>
+	<script src="//ajaxzip3.github.io/ajaxzip3.js" charset="utf-8"></script>
+	<script type="text/javascript" src="../common/js/tlalib_bak.js"></script>
+	<script type="text/javascript" src="./js/lib.js"></script>
+<!--	<script type="text/javascript" src="../common/js/ui/jquery.ui.datepicker.js"></script>-->
+
+	<!-- OGP -->
+	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#  website: http://ogp.me/ns/website#">
+	<meta property="og:title" content="世界最速！？オリジナルTシャツを当日仕上げ！！" />
+	<meta property="og:type" content="article" /> 
+	<meta property="og:description" content="業界No. 1短納期でオリジナルTシャツを1枚から作成します。通常でも3日で仕上げます。" />
+	<meta property="og:url" content="http://www.takahama428.com/" />
+	<meta property="og:site_name" content="オリジナルTシャツ屋｜タカハマライフアート" />
+	<meta property="og:image" content="http://www.takahama428.com/common/img/header/Facebook_main.png" />
+	<meta property="fb:app_id" content="1605142019732010" />
+	<!--  -->
+	
+</head>
+<body>
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-T5NQFM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T5NQFM');</script>
+<!-- End Google Tag Manager -->
+	
+	<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/header.php"; ?>
+	
+	<div id="container">
+	
+	<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/globalmenu.php"; ?>
+		
+		
+		<div class="panwrap">
+			<ul class="pan">
+				<li><a href="/">オリジナルＴシャツ屋ＴＯＰ</a></li>
+				<li>当日特急プラン</li>
+			</ul>
+		</div>
+		
+		<div class="contents" width="100%">
+			<div class="heading1_wrapper" style="padding-bottom:5px;">
+				<h1>当日特急プラン</h1>
+			</div>
+			<div class="clearfix section01">
+				<h1><img src="./img/speed_img_01.jpg" width="100%" alt="当日特急プラン"></h1>
+			</div>
+			<ul class="cal_red">
+				<li>
+					<div id="date_box">
+						<img class="bg_r" alt="当日仕上げ" src="./img/day_mark.jpg" width="185px" height="130px">
+						<p class="daytext">只今の時間にご注文確定頂いた場合</p>
+						<p class="blue"><span id="shortMonth"><?php echo $delidate[0]["month"];?></span>月<span id="shortDay"><?php echo $delidate[0]["day"];?></span>日<span id="shortWeek">（<?php echo mb_convert_encoding($delidate[0]["weekname"],"euc-jp","utf-8");?>）</span></p>
+						<p class="red">※〆切りは午前12時まで</p>
+					</div>
+				</li>
+
+				<li>
+					<div class="phone_txt">
+						<p class="red">まずはお電話ください</p>
+						<p class="timetx">受付時間：平日 10:00-18:00</p>
+						<p class="red"><img alt="電話" src="./img/tel_mark.png" width="40px" height="50px" style="padding-bottom:5px; padding-right:10px;">0120-130-428</p>
+					</div>
+				</li>
+			</ul>
+		
+			<h2 class="lines-on-sides">WEBからのお問い合わせ</h2>
+			<div class="mailbtn"><a href="#mail_top"><img src="./img/mail_mark.png" width="44px" height="35px"><span class="spce">お問い合わせ</span><img src="./img/arrow_d.png" width="20px" height="20px"></a></div>
+
+			<div class="ong">			
+				<p>デザインとTシャツ・タオルの枚数内容をご準備いただくと、</p>
+				<p>さらに早くお見積もりができます。</p>
+			</div>
+
+			<div class="heading"><img src="./img/plan_mark.jpg" width="260px" height="45px" class="leftdrop"><p>３つの条件</p></div>
+			<ol class="inflist">
+				<li><p><span class="stg">1.&emsp;12時までに注文確定!</span><br>&emsp;&emsp;データ入稿が完了している・お電話で注文確定している。</p></li>
+				<li><p><span class="stg">2.&emsp;1番人気のTシャツとタオルのみ対応可</span><br>&emsp;&emsp;085-CVT Tシャツ白と黒(Sサイズ・XLサイズ)<br>&emsp;&emsp;522-FTタオルの白色(フリーサイズ) </p></li>
+				<li>
+					<p><span class="stg">3.&emsp;お支払い方法</span><br>&emsp;&emsp;「代金引換」「銀行振込」「カード決済」になります。</p>
+					<p class="rgttxt"><span class="red">※</span>銀行振込・カード決済に限りご入金確認後、商品を発送致します。</p>
+				</li>
+			</ol>
+
+			<h2 class="lines-on-sides">プラン別発送スケジュール</h2>			
+			<div>
+				<p class="ptxt">お客様のご要望に合わせた4つの仕上げプランの中で当日特急プランが一番早い！</p>
+				<p><img src="./img/plan_img.jpg" width="900px" height="580px" alt="発送プラン" style="margin-left:50px;"></p>
+				<p class="daytxt"><span class="red">※</span>発送は東京からしております。<br><span class="red">※</span>お届けが、2日以上かかる地域もございます。</p>
+			</div>
+
+
+			<div class="heading"><img src="./img/plan_mark.jpg" width="260px" height="45px" class="leftdrop"><p>３つのメリット</p></div>
+			<ol class="inflist">
+				<li><p><span class="stgbl">1.&emsp;<img src="./img/merit_01.jpg" width="200px" height="30px"></span><br>&emsp;&emsp;全国当日出荷 … 最短6時間仕上げ</p></li>
+                <li><p><span class="stgbl">2.&emsp;<img src="./img/merit_02.jpg" width="200px" height="30px"></span><br>&emsp;&emsp;来社引き取り可能！（17時&sim;18時）</p></li>
+				<li><p><span class="stgbl">3.&emsp;<img src="./img/merit_03.jpg" width="200px" height="30px"></span><br>&emsp;&emsp;東京近郊の方はバイク便のご利用で当日到着も可能！</p><p class="rgttxt"><span class="red">※</span>お届けが、2日以上かかる地域もございます。</p></li>
+			</ol>
+			<h2 class="lines-on-sides">料金目安</h2>		
+			<div>
+				<p class="ptxt2">アイテムの枚数とサイズ、プリントの色数と方法でおおよその1枚の料金目安を<br>ご確認できます。</p>
+				<p><img src="./img/fee_img.jpg" width="900px"  alt="料金目安" style="margin-left:50px;"></p>
+				<div class="ong">			
+					<p>デザイン<span class="bktxt">と</span>Tシャツ・タオルの枚数<span class="bktxt">をお知らせください。</span></p>
+					<p>すぐにお見積もり致します！</p>
+				</div>
+			</div>
+			
+			<ul class="cal_red">			
+				<li>
+					<div class="phone_txt">
+						<p class="red">まずはお電話ください</p>
+						<p class="timetx">受付時間：平日 10:00-18:00</p>
+						<p class="red"><img alt="電話" src="./img/tel_mark.png" width="40px" height="50px" style="padding-bottom:5px; padding-right:10px;">0120-130-428</p>
+					</div>
+				</li>
+			</ul>
+			<div id="mail_top"></div>
+			<p class="ptxt">＼　WEBからのお問い合わせは24時間受付中　／</p>
+			<div class="inner">
+				<div class="bdrline">
+					<h3>お問い合わせフォーム</h3>
+					<p class="lbl">■データを添付や詳細を下記にて記載して、お問い合わせ下さい。</p>
+					<p class="point">「※」 は必須です。</p>
+					<form name="contact_form" method="post" action="/contact/transmit.php?req=sameday" enctype="multipart/form-data"  onsubmit="return false;">
+						<table id="enq_table">
+							<tbody>
+								<tr>
+									<th>お名前</th>
+									<td class="point">※</td>
+									<td>
+										<p class="txt"></p>
+										<input name="customername" type="text" value="">
+									</td>
+								</tr>
+								<tr>
+									<th>フリガナ</th>
+									<td class="point">※</td>
+									<td>
+										<p class="txt"></p>
+										<input name="ruby" type="text" value="">
+									</td>
+								</tr>
+								<tr>
+									<th>ご住所</th>
+									<td class="point">※</td>
+									<td>
+										<p>〒<input name="zipcode" id="zipcode" class="forZip" type="text" onkeyup="AjaxZip3.zip2addr(this,'','addr0','addr1');" /></p>
+										<p><input name="addr0" id="addr0" type="text" placeholder="都道府県" maxlength="4" /></p>
+										<p><input name="addr1" id="addr1" type="text" placeholder="文字数は全角28文字、半角56文字です" maxlength="56" class="restrict" /></p>
+										<p><input name="addr2" id="addr2" type="text" placeholder="文字数は全角16文字、半角32文字です" maxlength="32" class="restrict" /></p>
+									</td>
+								</tr>
+								<tr>
+									<th>メールアドレス</th>
+									<td class="point">※</td>
+									<td>
+										<p class="txt"></p>
+										<input name="email" type="text">
+									</td>
+								</tr>
+								<tr>
+									<th>電話番号</th>
+									<td class="point">※</td>
+									<td>
+										<p class="txt"></p>
+										<input name="tel" type="text" class="forPhone">
+									</td>
+								</tr>
+								<tr>
+									<th>ご希望納期</th>
+									<td class="point">※</td>
+									 <td><input id="datepicker"  type="date" size="14" name="deliveryday" class="forDate" value="" /></td>
+								</tr>
+
+
+								<tr>
+									<th>メッセージ</th>
+									<td>&nbsp;</td>
+									<td>
+										<div class="txt"></div>
+										<textarea name="message" id="message" cols="40" rows="7"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="3" class="comment">デザインデータなどのファイルを送信される方は、こちらから添付できます。</td>
+								</tr>
+								<tr>
+									<th>添付ファイル</th>
+									<td>&nbsp;</td>
+									<td><input type="file" name="attachfile[]"><br>
+									<input type="file" name="attachfile[]">
+									</td>
+								</tr>
+								<tr class="last">
+									<th></th><td>&nbsp;</td>
+									<td><p class="add_attachfile" onClick="$.add_attach('enq_table');" >別の添付ファイルを追加</p></td>
+								</tr>
+							</tbody>
+						</table>
+
+						<p class="lbl">■カラーとサイズ</p>
+						<table id="size_table">
+							<caption>サイズの中に必要な枚数を選択ください(複数可)</caption>
+							<thead>
+								<tr>
+									<th>色</th><th>S (&yen;480)</th><th>M (&yen;480)</th><th>L (&yen;480)</th><th>XL (&yen;480)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><img src="<?php echo _IMG_PSS?>/items/list/t-shirts/085-cvt/085-cvt_001.jpg" width="100"></td>
+									<td><input type="number" value="0" min="0" step="1" name="S_001">枚</td>
+									<td><input type="number" value="0" min="0" step="1" name="M_001">枚</td>
+									<td><input type="number" value="0" min="0" step="1" name="L_001">枚</td>
+									<td><input type="number" value="0" min="0" step="1" name="XL_001">枚</td>
+								</tr>
+								<tr>
+									<th>色</th><th>S (&yen;560)</th><th>M (&yen;560)</th><th>L (&yen;560)</th><th>XL (&yen;560)</th>
+								</tr>
+								<tr>
+									<td><img src="<?php echo _IMG_PSS?>/items/list/t-shirts/085-cvt/085-cvt_005.jpg" width="100"></td>
+									<td><input type="number" value="0" min="0" step="1" name="S_005">枚</td>
+									<td><input type="number" value="0" min="0" step="1" name="M_005">枚</td>
+									<td><input type="number" value="0" min="0" step="1" name="L_005">枚</td>
+									<td><input type="number" value="0" min="0" step="1" name="XL_005">枚</td>
+								</tr>
+								<tr>
+									<th>色</th><th>Free (&yen;380~)</th><th colspan="3"></th>
+								</tr>
+								<tr>
+									<td><img src="<?php echo _IMG_PSS?>/items/list/towel/522-ft/522-ft_001.jpg" width="100"></td>
+									<td><input type="number" value="0" min="0" step="1" name="Free_001">枚</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<p class="lbl">■プリントする位置とデザインの色数を指定してください</p>
+						<div class="noprint_wrap">
+							<p><label><input type="checkbox" name="noprint" id="noprint" value="1"> プリントなしで購入する</label></p>
+							<p class="note"><span>※</span>プリントなしの場合1割増しになります。</p>
+						</div>
+						<div id="pos_wrap"></div>
+
+						<input type="hidden" name="ticket" value="<?php echo $ticket; ?>">
+						<input type="hidden" name="title" value="expresstoday">
+						<input type="hidden" name="mode" value="send">
+						<div id="pos_info">
+
+						</div>
+						<div class="button_area">
+							<p class="msg">入力内容をご確認の上、よろしければ[ 送信 ]ボタンを押してください。</p>
+							<div id="sendmail" style="width: 154px; height: 60px"></div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div>
+				<p class="ptxt4">手書きのイラストや、デザインをプリントアウトしたものなどの場合は、下記の宛先までお送りください。</p>	
+				<p class="ptxt3"><a href="/contact/faxorderform.pdf" target="_blank">手書き注文書(PDF)はこちら<img src="./img/img_01.png" width="40px" height="40px"></a></p>
+				<p class="ptxt">FAX: 03-5670-0730 (受付時間：24時間受信)</p>
+				<p class="ptxt4"><span class="kome">※</span>家庭用は画質が低い為、複合機やコンビニからをオススメします。</p>
+			</div>
+		</div>
+		
+	</div>
+
+	<p class="scroll_top"><a href="#header">当日特急プラン　ページトップへ</a></p>
+	
+	<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/footer.php"; ?>
+	
+
+<!--Yahoo!タグマネージャー導入 2014.04 -->
+<script type="text/javascript">
+  (function () {
+    var tagjs = document.createElement("script");
+    var s = document.getElementsByTagName("script")[0];
+    tagjs.async = true;
+    tagjs.src = "//s.yjtag.jp/tag.js#site=bTZi1c8";
+    s.parentNode.insertBefore(tagjs, s);
+  }());
+</script>
+<noscript>
+  <iframe src="//b.yjtag.jp/iframe?c=bTZi1c8" width="1" height="1" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+</noscript>
+
+
+<script type="text/javascript">
+	window._pt_sp_2 = [];
+	_pt_sp_2.push('setAccount,52e3170c');
+	var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+	(function() {
+		var atag = document.createElement('script'); atag.type = 'text/javascript'; atag.async = true;
+		atag.src = _protocol + 'js.ptengine.jp/pta.js';
+		var stag = document.createElement('script'); stag.type = 'text/javascript'; stag.async = true;
+		stag.src = _protocol + 'js.ptengine.jp/pts.js';
+		var s = document.getElementsByTagName('script')[0]; 
+		s.parentNode.insertBefore(atag, s);s.parentNode.insertBefore(stag, s);
+	})();
+</script>
+	
+</body>
+</html>
