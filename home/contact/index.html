@@ -1,0 +1,375 @@
+<?php
+include $_SERVER['DOCUMENT_ROOT']."/common/inc/pageinit.php";
+$ticket = htmlspecialchars(md5(uniqid().mt_rand()), ENT_QUOTES);
+$_SESSION['ticket'] = $ticket;
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="euc-jp" />
+	<title>お問い合わせ（相談） ｜ オリジナルTシャツ作成が早い、タカハマライフアート</title>
+	<meta name="Description" content="オリジナルプリントのTシャツ作成に関する疑問ははタカハマライフアートまでお気軽にお問い合わせくださいませ！お客様のお悩みをスッキリ解決致します！1枚からでも安い・お急ぎ製作・印刷は東京都内のタカハマライフアート！10秒で簡単・早いオリジナルTシャツ比較お見積もりも承ります。" />
+	<meta name="keywords" content="お問合せ,オリジナル,Tシャツ,早い,作成" />
+	<meta name="google-site-verification" content="PfzRZawLwE2znVhB5M7mPaNOKFoRepB2GO83P73fe5M" />
+	<meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1" />
+<!-- msgbox begin -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<!-- msgbox end -->
+
+	<link rel="shortcut icon" href="/icon/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="/common/css/common_responsive.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="/common/css/base_responsive.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="./css/mailform_responsive.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="/contact/css/custom_responsive.css" media="screen" />
+<!-- m3 begin -->
+	<link rel="stylesheet" type="text/css" href="/m3/common/css/common_responsive.css" media="all">
+	<link rel="stylesheet" type="text/css" href="/m3/common/css/slidebars_responsive.css" media="all">
+	<link rel="stylesheet" href="/m3/common/css/import_responsive.css">
+	<link rel="stylesheet" href="/m3/items/css/detail_responsive.css">
+<!-- m3 end -->
+	
+<!-- msgbox begin -->
+
+<!--	<script type="text/javascript" src="/common/js/jquery.js"></script>
+-->
+	<link rel="stylesheet" type="text/css" href="/common/js/modalbox/css/jquery.modalbox.css" media="screen" />
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+		<script src="//ajaxzip3.github.io/ajaxzip3.js" charset="utf-8"></script>
+
+	<script type="text/javascript" src="/common/js/tlalib.js"></script>
+<!--
+	<script type="text/javascript" src="/common/js/modalbox/jquery.modalbox-min.js"></script>
+-->
+<!-- msgbox end -->
+	<script type="text/javascript" src="./js/contact.js"></script>
+
+	<!-- OGP -->
+	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#  website: http://ogp.me/ns/website#">
+	<meta property="og:title" content="世界最速！？オリジナルTシャツを当日仕上げ！！" />
+	<meta property="og:type" content="article" /> 
+	<meta property="og:description" content="業界No. 1短納期でオリジナルTシャツを1枚から作成します。通常でも3日で仕上げます。" />
+	<meta property="og:url" content="http://www.takahama428.com/" />
+	<meta property="og:site_name" content="オリジナルTシャツ屋｜タカハマライフアート" />
+	<meta property="og:image" content="http://www.takahama428.com/common/img/header/Facebook_main.png" />
+	<meta property="fb:app_id" content="1605142019732010" />
+
+	<!--m3 begin-->
+	<script src="/m3/common/js/common1.js"></script>
+	<!--m3 end-->
+</head>
+<body>
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-T5NQFM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T5NQFM');</script>
+<!-- End Google Tag Manager -->
+	
+	<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/header.php"; ?>
+	
+	<!-- m3 begin -->
+	<header id="header" class="head2">
+		<?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/inc/header.html"); ?>
+	</header>
+	<?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/inc/gnavi.html"); ?>
+	<!-- m3 end -->
+
+
+	<div id="container">
+						
+		<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/globalmenu.php"; ?>
+
+		
+		<div class="contents">
+			<ul class="pan">
+				<li><a href="/">オリジナルＴシャツ屋ＴＯＰ</a></li>
+				<li>お問い合わせ（相談）</li>
+			</ul>
+			<div class="heading1_wrapper" style="padding-bottom: 0px;">
+				<h1>お問い合わせ（相談）</h1>
+				<p class="comment">デザインのことや、ご予算、納期などお気軽にお問い合わせ下さい。</p>
+				<p class="sub">Contacts us</p>
+			</div>
+			
+			<div class="bg">
+					<p><img alt="お悩み解決" src="./img/q_img_01.png" /></p>
+				</div>
+
+			
+			<div class="round_corner_wrapper02">
+				<div class="round_lt"></div>
+				<div class="round_rt"></div>
+				<div class="round_inner">
+					
+					<h2 class="title_confirmation">入力内容の確認</h2>
+					<p class="point">「※」 は必須です。</p>
+					<form name="contact_form" method="post" action="/contact/transmit.php?req=contact" enctype="multipart/form-data"  onsubmit="return false;">
+						<table id="enq_table">
+						<tbody>
+							<tr>
+								<td>
+									<div id="table_left">お名前<span class="point">※</span></div>
+									<div id="table_right"><p class="txt"></p><input name="customername" type="text" value=""></div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div id="table_left">フリガナ<span class="point">※</span></div>
+									<div id="table_right"><p class="txt"></p><input name="ruby" type="text" value=""></div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div id="table_left">メールアドレス<span class="point">※</span></div>
+									<div id="table_right"><p class="txt"></p><input name="email" type="text" class="email"></div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div id="table_left">電話番号<span class="point">※</span></div>
+									<div id="table_right"><p class="txt"></p><input name="tel" type="text" class="forPhone"></div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div id="table_left">弊社ご利用<span class="point">※</span></div>
+									<p class="txt"></p>
+									<label><input name="repeater" type="radio" value="初めてのご利用"> 初めてのご利用</label>
+									<label><input name="repeater" type="radio" value="以前にも注文したことがある"> 以前にも注文したことがある</label>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div id="table_left">お問合せ項目<span class="point">※</span></div>
+									<p class="txt"></p>
+									<label><input name="subtitle[]" type="checkbox" value="お見積り"> お見積り</label>
+									<label><input name="subtitle[]" type="checkbox" value="デザイン"> デザインについて</label>
+									<label><input name="subtitle[]" type="checkbox" value="納期"> 納期について</label>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div id="table_left">件　名<span class="point">※</span></div>
+									<div id="table_right"><p class="txt"></p><input name="subject" type="text" id="subject" value="お問い合わせ"></div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div id="table_left">メッセージ<span class="point">※</span></div>
+									<div id="table_right"><p class="txt"></p><textarea name="message" id="message" cols="40" rows="7"></textarea></div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="comment">デザインデータなどのファイルを送信される方は、こちらから添付できます。</div>
+									<div id="table_left">添付ファイル</div>
+									<div id="table_right"><input type="file" name="attachfile[]"></div>
+									<p class="add_attachfile" onClick="$.add_attach('enq_table');" >別の添付ファイルを追加</p>
+								</td>
+							</tr>
+
+
+
+<!--
+							<tr>
+								<th>フリガナ</th>
+								<td class="point">※</td>
+								<td>
+									<p class="txt"></p>
+									<input name="ruby" type="text" value="">
+								</td>
+							</tr>
+							<tr>
+								<th>メールアドレス</th>
+								<td class="point">※</td>
+								<td>
+									<p class="txt"></p>
+									<input name="email" type="text" class="email">
+								</td>
+							</tr>
+							<tr>
+								<th>電話番号</th>
+								<td class="point">※</td>
+								<td>
+									<p class="txt"></p>
+									<input name="tel" type="text" class="forPhone">
+								</td>
+							</tr>
+							<tr>
+								<th>弊社ご利用<br>について</th>
+								<td class="point">※</td>
+								<td>
+									<p class="txt"></p>
+									<label><input name="repeater" type="radio" value="初めてのご利用"> 初めてのご利用</label>
+									<label><input name="repeater" type="radio" value="以前にも注文したことがある"> 以前にも注文したことがある</label>
+								</td>
+							</tr>
+							<tr>
+								<th>お問合せ項目</th>
+								<td>&nbsp;</td>
+								<td>
+									<p class="txt"></p>
+									<label><input name="subtitle[]" type="checkbox" value="お見積り"> お見積り</label>
+									<label><input name="subtitle[]" type="checkbox" value="デザイン"> デザインについて</label>
+									<label><input name="subtitle[]" type="checkbox" value="納期"> 納期について</label>
+								</td>
+							</tr>
+							<tr>
+								<th>件　名</th>
+								<td>&nbsp;</td>
+								<td>
+									<p class="txt"></p>
+									<input name="subject" type="text" id="subject" value="お問い合わせ">
+								</td>
+							</tr>
+							<tr>
+								<th>メッセージ</th>
+								<td class="point">※</td>
+								<td>
+									<div class="txt"></div>
+									<textarea name="message" id="message" cols="40" rows="7"></textarea>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3" class="comment">デザインデータなどのファイルを送信される方は、こちらから添付できます。</td>
+							</tr>
+							<tr>
+								<th>添付ファイル</th>
+								<td>&nbsp;</td>
+								<td><input type="file" name="attachfile[]"></td>
+							</tr>
+							<tr class="last">
+								<th></th><td>&nbsp;</td>
+								<td><p class="add_attachfile" onClick="$.add_attach('enq_table');" >別の添付ファイルを追加</p></td>
+							</tr>
+-->
+						</tbody>
+						</table>
+						
+						<input type="hidden" name="ticket" value="<?php echo $ticket; ?>">
+						<input type="hidden" name="title" value="info">
+						<input type="hidden" name="mode" value="confirm">
+						<div class="button_area">
+							<p class="msg">入力内容をご確認の上、よろしければ[ 送信 ]ボタンを押してください。</p>
+							<input type="button" value="入力内容の確認" class="btn" id="sendmail" onclick="$.sendmail_check(this); _uiconv.push({'id':'pc_contact','price':'18000'})" ;$.sendmail_check(this);">
+							<input type="reset" value="リセット" class="btn">
+							<input type="button" value="戻る" class="btn" id="goback">
+						</div>
+					</form>
+					
+					<div class="QA">
+					<h2>よくあるご質問</h2>
+					<dl class="list">
+						<dt class="que">Q1.</dt>
+						<dd>納期は間に合いますか？</dd>
+						<dt class="ans">A1</dt>
+						<dd class="mb">
+							業界最速の当日特急プランがございますのでご安心を！<br>
+							詳しくは「<a href="/delivery/" target="_brank">お届日を調べる</a>」をご覧ください。
+						</dd>
+						
+						<dt class="que">Q2.</dt>
+						<dd>このデザインは使用可能ですか？</dd>
+						<dt class="ans">A2.</dt>
+						<dd class="mb">
+							デザインにつきましては「<a href="/design/designguide.html" target="_brank">デザインの作り方</a>」をご覧ください。
+						</dd>
+						
+						<dt class="que">Q3.</dt>
+						<dd>持込は可能ですか？</dd>
+						<dt class="ans">A3.</dt>
+						<dd class="mb">
+							可能ですが、条件がございます。<br>
+							<ul>
+								<li>アイテムの素材を確認して頂く</li>
+								<li>値札タグを取りはずして頂く</li>
+								<li>各サイズ1枚づつ予備をご用意して頂く</li>
+								<li>弊社で取り扱いのないアイテムは実験用として1枚ご用意して頂く</li>
+							</ul>
+							以上ですが、ご不明な点がございましたらお問合せください。
+						</dd>
+					</dl>
+					
+					<p class="tor_pc"><a href="/guide/faq.html" target="_blank">よくあるご質問一覧はこちらへ</a></p>
+					<p class="tor_phone"><a href="../m3/guide/faq.html" target="_blank">よくあるご質問一覧はこちらへ</a></p>
+
+				</div>
+				</div>
+				<div class="round_lb"></div>
+				<div class="round_rb"></div>
+			</div>
+			
+		<!--	<div class="box_c">
+        		<div class="bg">
+					<p>
+						<span>お気軽にお問い合わせください</span>
+						<img alt="フリーダイヤル" src="./img/head_contact_txt01.png" />
+						<img alt="FAX" src="./img/head_contact_txt02.png" />
+					</p>
+				</div>
+			</div>   -->
+			
+		</div>
+		
+	</div>
+	
+    <p class="scroll_top"><a href="#header">お問い合わせ　ページトップへ</a></p>
+
+	<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/footer.php"; ?>
+	
+
+<!--Yahoo!タグマネージャー導入 2014.04 -->
+<script type="text/javascript">
+  (function () {
+    var tagjs = document.createElement("script");
+    var s = document.getElementsByTagName("script")[0];
+    tagjs.async = true;
+    tagjs.src = "//s.yjtag.jp/tag.js#site=bTZi1c8";
+    s.parentNode.insertBefore(tagjs, s);
+  }());
+</script>
+<noscript>
+  <iframe src="//b.yjtag.jp/iframe?c=bTZi1c8" width="1" height="1" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+</noscript>
+	
+<!-- m3 begin -->
+<div id="phonepage">
+<div id="fb-root"></div>
+<div id="container">
+	<?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/inc/footer.html"); ?>
+	<div class="sb-slidebar sb-right">
+	<?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/sidemenu.html"); ?>
+	</div>
+<!-- /container --></div>
+</div>
+<!-- m3 end -->
+
+<!-- msgbox begin -->
+		<div id="msgbox" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">メッセージ</h4>
+			 		</div>
+			 		<div class="modal-body">
+						<p></p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary is-ok" data-dismiss="modal">OK</button>
+						<button type="button" class="btn btn-default is-cancel" data-dismiss="modal">Cancel</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- msgbox end -->
+</body>
+</html>

@@ -1,0 +1,226 @@
+<?php
+include $_SERVER['DOCUMENT_ROOT']."/common/inc/pageinit.php";
+$ticket = htmlspecialchars(md5(uniqid().mt_rand()), ENT_QUOTES);
+$_SESSION['ticket'] = $ticket;
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="euc-jp" />
+	<title>資料請求【最短当日発送】 ｜ オリジナルTシャツ作成が早い、タカハマライフアート</title>
+	<meta name="Description" content="早いで業界No.1最速のオリジナルTシャツ屋タカハマライフアートでは資料請求もご対応致します！無料でプリントサンプル貸出もおこなっておりますので、お気軽にお問い合わせください！1枚からでも安い・お急ぎ製作・印刷は東京都内のタカハマライフアート！10秒で簡単・早いオリジナルTシャツ比較お見積もりも承ります。" /> 
+	<meta name="keywords" content="資料請求,無料サンプル,プリント,作成,早い" /> 
+	<meta name="google-site-verification" content="PfzRZawLwE2znVhB5M7mPaNOKFoRepB2GO83P73fe5M" />
+<!-- msgbox begin -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<!-- msgbox end -->
+
+	<link rel="shortcut icon" href="/icon/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="/common/css/common.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="/common/css/base.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="./css/mailform.css" media="screen" />
+	
+
+<!--	<script type="text/javascript" src="/common/js/jquery.js"></script>
+-->
+	<link rel="stylesheet" type="text/css" href="/common/js/modalbox/css/jquery.modalbox.css" media="screen" />
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+		<script src="//ajaxzip3.github.io/ajaxzip3.js" charset="utf-8"></script>
+
+	<script type="text/javascript" src="/common/js/tlalib.js"></script>
+<!--
+	<script type="text/javascript" src="/common/js/modalbox/jquery.modalbox-min.js"></script>
+-->
+<!-- msgbox end -->
+	<script type="text/javascript" src="./js/request.js"></script>
+
+	<!-- OGP -->
+	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#  website: http://ogp.me/ns/website#">
+	<meta property="og:title" content="世界最速！？オリジナルTシャツを当日仕上げ！！" />
+	<meta property="og:type" content="article" /> 
+	<meta property="og:description" content="業界No. 1短納期でオリジナルTシャツを1枚から作成します。通常でも3日で仕上げます。" />
+	<meta property="og:url" content="http://www.takahama428.com/" />
+	<meta property="og:site_name" content="オリジナルTシャツ屋｜タカハマライフアート" />
+	<meta property="og:image" content="http://www.takahama428.com/common/img/header/Facebook_main.png" />
+	<meta property="fb:app_id" content="1605142019732010" />
+	<!--  -->
+
+</head>
+<body>
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-T5NQFM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T5NQFM');</script>
+<!-- End Google Tag Manager -->
+	
+	<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/header.php"; ?>
+	
+	<div id="container">
+						
+		<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/globalmenu.php"; ?>
+		<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/sidenavi.php"; ?>
+		
+		<div class="contents">
+			<ul class="pan">
+				<li><a href="/">オリジナルＴシャツ屋ＴＯＰ</a></li>
+				<li>資料請求</li>
+			</ul>
+			<div class="heading1_wrapper">
+				<h1>資料請求も早い！</h1>
+			<p class="comment">無料でカタログ・商品サンプルを貸出しています。</p>
+			<!--		<p class="comment">無料でカタログをお送りしています。</p>  -->
+				<p class="sub">Request</p>
+			</div>
+			
+		<h2 class="heading">無料でサンプルを貸出</h2>
+			<p>
+				&ldquo;ホームページだけじゃ分りにくい&rdquo;、&ldquo;実際にTシャツを見たり触ったりしたい&rdquo;、&ldquo;どんな感じにプリントされるのか確かめたい&rdquo;、
+				とお嘆きのあなたに朗報！<span class="fontred">無料</span>（ご返却送料はお客様ご負担）でサンプルをご確認いただけます。資料はお気軽にお申込み下さい。
+			</p>
+			<h3 class="heading3">資料の内容</h3>
+			<ul class="msg">
+				<li>注文カタログ（注文書、FAX用注文シート付き）※返却不要</li>
+				<li>メーカーの商品小冊子 ※返却不要</li>
+				<li>商品サンプル3点まで（ご希望のお客様のみ）<span class="fontred">※必ず到着後10日以内に返却</span></li>
+			</ul>
+			<p class="note"><span>※</span>
+				商品サンプルをご希望の場合は、フォーム内の「サンプル」でチェックをしてください。<br />
+				ご指定の商品がありましたらメッセージ欄にご記入下さい。
+			</p>
+	<!--		<h2 class="heading">無料でカタログ送付</h2>
+			<p>
+				&ldquo;ホームページだけじゃ分りにくい&rdquo;、&ldquo;とお嘆きのあなたに朗報！<span class="fontred">無料</span>でカタログをお送りいたします。<br>資料はお気軽にお申込み下さい。
+			</p>
+			<h3 class="heading3">資料の内容</h3>
+			<ul class="msg">
+				<li>注文カタログ（注文書、FAX用注文シート付き）※返却不要</li>
+				<li>メーカーの商品小冊子 ※返却不要</li>
+			</ul>  -->
+	
+					
+			<div class="round_corner_wrapper02">
+				<div class="round_lt"></div>
+				<div class="round_rt"></div>
+				<div class="round_inner">
+					
+					<form name="request_form" method="post" action="transmit.php?req=request" enctype="multipart/form-data"  onsubmit="return false;">
+						<table id="enq_table">
+						<tbody>
+							<tr>
+								<th>お名前</th>
+								<td class="point">※</td>
+								<td><input name="customername" type="text" placeholder="文字数は全角16文字、半角32文字です" maxlength="32" class="restrict" /></td>
+							</tr>
+							<tr>
+								<th>ご住所</th>
+								<td class="point">※</td>
+								<td>
+									<p>〒<input name="zipcode" id="zipcode" class="forZip" type="text" onkeyup="AjaxZip3.zip2addr(this,'','addr0','addr1');" /></p>
+									<p><input name="addr0" id="addr0" type="text" placeholder="都道府県" maxlength="4" /></p>
+									<p><input name="addr1" id="addr1" type="text" placeholder="文字数は全角28文字、半角56文字です" maxlength="56" class="restrict" /></p>
+									<p><input name="addr2" id="addr2" type="text" placeholder="文字数は全角16文字、半角32文字です" maxlength="32" class="restrict" /></p>
+								</td>
+							</tr>
+							<tr>
+								<th>メールアドレス</th>
+								<td class="point">※</td>
+								<td><input name="email" type="text" class="email" /></td>
+							</tr>
+							<tr>
+								<th>電話番号</th>
+								<td>&nbsp;</td>
+								<td><input name="tel" type="text" class="forPhone" /></td>
+							</tr>
+							<tr>
+								<th>件　名</th>
+								<td>&nbsp;</td>
+								<td><input name="subject" type="text" id="subject" value="資料請求" /></td>
+							</tr>
+							<tr>
+								<th>サンプル</th>
+								<td>&nbsp;</td>
+								<td><input name="sample" type="checkbox" id="sample" value="商品サンプル希望" /><label for="sample">商品サンプルを希望します</label></td>
+							</tr> 
+							<tr>
+								<th>メッセージ</th>
+								<td class="point">※</td>
+								<td><textarea name="message" id="message" cols="40" rows="7"></textarea></td>
+							</tr>
+						</tbody>
+						</table>
+						<p class="point">「※」 は必須です。</p>
+						<input type="hidden" name="ticket" value="<?php echo $ticket; ?>" />
+						<input type="hidden" name="title" value="request" />
+						<p class="button_area">
+							<input type="button" value="送　信" class="btn" onClick="$.sendmail_check(this);" />
+							<input type="reset" value="リセット" class="btn" />
+						</p>
+					</form>
+			
+				</div>
+				<div class="round_lb"></div>
+				<div class="round_rb"></div>
+			</div>
+			
+			<div class="box_c">
+        		<div class="bg">
+					<p>
+						<span>お気軽にお問い合わせください</span>
+						<img alt="フリーダイヤル" src="./img/head_contact_txt01.png" />
+						<img alt="FAX" src="./img/head_contact_txt02.png" />
+					</p>
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+	
+    <p class="scroll_top"><a href="#header">資料請求　ページトップへ</a></p>
+
+	<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/footer.php"; ?>
+	
+
+<!--Yahoo!タグマネージャー導入 2014.04 -->
+<script type="text/javascript">
+  (function () {
+    var tagjs = document.createElement("script");
+    var s = document.getElementsByTagName("script")[0];
+    tagjs.async = true;
+    tagjs.src = "//s.yjtag.jp/tag.js#site=bTZi1c8";
+    s.parentNode.insertBefore(tagjs, s);
+  }());
+</script>
+<noscript>
+  <iframe src="//b.yjtag.jp/iframe?c=bTZi1c8" width="1" height="1" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+</noscript>
+<!-- msgbox begin -->
+		<div id="msgbox" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">メッセージ</h4>
+			 		</div>
+			 		<div class="modal-body">
+						<p></p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary is-ok" data-dismiss="modal">OK</button>
+						<button type="button" class="btn btn-default is-cancel" data-dismiss="modal">Cancel</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- msgbox end -->
+</body>
+</html>

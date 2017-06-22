@@ -1,0 +1,310 @@
+<?php
+include $_SERVER['DOCUMENT_ROOT']."/common/inc/pageinit.php";
+$isSend = null;
+require_once $_SERVER['DOCUMENT_ROOT'].'/php_libs/mailer.php';
+if( isset($_POST['ticket'], $_SESSION['ticket']) && $_POST['ticket']==$_SESSION['ticket'] ) {
+	$mailer = new Mailer($_POST);	
+	$isSend = $mailer->send_enquete();
+}else if(isset($_GET['enq'])){
+	$ticket = htmlspecialchars(md5(uniqid().mt_rand()), ENT_QUOTES);
+	$_SESSION['ticket'] = $ticket;
+	$customer_id = sprintf("%d", $_GET['enq']);
+	$number = 'K'.str_pad($customer_id, 6, '0', STR_PAD_LEFT);
+}else{
+	header("Location: "._DOMAIN);
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="euc-jp" />
+	<title>アンケート　|　オリジナルTシャツ屋タカハマライフアート</title>
+	<meta name="Description" content="1枚〜大量のプリントまで、トレーナー・ポロシャツ・オリジナルTシャツの作成・プリントについてのお問合せは、東京都葛飾区のタカハマライフアートにお任せ下さい！" />
+	<meta name="keywords" content="資料請求,無料サンプル,アンケート" />
+	<meta name="google-site-verification" content="PfzRZawLwE2znVhB5M7mPaNOKFoRepB2GO83P73fe5M" />
+
+	<link rel="shortcut icon" href="/icon/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="/common/css/common.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="/common/css/base.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="/common/js/modalbox/css/jquery.modalbox.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="./css/enquete.css" media="screen" />
+	
+	<script type="text/javascript" src="/common/js/jquery.js"></script>
+	<script type="text/javascript" src="/common/js/modalbox/jquery.modalbox-min.js"></script>
+	<script type="text/javascript" src="/common/js/tlalib.js"></script>
+	<script type="text/javascript" src="./js/enquete.js"></script>
+
+	<!-- OGP -->
+	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#  website: http://ogp.me/ns/website#">
+	<meta property="og:title" content="世界最速！？オリジナルTシャツを当日仕上げ！！" />
+	<meta property="og:type" content="article" /> 
+	<meta property="og:description" content="業界No. 1短納期でオリジナルTシャツを1枚から作成します。通常でも3日で仕上げます。" />
+	<meta property="og:url" content="http://www.takahama428.com/" />
+	<meta property="og:site_name" content="オリジナルTシャツ屋｜タカハマライフアート" />
+	<meta property="og:image" content="http://www.takahama428.com/common/img/header/Facebook_main.png" />
+	<meta property="fb:app_id" content="1605142019732010" />
+	<!--  -->
+
+</head>
+<body>
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-T5NQFM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T5NQFM');</script>
+<!-- End Google Tag Manager -->
+	
+	<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/header.php"; ?>
+	
+	<div id="container">
+						
+		<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/globalmenu.php"; ?>
+		<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/sidenavi.php"; ?>
+		
+		<div class="contents">
+		
+<?php
+	if(is_null($isSend)){
+		$html = <<<DOC
+			<div class="heading1_wrapper">
+				<h1>アンケートのお願い</h1>
+				<p class="comment"></p>
+				<p class="sub">Enquete</p>
+			</div>
+			
+			<div class="firstmessage">
+				<p>この度のタカハマライフアートへのご注文、誠にありがとうございました。</p>
+				<p>
+					弊社では、更なるお客様サービスの向上のため、下記のアンケートを実施しておりますので、<br>
+					ぜひともご協力をお願いいたします。
+				</p>
+			</div>
+			
+			<div class="round_corner_wrapper02">
+				<div class="round_lt"></div>
+				<div class="round_rt"></div>
+				<div class="round_inner">
+					
+					<form id="contact_form" name="contact_form" method="post" action="{$_SERVER['SCRIPT_NAME']}" enctype="multipart/form-data"  onsubmit="return false;">
+						<div>
+							<p id="number">顧客ID： <ins>{$number}</ins></p>
+							<input type="hidden" value="{$customer_id}" name="number" />
+							
+							<!-- 2013-12-31 廃止
+							<table>
+								<tbody>
+							 		<tr><th>お客様のお名前</th><td><input type="text" value="" name="customername" id="customername" /> 様</td></tr>
+							 		<tr>
+							 			<th>クオカード送付先住所</th>
+							 			<td>
+							 				〒 <input type="text" value="" name="zipcode" id="zipcode" /><br>
+							 				<input type="text" value="" name="addr" id="addr" />
+							 			</td>
+							 		</tr>
+							 		
+								</tbody>
+							</table>
+							-->
+							
+						</div>
+						
+						<div>
+							<p class="q">Q1　今回、タカハマライフアートをお選びいただいた理由をお聞かせ下さい。</p>
+							<p class="a">
+								<textarea name="a12"></textarea>
+							</p>
+						</div>
+						
+						<div>
+							<p class="q">Q2　タカハマライフアートのホームページはわかりやすかったでしょうか？</p>
+							<p class="a">
+								<label><input type="radio" name="a1" value="5" />とても分りやすかった</label>
+								<label><input type="radio" name="a1" value="4" />分りやすかった</label>
+								<label><input type="radio" name="a1" value="3" />普通</label>
+								<label><input type="radio" name="a1" value="2" />分りにくかった</label>
+								<label><input type="radio" name="a1" value="1" />とても分りにくかった</label>
+							</p>
+						</div>
+						
+						<div>
+							<p class="q">Q3　ホームページで、わかりやすかった点、わかりにくかった点について、<br>具体的に教えて下さい。</p>
+							<p class="a">
+								<textarea name="a2"></textarea>
+							</p>
+						</div>
+						
+						<div>
+							<p class="q">Q4　ご注文いただいた際の弊社の対応はいかがでしたでしょうか？</p>
+							<p class="a">
+								<label><input type="radio" name="a5" value="5" />とても良かった</label>
+								<label><input type="radio" name="a5" value="4" />良かった</label>
+								<label><input type="radio" name="a5" value="3" />普通</label>
+								<label><input type="radio" name="a5" value="2" />悪かった</label>
+								<label><input type="radio" name="a5" value="1" />とても悪かった</label>
+							</p>
+						</div>
+						
+						<div>
+							<p class="q">Q5　プリントの仕上がりは、お客様のイメージ通りでしたでしょうか？</p>
+							<p class="a">
+								<label><input type="radio" name="a6" value="5" />イメージ以上に良かった</label>
+								<label><input type="radio" name="a6" value="4" />イメージ通り良かった</label>
+								<label><input type="radio" name="a6" value="3" />普通</label><br>
+								<label><input type="radio" name="a6" value="2" />イメージしていたより悪かった</label>
+								<label><input type="radio" name="a6" value="1" />全くイメージ通りではなかった</label>
+							</p>
+						</div>
+						
+						<div>
+							<p class="q">Q6　商品が到着した際の梱包状態はいかがでしたでしょうか？</p>
+							<p class="a">
+								<label><input type="radio" name="a7" value="5" />とても良かった</label>
+								<label><input type="radio" name="a7" value="4" />良かった</label>
+								<label><input type="radio" name="a7" value="3" />普通</label>
+								<label><input type="radio" name="a7" value="2" />悪かった</label>
+								<label><input type="radio" name="a7" value="1" />とても悪かった</label>
+							</p>
+						</div>
+						
+						<div>
+							<p class="q">Q7　実際に商品を着用・使用してみての、アイテムに関する感想をお願いします。</p>
+							<p class="note"><ins>※</ins>プリントについてではなく、Ｔシャツやポロシャツなどアイテム自体への感想（着心地や生地感、色合い、<br>サイズについてなど）をお願いします。</p>
+							<p class="note"><ins>※</ins>商品レビューとしてＨＰ等に使用させていただく場合があります。予めご了承下さい。</p>
+							<p class="a">
+								<textarea name="a10"></textarea>
+							</p>
+						</div>
+						
+						<div>
+							<p class="q">Q8　ご使用の用途を教えてください。(音楽イベント、文化祭など)</p>
+							<p class="a">
+								<textarea name="a13"></textarea>
+							</p>
+						</div>
+						
+						<div>
+							<p class="q">Q9　「もっとこんなサービス・商品があれば良いのに！」というご要望があれば<br>お聞かせ下さい。</p>
+							<p class="a">
+								<textarea name="a8"></textarea>
+							</p>
+						</div>
+						
+						<div>
+							<p class="q">Q10　弊社を知ったきっかけを教えてください。</p>
+							<p class="a">
+								<label><input type="radio" name="a14" value="6" />インターネット検索</label>
+								<label><input type="radio" name="a14" value="5" />知り合いの紹介</label>
+								<label><input type="radio" name="a14" value="4" />雑誌、新聞記事、広告</label>
+								<label><input type="radio" name="a14" value="3" />セミナー講演会</label>
+								<label><input type="radio" name="a14" value="2" />2回目以降の購入</label>
+								<label><input type="radio" name="a14" value="1" />その他</label>
+							</p>
+						</div>
+						
+						<div>
+							<p class="q">Q11　その他、注文してみての感想・お気づきの点などがありましたら<br>お聞かせ下さい。</p>
+							<p class="a">
+								<textarea name="a9"></textarea>
+							</p>
+						</div>
+						
+						<input type="hidden" name="ticket" value="{$ticket}" />
+						
+						<p class="button_area">
+							<input type="button" value="　送　信　" class="btn" onclick="$.sendmail_check(this);" />
+						</p>
+					</form>
+			
+DOC;
+
+		echo $html;
+	}else if($isSend){
+			
+		$html = <<<DOC
+			<div class="heading1_wrapper">
+				<h1>アンケートのご協力ありがとうございました</h1>
+				<p class="comment"></p>
+				<p class="sub">Enquete</p>
+			</div>
+						
+			<div class="round_corner_wrapper02">
+				<div class="round_lt"></div>
+				<div class="round_rt"></div>
+				<div class="round_inner">
+				
+					<p>
+						アンケートにお答えいただき、ありがとうございました。<br>
+						またのご利用、心よりお待ち申し上げております。
+					</p>
+				
+DOC;
+
+		echo $html;
+	}else{
+		
+		$html = <<<DOC
+			<div class="heading1_wrapper">
+				<h1>送信エラー</h1>
+				<p class="comment"></p>
+				<p class="sub">Error</p>
+			</div>
+						
+			<div class="round_corner_wrapper02">
+				<div class="round_lt"></div>
+				<div class="round_rt"></div>
+				<div class="round_inner">
+				
+					<p>
+						アンケートの送信中にエラーが発生しました。<br>
+						恐れ入りますが、もう一度送信をお願いいたします。
+					</p>
+				
+DOC;
+
+		echo $html;
+	}
+?>
+				</div>
+				<div class="round_lb"></div>
+				<div class="round_rb"></div>
+			</div>
+			
+			<div class="box_c">
+        		<div class="bg">
+					<p>
+						<span>お気軽にお問い合わせください</span>
+						<img alt="フリーダイヤル" src="./img/head_contact_txt01.png" />
+						<img alt="FAX" src="./img/head_contact_txt02.png" />
+					</p>
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+	
+    <p class="scroll_top"><a href="#header">アンケート　ページトップへ</a></p>
+
+	<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/footer.php"; ?>
+	
+
+<!--Yahoo!タグマネージャー導入 2014.04 -->
+<script type="text/javascript">
+  (function () {
+    var tagjs = document.createElement("script");
+    var s = document.getElementsByTagName("script")[0];
+    tagjs.async = true;
+    tagjs.src = "//s.yjtag.jp/tag.js#site=bTZi1c8";
+    s.parentNode.insertBefore(tagjs, s);
+  }());
+</script>
+<noscript>
+  <iframe src="//b.yjtag.jp/iframe?c=bTZi1c8" width="1" height="1" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+</noscript>
+	
+</body>
+</html>
