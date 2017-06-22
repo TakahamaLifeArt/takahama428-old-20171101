@@ -380,7 +380,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 						<div class="arrow_line">
 							<div style="display:inline-block;">合計<span id="tot_amount">0</span>枚</div>
 							<div class="arrow prev" data-back="0"><span>戻る</span></div>
-							<div class="step_next goto_position" onclick="ga('send','event’,’step2','click’,’order');" 
+							<div class="step_next goto_position" onclick="ga('send','event','step2','click','order',5300);" 
 >次へ進む</div>
 						</div>
 					</div>
@@ -429,7 +429,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							<p class="note">例　左そで：刺繍</p>
 							<textarea id="note_printmethod"  name="note_printmethod"></textarea>
 						</div>
-						<div class="arrow_line"><div class="arrow prev" data-back="1"><span>戻る</span></div><div class="step_next goto_cart" onclick="ga('send','event’,’step3','click’,’order');" 
+						<div class="arrow_line"><div class="arrow prev" data-back="1"><span>戻る</span></div><div class="step_next goto_cart" onclick="ga('send','event','step3','click','order',5300);" 
 >カートに入れる</div></div>
                     </div>
 				</div>
@@ -603,7 +603,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							<textarea id="note_printcolor" name="note_printcolor"><?php echo $user['note_printcolor']; ?></textarea>
 						</div>
 
-						<div class="arrow_line"><div class="arrow prev" data-back="0"><span>別の商品を見る</span></div><div class="step_next goto_user" onclick="ga('send','event’,’step4','click’,’order');">次へ進む</div></div>
+						<div class="arrow_line"><div class="arrow prev" data-back="0"><span>別の商品を見る</span></div><div class="step_next goto_user" onclick="ga('send','event','step4','click','order',5300);">次へ進む</div></div>
                     </div>
 				</div>
 
@@ -713,7 +713,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							</table>
 						</div>
 
-						<div class="arrow_line"><div class="arrow prev" data-back="3"><span>戻る</span></div><div class="step_next goto_confirm" onclick="ga('send','event’,’step5','click’,’order');">確認画面へ</div></div>
+						<div class="arrow_line"><div class="arrow prev" data-back="3"><span>戻る</span></div><div class="step_next goto_confirm" onclick="ga('send','event','step5','click','order',5300);">確認画面へ</div></div>
 					</div>
 				</div>
 
@@ -834,7 +834,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 								<div>
 									<p class="pointer">チェック！</p>
-									<div id="sendorder" class="disable_button" onclick="ga('send','event’,’step6','click’,’order');">注文する</div>
+									<div id="sendorder" class="disable_button" onclick="ga('send','event','step6','click','order',5300);">注文する</div>
 								</div>
 							</fieldset>
 
