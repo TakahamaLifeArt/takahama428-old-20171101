@@ -156,7 +156,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					<input type="hidden" name="reg_site" value="1">
 				</form>
 			</div>
-			
+
+			<p class="txtttl"><span class="red">※</span>メールアドレスを変更したい方はまずは弊社までご連絡ください。</p>
+				<p class="txtttl">info@takahama428.com</p>
+				<p class="txtttl">タカハマライフアートサポートチーム</p>
 		</div>
 	</div>
 	

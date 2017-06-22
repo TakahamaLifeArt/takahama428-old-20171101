@@ -1,0 +1,495 @@
+<?php include $_SERVER['DOCUMENT_ROOT']."/php_libs/orders.php";?>
+
+<?php
+require_once dirname(__FILE__).'/../php_libs/iteminfo.php';
+$ticket = htmlspecialchars(md5(uniqid().mt_rand()), ENT_QUOTES);
+$_SESSION['ticket'] = $ticket;
+
+$iteminfo = new ItemInfo();
+
+// print position
+$pos1 = $iteminfo->getPrintPosition(1);
+$pos2 = $iteminfo->getPrintPosition(29);
+?>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="EUC-JP">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="早い,即日,tシャツ,オリジナル,作成">
+<meta name="description" content="早い！オリジナルTシャツがつくれます！当日特急プランは、その日に発送が可能なプランです。まだ間に合います。当日発送可能！オリジナルTシャツ作成を業界最速当日仕上げで即日発送します！お急ぎのお客様は今すぐお電話してください。業界最速短納期制作、特急のお急きプリントは早い、丁寧、東京都で作る高品質タカハマライフアートへ！">
+<title>当日特急プラン ｜ オリジナルTシャツが早い、タカハマライフアート</title>
+<!-- m3 begin -->
+<link rel="stylesheet" type="text/css" href="/m3/common/css/common.css" media="all">
+<link rel="stylesheet" type="text/css" href="/m3/common/css/slidebars.css" media="all">
+<link rel="stylesheet" href="/m3/common/css/import.css">
+<!-- m3 end -->
+<link rel="stylesheet" href="css/style.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+</head>
+
+<body>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-T5NQFM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T5NQFM');</script>
+<!-- End Google Tag Manager -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-11155922-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+	<!-- m3 begin -->
+	<header id="header" class="head2">
+		<?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/inc/header.html"); ?>
+	</header>
+	<?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/inc/gnavi.html"); ?>
+	<!-- m3 end -->
+<div id="container">
+
+<!--	<div id="header-side" class="sb-slide">
+	<p id="menu" class="sb-toggle-right">
+		<img src="/m3/img/menu_img.png" width="100%" alt="menu">
+	</p> 
+</div>  -->
+
+	<div id="main">
+		<section>
+			<h1 class="headLine01">当日特急プラン</h1>
+			<div class="imgBox clearfix">
+				<div class="photoBox"><img src="img/speed1_01.jpg" width="85" height="85" alt=""></div>
+				<p><span class="txt">当日特急プラン</span>とは<br>
+					<span>その日</span>に<span>発送</span>が<span>可能</span>なプランです</p>
+			</div>
+			<p><span class="txt">■</span>マンガで開始から注文確定までを紹介！</p>
+			<ul class="timeList">
+				<li><img src="img/speed2_01.png" width="100%" alt="当日 明日イベントだった！時間がない！T シャツ作らなきゃ！８ AM8:00"></li>
+				<li><img src="img/speed2_02.png" width="100%" alt="タカハマライフアートに電話だ！AM10:00"></li>
+				<li><img src="img/speed2_03.png" width="100%" alt="○枚で…カラーは…デザインはあ、送ります。AM10:30"></li>
+				<li><img src="img/speed2_04.png" width="100%" alt="それでは 本日発送しますね♪ ヨカッタ AM11:00 注文確定！"></li>
+			</ul>
+			<p class="note">※注文確定はお電話にて完了致します。</p>
+			<section>
+				<h2 class="headLine01">くわしい内容と条件</h2>
+				<p><span class="txt">■</span>7 つの内容でご説明します。</p>
+				<ul class="contentsUl clearfix">
+					<li><img src="img/speed3_01.jpg" width="149" height="80" alt="1. 受付時間"><span class="txt heightLine-1">当日の<span class="color">午前12時</span>までに
+						<span class="color">注文が確定</span>してること。</span></li>
+					<li><img src="img/speed3_02.jpg" width="149" height="80" alt="2. 全プリント方法が可能 転写 シルク インクジェット カッティング"><span class="txt heightLine-1">プリントの種類は<a href="../design/printing.html">こちら</a>からご確認頂けます。</span></li>
+					<li class="lgbanner"><img src="img/speed3_03.jpg" width="100%"  alt="3. プリント可能なアイテム"><span class="txt heightLine-2">人気Tシャツ<a href="/items/t-shirts/item.html?id=085-cvt">085-CVT</a>の白か黒。サイズはS-XLの中から選べます!タオルは<a href="/items/t-shirts/item.html?id=522-FT">522-FT</a>の白色(フリーサイズ)が当日発送可能なアイテムです。</span></li>
+					<li><img src="img/speed3_05.jpg" width="149" height="80" alt="5. 東京２３区内の方は当日着可能！"><span class="txt heightLine-2">バイク便（送料お客様負担)の使用で当日配送が可能です。</span></li>
+					<li><img src="img/speed3_04.jpg" width="149" height="80" alt="4. 特急料金が発生します。"><span class="txt heightLine-2">このプランは合計金額の2倍です。</span></li>
+					<li><img src="img/speed3_07.jpg" width="149" height="80" alt="7. お支払い方法"><span class="txt">「代金引換」「カード決済」になります。</span></li>
+					<li><img src="img/speed3_06.jpg" width="149" height="80" alt="6. 工場引取可能"><span class="txt heightLine-3">弊社へ直接取りに来て頂く事も
+						可能です<br>(平日17時&sim;18時のみ)</span></li>
+
+				</ul>
+			</section>
+			<section>
+				<h2 class="headLine01">23区のお客様必見！</h2>
+				<p class="text">23区内限定！当日着可能！</p>
+				<div class="photo"><img src="img/speed4_01.jpg" width="150" height="52" alt="">
+					<p>東京 23区内の方は葛飾区の自社工場からバイク便・赤帽など（送料お客様負担 ) の使用で当日到着が可能です！</p>
+				</div>
+			</section>
+			<section>
+				<h2 class="headLine01">ご注文確定までの流れ</h2>
+				<p class="comNote">■<span class="color">ご注意！</span>お申込み確定( お問い合わせフォーム )
+					が完了されても、ご注文確定ではありませんのでご注意ください。</p>
+				<div class="flowImg"><img src="img/speed5_01.jpg" width="70%" alt="お申込み（2パターン） インターネット FAX お客様との確認 アイテムの在庫確認 デザインのデータ確認 etc... お電話で注文確認 電話"></div>
+				<p class="note note01">※注文確定はお電話にて完了致します。</p>
+				<div class="link"><a href="tel:0120130428" onclick="ga('send','event','tel','click','sameday');"><img src="img/tel_btn.png" width="70%" alt=""></a></div>
+			</section>
+			<form name="form01" action="/m3/contact/fin.php?req=sameday" method="post" enctype="multipart/form-data" class="mailForm">
+				<fieldset>
+					<section>
+						<h2 class="headLine01">お問い合わせフォーム</h2>
+						<section class="spform">
+							<h3><span class="txt">■</span>データを添付や詳細を下記にて記載して、<br>
+								お問い合わせ下さい。</h3>
+							<dl class="formDl">
+								<dt>
+									<label for="fName">お名前<span>※必須</span></label>
+								</dt>
+								<dd>
+									<input type="text" name="customername" class="required" value="" placeholder="例 ) 高濱 太郎" id="fName">
+								</dd>
+								<dt>
+									<label for="fKana">フリガナ<span>※必須</span></label>
+								</dt>
+								<dd>
+									<input type="text" name="customerruby" class="required" value="" placeholder="例 ) タカハマ タロウ" id="fKana">
+								</dd>
+								<dt>
+									<label for="fZip">住所<span>※必須</span></label>
+								</dt>
+								<dd class="address">
+									<div class="zip"> 〒
+										<input type="tel" name="zipcode" class="required" value="" id="fZip" onKeyUp="AjaxZip3.zip2addr(this,'','addr0','addr1' );">
+									</div>
+									<input type="text" name="addr0" class="required" value="" placeholder="都道府県">
+									<input type="text" name="addr1" class="required" value="" placeholder="市区町村">
+									<input type="text" name="addr2" value="" placeholder="建物名・号室">
+								</dd>
+								<dt>
+									<label for="fEmail">メールアドレス<span>※必須</span></label>
+								</dt>
+								<dd>
+									<input type="email" name="email" class="required" value="" placeholder="例 ) xxx@mail.co.jp" id="fEmail">
+								</dd>
+								<dt>
+									<label for="fName">お電話番号<span>※必須</span></label>
+								</dt>
+								<dd>
+									<input type="tel" name="tel" class="required" value="" placeholder="例 ) 08012345678" id="fName">
+								</dd>
+								<dt>
+									<label for="fName">ご希望納期<span>※必須</span></label>
+								</dt>
+								<dd>
+									<input name="deliveryday" type="date">
+								</dd>
+
+								<dt>写真などの添付はこちら</dt>
+								<dd>
+									<input type="file" name="attachfile[]" />
+									<input type="file" name="attachfile[]" />
+								</dd>
+							</dl>
+						</section>
+						<section class="sizeWrap">
+							<h3><span>■</span> カラーとサイズ</h3>
+							<p class="ttl"><span>1.</span>サイズの中に必要な枚数を選択ください<br>
+								( 複数可 )</p>
+							<div class="inner clearfix">
+								<div class="photoBox"><img src="img/photo01.jpg" width="113" height="112" alt=""></div>
+								<dl>
+									<dt>色</dt>
+									<dd>ホワイト</dd>
+								</dl>
+							</div>
+							<div class="tableBox">
+								<table>
+									<thead>
+										<tr>
+											<th>サイズ</th>
+											<th colspan="3" class="none"></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th>S (&yen;480)</th>
+											<th>M (&yen;480)</th>
+											<th>L (&yen;480)</th>
+											<th>XL (&yen;480)</th>
+										</tr>
+										<tr>
+											<td>
+												<div class="selectBox">
+													<input type="number" value="0" min="0" name="S_001">枚
+													<!--<span><img class="up" src="img/img_up.png" width="20" height="18" alt=""><img class="down" src="img/img_down.png" width="20" height="18" alt=""></span>-->
+												</div>
+											</td>
+											<td>
+												<div class="selectBox">
+													<input type="number" value="0" min="0" name="M_001">枚
+													<!--<span><img class="up" src="img/img_up.png" width="20" height="18" alt=""><img class="down" src="img/img_down.png" width="20" height="18" alt=""></span>-->
+												</div>
+											</td>
+											<td>
+												<div class="selectBox">
+													<input type="number" value="0" min="0" name="L_001">枚
+													<!--<span><img class="up" src="img/img_up.png" width="20" height="18" alt=""><img class="down" src="img/img_down.png" width="20" height="18" alt=""></span>-->
+												</div>
+											</td>
+											<td>
+												<div class="selectBox">
+													<input type="number" value="0" min="0" name="XL_001">枚
+													<!--<span><img class="up" src="img/img_up.png" width="20" height="18" alt=""><img class="down" src="img/img_down.png" width="20" height="18" alt=""></span>-->
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="inner clearfix">
+								<div class="photoBox"><img src="img/photo02.jpg" width="113" height="112" alt=""></div>
+								<dl>
+									<dt>色</dt>
+									<dd class="ddColor">ブラック</dd>
+								</dl>
+							</div>
+							<div class="tableBox">
+								<table>
+									<thead>
+										<tr>
+											<th>サイズ</th>
+											<th colspan="3" class="none"></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th>S (&yen;560)</th>
+											<th>M (&yen;560)</th>
+											<th>L (&yen;560)</th>
+											<th>XL (&yen;560)</th>
+										</tr>
+										<tr>
+											<td>
+												<div class="selectBox">
+													<input type="number" value="0" min="0" name="S_005">枚
+													<!--<span><img class="up" src="img/img_up.png" width="20" height="18" alt=""><img class="down" src="img/img_down.png" width="20" height="18" alt=""></span>-->
+												</div>
+											</td>
+											<td>
+												<div class="selectBox">
+													<input type="number" value="0" min="0" name="M_005">枚
+													<!--<span><img class="up" src="img/img_up.png" width="20" height="18" alt=""><img class="down" src="img/img_down.png" width="20" height="18" alt=""></span>-->
+												</div>
+											</td>
+											<td>
+												<div class="selectBox">
+													<input type="number" value="0" min="0" name="L_005">枚
+													<!--<span><img class="up" src="img/img_up.png" width="20" height="18" alt=""><img class="down" src="img/img_down.png" width="20" height="18" alt=""></span>-->
+												</div>
+											</td>
+											<td>
+												<div class="selectBox">
+													<input type="number" value="0" min="0" name="XL_005">枚
+													<!--<span><img class="up" src="img/img_up.png" width="20" height="18" alt=""><img class="down" src="img/img_down.png" width="20" height="18" alt=""></span>-->
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="inner clearfix">
+								<div class="photoBox"><img src="<?php echo _IMG_PSS?>/items/list/towel/522-ft/522-ft_001.jpg" width="113" height="112" alt=""></div>
+								<dl>
+									<dt>色</dt>
+									<dd class="ddColor">ホワイト</dd>
+								</dl>
+							</div>
+							<div class="tableBox">
+								<table>
+									<thead>
+										<tr>
+											<th>サイズ</th>
+											<th colspan="3" class="none"></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th>Free (&yen;380)</th>
+											<th colspan="3" class="none"></th>
+										</tr>
+										<tr>
+											<td>
+												<div class="selectBox">
+													<input type="number" value="0" min="0" name="Free_001">枚
+													<!--<span><img class="up" src="img/img_up.png" width="20" height="18" alt=""><img class="down" src="img/img_down.png" width="20" height="18" alt=""></span>-->
+												</div>
+											</td>
+											<td colspan="3" class="none"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</section>
+						<section class="sizeWrap">
+							<p class="ttl"><span>2.</span>プリントする場所を指定してください。</p>
+							<div id="box" class="slideBox">
+								<div class="carouselSlider photoSlider swiper-container">
+									<ul class="swiper-wrapper" id="printpos">
+										<?php echo $pos2; echo $pos1; ?>
+									</ul>
+				
+									<div class="btn swiper-button-next"><img src="../common/img/com_arrow_right.png" width="19" height="33" alt="" class="" style="display: inline;"></div>
+									<div class="btn swiper-button-prev"><img src="../common/img/com_arrow_left.png" width="19" height="33" alt="" class="disabled" style="display: inline;"></div>
+								</div>
+							</div>
+						</section>
+						<section class="sizeWrap">
+							<p class="ttl"><span>3.</span>インクの色数を指定してください</p>
+							<dl class="txtDl clearfix" id="inkCount"></dl>
+							<!--
+							<p class="ttl mb20"><span>5.</span>アイテムの枚数を指定してください</p>
+							<dl class="formDl01">
+								<dd>
+									<input type="text" name="num" value="" class="requied" title="0">
+									<span>枚</span></dd>
+							</dl>
+							-->
+							<dl class="formDl">
+								<dt>メッセージ</dt>
+								<dd>
+									<textarea name="message"></textarea>
+								</dd>
+							</dl>
+						</section>
+					</section>
+				</fieldset>
+				<input type="hidden" name="ticket" value="<?php echo $ticket; ?>">
+				<input type="hidden" name="title" value="expresstoday">
+				<input type="hidden" name="mode" value="send">
+				<ul class="submit on">
+					<li><p id="sendmail">問い合わせる<span>( 在庫確認 ) </span></p></li>					
+				</ul>
+			</form>
+		</section>
+		
+		<!-- /main --></div>
+	<?php include(dirname(__FILE__)."/../common/inc/footer.html"); ?>
+
+
+
+	<!-- /container --> 
+</div>
+
+<script src="../common/js/jquery.js"></script> 
+<script src="../common/js/common1.js"></script> 
+<script src="../common/js/heightLine.js"></script>  
+<script src="../common/js/swiper.jquery.min.js"></script>
+<script src="/m3/contact/js/mailform.js"></script>
+<script type="text/javascript" src="//ajaxzip3.github.io/ajaxzip3.js" charset="utf-8"></script>
+
+
+
+<script>
+$(function(){
+	/*
+	selectBg();
+	
+	$('.selectBox .up').click(function(){
+		var val = $(this).parent().prev().val();
+		val++;
+		$(this).parent().prev().val(val);
+		selectBg();
+	});
+	$('.selectBox .down').click(function(){
+		var val = $(this).parent().prev().val();
+		if(val != 0){
+			val--;
+			$(this).parent().prev().val(val);
+		}else{
+			$(this).parent().prev().val(0);
+		}
+		selectBg();
+	});
+
+
+	$(".slideBox .foo ul").carouFredSel({
+		circular: false,
+		infinite: false,
+		responsive: true,
+		auto: false,
+		items: {
+			visible: {
+				min: 3,
+				max: 3
+			},
+			width: 170,
+			height: 130
+		},
+		scroll: {
+			items: 1
+		},
+		prev: ".slideBox .prev img",
+		next: ".slideBox .next img",
+		swipe: {
+			onMouse: false,
+			onTouch: false
+		}
+	});
+	*/
+	
+	jQuery.extend({
+		showInkCount: function(id, check){
+		/*
+		*	インク色数指定のセレクター生成
+		*	@id			プリント位置のID
+		*	@check		ラジオボタンのチェック状態　0:OFF,  1:ON
+		*/
+			if(check){
+				var name = $("#"+id).val();
+				var html = "";
+				html += '<dt class="'+id+'">'+name+'</dt>';
+				html += '<dd>';
+					html += '<select class="styled" name="printpos[]">';
+						html += '<option value="'+name+'_1色" selected="selected">1 色</option>';
+						html += '<option value="'+name+'_2色">2 色</option>';
+						html += '<option value="'+name+'_3色">3 色</option>';
+						html += '<option value="'+name+'_4色以上">4色以上</option>';
+					html += '</select>';
+				html += '</dd>';
+				$('#inkCount').append(html);
+			}else{
+				var target = $('#inkCount').find('.'+id);
+				target.next().remove();
+				target.remove();
+			}
+		},
+	});
+	
+	// プリント位置のスライダー
+	var mySwiper = new Swiper('.swiper-container', {
+		slidesPerView: 3,
+		spaceBetween: 15,
+		freeMode: true,
+		nextButton: '.swiper-button-next',
+		prevButton: '.swiper-button-prev',
+	});
+	slideCheck();
+	
+	// プリント位置指定の有無をチェック
+	//checkAdd();
+	$('.slideBox input:checkbox').change(function(){
+		slideCheck();
+		//checkAdd();	
+	});
+	
+	// プリントする場所の指定
+	$('#printpos').on('change', '.check_pos', function(){
+		var isCheck = $(this).is(':checked')? 1: 0;
+		$.showInkCount($(this).attr('id'), isCheck);
+	});
+});
+/*
+function checkAdd(){
+	$('.slideBox input:checkbox').each(function(){
+		var ind = $(this).attr('id');
+		if($(this).is(':checked')){
+			$('.chaneCheck .'+ind+'_dl').show();	
+		}
+		else{
+			$('.chaneCheck .'+ind+'_dl').hide();	
+		}	
+	});	
+}
+*/
+</script>
+
+</body>
+</html>
