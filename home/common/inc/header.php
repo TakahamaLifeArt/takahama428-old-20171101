@@ -1,12 +1,11 @@
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-11155922-2', 'auto');
-  ga('send', 'pageview');
-
+	ga('create', 'UA-11155922-2', 'auto');
+	ga('send', 'pageview');
 </script>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -35,22 +34,9 @@
 			</div>';
 			echo $html;
 		}
-	?>
-
-	<?php
-	/*
-		if($_SERVER['SCRIPT_NAME']==DIRECTORY_SEPARATOR.'index.html'){
-			echo '<a href="/order/express/" class="oisogi fixed"></a>';
-		}else if(
-			strpos($_SERVER['SCRIPT_NAME'], DIRECTORY_SEPARATOR.'items'.DIRECTORY_SEPARATOR)!==0 && 
-			strpos($_SERVER['SCRIPT_NAME'], DIRECTORY_SEPARATOR.'order'.DIRECTORY_SEPARATOR)!==0 &&
-			dirname($_SERVER['SCRIPT_NAME'])!=DIRECTORY_SEPARATOR.'sameday'
-		){
-			echo '<a href="/order/express/" class="oisogi"></a>';
-		}
-	 */
+		
 		if($_SERVER['SCRIPT_NAME']!=DIRECTORY_SEPARATOR.'order'.DIRECTORY_SEPARATOR.'index.php'){
-			echo '<a href="/order/express/"  id="oisogi"></a>';
+			echo '<a href="/order/express/" id="oisogi"></a>';
 		}
 	?>
 	
@@ -179,7 +165,6 @@
 				</a>
 			</div>
 		</div>
-		
 	</div>
 		
 	<div id="top_menu">
@@ -199,7 +184,6 @@
 				</script>
 				<gcse:searchbox-only></gcse:searchbox-only>
 			</div>
-			
 			
 			<ul>
 				<li><a href="/guide/orderflow.html"onclick="ga('send','event','orderflow','click','header');">ご注文の流れ</a></li>
@@ -227,6 +211,4 @@
 			}
 		?>
 	</div>
-
-
 </div>
