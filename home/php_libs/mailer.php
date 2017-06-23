@@ -434,18 +434,19 @@ class Mailer{
 					return false;
 				}
 				
-				$result = $this->send_mail($mail_info, $this->info['customername'], $this->info['email'], $attach, $this->info['title']);
-				
 				if($result && $this->info['title']=='request'){
-					$addr = htmlspecialchars(mb_convert_encoding($this->info['addr0'], "utf-8"), ENT_QUOTES);
-					$addr .= htmlspecialchars(mb_convert_encoding($this->info['addr1'], "utf-8"), ENT_QUOTES);
+					if ($this->info['subject']!='»ñÎÁÀÁµá') {
+						throw new Exception();
+					}
+					$addr = htmlspecialchars(mb_convert_encoding($this->info['addr0'], "utf-8"), ENT_QUOTES, "utf-8");
+					$addr .= htmlspecialchars(mb_convert_encoding($this->info['addr1'], "utf-8"), ENT_QUOTES, "utf-8");
 					if(!empty($this->info['addr2'])){
-						$addr = $addr.' '.htmlspecialchars(mb_convert_encoding($this->info['addr2'], "utf-8"), ENT_QUOTES);
+						$addr = $addr.' '.htmlspecialchars(mb_convert_encoding($this->info['addr2'], "utf-8"), ENT_QUOTES, "utf-8");
 					}
 					$args = array(
-						"requester"=>htmlspecialchars(mb_convert_encoding($this->info['customername'], "utf-8"), ENT_QUOTES),
-						"subject"=>htmlspecialchars(mb_convert_encoding($this->info['subject'], "utf-8"), ENT_QUOTES),
-						"message"=>htmlspecialchars(mb_convert_encoding($this->info['message'], "utf-8"), ENT_QUOTES),
+						"requester"=>htmlspecialchars(mb_convert_encoding($this->info['customername'], "utf-8"), ENT_QUOTES, "utf-8"),
+						"subject"=>htmlspecialchars(mb_convert_encoding($this->info['subject'], "utf-8"), ENT_QUOTES, "utf-8"),
+						"message"=>htmlspecialchars(mb_convert_encoding($this->info['message'], "utf-8"), ENT_QUOTES, "utf-8"),
 						"reqmail"=>$this->info['email'],
 						"reqzip"=>$this->info['zipcode'],
 						"reqaddr"=>$addr,
@@ -454,6 +455,8 @@ class Mailer{
 					$conn = new ConnDB();
 					$conn->requestmail($args);
 				}
+				
+				$result = $this->send_mail($mail_info, $this->info['customername'], $this->info['email'], $attach, $this->info['title']);
 			
 			}
 			
