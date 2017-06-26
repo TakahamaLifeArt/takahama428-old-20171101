@@ -1,0 +1,504 @@
+@charset "euc-jp";
+
+/*------------------------------------------------------------
+
+2009 takahama web css
+
+	File_name	: printsize.css
+	Description	: print method
+
+	log
+	2017.06.12	: created
+-------------------------------------------------------------- */
+
+
+/*		style
+===============================================================*/
+
+
+/*===============================================
+●画面の横幅が769px以上
+===============================================*/
+
+@media screen and (min-width: 769px) {
+    .wrap1 p,
+    .wrap2 p {
+        margin-bottom: 0.5em;
+    }
+    .heading1_wrapper .comment {
+        float: right;
+        margin: 1em 10px 0;
+        font-size: 1em;
+        white-space: normal;
+    }
+    h2 span {
+        padding-left: 2em;
+        font-size: 66%;
+        color: #666;
+    }
+    .contents h3 {
+        margin-bottom: 10px;
+        padding: 0 13px;
+        font-size: 125%;
+        font-weight: bold;
+        color: #333;
+        border-left: 7px solid #F60;
+    }
+    .contents h4 {
+        /*	height: 20px;
+	margin-bottom: 2px;
+	line-height: 20px;
+	text-indent: 1.5em;
+	font-weight: normal;
+	color: #fff;*/
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 2em;
+        color: #666;
+        padding-bottom: 5px;
+        /*	background: url(/common/img/ribbon_point.png) no-repeat;*/
+    }
+    .contents h4.grybd {
+        border-bottom: 3px solid #666;
+    }
+    .contents h4.good,
+    .contents h4.bad {
+        font-size: 14px;
+        text-indent: 24px;
+    }
+    .contents h4.good {
+        background: url(../../common/img/good_icon.png) no-repeat;
+    }
+    .contents h4.bad {
+        background: url(../../common/img/bad_icon.png) no-repeat;
+    }
+    /* 画像 */
+    .sizeimg {
+        clear: both;
+    }
+.sizeimg .gallery_left {
+    float: left;
+    margin: 10px 0.5%;
+    width: 19%;
+    display: inline-block;
+}
+    
+    .sizeimg .gallery_left a {
+        margin: 0 auto;
+        width: 100%;
+        display: block;
+        text-align: center;
+        border: 1px solid #f0f0f0;
+        box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+        padding: 0 0 15px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+    
+    .sizeimg .gallery_left .line_bdr {
+        background: #f0f0f0;
+        padding: 10px;
+        border-radius: 5px 5px 0 0;
+        color: #000;
+    }
+    
+    
+    .leftside,
+    .rightside {
+        padding: 3px;
+        border: 1px solid #ddd;
+        background: #f6f6f6 url(/common/js/ui/flick/images/ui-bg_highlight-soft_100_f6f6f6_1x100.png) left top repeat-x;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+    }
+    .leftside {
+        float: left;
+        margin-right: 20px;
+    }
+    .rightside {
+        float: right;
+        margin-left: 20px;
+    }
+    /* シルクのラバーインク */
+    .rubber_mihon {
+        width: 300px;
+        height: 218px;
+        background: url(../img/printing/rubber_mihon.jpg) no-repeat center top;
+        cursor: pointer;
+    }
+    .rubber_mihon:hover {
+        background-position: center bottom;
+    }
+    /* シルクの染み込みインク */
+    .stain_mihon {
+        width: 300px;
+        height: 218px;
+        background: url(../img/printing/stain_mihon.jpg) no-repeat center top;
+        cursor: pointer;
+    }
+    .stain_mihon:hover {
+        background-position: center bottom;
+    }
+    /* デジタルコピー転写 */
+    .digitalcenter {
+        text-align: center;
+        padding-bottom: 1Opx;
+    }
+    /* メリット、デメリット */
+    .goodbad {
+        border: 1px solid #ddd;
+        padding: 10px 15px 5px;
+        margin: 15px 0;
+        font-size: 90%;
+    }
+    .inner_left,
+    .inner_right {
+        /*	padding: 40px 0px;*/
+        width: 330px;
+        padding: 0 7px;
+    }
+    .inner_left {
+        float: left;
+        border-right: 1px solid #ddd;
+    }
+    .inner_right {
+        float: right;
+    }
+    ol {
+        margin-left: 2em;
+    }
+    ol li {
+        list-style-type: decimal;
+        padding-bottom: 1em;
+    }
+    div.dotted {
+        background: url(../../common/img/dotted.png) repeat-x bottom;
+        height: 12px;
+        margin-bottom: 5px;
+    }
+    /* オススメのプリント */
+    .wrap2 {
+        clear: both;
+        padding-bottom: 80px;
+        overflow: hidden;
+    }
+    .recommend {
+        margin-top: 70px;
+    }
+    .wrap2 .inner_right {
+        float: right;
+        width: 450px;
+        padding: 0;
+    }
+    .wrap2 .inner_right .heading3 {
+        margin-top: 0px;
+    }
+    dl.list dt {
+        width: 10em;
+    }
+    dl.list dd {
+        padding-left: 10em;
+    }
+    /* ふちについて */
+    .wrap2 ul {
+        margin-top: 20px;
+    }
+    .wrap2 li {
+        float: left;
+        width: 160px;
+        margin: 0px 20px;
+    }
+    .wrap2 li p {
+        margin: 5px 0px 0px 5px;
+        color: #666;
+    }
+    .fuchi {
+        margin-top: 40px;
+    }
+    .fuchi >p {
+        margin: 0 0 2em 1em;
+    }
+    /* インクジェット */
+    .sub_title {
+        padding: 0 6px;
+        font-weight: bold;
+        color: #333;
+        border-left: 4px solid #F60;
+    }
+    .tbl_design_sample {
+        width: 620px;
+        margin: 2em 0;
+    }
+    .tbl_design_sample td {
+        text-align: center;
+        padding-bottom: 2em;
+    }
+    .tbl_design_sample td img {
+        cursor: pointer;
+    }
+    /*		navigation
+===============================================================*/
+    #navi1,
+    #navi2,
+    #navi3,
+    #navi4,
+    #navi5 {
+        clear: both;
+        width: 780px;
+        height: 45px;
+        margin-bottom: 10px;
+    }
+    #navi2,
+    #navi3,
+    #navi4,
+    #navi5 {
+        margin-top: 100px;
+    }
+    .navi {
+        width: 780px;
+        text-align: center;
+        overflow: hidden;
+        font-size: 85%;
+    }
+    .navi li {
+        float: left;
+        width: 195px;
+        height: 30px;
+        padding-bottom: 15px;
+        line-height: 40px;
+        background-color: #fff;
+    }
+    .navi li.act {
+        background: #fff url(../img/designguide/arrow_down2.png) no-repeat 90px 30px;
+    }
+    .navi li a {
+        display: block;
+        cursor: pointer;
+    }
+    .navi li a,
+    .navi li p {
+        height: 28px;
+        line-height: 28px;
+        border-width: 0px 0px 5px 0px;
+        border-style: solid;
+        border-color: #D0C6B3;
+        color: #726A5D;
+    }
+    .navi li p,
+    .navi li a:hover {
+        background: url(../img/designguide/bg_dsubmenu_r.png) repeat-x;
+        text-decoration: none;
+        border-width: 0px 0px 5px 0px;
+        border-style: solid;
+        border-color: #FFCFA6;
+    }
+    .dsubmenu {
+        text-align: center;
+        background: url(../img/designguide/bg_dsubmenu.png) repeat-x;
+        border-width: 5px 0px 0px 0px;
+        border-style: solid;
+        border-color: #FFCFA6;
+        margin-bottom: 20px;
+        color: #803300;
+        font-size: 20px;
+        padding: 5px;
+        letter-spacing: 3px;
+    }
+    .addsp {
+        margin-bottom: 30px;
+    }
+    .caution {
+        margin: 0 auto;
+        margin: 15px 5px 45px 5px;
+        border: 3px #ff0000 solid;
+        padding: 0 0 30px;
+    }
+    .caution .ca1 {
+        background-color: #ff0000;
+        height: 30px;
+        padding-top: 5px;
+    }
+    .caution .ca1 h4 {
+        color: #ffffff;
+        margin: 0px;
+    }
+    .caution p {
+        margin: 30px;
+    }
+    .caution p.bd {
+        font-weight: bold;
+    }
+    .caution .ca {
+        margin-left: 35px;
+        margin-bottom: 20px;
+    }
+    .caution .dry {
+        margin-bottom: 0px;
+        margin-top: 15px;
+    }
+    .clearfix {
+        display: block;
+        margin: 20px 1% 20px 2%;
+        clear: both;
+    }
+    .clearfix .arrow {
+        display: block;
+        padding: 200px 10px 150px;
+        width: 50px;
+        float: left;
+    }
+    .button_left {
+        float: left;
+        width: 24%;
+        margin: 3px;
+        list-style: none;
+    }
+    .button:hover {
+        opacity: 0.8;
+    }
+    .fontred {
+        color: #ff0019;
+        padding-left: 10px;
+    }
+    
+    .comtend{
+        display: none;
+    }
+    
+    .comment2 {
+        display: block;
+        border: 2px solid #eb5c02;
+        padding: 10px;
+        text-align: center;
+        margin: 10px 5px;
+        color: #eb5c02;
+        font-weight: bold;
+        font-size: 1.2em;
+    }
+    
+    .banner{
+        display: block;
+    }
+    
+
+    .banner2{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    
+    .heading1_wrapper .headLine01 {
+        margin-bottom: 15px;
+        padding: 8px 10px 5px;
+        position: relative;
+        color: #ff7900;
+        border-bottom: 3px solid #ff7900;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 12px;
+        font-size: 1.2em;
+    }
+    
+    .comment {
+        display: none;
+    }
+    
+    .comment2{
+        display: block;
+        border: 2px solid #eb5c02;
+        padding:10px;
+        text-align: center;
+        margin: 10px 5px;
+        color: #eb5c02;
+        font-weight: bold;
+        font-size: 1.2em;
+    }
+    
+    
+    h2 {
+        font-size: 20px;
+        margin-left: 5px;
+        padding-left: 5px;
+        border-left: 10px solid #ff9034;
+        overflow: hidden;
+    }
+    
+    .clearfix{
+        margin:10px 0;
+    }
+    
+    .button_left {
+        float: none;
+        width: 98%;
+        margin: 1%;
+        list-style: none;
+    }
+    
+.sizeimg .gallery_left {
+    float: left;
+    margin: 10px 1%;
+    width: 31%;
+    display: inline-block;
+}
+    .sizeimg .gallery_left a {
+        margin: 0 auto;
+        width: 100%;
+        display: block;
+        text-align: center;
+        border: 1px solid #f0f0f0;
+        box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+        padding: 0 0 15px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    .sizeimg .gallery_left .line_bdr {
+        background: #f0f0f0;
+        padding: 10px;
+        border-radius: 5px 5px 0 0;
+        color: #fff;
+        padding: 10px 5px;
+        border-radius: 5px 5px 0 0;
+        color: #000;
+        font-size: .8em;
+    }
+    .comtend{
+        display: block;
+        text-align: center;
+        margin: 20px;
+    }
+    
+    .button_left:last-child{
+        display: none;
+    }
+    
+    .lightbox .lb-image {
+        display: block;
+        height: auto;
+        max-width: inherit;
+        max-height: none;
+        border-radius: 3px;
+        border: none;
+    }
+    
+    .lb-outerContainer {
+        position: relative;
+        width: 250px;
+        height: 250px;
+        margin: 0 auto;
+        border-radius: 4px;
+        background-color: inherit;
+    }
+    
+    .banner{
+        display: none;
+    }
+
+
+    .banner2{
+        display: block;
+    }
+}

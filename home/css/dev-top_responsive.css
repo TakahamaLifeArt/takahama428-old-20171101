@@ -46,7 +46,7 @@
 	===============================================================*/
 	h2 {
    		 font-size: 143%;
-   		 border-bottom: 7px solid #8B8B8B;
+   		 
    		 padding: 0 0 10px 30px;
    		 line-height: 1.0;
    		 margin: 25px 0 20px 0;
@@ -93,7 +93,7 @@
 	#mainvisual .fr a:hover {
 		filter: alpha(opacity=80);
 		-moz-opacity: .80;
-		opacity: .60;
+		opacity: .80;
 	}
 	#mainvisual .fl .main_images {
 		position: relative;
@@ -150,12 +150,23 @@
 		background-position: center bottom;
 		opacity: 0.5;
 	}
+    .blog_page {
+        display: block;
+        cursor: pointer;
+        width: 1000px;
+        height: 300px;
+        background: url(../img/mainimg/banner/top_main_blog.jpg) no-repeat center top;
+    }
+    .blog_page:hover {
+        background-position: center bottom;
+        opacity: 0.5;
+    }
 	.sport_main {
 		display: block;
-		width: 724px;
-		height: 273px;
+        width: 1000px;
+        height: 300px;
 		cursor: pointer;
-		background: url(/img/mainimg/banner/sport_main_724.png) no-repeat center top;
+        background: url(/img/mainimg/banner/top_main_sports.jpg) no-repeat center top;
 	}
 	.sport_main:hover {
 		background-position: center bottom;
@@ -231,16 +242,15 @@
 	/* banner */
 	#top_3bigbanner {
     		clear: both;
-   		 padding: 17px 0;
 	}
-	#top_3bigbanner p {
-  		  display: inline;
-   		 /* height: 135px; */
-   		 margin: 0px;
-    		float: left;
-	}
+    #top_3bigbanner p {
+        display: inline;
+        margin: 0px;
+        float: left;
+    }
 	#top_3bigbanner p.bb1 {
 		text-align: left;
+        margin-left: 1px;
 	}
 	#top_3bigbanner p.bb2 {
 		text-align: center;
@@ -253,44 +263,36 @@
 		width: 300px;
 		height: 125px;
 	}
-	#top_3bigbanner p.bb1 a {
-   		 background: url(../img/mainimg/button/top_button_01.png) no-repeat 0 0;
-    		width: 323px;
-   		 height: 60px;
+    #top_3bigbanner p.bb1 a {
+        background: url(../img/mainimg/top_three_item.jpg) no-repeat 0 0;
+        width: 333px;
+        height: 164px;
+        display: block;
+        margin: 0 0 20px;
+    }
+	#top_3bigbanner p.bb2 a {
+        background: url(../img/mainimg/top_three_hurry.jpg) no-repeat 0 0;
+   		 width: 333px;
+        height: 164px;
    		 display: block;
 	}
-	#top_3bigbanner p.bb2 a {
-  		  background: url(../img/mainimg/button/top_button_02.png) no-repeat 0 0;
-   		 width: 323px;
-   		 height: 60px;
-   		 display: block;
-	}	
 	#top_3bigbanner p.bb4 a {
-   		 background: url(../img/mainimg/button/top_button_03.png) no-repeat 0 0;
-   		 width: 323px;
-   		 height: 82px;
+        background: url(../img/mainimg/top_three_ten.jpg) no-repeat 0 0;
+   		 width: 333px;
+        height: 164px;
    		 display: block;
 	}
 	#top_3bigbanner p.bb1 a:hover{
-		background: url(../img/mainimg/button/top_button_01_hover.png) no-repeat 0 0;
+        background: url(../img/mainimg/top_three_item_on.jpg) no-repeat 0 0;
 	}
 	#top_3bigbanner p.bb2 a:hover{
-		background: url(../img/mainimg/button/top_button_02_hover.png) no-repeat 0 0;
+        background: url(../img/mainimg/top_three_hurry_on.jpg) no-repeat 0 0;
 	}
 	#top_3bigbanner p.bb4 a:hover {
-		background: url(../img/mainimg/button/top_button_03_hover.png) no-repeat 0 0;
+        background: url(../img/mainimg/top_three_ten_on.jpg) no-repeat 0 0;
 		background:;
 	}
-	
-	#top_3bigbanner p.bb1 a:active{
-		background: url(../img/mainimg/button/top_button_01_onclick.png) no-repeat 0 0;
-	}
-	#top_3bigbanner p.bb2 a:active{
-		background: url(../img/mainimg/button/top_button_02_onclick.png) no-repeat 0 0;
-	}
-	#top_3bigbanner p.bb4 a:active{
-		background: url(../img/mainimg/button/top_button_03_onclick.png) no-repeat 0 0;
-	}
+
 	
 	/*		今すぐ、注文確定した場合のお届け日
 	===============================================================*/
