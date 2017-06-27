@@ -429,6 +429,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							<p class="note">例　左そで：刺繍</p>
 							<textarea id="note_printmethod"  name="note_printmethod"></textarea>
 						</div>
+                        <div class="bdrtxt"><p><span class="demoSpan1"></span>刺繍のお見積金額は含まれてはおりません。別途お見積りしてご連絡させて頂きます。</p></div>
 						<div class="arrow_line"><div class="arrow prev" data-back="1"><span>戻る</span></div><div class="step_next goto_cart" onclick="ga('send','event','step3','click','order',5300);" 
 >カートに入れる</div></div>
                     </div>
