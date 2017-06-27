@@ -1,0 +1,124 @@
+<?php
+$isOrderPage = false;
+if(strpos($_SERVER['SCRIPT_NAME'], DIRECTORY_SEPARATOR.'m3'.DIRECTORY_SEPARATOR.'order'.DIRECTORY_SEPARATOR)===0){
+	$isOrderPage = true;
+}	
+?>
+		
+<div id="gNavi_my">
+	<div>
+		<div class="login_btn"><a href="/user/history.php" id="mypage"><p>マイページ</p></a></div>
+		<?php
+			if(!empty($_SESSION['me'])){
+				echo '<div class="logout_btn"><a href="/user/logout.php" id="mypage"><p>ログアウト</p></a></div>';
+			}
+		?>
+	</div>
+	<div class="welcome">
+		<?php
+			if(!empty($_SESSION['me'])){
+				$wel_name = mb_convert_encoding($_SESSION['me']['customername'], 'euc-jp', 'utf-8');
+				echo '<p class="wel_name" style="font-weight:bold">ようこそ '.$wel_name.' 様</p>';
+			}
+		?>
+	</div>
+	<div class="how_to_mypage" style="display:none">
+		<p><a href="/user/about_tlamembers.php" onclick="ga('send','event’,’how_to_mypage','click’,’top’);"> <img src="/common/img/header/sankaku_bule.png">マイページとは </a></p>
+	</div>
+</div>
+
+
+<nav>
+	<ul class="gNavi">
+		<li id="gNavi01"><p><img src="/m3/common/img/gnavi/btn_navi02.png" width="38" height="38" alt=""><span>料金</span></p></li>
+		<li id="gNavi02"><p><img src="/m3/common/img/gnavi/btn_navi03.png" width="38" height="38" alt=""><span>納期</span></p></li>
+		<li><p><a href="/m3/items/category.html"><img src="/m3/common/img/gnavi/btn_navi04.png" width="38" height="38" alt=""><span>アイテム</span></a></p></li>		
+		<li><p><a href="/m3/design/"><img src="/m3/common/img/gnavi/btn_navi01.png" width="38" height="38" alt=""><span>デザイン</span></a></p></li>
+		<li id="gNavi04"><p><img src="/m3/common/img/gnavi/btn_navi05.png" width="38" height="38" alt=""><span>申し込み</span></p></li>
+	</ul>
+
+
+
+	<div id="gNaviMenu">
+		<div class="gNavi04Menu">
+			<ul class="linkList feelList" >
+				<li><a href="/order/"><span class="photo"><img src="/m3/common/img/gnavi/application.png"></span><span class="text">申し込み</span></a></li>
+				<li><a href="/m3/guide/flow.html"><span class="photo"><img src="/m3/common/img/gnavi/design_help.png"></span><span class="text">ご利用の流れ</span></a></li>
+			</ul>
+		</div>
+
+		<div class="gNavi01Menu">
+			<ul class="linkList feelList" >
+				<li><a href="/price/estimate.html"><span class="photo"><img src="/m3/common/img/gnavi/estimate_icon.png"></span><span class="text">10秒見積もり</span></a></li>
+				<li><a href="/m3/guide/payment.html"><span class="photo"><img src="/m3/common/img/gnavi/payment_icon.png"></span><span class="text">お支払い方法</span></a></li>
+				<li><a href="/guide/bring.html"><span class="photo"><img src="/m3/common/img/gnavi/mochikomi.png"></span><span class="text">持ち込みについて</span></a></li>
+				
+			</ul>
+		</div>
+	
+		<div class="gNavi02Menu">
+			<ul class="linkList planList">
+				<li><a href="/m3/guide/delivery.html"><span class="photo"><img src="/m3/common/img/gnavi/delivery_icon.png"></span><span class="text">お届け日計算</span></a></li>
+				<li><a href="/m3/guide/carriage.html"><span class="photo"><img src="/m3/common/img/gnavi/carriage_icon.png"></span><span class="text">配送・送料</span></a></li>
+				<li><a href="/m3/sameday/"><span class="photo"><img src="/m3/common/img/gnavi/sameday_icon.png"></span><span class="text">当日特急プラン</span></a></li>
+				<li><a href="/reason/speed.html"><span class="photo"><img src="/m3/common/img/gnavi/speed.png"></span><span class="text">お届けが早い理由</span></a></li>
+				
+			</ul>
+		</div>
+	
+		<div class="gNavi03Menu">
+			<ul class="linkList makeList">
+      			<li><a href="/m3/design/support.html"><span class="photo"><img src="/m3/common/img/gnavi/design_support.png"></span><span class="text">デザインサポート</span></a></li>
+				<li><a href="/designtemplate/"><span class="photo"><img src="/m3/common/img/gnavi/design_temp.png"></span><span class="text">デザインテンプレート</span></a></li>
+				<li><a href="/m3/design/simulation.html"><span class="photo"><img src="/m3/common/img/gnavi/design_simu.png"></span><span class="text">カラーシミュレーター</span></a></li>
+				<li><a href="/m3/design/gallery.html"><span class="photo"><img src="/m3/common/img/gnavi/design_sample.png"></span><span class="text">デザイン実例</span></a></li>
+				<li><a href="/m3/design/designguide.html"><span class="photo"><img src="/m3/common/img/gnavi/design_make.png"></span><span class="text">デザインの作り方</span></a></li>
+				<li><a href="/m3/design/printing.html"><span class="photo"><img src="/m3/common/img/gnavi/design_type.png"></span><span class="text">プリント方法の種類</span></a></li>
+				<li><a href="/m3/design/inkcolor.html"><span class="photo"><img src="/m3/common/img/gnavi/inc.png"></span><span class="text">インク一覧</span></a></li>
+				<li><a href="/m3/design/font.html"><span class="photo"><img src="/m3/common/img/gnavi/design_incfont.png"></span><span class="text">フォント一覧</span></a></li>
+				<li><a href="/m3/design/send.html"><span class="photo"><img src="/m3/common/img/gnavi/design_draft.png"></span><span class="text">入稿方法</span></a></li>
+			</ul>
+		</div>
+	
+		<div class="gNaviItemsMenu" id="gNaviPulldown">
+			<table class="pull02 essential">
+				<tbody>
+					<tr>
+						<td colspan="2"><a href="/m3/items/t-shirts.html" class="gnavi_t-shirts"><img src="/m3/common/img/gnavi/gnavi_t-shirts_s.png"><span>Tシャツ</span></a></td>
+					</tr>
+					<tr>
+						<td class="small"><a href="/m3/items/?c=sweat" class="gnavi_sweat"><img src="/m3/common/img/gnavi/gnavi_sweat_s.png"><p>パーカー<br>スウェット</p></a></td>
+						<td><a href="/m3/items/?c=outer" class="gnavi_outer"><img src="/m3/common/img/gnavi/gnavi_outer_s.png"><p>ブルゾン</p></a></td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="pull02">
+				<tbody>
+					<tr>
+						<td><a href="/m3/items/?c=polo-shirts" class="gnavi_polo-shirts"><img src="/m3/common/img/gnavi/gnavi_polo_s.png"><p>ポロシャツ</p></a></td>
+						<td><a href="/m3/items/?c=sportswear" class="gnavi_sportswear"><img src="/m3/common/img/gnavi/gnavi_sports_s.png"><p>スポーツウェア</p></a></td>
+						<td><a href="/m3/items/?c=towel" class="gnavi_towel"><img src="/m3/common/img/gnavi/gnavi_towel_s.png"><p>タオル</p></a></td>
+					</tr>
+					<tr>
+						<td class="small"><a href="/m3/items/?c=long-shirts" class="gnavi_long-shirts"><img src="/m3/common/img/gnavi/gnavi_long-t_s.png"><p>ロング<br>Tシャツ</p></a></td>
+						<td class="small"><a href="/m3/items/?c=ladys" class="gnavi_ladys"><img src="/m3/common/img/gnavi/gnavi_ladys_s.png"><p>レディース<br>ウェア</p></a></td>
+						<td class="small"><a href="/m3/items/?c=tote-bag" class="gnavi_bag"><img src="/m3/common/img/gnavi/gnavi_tote-bag_s.png"><p>バッグ・<br>トート</p></a></td>
+					</tr>
+					<tr>
+						<td><a href="/m3/items/?c=apron" class="gnavi_apron"><img src="/m3/common/img/gnavi/gnavi_apron_s.png"><p>エプロン</p></a></td>
+						<td class="small"><a href="/m3/items/?c=baby" class="gnavi_baby"><img src="/m3/common/img/gnavi/gnavi_baby_s.png"><p>ベビー<br>ウェア</p></a></td>
+						<td><a href="/m3/items/?c=overall" class="gnavi_overall"><img src="/m3/common/img/gnavi/gnavi_overall_s.png"><p>つなぎ</p></a></td>
+					</tr>
+					<tr>
+						<td class="small"><a href="/m3/items/?c=workwear" class="gnavi_workwear"><img src="/m3/common/img/gnavi/gnavi_workwear_s.png"><p>ワーク<br>ウェア</p></a></td>
+						<td class="small"><a href="/m3/items/?c=cap" class="gnavi_cap"><img src="/m3/common/img/gnavi/gnavi_cap_s.png"><p>キャップ・<br>バンダナ</p></a></td>
+						<td class="small"><a href="/m3/items/?c=goods" class="gnavi_goods"><img src="/m3/common/img/gnavi/gnavi_goods_s.png"><p>記念品・<br>プレゼント</p></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+		
+</nav>
+
+
