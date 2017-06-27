@@ -349,7 +349,9 @@ $(function(){
 			inkjetOption[optionId] = amount[0];
 			var param = {'act':'printfee', 'output':'jsonp', 'args':[]};
 			var args = [];
+			var existPos = {};
 			for (var i=0; i<$.printparam.itemid.length; i++) {
+				if (existPos.hasOwnProperty($.printparam.pos[i])) continue;
 				args[i] = { 
 					'itemid':$.printparam.itemid[i], 
 					'amount':amount[i], 
@@ -358,6 +360,7 @@ $(function(){
 					'size':0,
 					'option':inkjetOption
 				};
+				existPos[$.printparam.pos[i]] = true;
 			}
 			param['args'] = args;
 			$.getJSON($.TLA.api+'?callback=?', param, function(r){
