@@ -141,7 +141,7 @@
 	</div>
 	
 	<div class="inner">
-		<div class="h_wrap hw_1"><a href="/ "onclick="ga('send','event','logo','click','header');"><img src="/common/img/header/logo.png" alt="オリジナルTシャツ屋"></a></div>
+		<div class="h_wrap hw_1"><a href="/" onclick="ga('send','event','logo','click','header');"><img src="/common/img/header/logo.png" alt="オリジナルTシャツ屋"></a></div>
 		<div class="h_wrap hw_2"><img src="/common/img/header/no1_mark.png" alt="業界NO.1！スピード仕上げ 親切対応！"></div>
 		
 		<div class="h_wrap hw_3">
@@ -158,7 +158,7 @@
 			</div>
 				
 			<div class="h_mail">
-				<a href="/contact/ "onclick="ga('send','event','contact','click','header');">
+				<a href="/contact/" onclick="ga('send','event','contact','click','header');">
 					<img src="/common/img/header/mail.png" alt="メール">
 					<span>お問い合わせ（相談）はこちら</span>
 				</a>
