@@ -3,17 +3,18 @@
 	require_once dirname(__FILE__).'/../php_libs/t_orders.php';
 	require_once dirname(__FILE__).'/ordermail.php';
 	
-	if( isset($_POST['ticket'], $_SESSION['ticket'], $_SESSION['orders']) && $_POST['ticket']==$_SESSION['ticket'] ) {
+	$customer = mb_convert_encoding($_SESSION['orders']['customer']['customername'], 'euc-jp', auto);
+//	if( isset($_POST['ticket'], $_SESSION['ticket'], $_SESSION['orders']) && $_POST['ticket']==$_SESSION['ticket'] ) {
+	if ( isset($_SESSION['orders']) ) {
 		$email = $_SESSION['orders']['customer']['email'];
-		$customer = mb_convert_encoding($_SESSION['orders']['customer']['customername'], 'euc-jp', auto);
 		$ordermail = new Ordermail();
 		$isSend = $ordermail->send();
-	}else{
+	} else {
 		$isSend = false;
 	}
 	
 	/* 注文フローのセッションを破棄 */
-	if($isSend){
+	if ($isSend) {
 		unset($_SESSION['ticket']);
 		$_SESSION['orders'] = array();
 //		setcookie(session_name(), "", time()-86400, "/");
