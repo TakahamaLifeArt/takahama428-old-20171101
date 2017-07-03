@@ -401,17 +401,17 @@ html, body {
 }
 
 .login_btn {
-	display: inline-block;
-  padding: 0px 15px;
-  margin: 5px 12px;
-  cursor: pointer;
-  background: #5d87ec;
-  border-radius: 6px;
-  letter-spacing: 0.6px;
-  float: right;
-	height: 25px;
-  text-align: center;
-	font-size:15px
+        display: inline-block;
+        padding: 0px 15px;
+        margin: 5px 12px;
+        cursor: pointer;
+        background: #1c42a1;
+        border-radius: 6px;
+        letter-spacing: 0.6px;
+        float: right;
+        height: 25px;
+        text-align: center;
+        font-size: 15px;
 }
 
 .logout_btn {
@@ -858,6 +858,19 @@ p.scroll_top a:hover {
 }
 #gnavi ul li ul li.com:hover {
 	background: #fff;
+}
+    
+#gnavi #odrbtn {
+  background-color: #4173ed;
+  color: white;
+    border-right: solid 1px #4173ed;
+    border-bottom: 1px solid #4173ed;
+    border-top: 1px solid #4173ed;
+  border-left: 0;
+}
+
+#gnavi #odrtxt{
+    background-color: #e1e9fc
 }
 
 

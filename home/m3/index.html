@@ -1,0 +1,255 @@
+<?php
+	include $_SERVER['DOCUMENT_ROOT']."/php_libs/orders.php";
+	$order = new Orders();
+	$workday = array(1,4);
+	$delidate = array();	// [当日特急, 通常３日]
+	for($i=0; $i<count($workday); $i++){
+		$fin = $order->getDelidate(null, 1, $workday[$i], 'simple');
+		$delidate[$i]["month"] = $fin['Month'];
+		$delidate[$i]["day"] = $fin['Day'];
+		//$delidate[$i]["weekname"] = mb_convert_encoding($fin['weekname'], 'utf-8', 'euc-jp');
+		$delidate[$i]["weekname"] = $fin['weekname'];
+	}
+?>
+    <!DOCTYPE html>
+    <html lang="ja">
+
+    <head>
+        <meta charset="euc-jp">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="keywords" content="オリジナルTシャツ,早い,">
+        <meta name="description" content="スマホで、オリジナルTシャツ作成が早い！即納可能の業界最速当日発送！クラスTシャツの文字入れも最短即日で短納期プリント。1枚からでも激安、お急ぎの製作・プリントは東京都内のタカハマライフアート！10秒で簡単・早いオリジナルTシャツ比較お見積もりも承ります。">
+        <title>スマホで、オリジナルTシャツ作成が早い【即日発送】 ｜ タカハマライフアート</title>
+        <link rel="shortcut icon" href="/icon/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="common/css/common.css" media="all">
+        <link rel="stylesheet" type="text/css" href="common/css/slidebars.css" media="all">
+        <link rel="stylesheet" href="common/css/import.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="apple-touch-icon" href="img/sp_icon.jpg" />
+        <script src="common/js/jquery.js"></script>
+        <script src="common/js/common1.js"></script>
+        <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="common/js/slidebars.js"></script>
+<script src="common/js/common.js"></script>  -->
+        <style>
+            .text {
+                font-size: 12px;
+            }
+            
+            html {
+                font-size: 16px;
+                zoom: 1;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+        <!-- Google Tag Manager -->
+        <noscript>
+            <iframe src="//www.googletagmanager.com/ns.html?id=GTM-T5NQFM" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+        <script>
+            (function(w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({
+                    'gtm.start': new Date().getTime(),
+                    event: 'gtm.js'
+                });
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s),
+                    dl = l != 'dataLayer' ? '&l=' + l : '';
+                j.async = true;
+                j.src =
+                    '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-T5NQFM');
+
+        </script>
+        <!-- End Google Tag Manager -->
+        <div id="warapper">
+            <script>
+                (function(i, s, o, g, r, a, m) {
+                    i['GoogleAnalyticsObject'] = r;
+                    i[r] = i[r] || function() {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+                    a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                    a.async = 1;
+                    a.src = g;
+                    m.parentNode.insertBefore(a, m)
+                })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+                ga('create', 'UA-11155922-2', 'auto');
+                ga('send', 'pageview');
+
+            </script>
+            <div id="fb-root"></div>
+            <script>
+                (function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) return;
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.0";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+
+            </script>
+            <div id="container">
+
+                <header id="header">
+                    <h1>スマホでオリジナルTシャツ作成が早い！</h1>
+
+                    <?php include(dirname(__FILE__)."/./common/inc/header.html"); ?>
+                </header>
+
+                <?php include(dirname(__FILE__)."/./common/inc/gnavi.html"); ?>
+
+                <div id="main">
+
+                    <section>
+                        <div>
+                            <a href="sameday/" onclick="ga('send','event','deliveryplan','click','sp-main');"><img src="img/slide_delivery.jpg" width="100%" alt="オリジナルTシャツ 最短当日"></a>
+                        </div>
+                    </section>
+                   
+
+
+                    <div>
+                        <section class="customer">
+                            <p class="txt-ong">＼Web上でお見積もり可能／</p>
+                            <h2 class="home" style="margin-top:0px;">プリントするアイテムを選ぶ</h2>
+                            <ul class="linkUl">
+                                <li>
+                                    <a href="items/t-shirts.html" onclick="ga('send','event','t-shirts','click','sp-top');"><img src="img/sp_category_01.jpg" alt="Tシャツ"></a>
+                                </li>
+                                <li>
+                                    <a href="http://www.takahama428.com/m3/items/sweat.html" onclick="ga('send','event','sportswear','click','sp-top');"><img src="img/sp_category_02.jpg" alt="パーカー・スウェット"></a>
+                                </li>
+                                <li>
+                                    <a href="http://www.takahama428.com/m3/items/towel.html" onclick="ga('send','event','polo-shirts','click','sp-top');"><img src="img/sp_category_03.jpg" alt="タオル"></a>
+                                </li>
+                            </ul>
+                            <!-- customer -->
+                        </section>
+                    </div>
+                    <div class="cate">
+                        <a href="items/category.html" onclick="ga('send','event','sameday','order','sp-top');" class="linkbtn">
+                            <p style="color:#383838;">カテゴリーをもっと見る</p>
+                        </a>
+                    </div>
+
+
+                    <section class="delivery">
+                        <a id="plan"></a>
+
+                        <div class="rightnow">
+
+                            <div class="short">
+                                <p class="txt"><span>最短</span></p>
+                                <p class="txt-spacing"><span id="shortMonth"><?php echo $delidate[0]["month"];?></span>月<span id="shortDay"><?php echo $delidate[0]["day"];?></span>日<span id="shortWeek">（<?php echo $delidate[0]["weekname"];?>）</span></p>
+                            </div>
+
+                            <div class="normal">
+                                <p class="txt"><span>通常</span></p>
+                                <p class="txt-spacing"><span id="normalMonth"><?php echo $delidate[1]["month"];?></span>月<span id="normalDay"><?php echo $delidate[1]["day"];?></span>日<span id="normalWeek">（<?php echo $delidate[1]["weekname"];?>）</span></p>
+                            </div>
+                            <div align="right" id="serchday">
+                                <a href="http://www.takahama428.com/m3/guide/delivery.html" class="moji" onclick="ga('send','event','delivery','click','sp-top');">
+                                    <p>他の日付で調べる?</p>
+                                </a>
+                            </div>
+
+                        </div>
+                    </section>
+                    <div class="bnr">
+                        <h2 class="home">おすすめサービス</h2>
+                        <section class="price">
+                            <p class="txt-ong">＼1番安いアイテムは？／</p>
+                            <a href="price/estimate.html" onclick="ga('send','event','estimate','click','sp-top');">
+                                <div>まず料金を知りたい方！</div>
+                            </a>
+                            <a href="price/estimate.html" onclick="ga('send','event','estimate','click','sp-top');"><img src="img/m_estimate.jpg" alt="早い 10秒見積もり" width="100%"></a>
+                            <!-- /price -->
+                        </section>
+                        <a href="sameday/" onclick="ga('send','event','express','click','sp-top');"><img src="img/m_hurry.png" alt="お急ぎの方！当日特急プラン" width="100%"></a>
+                        <a href="items/parkaguide.html" onclick="ga('send','event','parkaguide','click','sp-top');"><img src="img/sp_attention_parker.jpg" alt="パーカーを選ぶコツ" width="100%"></a>
+                        <a href="/m3/items/towel.html" onclick="ga('send','event','towel','click','sp-top');"><img src="img/sp_attention_towel.png" alt="オリジナルタオルを作成" width="100%"></a>
+                        <a href="contact/line.html" onclick="ga('send','event','estimate','click','sp-top');"><img src="img/sp_attention_01_line.png" alt="LINEでお問い合せ！" width="100%"></a>
+                    </div>
+                    <section class="menu">
+                        <h2 class="home">メニュー</h2>
+                        <ul class="halfNav clearfix">
+                            <li class="blc">
+                                <a href="order/big.html"><img src="img/sp_menu_01.png" alt="オリジナルTシャツ 制作 大口注文" width="100%"></a>
+                            </li>
+                            <li class="blc">
+                                <a href="http://www.print-t.jp/line/" onclick="ga('send','event','line','click','sp-menu');"><img src="img/sp_menu_02.png" alt="高校生限定LINEで注文 オリジナルTシャツ 制作" width="100%"></a>
+                            </li>
+                            <li class="blctxt">
+                                <p class="tx2">150枚以上は大幅値引き！</p>
+                            </li>
+                            <li class="blctxt">
+                                <p class="tx2">クラスTシャツ&#165;950~</p>
+                            </li>
+                            <li class="blc">
+                                <a href="/blog/thanks_blog/"><img src="img/sp_menu_03.png" alt="オリジナルTシャツ お客様ブログ" width="100%"></a>
+                            </li>
+                            <li class="blc">
+                                <a href="contact/request.html" onclick="ga('send','event','carriage','click','sp-menu');"><img src="img/sp_menu_04.png" alt="オリジナルTシャツ 資料請求" width="100%"></a>
+                            </li>
+                            <li class="blctxt">
+                                <p class="tx2">掲載可能なお客様は3%OFF!</p>
+                            </li>
+                            <li class="blctxt">
+                                <p class="tx2">カタログ･サンプルお届け!</p>
+                            </li>
+                            <li class="blc">
+                                <a href="userreviews/"><img src="img/sp_menu_05.png" alt="オリジナルTシャツ お客様レビュー" width="100%"></a>
+                            </li>
+                            <li class="blc">
+                                <a href="corporate/overview.html"><img src="img/sp_menu_06.png" alt="会社概要" width="100%"></a>
+                            </li>
+                            <li class="blctxt">
+                                <p class="tx2">嬉しいお声をいただきました</p>
+                            </li>
+                            <li class="blctxt">
+                                <p class="tx2">タカハマについてのご案内</p>
+                            </li>
+                        </ul>
+                        <!-- menu -->
+                    </section>
+                    <div class="over">
+                        <ul>
+                            <li class="txt">
+                                <h2>オリジナルTシャツ業界最速！最短当日発送！</h2>
+                                <p>タカハマライフアートは本当に業界最速です。納期プランは「3営業日発送」「2営業日発送」「1営業日発送」「即日発送」です。その早い理由はオリジナルプリントを自社工場で製作しているからです。 最近では「最短翌日」「2営業日発送」と早いお届けを打ち出しているサイトは他にも多くありますが、実際に電話で問い合わせてみると翌日に対応できる会社はほとんどなくて困っているというお声を多くのお客様からいただきます。
+                                </p><img src="img/top_img.jpg" alt="オリジナルTシャツ お急ぎの方" width="100%"></li>
+                            <li class="txt">
+                                <h2>激安で即日作成致します！</h2>
+                                <p>タカハマライフアートでは東京葛飾区の工場直売価格のため、一流アパレルプリントの技術で製品をお店価格より安い価格でTシャツを作成できます。 激安といえども、プリント方法も色々あって、ご希望のイメージを相談にのりながら形にします。 オリジナルデザインのTシャツをチームなどで着用することで団結力を高め、ぜひイベントを成功させて頂きたいと思います。 オリジナルのTシャツやポロシャツ・スウェット・トレーナー.、そしてジャンパーやエプロンなどのグッズ、 学園祭などのイベントがギリギリに迫ってしまった時もご相談ください。 タカハマライフアートのスピード対応と相談力には、お客様から高い評価を頂いております。 オリジナルのTシャツ作成について疑問があればお気軽にお問合わせください。 まずは、フリーダイヤル0120-130-428へ。
+                                </p><img src="img/campus_banner.jpg" alt="オリジナルTシャツ 作成 イベント クラスTシャツ" width="100%"></li>
+                        </ul>
+                    </div>
+
+
+                    <!-- /main -->
+                </div>
+                <?php include(dirname(__FILE__)."/./common/inc/footer.html"); ?>
+                <!-- /container -->
+
+                <div class="sb-slidebar sb-right">
+                    <?php include(dirname(__FILE__)."/./common/sidemenu.html"); ?>
+                </div>
+
+            </div>
+
+
+        </div>
+    </body>
+
+    </html>

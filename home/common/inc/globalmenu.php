@@ -53,19 +53,29 @@
 					<li><a href="/design/designguide_freehand.html" onclick="ga('send','event','designguide_freehand','click','global');">手描き入稿用紙（FAX）</a></li>
 				</ul>
 			</li>
-			<li><a href="/order/" onclick="ga('send','event','order','click','global');"><img src="/common/img/header/gnavi_05.png" alt="申し込み" class="gnimg"><p class="gntxt">申し込み</p></a>
-			</li>
-			<li class="adjust"><img src="/common/img/header/gnavi_06.png" alt="オリジナルTシャツ屋について" class="gnimg"><p class="gntxt">タカハマについて</p>
-				<ul>
-					<li><a href="/reason/"onclick="ga('send','event','reason','click','global');">選ばれる理由</a></li>
-					<li><a href="/userreviews/" onclick="ga('send','event','userreviews','click','global');">レビュー・評価</a></li>
-					<li><a href="/blog/thanks_blog/" onclick="ga('send','event','thanks_blog','click','global');">お客様ブログ</a></li>
-					<li><a href="/app/WP/?cat=4"onclick="ga('send','event','staff-blog','click','global');">スタッフブログ</a></li>
-					<li><a href="/corporate/profile/staff.html"onclick="ga('send','event','staff','click','global');">スタッフ紹介</a></li>
-					<li><a href="/corporate/profile/manager.html"onclick="ga('send','event','manager','click','global');">代表挨拶</a></li>
-					<li><a href="/corporate/overview.html"onclick="ga('send','event','overview','click','global');">会社概要</a></li>
-				</ul>
-			</li>
+            
+            <li id="odrbtn"><img src="/common/img/header/gnavi_05.png" alt="申し込み" class="gnimg"><p class="gntxt">申し込み</p>
+                <ul>
+                    <li id="odrtxt"><a href="/order/" onclick="ga('send','event','order','click','global');">申し込み</a></li>
+                    <li><a href="/guide/orderflow.html" onclick="ga('send','event','orderflow','click','global');">ご利用の流れ</a></li>
+                    <li><a href="/order/reorder.html" onclick="ga('send','event','reorder','click','global');">追加・再注文の方法</a></li>
+                </ul>
+            </li>
+
+            <li class="adjust"><img src="/common/img/header/gnavi_06.png" alt="オリジナルTシャツ屋について" class="gnimg"><p class="gntxt">タカハマについて</p>
+                <ul>
+                    <li><a href="/reason/"onclick="ga('send','event','reason','click','global');">選ばれる理由</a></li>
+                    <li><a href="/userreviews/" onclick="ga('send','event','userreviews','click','global');">レビュー・評価</a></li>
+                    <li><a href="/blog/thanks_blog/" onclick="ga('send','event','thanks_blog','click','global');">お客様ブログ</a></li>
+                    <li><a href="/app/WP/?cat=4"onclick="ga('send','event','staff-blog','click','global');">スタッフブログ</a></li>
+                    <li><a href="/corporate/profile/staff.html"onclick="ga('send','event','staff','click','global');">スタッフ紹介</a></li>
+                    <li><a href="/corporate/profile/manager.html"onclick="ga('send','event','manager','click','global');">代表挨拶</a></li>
+                    <li><a href="/corporate/overview.html"onclick="ga('send','event','overview','click','global');">会社概要</a></li>
+                </ul>
+            </li>
+
+            
+
 		</ul>
 	</div>
 </div>

@@ -353,19 +353,19 @@
 	#gNavi_my {
 		clear: both;
 	}
-	.login_btn {
-		display: inline-block;
-		padding: 0px 15px;
-		margin: 5px 5% 0px 5px;
-		cursor: pointer;
-		background: #5d87ec;
-		border-radius: 6px;
-		letter-spacing: 0.6px;
-		float: right;
-		height: 20px;
-		min-width: 18%;
-		text-align: center;
-	}
+    .login_btn {
+        display: inline-block;
+        padding: 0px 15px;
+        margin: 5px 5% 0px 5px;
+        cursor: pointer;
+        background: #1c42a1;
+        border-radius: 6px;
+        letter-spacing: 0.6px;
+        float: right;
+        height: 20px;
+        min-width: 18%;
+        text-align: center;
+    }
 	.logout_btn {
 		display: inline-block;
 		padding: 0px 15px;
@@ -453,7 +453,15 @@
 		border: 1px solid #DDD;
 		font-size: 1em;
 		box-shadow: 1px 1px 3px #888;
-	}
+    }
+    #gNaviMenu div .linkList .order_li {
+        height: 70px;
+        background: -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#e1e9fc));
+        border: 1px solid #DDD;
+        font-size: 1em;
+        box-shadow: 1px 1px 3px #888;
+    }
+
 	/* #gNaviMenu div .linkList li, */
 	#gNaviPulldown .pull01 tr {
 		font-size: 12px;
