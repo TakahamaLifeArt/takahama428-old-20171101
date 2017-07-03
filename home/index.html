@@ -1,192 +1,192 @@
 <?php
-require_once dirname(__FILE__).'/php_libs/pageinfo.php';
-
-/*
-*	getDelidate
-*	今注文確定した場合のお届け日を計算
-*	３営業日＋発送日（営業日）＋配達日数（土日含む）
-*
-*	@baseSec		注文確定日の秒数 default: null　(今日)
-*	@transport		配送日数　default: 1　（北海道、九州、本州離島、島根隠岐郡は配送に2日）
-*	@count_days		作業日　default: 4　（発送日を含む）
-*	@mode			null: default,  simple: 袋詰の有無を考慮しない
-*
-*	return			お届日付情報のハッシュ	{'year','month','day','weekname'}
-*/
-
-// 配送日数が１日地域
-$fin1 = $order->getDelidate(null, 1, 4, 'simple');
-$deliDate1 = $fin1['Month'].'/'.$fin1['Day'];
-
-// 配送日数が２日地域
-$fin2 = $order->getDelidate(null, 2, 4, 'simple');
-$deliDate2 = $fin2['Month'].'/'.$fin2['Day'];
-
-$m0 = $fin1['Month']<10? 0: 1;
-$m1 = $fin1['Month']<10? $fin1['Month']: $fin1['Month']-10;
-$d0 = $fin1['Day']<10? 0: substr($fin1['Day'], 0, 1);
-$d1 = $fin1['Day']<10? $fin1['Day']: substr($fin1['Day'], 1);
-$w = $fin1['weekname'];
-
-
-/*
-* 注文確定のカウントダウン
-*/
-$fc_now = time();
-$year  = date("Y", $fc_now);
-$month = date("m", $fc_now);
-$day   = date("j", $fc_now);
-
-
-//当日仕上げの日付を取得
-$fin3 = $order->getDelidate(null, 1, 1, 'simple');
-$deliDate3 = $fin3['Year'].'-'.$fin3['Month'].'-'.$fin3['Day'];
-//当日仕上げの日付と今日の日付の差分を計算し１日をマイナス
-$sabun = (strtotime($deliDate3) - strtotime($year.'-'.$month.'-'.$day))/ ( 60 * 60 * 24)-1;
-
-$h = date('G', $fc_now);
-$tm = 13;
-if($h < $tm){
-$fc_end   = mktime($tm, 0, 0, $month, $day+$sabun, $year);
-$fc_start = mktime($tm, 0, 0, $month, $day-1, $year);
-}else{
-$fc_end   = mktime($tm, 0, 0, $month, $day+$sabun, $year);
-$fc_start   = mktime($tm, 0, 0, $month, $day, $year);
-}
-
-/*
-* 今日の曜日
-*/
-$jd = new japaneseDate();
-$fin = $jd->makeDateArray($fc_now);
-$weekname = $jd->viewWeekday($fin['Weekday']);
-
-/*
-* ざっくり見積りで使用するアイテム単価を取得
-*
-$itemIds = array(
-"t-shirts"=>215,
-"polo-shirts"=>625,
-"sportswear"=>542,
-"sweat"=>124,
-);
-$aryItemCost = array();
-foreach($itemIds as $key=>$val){
-$r = $conn->itemPrice($val);	// return [ {sizeid:size_from, price_color:price_0, price_white:price_1, maker_color:price_0, maker_white:price_1} ]
-$aryItemCost[$key] = $r[0]['price_white'];	// 最小サイズで白色の単価
-}
-*/
+	require_once dirname(__FILE__).'/php_libs/pageinfo.php';
+	
+	/*
+	 *	getDelidate
+	 *	今注文確定した場合のお届け日を計算
+	 *	３営業日＋発送日（営業日）＋配達日数（土日含む）
+	 *
+	 *	@baseSec		注文確定日の秒数 default: null　(今日)
+	 *	@transport		配送日数　default: 1　（北海道、九州、本州離島、島根隠岐郡は配送に2日）
+	 *	@count_days		作業日　default: 4　（発送日を含む）
+	 *	@mode			null: default,  simple: 袋詰の有無を考慮しない
+	 *
+	 *	return			お届日付情報のハッシュ	{'year','month','day','weekname'}
+	 */
+	
+	// 配送日数が１日地域
+	$fin1 = $order->getDelidate(null, 1, 4, 'simple');
+	$deliDate1 = $fin1['Month'].'/'.$fin1['Day'];
+	
+	// 配送日数が２日地域
+	$fin2 = $order->getDelidate(null, 2, 4, 'simple');
+	$deliDate2 = $fin2['Month'].'/'.$fin2['Day'];
+	
+	$m0 = $fin1['Month']<10? 0: 1;
+	$m1 = $fin1['Month']<10? $fin1['Month']: $fin1['Month']-10;
+	$d0 = $fin1['Day']<10? 0: substr($fin1['Day'], 0, 1);
+	$d1 = $fin1['Day']<10? $fin1['Day']: substr($fin1['Day'], 1);
+	$w = $fin1['weekname'];
+	
+	
+	/*
+	 * 注文確定のカウントダウン
+	 */
+	$fc_now = time();
+	$year  = date("Y", $fc_now);
+	$month = date("m", $fc_now);
+	$day   = date("j", $fc_now);
 
 
-/*
-* ユーザーレビュー
-*/
-$data = $conn->getUserReview("post");
-$len = count($data);
+	//当日仕上げの日付を取得
+	$fin3 = $order->getDelidate(null, 1, 1, 'simple');
+	$deliDate3 = $fin3['Year'].'-'.$fin3['Month'].'-'.$fin3['Day'];
+	//当日仕上げの日付と今日の日付の差分を計算し１日をマイナス
+	$sabun = (strtotime($deliDate3) - strtotime($year.'-'.$month.'-'.$day))/ ( 60 * 60 * 24)-1;
 
-// 総合評価
-$vote = array(
-array('title'=>'商品の仕上がり'),
-array('title'=>'梱包について'),
-array('title'=>'スタッフの対応'),
-array('title'=>'サイトの使いやすさ'),
-);
-$v = array(0,0,0,0);
-for($i=0; $i < $len; $i++){
-// 総合評価の集計
-$v[0] += $data[$i]['vote_1'];
-$v[1] += $data[$i]['vote_2'];
-$v[2] += $data[$i]['vote_3'];
-$v[3] += $data[$i]['vote_4'];
-}
-for($i=0; $i < count($v); $i++){
-$vote[$i]['ratio'] = round($v[$i]/$len, 1);
-$vote[$i]['img'] = getStar($vote[$i]['ratio']);
-$sub += $vote[$i]['ratio'];
-}
-$avg['ratio'] = round($sub/4, 1);
-$avg['img'] = getStar($avg['ratio']);
+	$h = date('G', $fc_now);
+	$tm = 13;
+	if($h < $tm){
+		$fc_end   = mktime($tm, 0, 0, $month, $day+$sabun, $year);
+		$fc_start = mktime($tm, 0, 0, $month, $day-1, $year);
+	}else{
+		$fc_end   = mktime($tm, 0, 0, $month, $day+$sabun, $year);
+		$fc_start   = mktime($tm, 0, 0, $month, $day, $year);
+	}	
+
+	/*
+	 * 今日の曜日
+	 */
+	$jd = new japaneseDate();
+	$fin = $jd->makeDateArray($fc_now);
+	$weekname = $jd->viewWeekday($fin['Weekday']);
+	
+	/*
+	 * ざっくり見積りで使用するアイテム単価を取得
+	 *
+	$itemIds = array(
+			"t-shirts"=>215,
+			"polo-shirts"=>625,
+			"sportswear"=>542,
+			"sweat"=>124,
+		);
+	$aryItemCost = array();
+	foreach($itemIds as $key=>$val){
+		$r = $conn->itemPrice($val);	// return [ {sizeid:size_from, price_color:price_0, price_white:price_1, maker_color:price_0, maker_white:price_1} ]
+		$aryItemCost[$key] = $r[0]['price_white'];	// 最小サイズで白色の単価
+	}
+	 */
+	
+	
+	/*
+	 * ユーザーレビュー
+	 */
+	$data = $conn->getUserReview("post");
+	$len = count($data);
+	
+	// 総合評価
+	$vote = array(
+		array('title'=>'商品の仕上がり'),
+		array('title'=>'梱包について'),
+		array('title'=>'スタッフの対応'),
+		array('title'=>'サイトの使いやすさ'),
+	);
+	$v = array(0,0,0,0);
+	for($i=0; $i < $len; $i++){
+		// 総合評価の集計
+		$v[0] += $data[$i]['vote_1'];
+		$v[1] += $data[$i]['vote_2'];
+		$v[2] += $data[$i]['vote_3'];
+		$v[3] += $data[$i]['vote_4'];
+	}
+	for($i=0; $i < count($v); $i++){
+		$vote[$i]['ratio'] = round($v[$i]/$len, 1);
+		$vote[$i]['img'] = getStar($vote[$i]['ratio']);
+		$sub += $vote[$i]['ratio'];
+	}
+	$avg['ratio'] = round($sub/4, 1);
+	$avg['img'] = getStar($avg['ratio']);
 
 
-/*
-* カテゴリ一覧情報
-*/
-$ids = array(1,3,2,73,6,13);
-$tag = null;
-$mode = array("category","category","category","tag","category","category");
-$sort = "none";
-$limitNumber = 3;	// 検索レコード数を指定
-$brandThumb = array(
-58=>"printstar",
-59=>"unitedathle",
-55=>"crossandsttch",
-54=>"truss",
-61=>"wundou",
-60=>"glimmer",
-67=>"rucca",
-56=>"beesbeam",
-57=>"seventeen-verglebee",
-69=>"touchandgo",
-62=>"cross",
-68=>"daluc",
-65=>"sowa",
-66=>"aimy",
-43=>"champion",
-53=>"puma",
-);
+	/*
+	 * カテゴリ一覧情報
+	 */
+	$ids = array(1,3,2,73,6,13);
+	$tag = null;
+	$mode = array("category","category","category","tag","category","category");
+	$sort = "none";
+	$limitNumber = 3;	// 検索レコード数を指定
+	$brandThumb = array(
+		58=>"printstar",
+		59=>"unitedathle",
+		55=>"crossandsttch",
+		54=>"truss",
+		61=>"wundou",
+		60=>"glimmer",
+		67=>"rucca",
+		56=>"beesbeam",
+		57=>"seventeen-verglebee",
+		69=>"touchandgo",
+		62=>"cross",
+		68=>"daluc",
+		65=>"sowa",
+		66=>"aimy",
+		43=>"champion",
+		53=>"puma",
+	);
+	
+	$res = getCategoryInfo($ids, $tag, $mode, $sort, $limitNumber);
+	$num = 1;
+	$rankingTab = '<div class="ranking_wrap clearfix">';
+	for($i=0; $i < count($res); $i++){
+		$v = $res[$i];
+		$code = $v['item_code'];
+		if($num%4==0){
+			$num = 1;
+			$rankingTab .= '</div>';
+			$rankingTab .= '<div class="ranking_wrap clearfix disnon">';
+		}
+		// アイテムカラーコードの指定
+		if( (preg_match('/^p-/',$code) && $v['initcolor']=="") || $code=='ss-9999' ){
+			$suffix = '_style_0'; 
+		}else{ 
+			$suffix = '_'.$v['initcolor']; 
+		}
+		// オンス表示
+		$oz = $v['oz']+0;
+		if(empty($oz)){
+			$oz = '';
+		}else{
+			$oz = '<span>'.$v['oz'].' oz</span>';
+		}
+		// タグ生成
+		$rankingTab .= '<div class="block_ranking">';
+			$rankingTab .= '<p class="order first">'.($num++).'位</p>';
+			$rankingTab .= '<div class="ranking_body">';
+				$rankingTab .= '<p class="catch">'.$v['features'].'</p>';
+				$rankingTab .= '<p class="logo"><img src="/common/img/thumbs/brand/'.$brandThumb[$v['brand_tag']].'.png" width="55" height="30">'.$oz.'</p>';
+				$rankingTab .= '<p class="clear ac"><img src="'._IMG_PSS.'items/'.$v['category_key'].'/'.$code.'/'.$code.$suffix.'.jpg" width="175" height="175" alt="品番：'.strtoupper($code).'"></p>';
+				$rankingTab .= '<p class="number">品番：'.strtoupper($code).'</p>';
+				$rankingTab .= '<div class="name_wrap"><p class="name">'.$v['item_name'].'</p></div>';
+				$rankingTab .= '<p class="spec"><span class="fl">全'.$v['colors'].'色</span><span class="fr">サイズ：'.implode("&#12316;",$v['sizerange']).'</span></p>';
+				$rankingTab .= '<p class="price"><span class="usually">'.$v['makerprice'].'円</span>  →<span class="sale">'.$v['minprice'].'円&#12316;</span></p>';
+				$rankingTab .= '<p class="ac"><a href="./items/'.$v['category_key'].'/item.html?id='.$code.'" class="ranking_link">アイテム詳細へ</a></p>';
+			$rankingTab .= '</div>';
+		$rankingTab .= '</div>';
+	}
+	$rankingTab .= '</div>';
 
-$res = getCategoryInfo($ids, $tag, $mode, $sort, $limitNumber);
-$num = 1;
-$rankingTab = '<div class="ranking_wrap clearfix">';
-for($i=0; $i < count($res); $i++){
-$v = $res[$i];
-$code = $v['item_code'];
-if($num%4==0){
-$num = 1;
-$rankingTab .= '</div>';
-$rankingTab .= '<div class="ranking_wrap clearfix disnon">';
-}
-// アイテムカラーコードの指定
-if( (preg_match('/^p-/',$code) && $v['initcolor']=="") || $code=='ss-9999' ){
-$suffix = '_style_0'; 
-}else{ 
-$suffix = '_'.$v['initcolor']; 
-}
-// オンス表示
-$oz = $v['oz']+0;
-if(empty($oz)){
-$oz = '';
-}else{
-$oz = '<span>'.$v['oz'].' oz</span>';
-}
-// タグ生成
-$rankingTab .= '<div class="block_ranking">';
-$rankingTab .= '<p class="order first">'.($num++).'位</p>';
-$rankingTab .= '<div class="ranking_body">';
-$rankingTab .= '<p class="catch">'.$v['features'].'</p>';
-$rankingTab .= '<p class="logo"><img src="/common/img/thumbs/brand/'.$brandThumb[$v['brand_tag']].'.png" width="55" height="30">'.$oz.'</p>';
-$rankingTab .= '<p class="clear ac"><img src="'._IMG_PSS.'items/'.$v['category_key'].'/'.$code.'/'.$code.$suffix.'.jpg" width="175" height="175" alt="品番：'.strtoupper($code).'"></p>';
-$rankingTab .= '<p class="number">品番：'.strtoupper($code).'</p>';
-$rankingTab .= '<div class="name_wrap"><p class="name">'.$v['item_name'].'</p></div>';
-$rankingTab .= '<p class="spec"><span class="fl">全'.$v['colors'].'色</span><span class="fr">サイズ：'.implode("&#12316;",$v['sizerange']).'</span></p>';
-$rankingTab .= '<p class="price"><span class="usually">'.$v['makerprice'].'円</span>  →<span class="sale">'.$v['minprice'].'円&#12316;</span></p>';
-$rankingTab .= '<p class="ac"><a href="./items/'.$v['category_key'].'/item.html?id='.$code.'" class="ranking_link">アイテム詳細へ</a></p>';
-$rankingTab .= '</div>';
-$rankingTab .= '</div>';
-}
-$rankingTab .= '</div>';
-
-include $_SERVER['DOCUMENT_ROOT']."/m3/php_libs/orders.php";
-$order = new Orders();
-$workday = array(1,4);
-$delidate = array();	// [当日特急, 通常３日]
-for($i=0; $i<count($workday); $i++){
-$fin = $order->getDelidate(null, 1, $workday[$i], 'simple');
-$delidate[$i]["month"] = $fin['Month'];
-$delidate[$i]["day"] = $fin['Day'];
-//$delidate[$i]["weekname"] = mb_convert_encoding($fin['weekname'], 'utf-8', 'euc-jp');
-$delidate[$i]["weekname"] = $fin['weekname'];
-}
+	include $_SERVER['DOCUMENT_ROOT']."/m3/php_libs/orders.php";
+	$order = new Orders();
+	$workday = array(1,4);
+	$delidate = array();	// [当日特急, 通常３日]
+	for($i=0; $i<count($workday); $i++){
+		$fin = $order->getDelidate(null, 1, $workday[$i], 'simple');
+		$delidate[$i]["month"] = $fin['Month'];
+		$delidate[$i]["day"] = $fin['Day'];
+		//$delidate[$i]["weekname"] = mb_convert_encoding($fin['weekname'], 'utf-8', 'euc-jp');
+		$delidate[$i]["weekname"] = $fin['weekname'];
+	}
 
 ?>
 <!DOCTYPE html>
@@ -207,7 +207,7 @@ $delidate[$i]["weekname"] = $fin['weekname'];
 		<meta property="og:site_name" content="オリジナルTシャツ屋｜タカハマライフアート">
 		<meta property="og:image" content="http://www.takahama428.com/common/img/header/Facebook_main.png">
 		<meta property="fb:app_id" content="1605142019732010">
-
+		
 		<link rel=canonical href="http://www.takahama428.com/">
 		<link rel="shortcut icon" href="/icon/favicon.ico">
 		<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/flick/jquery-ui.css">
@@ -218,7 +218,7 @@ $delidate[$i]["weekname"] = $fin['weekname'];
 		<link rel="stylesheet" type="text/css" href="m3/common/css/common_responsive.css" media="all">
 		<link rel="stylesheet" type="text/css" href="m3/common/css/dev-import_responsive.css">
 		<link rel="stylesheet" type="text/css" href="m3/css/style_responsive.css">
-
+		
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 		<script src="js/jquery.scrolldepth.min.js"></script>
@@ -226,14 +226,10 @@ $delidate[$i]["weekname"] = $fin['weekname'];
 		<script src="common/js/tlalib.js"></script>
 		<script src="m3/common/js/common-responsive.js"></script>
 		<script src="js/top.min.js"></script>
-
 	</head>
-
 	<body>
 		<!-- Google Tag Manager -->
-		<noscript>
-            <iframe src="//www.googletagmanager.com/ns.html?id=GTM-T5NQFM" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-        </noscript>
+		<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-T5NQFM" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<script>
 			(function(w, d, s, l, i) {
 				w[l] = w[l] || [];
@@ -249,7 +245,6 @@ $delidate[$i]["weekname"] = $fin['weekname'];
 					'//www.googletagmanager.com/gtm.js?id=' + i + dl;
 				f.parentNode.insertBefore(j, f);
 			})(window, document, 'script', 'dataLayer', 'GTM-T5NQFM');
-
 		</script>
 		<!-- End Google Tag Manager -->
 		<div id="pcpage">
@@ -262,80 +257,84 @@ $delidate[$i]["weekname"] = $fin['weekname'];
 					<div class="fl">
 						<div>
 							<div class="main_images" style="">
-								<a href="/sameday/" onclick="ga('send','event','deliveryplan','click','main');" class="images_main"></a>
+								<a href="#plan" onclick="ga('send','event','deliveryplan','click','main');" class="images_main"></a>
 							</div>
 							<div class="main_images" style="">
-								<a href="/items/towel/" onclick="ga('send','event','gildan','click','main');" class="gildan_main"></a>
+								<a href="/items/gildan/" onclick="ga('send','event','gildan','click','main');" class="gildan_main"></a>
 							</div>
-                            <div class="main_images" style="">
-                                <a href="/items/sportswear/" onclick="ga('send','event','gildan','click','main');" class="sport_main"></a>
-                            </div>
-                            <div class="main_images" style="">
-                                <a href="/blog/thanks_blog/" onclick="ga('send','event','gildan','click','main');" class="blog_page"></a>
-                            </div>
+							<div class="main_images" style="">
+								<a href="/campaign/towel/" onclick="ga('send','event','towel_campaign','click','main');" class="towel_main"></a>
+							</div>
+							<div class="main_images" style="">
+								<a href="/designtemplate/" onclick="ga('send','event','designtemplate','click','main');" class="designtemplate_main"></a>
+							</div>
+
+							<div class="main_images" style="">
+								<a href="/contact/line/" onclick="ga('send','event','line-page','click','main');" class="line_page"></a>
+							</div>
+
+							<div class="main_images" style="">
+								<a href="/items/sportswear/" onclick="ga('send','event','sportswear','click','main');" class="sport_main"></a>
+							</div>
+
+							<div class="main_images" style="">
+								<img alt="お客様ブログとユーザーレビュー" src="img/mainimg/banner/main_review_blog_724.png" width="724" height="273">
+								<a href="/userreviews/" onclick="ga('send','event','userreviews','click','main');" class="btn userreview"></a>
+								<a href="/blog/thanks_blog/" onclick="ga('send','event','thanks_blog','click','main');" target="_blank" class="btn thanksblog"></a>
+							</div>
 
 						</div>
 						<div id="nav"></div>
 					</div>
-
-					<div id="top_3bigbanner">
-
-                            <p class="bb1">
-                                <a href="/items/category.html" onclick="ga('send','event','sameday','click','top');"></a>
-                            </p>
-
-                            <p class="bb2">
-                                <a href="/sameday/" onclick="ga('send','event','parkaguide','click','top');"></a>
-                            </p>
-
-                            <p class="bb4">
-                                <a href="/price/estimate.html" onclick="ga('send','event','towel','click','top');"></a>
-                            </p>
-
+					<div class="fr">
+						<div class="fr_image_01" style="" height="81">
+							<a href="/price/estimate.html" onclick="ga('send','event','estimate','click','top');" class="fr_estimate"></a>
+						</div>
+						<div class="fr_image_01" style="" height="81">
+							<a href="/delivery/" onclick="ga('send','event','delivery','click','top');" class="fr_delivery"></a>
+						</div>
+						<div class="fr_image_01" style="" height="81">
+							<a href="/order/express/" onclick="ga('send','event','express','click','top');" class="fr_design"></a>
+						</div>
 					</div>
-
+					<div id="top_3bigbanner">
+						<p class="bb1">
+							<a href="sameday/" onclick="ga('send','event','sameday','click','top');" style="margin-right: 10px;"></a>
+						</p>
+						<p class="bb2">
+							<a href="/design/emb.html" onclick="ga('send','event','parkaguide','click','top');" style="margin-right: 10px;"></a>
+						</p>
+						<p class="bb4">
+							<a href="http://www.takahama428.com/design/designguide.html" onclick="ga('send','event','towel','click','top');"></a>
+						</p>
+					</div>
 				</div>
 
-				<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/dev-sidenavi.php"; ?>
-
-				<?php
-				if (!empty(_EXTRA_NOTICE)) {
-				$extNotice = mb_convert_encoding(_EXTRA_NOTICE, 'euc-jp', 'utf-8');
-				$txt = explode(PHP_EOL, $extNotice);
-				echo '<div id="contacting">';
-				echo '<h2 id="Line001">'.$txt[0].'</h2>';
-				$message = str_replace($txt[0].PHP_EOL, '', $extNotice);
-				echo '<p>'.nl2br($message).'</p></div>';
-				}
-				?>
-
-				<div class="contents">
+					<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/dev-sidenavi.php"; ?>
 
 					<?php
-					if (!empty(_NOTICE_HOLIDAY)) {
-					$notice = mb_convert_encoding(_NOTICE_HOLIDAY, 'euc-jp', 'utf-8');
-					$txt = explode(PHP_EOL, $notice);
-					echo '<div id="option">';
-					echo '<h3 id="Line005">'.$txt[0].'</h3>';
-					$message = str_replace($txt[0].PHP_EOL, '', $notice);
-					echo '<p>'.nl2br($message).'</p></div>';
-					}
+						if (!empty(_EXTRA_NOTICE)) {
+							$extNotice = mb_convert_encoding(_EXTRA_NOTICE, 'euc-jp', 'utf-8');
+							$txt = explode(PHP_EOL, $extNotice);
+							echo '<div id="contacting">';
+							echo '<h2 id="Line001">'.$txt[0].'</h2>';
+							$message = str_replace($txt[0].PHP_EOL, '', $extNotice);
+							echo '<p>'.nl2br($message).'</p></div>';
+						}
 					?>
 
-					<h2 class="clear">アイテムランキング</h2>
-					<ul id="rankingtab">
-						<li class="select">Tシャツ</li>
-						<li>ポロシャツ</li>
-						<li>パーカー</li>
-						<li>スポーツウェア</li>
-						<li>ブルゾン</li>
-						<li>ロングTシャツ</li>
-					</ul>
-					<?php echo $rankingTab;?>
-					<div class="message">
-						<p>急いでいるお客様必見！オリジナルTシャツを作成するなら<b>アイテムランキング</b>をご活用ください！タカハマで売れている商品3つをそれぞれのカテゴリーでピックアップしました！気になった商品がありましたら、アイテム詳細ページをクリック！すぐに知りたい情報が確認できます。タブでポロシャツやパーカー、ブルゾンに切り替えて、お客様に合った<b>最高のアイテム</b>をお選びください！ </p>
-					</div>
-
+				<div class="contents">
+				
+					<?php
+						if (!empty(_NOTICE_HOLIDAY)) {
+							$notice = mb_convert_encoding(_NOTICE_HOLIDAY, 'euc-jp', 'utf-8');
+							$txt = explode(PHP_EOL, $notice);
+							echo '<div id="option">';
+							echo '<h3 id="Line005">'.$txt[0].'</h3>';
+							$message = str_replace($txt[0].PHP_EOL, '', $notice);
+							echo '<p>'.nl2br($message).'</p></div>';
+						}
+					?>
 					<div class="plan" style="margin-top:0px;">
 						<h2><img src="img/plan_logo.png" width="495" height="77" alt="世界最速のTシャツ屋"></h2>
 						<p class="txt01"><span class="orange">今すぐ、</span>注文確定した場合のお届け日</p>
@@ -355,7 +354,7 @@ $delidate[$i]["weekname"] = $fin['weekname'];
 										</div>
 									</div>
 								</div>
-
+								
 								<div class="clock-item clock-hours countdown-time-value count_block">
 									<div class="wrap">
 										<div class="inner">
@@ -368,7 +367,7 @@ $delidate[$i]["weekname"] = $fin['weekname'];
 										</div>
 									</div>
 								</div>
-
+								
 								<div class="clock-item clock-minutes countdown-time-value count_block">
 									<div class="wrap">
 										<div class="inner">
@@ -381,7 +380,7 @@ $delidate[$i]["weekname"] = $fin['weekname'];
 										</div>
 									</div>
 								</div>
-
+								
 								<div class="clock-item clock-seconds countdown-time-value count_block">
 									<div class="wrap">
 										<div class="inner">
@@ -395,7 +394,7 @@ $delidate[$i]["weekname"] = $fin['weekname'];
 								</div>
 							</div>
 						</div>
-
+						
 						<p class="clear"><span class="fontred">※</span>注文確定の〆切りは13時まで！</p>
 						<p id="plan_link" onclick="ga('send','event','deliveryday','click','top');">もっと早いプランを見る</p>
 
@@ -415,7 +414,6 @@ $delidate[$i]["weekname"] = $fin['weekname'];
 									'now': fc_restart
 								});
 							});
-
 						</script>
 					</div>
 					<div class="deliveryarea" id="deliveryday" style="display:none;">
@@ -427,33 +425,14 @@ $delidate[$i]["weekname"] = $fin['weekname'];
 								<p class="fontred fs20">お届けプラン</p>
 								<form class="delivery">
 									<ul>
-										<li class="fontred">当日特急
-											<br><img src="img/plan_mark_car_01.png" width="35" height="20" alt="当日特急">
-											<br>
-											<input name="plan" type="radio" value="3" id="c01">
-											<label class="radio" for="c01"></label>
-										</li>
-
-										<li class="orange">翌日仕上げ
-											<br><img src="img/plan_mark_car_02.png" width="35" height="20" alt="翌日仕上げ">
-											<br>
-											<input name="plan" type="radio" value="2" id="c02">
-											<label class="radio" for="c02"> </label>
-										</li>
-
-										<li class="yellow">2日仕上げ
-											<br><img src="img/plan_mark_car_03.png" width="35" height="20" alt="2日仕上げ">
-											<br>
-											<input name="plan" type="radio" value="1" id="c03">
-											<label class="radio" for="c03"></label>
-										</li>
-
-										<li class="gray">通常仕上げ
-											<br><img src="img/plan_mark_car_04.png" width="35" height="20" alt="通常仕上げ">
-											<br>
-											<input name="plan" type="radio" value="0" id="c04" checked="checked">
-											<label class="radio" for="c04"> </label>
-										</li>
+										<label for="c01"><li class="fontred">当日特急<br><img src="img/plan_mark_car_01.png" width="35" height="20" alt="当日特急"><br><input name="plan" type="radio" value="3" id="c01"><label class="radio" for="c01"></label></li>
+										</label>
+										<label for="c02"><li class="orange">翌日仕上げ<br><img src="img/plan_mark_car_02.png" width="35" height="20" alt="翌日仕上げ"><br><input name="plan" type="radio" value="2" id="c02"><label class="radio" for="c02"> </label></li>
+										</label>
+										<label for="c03"><li class="yellow">2日仕上げ<br><img src="img/plan_mark_car_03.png" width="35" height="20" alt="2日仕上げ"><br><input name="plan" type="radio" value="1" id="c03"><label class="radio" for="c03"></label></li>
+										</label>
+										<label for="c04"><li class="gray">通常仕上げ<br><img src="img/plan_mark_car_04.png" width="35" height="20" alt="通常仕上げ"><br><input name="plan" type="radio" value="0" id="c04" checked="checked"><label class="radio" for="c04"> </label></li>
+										</label>
 									</ul>
 								</form>
 							</div>
@@ -463,55 +442,43 @@ $delidate[$i]["weekname"] = $fin['weekname'];
 								<p><span class="fontred">※</span><span id="time_limit">13</span>時を過ぎると翌営業日の扱いとなります。</p>
 							</div>
 							<div class="arrow_box">
-								<p>地域
-									<br><span class="fontred">お届け</span>日</p>
+								<p>地域<br><span class="fontred">お届け</span>日</p>
 							</div>
 							<div class="calendar">
 								<p>▼注文確定日の変更はこちら</p>
 								<div id="datepicker"></div>
 							</div>
 							<div class="arrow_box_area hokkaido">
-								<p>北海道
-									<br><span class="fontred fs20 trans02"><?php echo $deliDate2;?></span> 着</p>
+								<p>北海道<br><span class="fontred fs20 trans02"><?php echo $deliDate2;?></span> 着</p>
 							</div>
 							<div class="arrow_box_area tohoku">
-								<p>東北
-									<br><span class="fontred fs20 trans01"><?php echo $deliDate1;?></span> 着</p>
+								<p>東北<br><span class="fontred fs20 trans01"><?php echo $deliDate1;?></span> 着</p>
 							</div>
 							<div class="arrow_box_area kansai">
-								<p>関西
-									<br><span class="fontred fs20 trans01"><?php echo $deliDate1;?></span> 着</p>
+								<p>関西<br><span class="fontred fs20 trans01"><?php echo $deliDate1;?></span> 着</p>
 							</div>
 							<div class="arrow_box_area tyugoku">
-								<p>中国
-									<br><span class="fontred fs20 trans01"><?php echo $deliDate1;?></span> 着</p>
+								<p>中国<br><span class="fontred fs20 trans01"><?php echo $deliDate1;?></span> 着</p>
 							</div>
 							<div class="arrow_box_area kyusyu">
-								<p>九州
-									<br><span class="fontred fs20 trans02"><?php echo $deliDate2;?></span> 着</p>
+								<p>九州<br><span class="fontred fs20 trans02"><?php echo $deliDate2;?></span> 着</p>
 							</div>
 							<div class="arrow_box_area okinawa">
-								<p>沖縄
-									<br><span class="fontred fs20 trans02"><?php echo $deliDate2;?></span> 着</p>
+								<p>沖縄<br><span class="fontred fs20 trans02"><?php echo $deliDate2;?></span> 着</p>
 							</div>
 							<div class="arrow_box_area02 shikoku">
-								<p>四国
-									<br><span class="fontred fs20 trans01"><?php echo $deliDate1;?></span> 着</p>
+								<p>四国<br><span class="fontred fs20 trans01"><?php echo $deliDate1;?></span> 着</p>
 							</div>
 							<div class="arrow_box_area02 tokai">
-								<p>東海
-									<br><span class="fontred fs20 trans01"><?php echo $deliDate1;?></span> 着</p>
+								<p>東海<br><span class="fontred fs20 trans01"><?php echo $deliDate1;?></span> 着</p>
 							</div>
 							<div class="arrow_box_area03 kanto">
-								<p>関東
-									<br><span class="fontred fs20 trans01"><?php echo $deliDate1;?></span> 着</p>
+								<p>関東<br><span class="fontred fs20 trans01"><?php echo $deliDate1;?></span> 着</p>
 							</div>
 							<div class="arrow_box_area04 tokyo" style="display:none;">
-								<p>東京23区
-									<br><span class="fontred fs20 trans00"></span> 着</p>
+								<p>東京23区<br><span class="fontred fs20 trans00"></span> 着</p>
 							</div>
-							<p class="coution"><span class="fontred">※</span>発送は東京からしております。
-								<br><span class="fontred">※</span>お届けが、2日以上かかる地域もございます。</p>
+							<p class="coution"><span class="fontred">※</span>発送は東京からしております。<br><span class="fontred">※</span>お届けが、2日以上かかる地域もございます。</p>
 						</div>
 					</div>
 
@@ -521,83 +488,27 @@ $delidate[$i]["weekname"] = $fin['weekname'];
 						<form class="zakuri">
 							<div class="allow_gray">
 								<ul class="clearfix" id="item_id">
-									<li class="label"><span class="orange fs20">1.</span>
-										<br>カテゴリーを
-										<br>選択ください</li>
-									<label for="a01">
-								<li>Tシャツ
-									<br>&nbsp;
-									<br><img src="img/za_item_01.png" width="70" height="65" alt="Tシャツ">
-									<br>
-									<input name="type" type="radio" value="215" id="a01" class="t-shirts" checked>
-									<label class="radio" for="a01"> </label>
-									</li>
+									<li class="label"><span class="orange fs20">1.</span><br>カテゴリーを<br>選択ください</li>
+									<label for="a01"><li>Tシャツ<br>&nbsp;<br><img src="img/za_item_01.png" width="70" height="65" alt="Tシャツ"><br><input name="type" type="radio" value="215" id="a01" class="t-shirts" checked><label class="radio" for="a01"> </label></li>
 									</label>
-									<label for="a02">
-								<li>ポロシャツ
-									<br>&nbsp;
-									<br><img src="img/za_item_02.png" width="70" height="65" alt="ポロシャツ">
-									<br>
-									<input name="type" type="radio" value="625" id="a02" class="polo-shirts">
-									<label class="radio" for="a02"> </label>
-									</li>
+									<label for="a02"><li>ポロシャツ<br>&nbsp;<br><img src="img/za_item_02.png" width="70" height="65" alt="ポロシャツ"><br><input name="type" type="radio" value="625" id="a02" class="polo-shirts"><label class="radio" for="a02"> </label></li>
 									</label>
-									<label for="a03">
-								<li>ドライスポーツ
-									<br>ウエア
-									<br><img src="img/za_item_03.png" width="70" height="65" alt="ドライスポーツウエア">
-									<br>
-									<input name="type" type="radio" value="542" id="a03" class="sportswear">
-									<label class="radio" for="a03"> </label>
-									</li>
+									<label for="a03"><li>ドライスポーツ<br>ウエア<br><img src="img/za_item_03.png" width="70" height="65" alt="ドライスポーツウエア"><br><input name="type" type="radio" value="542" id="a03" class="sportswear"><label class="radio" for="a03"> </label></li>
 									</label>
-									<label for="a04">
-								<li>パーカー・
-									<br>スウェット
-									<br><img src="img/za_item_04.png" width="70" height="65" alt="パーカー・スウェット">
-									<br>
-									<input name="type" type="radio" value="124" id="a04" class="sweat">
-									<label class="radio" for="a04"> </label>
-									</li>
+									<label for="a04"><li>パーカー・<br>スウェット<br><img src="img/za_item_04.png" width="70" height="65" alt="パーカー・スウェット"><br><input name="type" type="radio" value="124" id="a04" class="sweat"><label class="radio" for="a04"> </label></li>
 									</label>
 								</ul>
 							</div>
 							<div class="allow_gray">
 								<ul class="clearfix" id="ink_count">
-									<li class="label"><span class="orange fs20">2.</span>
-										<br>デザイン色数を
-										<br>選択ください</li>
-									<label for="b01">
-								<li>1色
-									<br><img src="img/za_color_01.png" width="70" height="65" alt="1色">
-									<br>
-									<input name="inks" type="radio" value="1" id="b01" checked>
-									<label class="radio" for="b01"> </label>
-									</li>
+									<li class="label"><span class="orange fs20">2.</span><br>デザイン色数を<br>選択ください</li>
+									<label for="b01"><li>1色<br><img src="img/za_color_01.png" width="70" height="65" alt="1色"><br><input name="inks" type="radio" value="1" id="b01" checked><label class="radio" for="b01"> </label></li>
 									</label>
-									<label for="b02">
-								<li>2色
-									<br><img src="img/za_color_02.png" width="70" height="65" alt="2色">
-									<br>
-									<input name="inks" type="radio" value="2" id="b02">
-									<label class="radio" for="b02"> </label>
-									</li>
+									<label for="b02"><li>2色<br><img src="img/za_color_02.png" width="70" height="65" alt="2色"><br><input name="inks" type="radio" value="2" id="b02"><label class="radio" for="b02"> </label></li>
 									</label>
-									<label for="b03">
-								<li>3色
-									<br><img src="img/za_color_03.png" width="70" height="65" alt="3色">
-									<br>
-									<input name="inks" type="radio" value="3" id="b03">
-									<label class="radio" for="b03"> </label>
-									</li>
+									<label for="b03"><li>3色<br><img src="img/za_color_03.png" width="70" height="65" alt="3色"><br><input name="inks" type="radio" value="3" id="b03"><label class="radio" for="b03"> </label></li>
 									</label>
-									<label for="b04">
-								<li>4色以上
-									<br><img src="img/za_color_04.png" width="70" height="65" alt="4色">
-									<br>
-									<input name="inks" type="radio" value="4" id="b04">
-									<label class="radio" for="b04"> </label>
-									</li>
+									<label for="b04"><li>4色以上<br><img src="img/za_color_04.png" width="70" height="65" alt="4色"><br><input name="inks" type="radio" value="4" id="b04"><label class="radio" for="b04"> </label></li>
 									</label>
 								</ul>
 							</div>
@@ -605,37 +516,25 @@ $delidate[$i]["weekname"] = $fin['weekname'];
 								<p class="slidetitle" style="padding-left: 15px; border-top-width: 10px; padding-top: 15px;"><span class="orange fs20">3.</span>アイテム枚数を指定してください(金額と連動します)</p>
 								<div class="range">
 									<ul class="clearfix">
-										<li class="ten">10
-											<br>｜</li>
-										<li class="fif">50
-											<br>｜</li>
-										<li>100
-											<br>｜</li>
-										<li><span class="fontred">150</span>
-											<br>｜</li>
-										<li><span class="fontred">200</span>
-											<br>｜</li>
-										<li><span class="fontred">250</span>
-											<br>｜</li>
-										<li><span class="fontred">300</span>
-											<br>｜</li>
+										<li class="ten">10<br>｜</li>
+										<li class="fif">50<br>｜</li>
+										<li>100<br>｜</li>
+										<li><span class="fontred">150</span><br>｜</li>
+										<li><span class="fontred">200</span><br>｜</li>
+										<li><span class="fontred">250</span><br>｜</li>
+										<li><span class="fontred">300</span><br>｜</li>
 									</ul>
 								</div>
 								<div id="jquery-ui-slider"></div>
-								<p class="slidenum">
-									<input type="number" id="jquery-ui-slider-value" name="slidenum" step="10"> 枚</p>
+								<p class="slidenum"><input type="number" id="jquery-ui-slider-value" name="slidenum" step="10"> 枚</p>
 								<div class="bigorder clearfix">
 									<p><a href="/order/bigorder/" onclick="ga('send','event','bigorder','click','slider');">大口注文ページを見る</a></p>
 									<p><span class="fontred">150</span> 枚 以上は<span class="fontred">大口注文</span>扱いで大幅値引き！</p>
 								</div>
 							</div>
 							<div class="zatotal">
-								<p class="totalarea">合計 ￥
-									<input type="text" class="sum" id="sum" value="0" disabled="disabled">
-								</p>
-								<p class="perarea"><span class="fontred">1枚当たり</span>　￥
-									<input type="text" class="per fontred fs40" id="per" value="0" disabled="disabled">
-								</p>
+								<p class="totalarea">合計 ￥<input type="text" class="sum" id="sum" value="0" disabled="disabled"></p>
+								<p class="perarea"><span class="fontred">1枚当たり</span>　￥<input type="text" class="per fontred fs40" id="per" value="0" disabled="disabled"></p>
 							</div>
 							<div class="low">
 								<p class="fontred fs20">＼1番安いのは！？／</p>
@@ -648,33 +547,36 @@ $delidate[$i]["weekname"] = $fin['weekname'];
 						<p><span>※</span>お見積もりは通常納期の場合の目安の金額です。</p>
 					</div>
 
+					<h2 class="clear">アイテムランキング</h2>
+					<ul id="rankingtab">
+						<li class="select">Tシャツ</li>
+						<li>ポロシャツ</li>
+						<li>パーカー</li>
+						<li>スポーツウェア</li>
+						<li>ブルゾン</li>
+						<li>ロングTシャツ</li>
+					</ul>
+					<?php echo $rankingTab;?>
+					<div class="message">
+						<p>急いでいるお客様必見！オリジナルTシャツを作成するなら<b>アイテムランキング</b>をご活用ください！タカハマで売れている商品3つをそれぞれのカテゴリーでピックアップしました！気になった商品がありましたら、アイテム詳細ページをクリック！すぐに知りたい情報が確認できます。タブでポロシャツやパーカー、ブルゾンに切り替えて、お客様に合った<b>最高のアイテム</b>をお選びください！ </p>
+					</div>
 					<h2 class="clear">オリジナルプリントサービス一覧</h2>
-					<p>Tシャツ作成が早いだけではありません。お問い合わせが迅速なLINE対応、オリジナルタオル作成も即日作成可能！
-						<br>勿論100枚以上の大口注文にも対応！結婚式には即日対応Tシャツがおすすめです！</p>
-					<br>
+					<p>Tシャツ作成が早いだけではありません。お問い合わせが迅速なLINE対応、オリジナルタオル作成も即日作成可能！<br>勿論100枚以上の大口注文にも対応！結婚式には即日対応Tシャツがおすすめです！</p><br>
 					<div class="bigbanner">
-						<a href="/contact/line/" onclick="ga('send','event','line','click','service');" class="selfdesign_banner"></a>
-						<br>
-						<p>電話が苦手な方もLINEで解決！即日対応！
-							<br>オリジナルTシャツをLINEで簡単作成！</p>
+						<a href="/contact/line/" onclick="ga('send','event','line','click','service');" class="selfdesign_banner"></a><br>
+						<p>電話が苦手な方もLINEで解決！即日対応！<br>オリジナルTシャツをLINEで簡単作成！</p>
 					</div>
 					<div class="bigbanner" style="left: 20px;">
-						<a href="/campaign/towel/" onclick="ga('send','event','campaigntowel','click','top');" id="campaign_towle"></a>
-						<br>
-						<p>一枚から作れる！小ロット対応！
-							<br>最短即日オリジナルタオル作成はこちら！</p>
+						<a href="/campaign/towel/" onclick="ga('send','event','campaigntowel','click','top');" id="campaign_towle"></a><br>
+						<p>一枚から作れる！小ロット対応！<br>最短即日オリジナルタオル作成はこちら！</p>
 					</div>
 					<div class="bigbanner">
-						<a href="/order/bigorder/" onclick="ga('send','event','line','click','service');" id="big_order"></a>
-						<br>
-						<p>大量発注ならお任せください！
-							<br>オリジナルTシャツの大口作成はこちら！</p>
+						<a href="/order/bigorder/" onclick="ga('send','event','line','click','service');" id="big_order"></a><br>
+						<p>大量発注ならお任せください！<br>オリジナルTシャツの大口作成はこちら！</p>
 					</div>
 					<div class="bigbanner" style="left: 20px;">
-						<a href="/scene/wedding.html" onclick="ga('send','event','line','click','service');" id="cam_wedding"></a>
-						<br>
-						<p>一枚から作成可能！大切な人にプレゼント！
-							<br>結婚式用オリジナルTシャツを即日発送！</p>
+						<a href="/scene/wedding.html" onclick="ga('send','event','line','click','service');" id="cam_wedding"></a><br>
+						<p>一枚から作成可能！大切な人にプレゼント！<br>結婚式用オリジナルTシャツを即日発送！</p>
 					</div>
 					<h2 class="cos">お客様の声</h2>
 					<div class="voice fl">
@@ -687,14 +589,14 @@ $delidate[$i]["weekname"] = $fin['weekname'];
 							</p>
 							<ul id="totalstar_inner" class="clearfix">
 								<?php
-								$li = '';
-								for($i=0; $i < count($vote); $i++){
-								$li .= '<li>';
-								$li .= '<span class="point">'.$vote[$i]['title'].'</span>';
-								$li .= '<span class="star"><img src="/userreviews/img/'.$vote[$i]['img'].'.png" width="114" height="21" alt="">'.$vote[$i]['ratio'].'</span>';
-								$li .= '</li>';
-								}
-								echo $li;
+									$li = '';
+									for($i=0; $i < count($vote); $i++){
+										$li .= '<li>';
+										$li .= '<span class="point">'.$vote[$i]['title'].'</span>';
+										$li .= '<span class="star"><img src="/userreviews/img/'.$vote[$i]['img'].'.png" width="114" height="21" alt="">'.$vote[$i]['ratio'].'</span>';
+										$li .= '</li>';
+									}
+									echo $li;
 								?>
 							</ul>
 							<p><a href="/userreviews/" onclick="ga('send','event','userreviews','click','top');" id="review_link">レビューをみる</a></p>
@@ -739,11 +641,7 @@ $delidate[$i]["weekname"] = $fin['weekname'];
 						<iframe width="430" height="242" src="https://www.youtube.com/embed/EvVqsUR3CSY" frameborder="0" allowfullscreen></iframe>
 					</div>
 					<div class="fukidashi">
-						<p class="youtubecomment">ネットで<b>工場見学</b>ができちゃう！？
-							<br>オリジナルTシャツができるまでを
-							<br>動画でわかりやすく説明します！
-							<br>プリント工程を動画で知ることで
-							<br>注文がよりスムーズになります。</p>
+						<p class="youtubecomment">ネットで<b>工場見学</b>ができちゃう！？<br>オリジナルTシャツができるまでを<br>動画でわかりやすく説明します！<br>プリント工程を動画で知ることで<br>注文がよりスムーズになります。</p>
 					</div>
 					<div class="message">
 						<p>Tシャツ<b>１枚から大口注文</b>まで、早い納期なのでに安い価格でお求めやすくなっております。</p>
@@ -753,32 +651,22 @@ $delidate[$i]["weekname"] = $fin['weekname'];
 					<h2>オリジナルTシャツ業界最速！最短当日発送！</h2>
 					<div class="message">
 						<p>
-							タカハマライフアートは本当に<b>業界最速</b>です。納期プランは「3営業日発送」「2営業日発送」「1営業日発送」<b>「即日発送」</b>です。その早い理由はオリジナルプリントを自社工場で製作しているからです。
-							<br> 最近では「最短翌日」「2営業日発送」と早いお届けを打ち出しているサイトは他にも多くありますが、実際に電話で問い合わせてみると翌日に対応できる会社はほとんどなくて困っているというお声を多くのお客様からいただきます。
-							<br> 他のサイト（企業）では
-							<a href="/scene/campus.html">学園祭や体育祭</a>シーズンの夏から秋の繁忙期にはTシャツの製作に2週間近くかかってしまうのが普通です。（もしよろしければどこか他のサイトに問合せをしてみて下さい。）<b><br>
-					期限が決まっていて本当にお急ぎの方は、</b>まず弊社にお問合せ下さい！ご希望にお応え致します！！
+							タカハマライフアートは本当に<b>業界最速</b>です。納期プランは「3営業日発送」「2営業日発送」「1営業日発送」<b>「即日発送」</b>です。その早い理由はオリジナルプリントを自社工場で製作しているからです。<br>
+							最近では「最短翌日」「2営業日発送」と早いお届けを打ち出しているサイトは他にも多くありますが、実際に電話で問い合わせてみると翌日に対応できる会社はほとんどなくて困っているというお声を多くのお客様からいただきます。 <br>
+							他のサイト（企業）では<a href="/scene/campus.html">学園祭や体育祭</a>シーズンの夏から秋の繁忙期にはTシャツの製作に2週間近くかかってしまうのが普通です。（もしよろしければどこか他のサイトに問合せをしてみて下さい。）<b><br>
+							期限が決まっていて本当にお急ぎの方は、</b>まず弊社にお問合せ下さい！ご希望にお応え致します！！
 						</p>
 						<p class="anchor"><a href="/delivery/">いつまでに注文すれば間に合うか？</a></p>
 					</div>
 					<h2>激安で即日作成致します！</h2>
 					<div class="message">
-						<p>タカハマライフアートでは東京葛飾区の工場直売価格のため、<b>一流アパレルプリントの技術</b>で製品をお店価格より安い価格でTシャツを作成できます。
-							<br>激安といえども、<a href="/design/printing.html">プリント方法</a>も色々あって、ご希望のイメージを相談にのりながら形にします。
-							<br>オリジナルデザインのTシャツをチームなどで着用することで団結力を高め、ぜひイベントを成功させて頂きたいと思います。
-							<br>オリジナルの<a href="/items/t-shirts/">Tシャツ</a>や<a href="/items/polo-shirts/">ポロシャツ</a>・<a href="/items/sweat/">スウェット・トレーナー</a>、そして<a href="/items/outer/">ジャンパー</a>や<a href="/items/apron/">エプロン</a>などの<a href="/items/goods/">グッズ</a>、
-							<br>学園祭などのイベントがギリギリに迫ってしまった時もご相談ください。
-							<br>タカハマライフアートのスピード対応と相談力には、<b>お客様から高い評価</b>を頂いております。
-							<br>オリジナルのTシャツ作成について疑問があればお気軽にお問合わせください。
-							<br>まずは、フリーダイヤル0120-130-428へ。</p>
+						<p>タカハマライフアートでは東京葛飾区の工場直売価格のため、<b>一流アパレルプリントの技術</b>で製品をお店価格より安い価格でTシャツを作成できます。<br>激安といえども、<a href="/design/printing.html">プリント方法</a>も色々あって、ご希望のイメージを相談にのりながら形にします。<br>オリジナルデザインのTシャツをチームなどで着用することで団結力を高め、ぜひイベントを成功させて頂きたいと思います。<br>オリジナルの<a href="/items/t-shirts/">Tシャツ</a>や<a href="/items/polo-shirts/">ポロシャツ</a>・<a href="/items/sweat/">スウェット・トレーナー</a>、そして<a href="/items/outer/">ジャンパー</a>や<a href="/items/apron/">エプロン</a>などの<a href="/items/goods/">グッズ</a>、<br>学園祭などのイベントがギリギリに迫ってしまった時もご相談ください。<br>タカハマライフアートのスピード対応と相談力には、<b>お客様から高い評価</b>を頂いております。<br>オリジナルのTシャツ作成について疑問があればお気軽にお問合わせください。<br>まずは、フリーダイヤル0120-130-428へ。</p>
 						<p class="anchor"><a href="/delivery/">早い！最短でいつ届く？お届日を調べる</a></p>
 					</div>
 					<h2>ニュース（お知らせ）</h2>
 					<div class="news_wrap">
 						<div class="news_list">
 							<dl class="list">
-								<dt>2017.06.9</dt>
-								<dd><a href="/guide/information_001.html">【アイテム価格改定のお知らせ】</a></dd>
 								<dt>2017.05.25</dt>
 								<dd><a href="/guide/information_001.html">【初回追加価格終了のお知らせ】</a></dd>
 								<dt>2017.04.24</dt>
@@ -812,43 +700,37 @@ $delidate[$i]["weekname"] = $fin['weekname'];
 						<p>ご注文・お問い合わせ方法</p>
 						<div class="contactway fl" id="w01">
 							<div id="bg_tel">
-								お急ぎの方は電話してください
-								<br><span class="fs28">0120-130-428</span>受付時間：平日 10:00-18:00
+								お急ぎの方は電話してください<br><span class="fs28">0120-130-428</span>受付時間：平日 10:00-18:00
 							</div>
 						</div>
 						<a href="/contact/">
 							<div class="contactway fr" id="w02">
 								<div id="bg_mail">
-									<br><span class="fs20">問い合わせはこちら</span>
-									<br>
+									<br><span class="fs20">問い合わせはこちら</span><br>
 								</div>
 							</div>
 						</a>
 						<a href="../../contact/guide/index.html#fax">
 							<div class="contactway fl" id="w03">
 								<div id="bg_fax">
-									FAX
-									<br><span class="fs28">03-5670-0730</span>
-									<br>受付時間：24時間受付可能
+									FAX<br><span class="fs28">03-5670-0730</span><br>受付時間：24時間受付可能
 								</div>
 							</div>
 						</a>
 						<a href="/order/" onclick="ga('send','event’,'order','click’,’under');">
 							<div class="contactway fr" id="w04">
-								<div id="bg_come" class="ac">
-									<br>
-									<span class="fs20">お申込み</span>
-									<br>
+								<div id="bg_come" class="ac"><br>
+									<span class="fs20">お申込み</span><br>
 								</div>
 							</div>
 						</a>
 					</div>
 				</div>
 				<p class="scroll_top"><a href="#pcpage">オリジナルTシャツ屋　ページトップへ</a></p>
+
+				<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/footer.php"; ?>
+
 			</div>
-
-			<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/footer.php"; ?>
-
 		</div>
 		<div id="phonepage">
 			<div id="wrapper">
@@ -869,8 +751,8 @@ $delidate[$i]["weekname"] = $fin['weekname'];
 
 				<!--	<div id="notification">
 						<p><a href="m3/guide/information.html"><span class="new">ニュース<br></span>
-                            <span id="newinfo">【アイテム価格改定のお知らせ】</span><span class="newback">詳細<br></span></a></p>
-					</div>    -->
+						   <span id="newinfo">【初回追加価格終了のお知らせ】<br>（2017年05月26日更新）<br></span><span class="newback">詳細<br></span></a></p>
+					</div> -->
 
 					<div>
 						<section class="customer">
@@ -998,5 +880,4 @@ $delidate[$i]["weekname"] = $fin['weekname'];
 			</div>
 		</div>
 	</body>
-
 </html>

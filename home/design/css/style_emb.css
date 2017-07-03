@@ -80,7 +80,6 @@ div.dotted {
 table {
     width: 100%;
     table-layout: fixed;
-    margin-top: -29px;
     margin-bottom: 5px;
 }
 
@@ -91,8 +90,8 @@ table {
     margin-top: 10px;
 }
 
-.td-css{
-	border-color:white;
+.td-css {
+    border-color: white;
 }
 
 .td-css1 {
@@ -212,6 +211,7 @@ table {
     text-indent: 10px;
     margin-bottom: 5px;
 }
+
 .itoiro_title_2 {
     background-color: #FCF1D0;
     height: 25px;
@@ -228,8 +228,8 @@ table {
     margin-left: 1%;
 }
 
-.japanese img{
-    width:100%;
+.japanese img {
+    width: 100%;
 }
 
 .sisyu_text {
@@ -237,7 +237,7 @@ table {
     margin-bottom: 20px;
 }
 
-.sisyu_text_2{
+.sisyu_text_2 {
     margin: 10px 5px;
     margin-bottom: 0;
 }
@@ -248,7 +248,6 @@ table {
     width: 22.5%;
     display: block;
 }
-
 
 .color li img {
     width: 100%;
@@ -288,8 +287,8 @@ table {
     z-index: 1;
 }
 
-.alphabet .alp .alp_img{
-width:90%
+.alphabet .alp .alp_img {
+    width: 90%
 }
 
 .caution {
@@ -326,7 +325,8 @@ h4.ctr_bld {
     font-weight: bold;
     color: #EB5C02;
 }
-.komoji{
+
+.komoji {
     text-align: center;
     font-size: 1.5em;
     font-weight: bold;
@@ -341,12 +341,12 @@ h4.ctr_bld {
 
 .comment1 {
     text-align: center;
-    margin-top:10px;
+    margin-top: 10px;
 }
 
 .comment1_fo {
     text-align: center;
-    margin-top:10px;
+    margin-top: 10px;
 }
 
 .button1 {
@@ -365,6 +365,30 @@ h4.ctr_bld {
     width: 180px;
     margin: 20px 370px;
     margin-bottom: 40px;
+}
+
+.button3 {
+    position: relative;
+    display: inline-block;
+    padding: .9em 2em;
+    background: linear-gradient(to bottom, #7091d4 3%, #4173ed 3%, #1353d3 100%);
+    color: #333;
+    border: 2px solid #ddd;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    transition: all .3s;
+    border-radius: 10px;
+    text-indent: -.5em;
+    width: 180px;
+    margin: 20px 370px;
+    margin-bottom: 40px;
+}
+
+.button3:hover {
+    opacity: .8;
+    color: #fff;
+    text-decoration: none;
 }
 
 .clearfix {
@@ -418,13 +442,13 @@ h4.ctr_bld {
 
 .katadaibtn {
     text-align: center;
-  /*  border: 1px solid #555;   */
+    /*  border: 1px solid #555;   */
     width: 100px;
     line-height: 233%;
     color: #555;
     border-radius: 5px;
- /*   box-shadow: 1px 1px 3px #888;   */
- /*   background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#EEE));   */
+    /*   box-shadow: 1px 1px 3px #888;   */
+    /*   background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#EEE));   */
     margin: 0px 0px 10px 0;
     height: 30px;
     float: right;
@@ -434,7 +458,6 @@ h4.ctr_bld {
     width: 20%;
     margin: 1px 4px 7px 0;
 }
-
 
 .time {
     width: auto;
@@ -532,6 +555,7 @@ h4.ctr_bld {
     width: 100%;
     display: inline-block;
 }
+
 
 /*お届け日*/
 
@@ -858,7 +882,6 @@ h4.ctr_bld {
     border-radius: 10px;
 }
 
-
 .button:hover {
     background: #ffa161;
     background: -moz-linear-gradient(top, #ffa161 0%, #ff9d5a 71%, #fc7e35 100%);
@@ -944,6 +967,7 @@ h4.ctr_bld {
     margin-bottom: 20px;
 }
 
+
 /*
 .contents .anchor_1 {
     display: block;
@@ -976,12 +1000,12 @@ h4.ctr_bld {
     font-weight: bold;
 }
 
-.contents abbr a{
+.contents abbr a {
     text-decoration: none;
-    }
+}
 
 .contents abbr:hover {
-    opacity:0.7;
+    opacity: 0.7;
     color: #FFFAEF !important;
     text-decoration: none !important;
     border-radius: 4px;
@@ -995,10 +1019,15 @@ h4.ctr_bld {
     font-weight: bold;
 }
 
-.button2{
-    display:none;
-    }
-    
+.button2 {
+    display: none;
+}
+
+.comment2_fo {
+    display: block;
+    text-align: center;
+    font-size: 1.4em;
+}
 
 
 /*------------------------------------------------------------
@@ -1598,24 +1627,23 @@ h4.ctr_bld {
 #main .mainspace {
     margin: 0 10px;
 }
+
 .thin {
     background-color: #e0e0e2;
 }
 
-.price_masi_2{
-    display:none;
-    }
+.price_masi_2 {
+    display: none;
+}
 
-.sisyuudai{
+.sisyuudai {
     width: 95%;
     table-layout: fixed;
     margin: -60px auto 5px;
     border: 1px solid black;
 }
 
-------------------------------------
-#tooltip
-{
+------------------------------------ #tooltip {
     text-align: center;
     color: #fff;
     background: #111;
@@ -1623,59 +1651,54 @@ h4.ctr_bld {
     z-index: 100;
     padding: 15px;
 }
- 
-    #tooltip:after /* triangle decoration */
-    {
-        width: 0;
-        height: 0;
-        border-left: 10px solid transparent;
-        border-right: 10px solid transparent;
-        border-top: 10px solid #111;
-        content: '';
-        position: absolute;
-        left: 50%;
-        bottom: -10px;
-        margin-left: -10px;
-    }
- 
-        #tooltip.top:after
-        {
-            border-top-color: transparent;
-            border-bottom: 10px solid #111;
-            top: -20px;
-            bottom: auto;
-        }
- 
-        #tooltip.left:after
-        {
-            left: 10px;
-            margin: 0;
-        }
- 
-        #tooltip.right:after
-        {
-            right: 10px;
-            left: auto;
-            margin: 0;
-        }
 
+#tooltip:after
+/* triangle decoration */
 
-.td-css4{
-    border-top:1px solid black;
+{
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #111;
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    margin-left: -10px;
 }
 
+#tooltip.top:after {
+    border-top-color: transparent;
+    border-bottom: 10px solid #111;
+    top: -20px;
+    bottom: auto;
+}
 
+#tooltip.left:after {
+    left: 10px;
+    margin: 0;
+}
+
+#tooltip.right:after {
+    right: 10px;
+    left: auto;
+    margin: 0;
+}
+
+.td-css4 {
+    border-top: 1px solid black;
+}
 
 @media screen and (max-width: 768px) {
     /*------------------MENU------------------*/
-    
-.button_left {
-    float: left;
-    width: 23%;
-    margin: 3px 3px 3px 4px;
-    list-style: none;
-    font-size: .9em;
-}
+    .button_left {
+        float: left;
+        width: 23%;
+        margin: 3px 3px 3px 4px;
+        list-style: none;
+        font-size: .9em;
+    }
     .button {
         position: relative;
         display: block;
@@ -1700,28 +1723,22 @@ h4.ctr_bld {
         border-left: 5px solid transparent;
         transition: all .3s;
     }
-    
-   #delivery_date .derileft {
-    float: none;
-    width: 95%;
-    margin: 10px 10px;
-}
-    
-    #delivery_date .leftnone{
+    #delivery_date .derileft {
+        float: none;
+        width: 95%;
+        margin: 10px 10px;
+    }
+    #delivery_date .leftnone {
         display: none;
     }
-    
-   #emb_date .derileft {
-    float: none;
-    width: 95%;
-    margin: 10px 10px;
-}
-
-    #emb_date .leftnone{
+    #emb_date .derileft {
+        float: none;
+        width: 95%;
+        margin: 10px 10px;
+    }
+    #emb_date .leftnone {
         display: none;
     }
-
-    
     .time {
         width: auto;
         margin: 0 auto;
@@ -1744,7 +1761,8 @@ h4.ctr_bld {
         padding: 10px;
         height: auto;
     }
-    .bk_table td.dt p, .bk_table td {
+    .bk_table td.dt p,
+    .bk_table td {
         text-align: center;
         font-size: 1.4em;
         font-weight: bold;
@@ -1762,7 +1780,6 @@ h4.ctr_bld {
         margin: 5px;
         height: auto;
     }
-    
     .offpc {
         display: block;
     }
@@ -1787,331 +1804,295 @@ h4.ctr_bld {
         background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#EEE));
         margin-bottom: 20px;
     }
-    
     .color li {
-    float: left;
-    margin: 0 1%;
-    width: 22.5%;
-    display: block;
-}
-
-.color li img {
-    width: 100%;
-}
-    
-   .alphabet li {
-    float: left;
-    margin-right: 12px;
-    margin-left: 1%;
-    width: 45%;
-} 
-    
+        float: left;
+        margin: 0 1%;
+        width: 22.5%;
+        display: block;
+    }
+    .color li img {
+        width: 100%;
+    }
+    .alphabet li {
+        float: left;
+        margin-right: 12px;
+        margin-left: 1%;
+        width: 45%;
+    }
     .item_1_img {
-    float: left;
-    width: 95%;
-    margin: 5px;
-    padding: 2px;
-}
-
-.nuikata .block2 {
-    float: left;
-    width: 95%;
-    margin: 0;
-}
-
-
-h2 {
-    font-size: 20px;
-    margin-left: 5px;
-    padding-left: 5px;
-    border-left: 12px solid #ff9034;
-}
-
-.dotted{
-    display:none;
-}
-
-
-
-.nouki_text {
-    font-size: 21px;
-    margin-top: 0;
-    margin-bottom: 5px;
-}
-
-#delivery_date .derileft_2 {
-    float: left;
-    width: 95%;
-    margin: 10px;
-    margin-top: 0;
-}
-
-#emb_date .derileft_2 {
-    float: left;
-    width: 95%;
-    margin: 10px 10px;
-}
-
-.nui {
-    font-size: 12px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-}
-
-#emb_date {
-    margin-bottom: 0px;
-    margin-top: 10px;
-    width: 100%;
-    display: inline-block;
-}
-
-.kakaku_text{
-    margin:5px;
-}
-
-.katadaibtn {
-    text-align: right;
-    border: 1px solid #555;
-    width: 27%;
-    line-height: 233%;
-    color: #555;
-    border-radius: 5px;
-    box-shadow: 1px 1px 3px #888;
-    background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#EEE));
-    margin: 0 248px;
-    padding: 0 16px 0 0;
-    float: left;
-}
-
-.button_2::after {
-    position: absolute;
-    top: 90%;
-    right: 4.5em;
-    content: '';
-    margin-top: -5px;
-    border-top: 5px solid #666;
-    border-right: 5px solid transparent;
-    border-left: 5px solid transparent;
-    transition: all .3s;
-}
-
-
-.price_masi table {
-    width: 95%;
-    margin-left: 7px;
-}
-.price_masi{
-    margin-left:5px;
-}
-
-.item_1 {
-    width: 95%;
-    border: 2px solid #E0E0E2;
-    display: block;
-    overflow: auto;
-    margin: 0 auto;
-}
-
-.item_2 {
-    width: 95%;
-    border: 2px solid #E0E0E2;
-    display: block;
-    overflow: auto;
-    margin: 5px auto 0;
-}
-
-.example{
-    width:95%;
-}
-
-/*
+        float: left;
+        width: 95%;
+        margin: 5px;
+        padding: 2px;
+    }
+    .nuikata .block2 {
+        float: left;
+        width: 95%;
+        margin: 0;
+    }
+    h2 {
+        font-size: 20px;
+        margin-left: 5px;
+        padding-left: 5px;
+        border-left: 12px solid #ff9034;
+    }
+    .dotted {
+        display: none;
+    }
+    .nouki_text {
+        font-size: 21px;
+        margin-top: 0;
+        margin-bottom: 5px;
+    }
+    #delivery_date .derileft_2 {
+        float: left;
+        width: 95%;
+        margin: 10px;
+        margin-top: 0;
+    }
+    #emb_date .derileft_2 {
+        float: left;
+        width: 95%;
+        margin: 10px 10px;
+    }
+    .nui {
+        font-size: 12px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+    #emb_date {
+        margin-bottom: 0px;
+        margin-top: 10px;
+        width: 100%;
+        display: inline-block;
+    }
+    .kakaku_text {
+        margin: 5px;
+    }
+    .katadaibtn {
+        text-align: right;
+        border: 1px solid #555;
+        width: 27%;
+        line-height: 233%;
+        color: #555;
+        border-radius: 5px;
+        box-shadow: 1px 1px 3px #888;
+        background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#EEE));
+        margin: 0 248px;
+        padding: 0 16px 0 0;
+        float: left;
+    }
+    .button_2::after {
+        position: absolute;
+        top: 90%;
+        right: 4.5em;
+        content: '';
+        margin-top: -5px;
+        border-top: 5px solid #666;
+        border-right: 5px solid transparent;
+        border-left: 5px solid transparent;
+        transition: all .3s;
+    }
+    .price_masi table {
+        width: 95%;
+        margin-left: 7px;
+    }
+    .price_masi {
+        margin-left: 5px;
+    }
+    .item_1 {
+        width: 95%;
+        border: 2px solid #E0E0E2;
+        display: block;
+        overflow: auto;
+        margin: 0 auto;
+    }
+    .item_2 {
+        width: 95%;
+        border: 2px solid #E0E0E2;
+        display: block;
+        overflow: auto;
+        margin: 5px auto 0;
+    }
+    .example {
+        width: 95%;
+    }
+    /*
 .katadaibtn .anchor_1 img {
     width: 20%;
     margin: 6px 8px 7px 0;
 }
 */
-
-.katadaibtn img {
-    width: 20%;
-    margin: 6px 8px 7px 0;
-}
-
-.example{
-    margin:0 auto;
-}
-
-.item_1_txt {
-    float: right;
-    width: auto;
-    margin-bottom: 15px;
-    margin-top:10px;
-}
-
-.itoiro h2 {
-    font-size: 20px;
-    margin-left: 5px;
-    padding-left: 5px;
-    border-left: 12px solid #ff9034;
-    margin-top: 20px;
-}
-
-.caution .top {
-    margin-top: 20px;
-}
-
-.caution .last {
-    margin-bottom: 40px;
-}
-
-.button2 {
-    position: relative;
-    display: block;
-    padding: .9em 2em;
-    transition: all .3s;
-    text-indent: -.5em;
-    margin: 40px auto;
-    text-align: center;
-    border: 1px solid #555;
-    width: 80%;
-    line-height: 163%;
-    border-radius: 5px;
-    box-shadow: 1px 1px 3px #888;
-    background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#EEE));
-}
-
-.button2 img{
-    width: 12%;
-    float: left;
-    padding: 0 3px;
-    margin: -3px 0 0 -8px;
-}
-
-.button1{
-    display:none;
-}
-
-
-
-h4.ctr_bld {
-    text-align: center;
-    font-size: 1.4EM;
-    font-weight: bold;
-    color: #EB5C02;
-}
-.komoji {
-    text-align: center;
-    font-size: 1.4em;
-    font-weight: bold;
-    color: #EB5C02;
-}
-
-.content-lv2 .designUl1{
-    display:none;
+    .katadaibtn img {
+        width: 20%;
+        margin: 6px 8px 7px 0;
     }
-    
-.comment1_fo{
- display:none;
+    .example {
+        margin: 0 auto;
     }
-.phone_txt .red {
-    display:none;
+    .item_1_txt {
+        float: right;
+        width: auto;
+        margin-bottom: 15px;
+        margin-top: 10px;
     }
-    
-.phone_txt .timetx{
-    display:none;
+    .itoiro h2 {
+        font-size: 20px;
+        margin-left: 5px;
+        padding-left: 5px;
+        border-left: 12px solid #ff9034;
+        margin-top: 20px;
     }
-
-.content-lv2 {
-    clear: both;
-    margin: 20px 0;
-}
-
-.comment1 {
-    text-align: center;
-    margin-top: -26px;
-}
-
-.thin_1 {
-    width: 22px;
-    padding: 3px 7px;
-    font-weight: bold;
-    border: 1px solid black;
-}
-.thin {
-    background-color: #e0e0e2;
-    width: 22px;
-    padding: 3px 7px;
-    font-weight: bold;
-    border: 1px solid black;
-}
-
-.undertxt {
-    text-align: right;
-    clear: both;
-    margin-right: 2px;
-}
-
-.line{
-    border: 1px solid black;
-}
-
-.td-css2 {
-    border-left: 1px solid black;
-}
-.td-css {
-    border-left: 1px solid black;
-}
-
-.td-css1 {
-    border-left: 1px solid black;
-}
-
-.td-css3{
-    border-bottom: 1px solid black;
-}
-.td-css4{
-    border-left: 1px solid black;
-    border-top: 1px solid black;
+    .caution .top {
+        margin-top: 20px;
     }
-    
-.price_masi .sozaitable{
-    display:none;
-}
-
-.price_masi_2 table {
-    margin: 10px;
-    border: 1px solid #595959;
-    border-collapse: collapse;
-    width: 95%;
-}
-
-.price_masi_2 td, th {
-	border-collapse: collapse;
-}
-
-.price_masi_2 .lftno {
-    border-bottom: 1px solid black;
-    text-align: right;
-    padding-right: 25px;
-}
-
-.price_masi_2 .ritno {
-    border-bottom: 1px solid black;
-    padding: 2px 1px 2px 20px;
-}
-
-
-------------------------------------
-#tooltip
-{
-    text-align: center;
-    color: #fff;
-    background: #111;
-    position: absolute;
-    z-index: 100;
-    padding: 15px;
-}
- 
-    #tooltip:after /* triangle decoration */
+    .caution .last {
+        margin-bottom: 40px;
+    }
+    .button2 {
+        position: relative;
+        display: block;
+        padding: .9em 2em;
+        transition: all .3s;
+        text-indent: -.5em;
+        margin: 40px auto;
+        text-align: center;
+        border: 1px solid #555;
+        width: 80%;
+        line-height: 163%;
+        border-radius: 5px;
+        box-shadow: 1px 1px 3px #888;
+        background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#EEE));
+    }
+    .button3 {
+        position: relative;
+        display: block;
+        padding: .9em 2em;
+        transition: all .3s;
+        text-indent: -.5em;
+        margin: 20px auto;
+        text-align: center;
+        border: 1px solid #555;
+        width: 80%;
+        line-height: 163%;
+        border-radius: 5px;
+        box-shadow: 1px 1px 3px #888;
+        background: linear-gradient(to bottom, #7091d4 3%, #4173ed 3%, #1353d3 100%);
+        color: #fff; !import
+    }
+    .button2 img {
+        width: 12%;
+        float: left;
+        padding: 0 3px;
+        margin: -3px 0 0 -8px;
+    }
+    .button1 {
+        display: none;
+    }
+    .comment2_fo {
+        display: block;
+        text-align: center;
+    }
+    h4.ctr_bld {
+        text-align: center;
+        font-size: 1.4EM;
+        font-weight: bold;
+        color: #EB5C02;
+    }
+    .komoji {
+        text-align: center;
+        font-size: 1.4em;
+        font-weight: bold;
+        color: #EB5C02;
+    }
+    .content-lv2 .designUl1 {
+        display: none;
+    }
+    .comment1_fo {
+        display: none;
+    }
+    .phone_txt .red {
+        display: none;
+    }
+    .phone_txt .timetx {
+        display: none;
+    }
+    .content-lv2 {
+        clear: both;
+        margin: 20px 0;
+    }
+    .comment1 {
+        text-align: center;
+        margin-top: -26px;
+    }
+    .thin_1 {
+        width: 22px;
+        padding: 3px 7px;
+        font-weight: bold;
+        border: 1px solid black;
+    }
+    .thin {
+        background-color: #e0e0e2;
+        width: 22px;
+        padding: 3px 7px;
+        font-weight: bold;
+        border: 1px solid black;
+    }
+    .undertxt {
+        text-align: right;
+        clear: both;
+        margin-right: 2px;
+    }
+    .line {
+        border: 1px solid black;
+    }
+    .td-css2 {
+        border-left: 1px solid black;
+    }
+    .td-css {
+        border-left: 1px solid black;
+    }
+    .td-css1 {
+        border-left: 1px solid black;
+    }
+    .td-css3 {
+        border-bottom: 1px solid black;
+    }
+    .td-css4 {
+        border-left: 1px solid black;
+        border-top: 1px solid black;
+    }
+    .price_masi .sozaitable {
+        display: none;
+    }
+    .price_masi_2 table {
+        margin: 10px;
+        border: 1px solid #595959;
+        border-collapse: collapse;
+        width: 95%;
+    }
+    .price_masi_2 td,
+    th {
+        border-collapse: collapse;
+    }
+    .price_masi_2 .lftno {
+        border-bottom: 1px solid black;
+        text-align: right;
+        padding-right: 25px;
+    }
+    .price_masi_2 .ritno {
+        border-bottom: 1px solid black;
+        padding: 2px 1px 2px 20px;
+    }
+    ------------------------------------ #tooltip {
+        text-align: center;
+        color: #fff;
+        background: #111;
+        position: absolute;
+        z-index: 100;
+        padding: 15px;
+    }
+    #tooltip:after/* triangle decoration */
     {
         width: 0;
         height: 0;
@@ -2124,107 +2105,84 @@ h4.ctr_bld {
         bottom: -10px;
         margin-left: -10px;
     }
- 
-        #tooltip.top:after
-        {
-            border-top-color: transparent;
-            border-bottom: 10px solid #111;
-            top: -20px;
-            bottom: auto;
-        }
- 
-        #tooltip.left:after
-        {
-            left: 10px;
-            margin: 0;
-        }
- 
-        #tooltip.right:after
-        {
-            right: 10px;
-            left: auto;
-            margin: 0;
-        }
-	
-	
-.price_masi_2{
-	  display:block;
-}
-	  
- .color figcaption{
-	   font-size:8px;
- }
-.color p {
-    	font-size: 8px;
-   	letter-spacing: -0.7px;
-}
-
-.sisyuudai{
-    width: 95%;
-    table-layout: fixed;
-    margin: -60px auto 5px;
-    border: 1px solid black;
-}
-
-.alp_fi {
-    font-size: 12px;
-    position: absolute;
-    top: -1px;
-}
-
-.alp_fi_2 {
-    font-size: 12px;
-    position: absolute;
-    top: -6px;
-}
-
-.alp_fi_3 {
-    font-size: 12px;
-    position: absolute;
-    top: -9px;
-}
-
-.japanese figcaption {
-    font-size: 12px;
-}
-.caution {
-    clear: both;
-    padding-top: 40px;
-    margin: 0 5px;
-}
-
-.item_1_txt .item_name {
-    background-color: #FCF1D0;
-    padding-top: 20px;
-    padding-bottom: 15px;
-    padding-left: 30px;
-}
-
-.katadaibtn {
-    text-align: center;
-    border: 1px solid #555;
-    width: 100px;
-    line-height: 233%;
-    color: #555;
-    border-radius: 5px;
-    box-shadow: 1px 1px 3px #888;
-    background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#EEE));
-    margin: 0px 15px 5px 0;
-    height: 30px;
-    float: right;
-}
-
-.katadaibtn .anchor_1 img {
-    width: 20%;
-    margin: 5px 4px 7px 10px;
-}
-
-.alphabet .alp .alp_img {
-    width: 100%;
-}
-
-
-
-
-
+    #tooltip.top:after {
+        border-top-color: transparent;
+        border-bottom: 10px solid #111;
+        top: -20px;
+        bottom: auto;
+    }
+    #tooltip.left:after {
+        left: 10px;
+        margin: 0;
+    }
+    #tooltip.right:after {
+        right: 10px;
+        left: auto;
+        margin: 0;
+    }
+    .price_masi_2 {
+        display: block;
+    }
+    .color figcaption {
+        font-size: 8px;
+    }
+    .color p {
+        font-size: 8px;
+        letter-spacing: -0.7px;
+    }
+    .sisyuudai {
+        width: 95%;
+        table-layout: fixed;
+        margin: -60px auto 5px;
+        border: 1px solid black;
+    }
+    .alp_fi {
+        font-size: 12px;
+        position: absolute;
+        top: -1px;
+    }
+    .alp_fi_2 {
+        font-size: 12px;
+        position: absolute;
+        top: -6px;
+    }
+    .alp_fi_3 {
+        font-size: 12px;
+        position: absolute;
+        top: -9px;
+    }
+    .japanese figcaption {
+        font-size: 12px;
+    }
+    .caution {
+        clear: both;
+        padding-top: 40px;
+        margin: 0 5px;
+    }
+    .item_1_txt .item_name {
+        background-color: #FCF1D0;
+        padding-top: 20px;
+        padding-bottom: 15px;
+        padding-left: 30px;
+    }
+    .katadaibtn {
+        text-align: center;
+        border: 1px solid #555;
+        width: 100px;
+        line-height: 233%;
+        color: #555;
+        border-radius: 5px;
+        box-shadow: 1px 1px 3px #888;
+        background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#EEE));
+        margin: 0px 15px 5px 0;
+        height: 30px;
+        float: right;
+    }
+    .katadaibtn .anchor_1 img {
+        width: 20%;
+        margin: 5px 4px 7px 10px;
+    }
+    .alphabet .alp .alp_img {
+        width: 100%;
+    }
 }
