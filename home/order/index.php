@@ -82,7 +82,7 @@
 ?>
 <!DOCTYPE html>
 <html>
-<head>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#  website: http://ogp.me/ns/website#">
 	<meta charset="euc-jp" />
 	<title>お申し込みフォーム ｜ オリジナルTシャツが早い、タカハマライフアート</title>
 	<meta name="Description" content="お申し込みフォームからカンタンにオリジナルTシャツがご注文できます。Web上で金額を確認しながら進めるので安心です。対応も早い！割引キャンペーンでオンライン見積の料金よりお安くなるかも？トレーナー・ポロシャツ・オリジナルTシャツの作成・プリントは、東京都葛飾区のタカハマライフアートにお任せ下さい！" />
@@ -109,21 +109,12 @@
 	<link rel="stylesheet" href="/m3/common/css/import_responsive.css">
 	<link rel="stylesheet" href="/m3/items/css/detail_responsive.css">
 	<!--m3 end-->
-<!--
-	<script type="text/javascript" src="/common/js/jquery.js"></script>
-	<script type="text/javascript" src="/common/js/ui/jquery.ui.core.js"></script>
-	<script type="text/javascript" src="/common/js/ui/jquery.ui.datepicker.js"></script>
-	<script type="text/javascript" src="/common/js/ui/i18n/jquery.ui.datepicker-ja.js"></script>
-	<script type="text/javascript" src="/common/js/modalbox/jquery.modalbox-min.js"></script>
-	<script type="text/javascript" src="/common/js/uniform/jquery.uniform.js"></script>
-	<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="utf-8"></script>
--->
 
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
-		<script src="//ajaxzip3.github.io/ajaxzip3.js" charset="utf-8"></script>
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+	<script src="//ajaxzip3.github.io/ajaxzip3.js" charset="utf-8"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="/common/js/tlalib.js"></script>
 	<script type="text/javascript" src="./js/t_orderform.js"></script>
 	<script type="text/javascript">
@@ -139,7 +130,6 @@
 	<!--m3 end-->
 
 	<!-- OGP -->
-	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#  website: http://ogp.me/ns/website#">
 	<meta property="og:title" content="世界最速！？オリジナルTシャツを当日仕上げ！！" />
 	<meta property="og:type" content="article" /> 
 	<meta property="og:description" content="業界No. 1短納期でオリジナルTシャツを1枚から作成します。通常でも3日で仕上げます。" />
@@ -244,10 +234,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                                     $firstlist = '';
                                 }
                                 if( preg_match('/^p-/',$code) || $code=='ss-9999'){
-																	$suffix = '_style_0';
-																}else{
-																	$suffix = '_'.$v['initcolor'];
-																}
+									$suffix = '_style_0';
+								}else{
+									$suffix = '_'.$v['initcolor'];
+								}
                                 $ls .= '<li class="listitems_ex'.$firstlist.'" id="itemid_'.$v['item_id'].'_'.$v['pos_id'].'">
                                             <ul class="maker_'.$v['maker_id'].'">
                                                 <li class="point_s">'.mb_convert_encoding($v['features'],'euc-jp','utf-8').'</li>
@@ -362,7 +352,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							<div class="sizeprice">
 								<h3>
 									<ins>2.</ins>サイズと枚数の指定　　　
-<!--<span class="anchor pop_size">サイズの目安を見る</span> -->
 								</h3>
 								<table class="size_table">
 									<caption></caption>
@@ -380,8 +369,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 						<div class="arrow_line">
 							<div style="display:inline-block;">合計<span id="tot_amount">0</span>枚</div>
 							<div class="arrow prev" data-back="0"><span>戻る</span></div>
-							<div class="step_next goto_position" onclick="ga('send','event','step2','click','order',5300);" 
->次へ進む</div>
+							<div class="step_next goto_position" onclick="ga('send','event','step2','click','order',5300);">次へ進む</div>
 						</div>
 					</div>
         		</div>
@@ -430,8 +418,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							<textarea id="note_printmethod"  name="note_printmethod"></textarea>
 						</div>
                         <div class="bdrtxt"><p><span class="demoSpan1"></span>刺繍のお見積金額は含まれてはおりません。別途お見積りしてご連絡させて頂きます。</p></div>
-						<div class="arrow_line"><div class="arrow prev" data-back="1"><span>戻る</span></div><div class="step_next goto_cart" onclick="ga('send','event','step3','click','order',5300);" 
->カートに入れる</div></div>
+						<div class="arrow_line"><div class="arrow prev" data-back="1"><span>戻る</span></div><div class="step_next goto_cart" onclick="ga('send','event','step3','click','order',5300);">カートに入れる</div></div>
                     </div>
 				</div>
 
@@ -470,7 +457,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							<table>
 								<caption>お見積り</caption>
 								<thead>
-									<!--<tr><th colspan="2">商品名 / カラー</th><th>サイズ</th><th>単価</th><th>枚数</th><th>金額</th><th></th></tr>-->
 									<tr><th>商品名 / カラー</th><th>サイズ</th><th>単価</th><th>枚数</th><th>金額</th></tr>
 								</thead>
 								<tfoot>
@@ -574,8 +560,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 									?>
 				 					</select>
 			 					</p>
-                                                            <p class="note"><span>※</span>お時間をご指定して頂いても天候、交通事情、
-地域によりご希望に添えない場合がございますので、予めご了承願います。</p>
+			 					<p class="note"><span>※</span>お時間をご指定して頂いても天候、交通事情、地域によりご希望に添えない場合がございますので、予めご了承願います。</p>
 							</div>
 						</div>
 
@@ -644,7 +629,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 								<div class="g_ft" style="width=98%;border-bottom: 1px solid #d8d8d8;margin-top:20px;padding-bottom:20px;">
 									<div class="ft">
 										<ul>
-											<h1 class="login_nodisplay">2回目以降注文の方はこちら</h1>
+											<h1 class="login_nodisplay">マイページをお持ちの方はこちら</h1>
 											<li id= "login_email" class="login_nodisplay"><h2>メールアドレス:<span class="fontred">※</span></h2><input type="text" id="login_input_email" name="login_input_email" value="<?php echo $user['email']; ?>" /></li>
 											<li class="login_nodisplay"><h2>パスワード　　:<span class="fontred">※</span></h2><input type="password" value="<?php echo $user['password']; ?>" id="login_input_pass"  name="login_input_pass" /></li>
 										</ul>
@@ -658,8 +643,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 								</div>
 									<div class="ft">
 										<ul>
-											<div style="margin-top:35px;margin-bottom:10px;color: #1520d9;"><li class="login_nodisplay"><p>☆☆会員の方:新規ご登録の方はログイン不要、注文完了時に会員自動登録されます。☆☆</p></li></div>
-											<h1 class="login_nodisplay">新規登録の方はこちら</h1>
+											<h1 class="login_nodisplay" style="margin-top:35px;">初めての方はこちら</h1>
 											<li id= "login_email"><h2>メールアドレス:<span class="fontred">※</span></h2><input type="text" id="email" name="email" value="<?php echo $user['email']; ?>" /></li>
 											<li class="login_nodisplay"><h2>新規 パスワード:<span class="fontred">※</span></h2><input type="password" value="<?php echo $user['password']; ?>" id="pass"  name="pass" /></li>
 											<li class="login_nodisplay"><span class="fontred">※</span>新規の方は、新しくパスワードを入力します。半角英数字4文字以上16文字以内。</li>
@@ -751,10 +735,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 						<h2><ins>Step6</ins>お申し込み内容をご確認ください</h2>
 
 						<form id="orderform" name="orderform" method="post" action="./ordercomplete.php" onSubmit="return false;">
-						<?php
-							$ticket = htmlspecialchars(md5(uniqid().mt_rand()), ENT_QUOTES);
-							$_SESSION['ticket'] = $ticket;
-						?>
+							<?php
+								$ticket = htmlspecialchars(md5(uniqid().mt_rand()), ENT_QUOTES);
+								$_SESSION['ticket'] = $ticket;
+							?>
 							<input type="hidden" name="ticket" value="<?php echo $ticket; ?>">
 
 							<div class="inner1">
@@ -869,48 +853,47 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<iframe name="upload_iframe" style="display: none;"></iframe>
 
 
-<!--Yahoo!タグマネージャー導入 2014.04 -->
-<script type="text/javascript">
-  (function () {
-    var tagjs = document.createElement("script");
-    var s = document.getElementsByTagName("script")[0];
-    tagjs.async = true;
-    tagjs.src = "//s.yjtag.jp/tag.js#site=bTZi1c8";
-    s.parentNode.insertBefore(tagjs, s);
-  }());
-</script>
-<noscript>
-  <iframe src="//b.yjtag.jp/iframe?c=bTZi1c8" width="1" height="1" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-</noscript>
-		<div id="msgbox" class="modal fade" tabindex="-1" role="dialog">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title">メッセージ</h4>
-			 		</div>
-			 		<div class="modal-body">
-						<p></p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary is-ok" data-dismiss="modal">OK</button>
-						<button type="button" class="btn btn-default is-cancel" data-dismiss="modal">Cancel</button>
-					</div>
+	<!--Yahoo!タグマネージャー導入 2014.04 -->
+	<script type="text/javascript">
+	  (function () {
+		var tagjs = document.createElement("script");
+		var s = document.getElementsByTagName("script")[0];
+		tagjs.async = true;
+		tagjs.src = "//s.yjtag.jp/tag.js#site=bTZi1c8";
+		s.parentNode.insertBefore(tagjs, s);
+	  }());
+	</script>
+	<noscript>
+	  <iframe src="//b.yjtag.jp/iframe?c=bTZi1c8" width="1" height="1" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+	</noscript>
+	<div id="msgbox" class="modal fade" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">メッセージ</h4>
+				</div>
+				<div class="modal-body">
+					<p></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary is-ok" data-dismiss="modal">OK</button>
+					<button type="button" class="btn btn-default is-cancel" data-dismiss="modal">Cancel</button>
 				</div>
 			</div>
 		</div>
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<!-- m3 begin -->
-<div id="phonepage">
-<div id="fb-root"></div>
-<div id="container">
-	<?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/inc/footer.html"); ?>
-	<div class="sb-slidebar sb-right">
-	<?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/sidemenu.html"); ?>
 	</div>
-<!-- /container --></div>
-</div>
-<!-- m3 end -->
-
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<!-- m3 begin -->
+	<div id="phonepage">
+		<div id="fb-root"></div>
+		<div id="container">
+			<?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/inc/footer.html"); ?>
+			<div class="sb-slidebar sb-right">
+			<?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/sidemenu.html"); ?>
+			</div>
+		</div>
+	</div>
+	<!-- m3 end -->
 </body>
 </html>
