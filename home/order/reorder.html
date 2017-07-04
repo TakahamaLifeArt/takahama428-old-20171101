@@ -25,329 +25,317 @@ $category_selector .= '>'.$categoryName.'</option>';
 }
 $category_selector .= '</select>';
 ?>
-    <!DOCTYPE html>
-    <html>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="euc-jp" />
+		<title>追加・再注文について ｜ オリジナルTシャツが早い！タカハマライフアート</title>
+		<meta name="Description" content="オリジナルウェアの追加・再注文の方法をまとめているページです。注文1枚からでも安い・お急ぎ製作・印刷は東京都内のタカハマライフアート！10秒で簡単・早いオリジナルTシャツ比較お見積もりも承ります。" />
+		<meta name="keywords" content="オリジナル,tシャツ,追加注文,再注文" />
+		<meta name="google-site-verification" content="PfzRZawLwE2znVhB5M7mPaNOKFoRepB2GO83P73fe5M" />
+		<meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1" />
 
-    <head>
-        <meta charset="euc-jp" />
-        <title>追加・再注文について ｜ オリジナルTシャツが早い！タカハマライフアート</title>
-        <meta name="Description" content="オリジナルウェアの追加・再注文の方法をまとめているページです。注文1枚からでも安い・お急ぎ製作・印刷は東京都内のタカハマライフアート！10秒で簡単・早いオリジナルTシャツ比較お見積もりも承ります。" />
-        <meta name="keywords" content="オリジナル,tシャツ,追加注文,再注文" />
-        <meta name="google-site-verification" content="PfzRZawLwE2znVhB5M7mPaNOKFoRepB2GO83P73fe5M" />
-        <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1" />
+		<link rel="stylesheet" type="text/css" href="/common/js/modalbox/css/jquery.modalbox.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="/order/express/css/express.css" media="screen" />
+		<link rel="stylesheet" href="/m3/common/css/import2.css">
+		<link rel="stylesheet" type="text/css" href="/m3/common/css/common_responsive.css" media="all">
+		<link rel="stylesheet" type="text/css" href="/m3/common/css/slidebars_responsive.css" media="all">
+		<link rel="stylesheet" href="/m3/common/css/import_responsive.css">
+		<link rel="stylesheet" href="/m3/items/css/detail_responsive.css">
+		<link rel="stylesheet" type="text/css" href="/common/css/dev-common_responsive.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="/common/css/base_responsive.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="/contact/css/custom_responsive.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="/order/css/reorder.css" media="screen" />
 
-        <link rel="stylesheet" type="text/css" href="/common/js/modalbox/css/jquery.modalbox.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="/order/express/css/express.css" media="screen" />
+		<script type="text/javascript" src="/common/js/jquery.js"></script>
+		<script type="text/javascript" src="/common/js/ui/jquery.ui.core.js"></script>
+		<script type="text/javascript" src="/common/js/ui/jquery.ui.datepicker.js"></script>
+		<script type="text/javascript" src="/common/js/ui/i18n/jquery.ui.datepicker-ja.js"></script>
+		<script type="text/javascript" src="/common/js/modalbox/jquery.modalbox-min.js"></script>
+		<script type="text/javascript" src="/common/js/tlalib.js"></script>
+		<script src="/m3/common/js/common1.js"></script>
+	</head>
 
+	<body>
 
-
-        <link rel="stylesheet" href="/m3/common/css/import2.css">
-        <link rel="stylesheet" type="text/css" href="/m3/common/css/common_responsive.css" media="all">
-        <link rel="stylesheet" type="text/css" href="/m3/common/css/slidebars_responsive.css" media="all">
-        <link rel="stylesheet" href="/m3/common/css/import_responsive.css">
-        <link rel="stylesheet" href="/m3/items/css/detail_responsive.css">
-        <!-- m3 end -->
-
-        <link rel="stylesheet" type="text/css" href="/common/css/dev-common_responsive.css" media="all" />
-        <link rel="stylesheet" type="text/css" href="/common/css/base_responsive.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="/contact/css/custom_responsive.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="/order/css/reorder.css" media="screen" />
-        <!-- m3 begin -->
-        <!-- m3 begin -->
-
-        <script type="text/javascript" src="/common/js/jquery.js"></script>
-        <script type="text/javascript" src="/common/js/ui/jquery.ui.core.js"></script>
-        <script type="text/javascript" src="/common/js/ui/jquery.ui.datepicker.js"></script>
-        <script type="text/javascript" src="/common/js/ui/i18n/jquery.ui.datepicker-ja.js"></script>
-        <script type="text/javascript" src="/common/js/modalbox/jquery.modalbox-min.js"></script>
-        <script type="text/javascript" src="/common/js/tlalib.js"></script>
-        <script src="/m3/common/js/common1.js"></script>
-
-
-
-    </head>
-
-    <body>
-
-        <!-- Google Tag Manager -->
-        <noscript>
+		<!-- Google Tag Manager -->
+		<noscript>
             <iframe src="//www.googletagmanager.com/ns.html?id=GTM-T5NQFM" height="0" width="0" style="display:none;visibility:hidden"></iframe>
         </noscript>
-        <script>
-            (function(w, d, s, l, i) {
-                w[l] = w[l] || [];
-                w[l].push({
-                    'gtm.start': new Date().getTime(),
-                    event: 'gtm.js'
-                });
-                var f = d.getElementsByTagName(s)[0],
-                    j = d.createElement(s),
-                    dl = l != 'dataLayer' ? '&l=' + l : '';
-                j.async = true;
-                j.src =
-                    '//www.googletagmanager.com/gtm.js?id=' + i + dl;
-                f.parentNode.insertBefore(j, f);
-            })(window, document, 'script', 'dataLayer', 'GTM-T5NQFM');
+		<script>
+			(function(w, d, s, l, i) {
+				w[l] = w[l] || [];
+				w[l].push({
+					'gtm.start': new Date().getTime(),
+					event: 'gtm.js'
+				});
+				var f = d.getElementsByTagName(s)[0],
+					j = d.createElement(s),
+					dl = l != 'dataLayer' ? '&l=' + l : '';
+				j.async = true;
+				j.src =
+					'//www.googletagmanager.com/gtm.js?id=' + i + dl;
+				f.parentNode.insertBefore(j, f);
+			})(window, document, 'script', 'dataLayer', 'GTM-T5NQFM');
 
-        </script>
-        <!-- End Google Tag Manager -->
+		</script>
+		<!-- End Google Tag Manager -->
 
-        <?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/header.php"; ?>
+		<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/header.php"; ?>
 
-        <!-- m3 begin -->
-        <header id="header" class="head2">
-            <?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/inc/header.html"); ?>
-        </header>
-        <?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/inc/gnavi.html"); ?>
-        <!-- m3 end -->
-
-
-        <div id="container">
-
-            <?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/globalmenu.php"; ?>
+		<!-- m3 begin -->
+		<header id="header" class="head2">
+			<?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/inc/header.html"); ?>
+		</header>
+		<?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/inc/gnavi.html"); ?>
+		<!-- m3 end -->
 
 
-            <div class="contents">
-                <ul class="pan">
-                    <li><a href="/">オリジナルＴシャツ屋ＴＯＰ</a></li>
-                    <li>申し込み</li>
-                    <li>追加・再注文の方法</li>
-                </ul>
+		<div id="container">
 
-                <div class="toolbar">
-                    <div class="toolbar_inner clearfix">
-                        <h1>追加・再注文の方法</h1>
-                    </div>
-                </div>
-                <div id="main" class="reorder">
-                    <div class="banner"><img src="/order/img/tsuika/additional_order_top_pc.jpg" width="100%" alt="追加・再注文"></div>
-                    <div class="banner_sp"><img src="/order/img/tsuika/additional_order_top_sp.jpg" width="100%" alt="追加・再注文"></div>
-                    
-                    <div class="heading1_wrapper">
-
-                    </div>
-
-                    <div id="bene_1">
-                        <h2 class="pc">特典1 同じデザインで追加注文</h2>
-                        <h2 class="sp">特典1<br><span class="lf">同じデザインで追加注文</span></h2>
-                        <div class="dotted"></div>
-
-                        <div class="fuki_sp"><img src="/order/img/tsuika/balloon_01.png" width="100%"></div>
-
-                        <div class="discount">
-                            <p class="min_ttl">割引について</p>
-                            <img src="/order/img/tsuika/edition_fee_free.jpg" alt="保存期間なし" width="100%">
-                            <p><span class="red">※</span>割引との併用はできません</p>
-                            <p><span class="red">※</span>シルクスクリーン、デジタル転写のみの対応です。</p>
-                        </div>
-
-                        <div class="flow">
-                            <p class="min_ttl">ご注文の流れ</p>
-                            <p class="flow_txt">マイページにログインして、追加注文フォームか簡単注文！</p>
-
-                            <ol class="pc">
-                                <li><span class="circle">1</span>マイページ<span class="triangle"></span></li>
-                                <li><span class="circle">2</span>ご注文履歴<span class="triangle"></span></li>
-                                <li><span class="circle">3</span>ご注文一覧<span class="triangle"></span></li>
-                                <li><span class="circle">4</span>追加注文をクリック</li>
-                            </ol>
-
-                            <ol class="sp">
-                                <li><span class="circle">1</span>マイページ<span class="triangle_b"></span></li>
-                                <li><span class="circle">2</span>ご注文履歴<span class="triangle_b"></span></li>
-                                <li><span class="circle">3</span>ご注文一覧<span class="triangle_b"></span></li>
-                                <li><span class="circle">4</span>追加注文をクリック</li>
-                            </ol>
-                        </div>
-
-                    </div>
+			<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/globalmenu.php"; ?>
 
 
-                    <div id="bene_2">
-                        <h2 class="pc">特典2 新しいデザインで注文</h2>
-                        <h2 class="sp">特典2<br><span class="lf">新しいデザインで注文</span></h2>
-                        <div class="dotted"></div>
+			<div class="contents">
+				<ul class="pan">
+					<li><a href="/">オリジナルＴシャツ屋ＴＯＰ</a></li>
+					<li>申し込み</li>
+					<li>追加・再注文の方法</li>
+				</ul>
 
-                        <div class="fuki_sp"><img src="/order/img/tsuika/balloon_02.png" width="100%"></div>
+				<div class="toolbar">
+					<div class="toolbar_inner clearfix">
+						<h1>追加・再注文の方法</h1>
+					</div>
+				</div>
+				<div id="main" class="reorder">
+					<div class="banner"><img src="/order/img/tsuika/additional_order_top_pc.jpg" width="100%" alt="追加・再注文"></div>
+					<div class="banner_sp"><img src="/order/img/tsuika/additional_order_top_sp.jpg" width="100%" alt="追加・再注文"></div>
 
-                        <div class="discount_2">
-                            <p class="min_ttl">割引について</p>
-                            <div class="repeat">
-                                <p class="flow_txt">新しいデザインで<span class="red_b">2回目</span>のご注文の方！</p>
-                                <img src="/order/img/tsuika/repeater_discount.jpg" alt="保存期間なし" width="100%">
-                                <p><span class="red">※</span>当日特急、翌日・2日仕上げは対象外</p>
-                            </div>
+					<div class="heading1_wrapper">
 
-                            <div class="vip">
-                                <p class="flow_txt">新しいデザインで<span class="red_b">3回目</span>以降のご注文の方！</p>
-                                <img src="/order/img/tsuika/vip_discount.jpg" alt="保存期間なし" width="100%">
-                                <p><span class="red">※</span>当日特急、翌日・2日仕上げは対象外</p>
-                            </div>
+					</div>
 
-                        </div>
+					<div id="bene_1">
+						<h2 class="pc">特典1 同じデザインで追加注文</h2>
+						<h2 class="sp">特典1<br><span class="lf">同じデザインで追加注文</span></h2>
+						<div class="dotted"></div>
 
-                        <div class="flow_2">
-                            <p class="min_ttl">ご注文の流れ</p>
-                            <p class="flow_txt"><span class="red">マイページにログイン</span>してから申し込みをすると個人情報の入力がスムーズ！</p>
+						<div class="fuki_sp"><img src="/order/img/tsuika/balloon_01.png" width="100%"></div>
 
-                            <ol class="pc">
-                                <li><span class="circle">1</span>マイページ<span class="triangle"></span></li>
-                                <li><span class="circle">2</span>お申し込みボタン</li>
-                            </ol>
+						<div class="discount">
+							<p class="min_ttl">割引について</p>
+							<img src="/order/img/tsuika/edition_fee_free.jpg" alt="保存期間なし" width="100%">
+							<p><span class="red">※</span>割引との併用はできません</p>
+							<p><span class="red">※</span>シルクスクリーン、デジタル転写のみの対応です。</p>
+						</div>
 
-                            <ol class="sp">
-                                <li><span class="circle">1</span>マイページ<span class="triangle_b"></span></li>
-                                <li><span class="circle">2</span>お申し込みボタン</li>
-                            </ol>
+						<div class="flow">
+							<p class="min_ttl">ご注文の流れ</p>
+							<p class="flow_txt">マイページにログインして、追加注文フォームか簡単注文！</p>
 
-                        </div>
+							<ol class="pc">
+								<li><span class="circle">1</span>マイページ<span class="triangle"></span></li>
+								<li><span class="circle">2</span>ご注文履歴<span class="triangle"></span></li>
+								<li><span class="circle">3</span>ご注文一覧<span class="triangle"></span></li>
+								<li><span class="circle">4</span>追加注文をクリック</li>
+							</ol>
 
-                    </div>
+							<ol class="sp">
+								<li><span class="circle">1</span>マイページ<span class="triangle_b"></span></li>
+								<li><span class="circle">2</span>ご注文履歴<span class="triangle_b"></span></li>
+								<li><span class="circle">3</span>ご注文一覧<span class="triangle_b"></span></li>
+								<li><span class="circle">4</span>追加注文をクリック</li>
+							</ol>
+						</div>
 
-                    <div id="mypage_reorder">
-                        <h3 class="mp">マイページについて</h3>
-                        <div class="dotted"></div>
-                        <img src="/order/img/tsuika/banner_additional_pc.jpg" class="pc" alt="マイページ" width="100%">
-                        <img src="/order/img/tsuika/banner_additional_sp.jpg" class="sp" alt="マイページ" width="100%">
-
-
-                        <div class="mail_change">
-                            <div class="mail_change_l">
-                                <p class="mail">メールアドレスを変更したい方へ</p>
-                                <p class="example">例えば...</p>
-
-
-                                <div class="arrow_box">
-                                    <p class="arrow_txt">以前の注文した人のアドレスから自分のアドレスに変えたい！</p>
-                                </div>
+					</div>
 
 
-                                <ul class="example_1">
-                                    <li class="ab_list">
-                                        <div class="asan">
-                                            <p class="ab_txt">Aさん</p>
-                                            <img src="/order/img/tsuika/bsan.png" width="100%">
-                                            <p class="ab_mail">aaa@mail.com</p>
-                                        </div>
-                                    </li>
+					<div id="bene_2">
+						<h2 class="pc">特典2 新しいデザインで注文</h2>
+						<h2 class="sp">特典2<br><span class="lf">新しいデザインで注文</span></h2>
+						<div class="dotted"></div>
 
-                                    <li>
-                                        <div class="arrow"></div>
-                                    </li>
+						<div class="fuki_sp"><img src="/order/img/tsuika/balloon_02.png" width="100%"></div>
 
-                                    <li class="ab_list">
-                                        <div class="bsan">
-                                            <p class="ab_txt">Bさん</p>
-                                            <img src="/order/img/tsuika/asan.png" width="100%">
-                                            <p class="ab_mail"><span class="red">bbb@mail.co.jp</span></p>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <p class="next_txt">次のステップに従って手続きを行ってください。</p>
-                                <p class="user_2">まずはメール（またはお電話）にて弊社にご連絡ください</p>
-                            </div>
+						<div class="discount_2">
+							<p class="min_ttl">割引について</p>
+							<div class="repeat">
+								<p class="flow_txt">新しいデザインで<span class="red_b">2回目</span>のご注文の方！</p>
+								<img src="/order/img/tsuika/repeater_discount.jpg" alt="保存期間なし" width="100%">
+								<p><span class="red">※</span>当日特急、翌日・2日仕上げは対象外</p>
+							</div>
+
+							<div class="vip">
+								<p class="flow_txt">新しいデザインで<span class="red_b">3回目</span>以降のご注文の方！</p>
+								<img src="/order/img/tsuika/vip_discount.jpg" alt="保存期間なし" width="100%">
+								<p><span class="red">※</span>当日特急、翌日・2日仕上げは対象外</p>
+							</div>
+
+						</div>
+
+						<div class="flow_2">
+							<p class="min_ttl">ご注文の流れ</p>
+							<p class="flow_txt"><span class="red">マイページにログイン</span>してから申し込みをすると個人情報の入力がスムーズ！</p>
+
+							<ol class="pc">
+								<li><span class="circle">1</span>マイページ<span class="triangle"></span></li>
+								<li><span class="circle">2</span>お申し込みボタン</li>
+							</ol>
+
+							<ol class="sp">
+								<li><span class="circle">1</span>マイページ<span class="triangle_b"></span></li>
+								<li><span class="circle">2</span>お申し込みボタン</li>
+							</ol>
+
+						</div>
+
+					</div>
+
+					<div id="mypage_reorder">
+						<h3 class="mp">マイページについて</h3>
+						<div class="dotted"></div>
+						<img src="/order/img/tsuika/banner_additional_pc.jpg" class="pc" alt="マイページ" width="100%">
+						<img src="/order/img/tsuika/banner_additional_sp.jpg" class="sp" alt="マイページ" width="100%">
 
 
+						<div class="mail_change">
+							<div class="mail_change_l">
+								<p class="mail">メールアドレスを変更したい方へ</p>
+								<p class="example">例えば...</p>
 
-                            <div class="step">
-                                <div class="step_1">
-                                    <p class="min_ttl">STEP1 弊社に連絡</p>
-                                    <p>メール（またはお電話）で下記内容をお伝えください。</p>
-                                    <div class="user">
-                                        <p class="red">現在登録されているお客様氏名</p>
-                                        <p class="">例：高濱　太郎</p>
-                                        <p class="red">変更するお客様氏名</p>
-                                        <p>例：山田　花子</p>
-                                        <p class="red">変更後の連絡先</p>
-                                        <p>例：yamada@gmail.com</p>
-                                    </div>
-                                </div>
 
-                                <div class="step_2">
-                                    <p class="min_ttl">STEP2 パスワード再発行で完了</p>
-                                    弊社から連絡が来たら、マイページのログイン画面を開きます。 「
-                                    <span class="ora">パスワードを忘れた方はこちら</span>」に進み、変更後のメールアド レスを入力します。届いたメールに従って、パスワード再発行の 手続きを行ってください。
-                                </div>
-                            </div>
-                        </div>
+								<div class="arrow_box">
+									<p class="arrow_txt">以前の注文した人のアドレスから自分のアドレスに変えたい！</p>
+								</div>
+
+
+								<ul class="example_1">
+									<li class="ab_list">
+										<div class="asan">
+											<p class="ab_txt">Aさん</p>
+											<img src="/order/img/tsuika/bsan.png" width="100%">
+											<p class="ab_mail">aaa@mail.com</p>
+										</div>
+									</li>
+
+									<li>
+										<div class="arrow"></div>
+									</li>
+
+									<li class="ab_list">
+										<div class="bsan">
+											<p class="ab_txt">Bさん</p>
+											<img src="/order/img/tsuika/asan.png" width="100%">
+											<p class="ab_mail"><span class="red">bbb@mail.co.jp</span></p>
+										</div>
+									</li>
+								</ul>
+								<p class="next_txt">次のステップに従って手続きを行ってください。</p>
+								<p class="user_2">まずはメール（またはお電話）にて弊社にご連絡ください</p>
+							</div>
 
 
 
+							<div class="step">
+								<div class="step_1">
+									<p class="min_ttl">STEP1 弊社に連絡</p>
+									<p>メール（またはお電話）で下記内容をお伝えください。</p>
+									<div class="user">
+										<p class="red">現在登録されているお客様氏名</p>
+										<p class="">例：高濱　太郎</p>
+										<p class="red">変更するお客様氏名</p>
+										<p>例：山田　花子</p>
+										<p class="red">変更後の連絡先</p>
+										<p>例：yamada@gmail.com</p>
+									</div>
+								</div>
 
-                        <div class="login">
-                            <div class="log_box">
-                                <p class="log_txt">早速マイページにログインして、追加・再注文！</p>
-                            </div>
-                            <div class="log_box_sp">
-                                <p class="log_txt">早速マイページにログインして<br>追加・再注文！</p>
-                            </div>
-
-                            <div class="login_btn_2">
-                                <a href="/user/history.php" id="mypage_btn"><img src="/common/img/header/login_btn.png">マイページ</a>
-                            </div>
-
-                            <p class="log_txt_2"><a href="http://www.takahama428.com/user/resend_pass.php">パスワードを忘れた方はこちらへ</a></p>
-
-                            <p class="comment2">ログイン方法が分からない等の疑問点は、電話、メールでお問い合わせください。</p>
-
-                            <a class="button1" href="/contact/">
-                                <img src="/common/img/header/mail.png" alt="注意"> お問い合わせ
-                            </a>
-
-
-                            <div>
-                                <ul class="cal_red">
-                                    <li>
-                                        <div class="phone_txt">
-                                            <p class="timetx">受付時間：平日 10:00-18:00</p>
-                                            <p class="red"><img alt="電話" src="../sameday/img/tel_mark.png" width="40px" height="50px" style="padding-bottom:5px; padding-right:10px;">0120-130-428</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+								<div class="step_2">
+									<p class="min_ttl">STEP2 パスワード再発行で完了</p>
+									弊社から連絡が来たら、マイページのログイン画面を開きます。 「
+									<span class="ora">パスワードを忘れた方はこちら</span>」に進み、変更後のメールアド レスを入力します。届いたメールに従って、パスワード再発行の 手続きを行ってください。
+								</div>
+							</div>
+						</div>
 
 
 
-        <p class="scroll_top"><a href="#header">お問い合わせ　ページトップへ</a></p>
 
-        <?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/footer.php"; ?>
+						<div class="login">
+							<div class="log_box">
+								<p class="log_txt">早速マイページにログインして、追加・再注文！</p>
+							</div>
+							<div class="log_box_sp">
+								<p class="log_txt">早速マイページにログインして<br>追加・再注文！</p>
+							</div>
+
+							<div class="login_btn_2">
+								<a href="/user/history.php" id="mypage_btn"><img src="/common/img/header/login_btn.png">マイページ</a>
+							</div>
+
+							<p class="log_txt_2"><a href="http://www.takahama428.com/user/resend_pass.php">パスワードを忘れた方はこちらへ</a></p>
+
+							<p class="comment2">ログイン方法が分からない等の疑問点は、電話、メールでお問い合わせください。</p>
+
+							<a class="button1" href="/contact/">
+								<img src="/common/img/header/mail.png" alt="注意"> お問い合わせ
+							</a>
 
 
-        <!--Yahoo!タグマネージャー導入 2014.04 -->
-        <script type="text/javascript">
-            (function() {
-                var tagjs = document.createElement("script");
-                var s = document.getElementsByTagName("script")[0];
-                tagjs.async = true;
-                tagjs.src = "//s.yjtag.jp/tag.js#site=bTZi1c8";
-                s.parentNode.insertBefore(tagjs, s);
-            }());
+							<div>
+								<ul class="cal_red">
+									<li>
+										<div class="phone_txt">
+											<p class="timetx">受付時間：平日 10:00-18:00</p>
+											<p class="red"><img alt="電話" src="../sameday/img/tel_mark.png" width="40px" height="50px" style="padding-bottom:5px; padding-right:10px;">0120-130-428</p>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
 
-        </script>
-        <noscript>
-                        <iframe src="//b.yjtag.jp/iframe?c=bTZi1c8" width="1" height="1" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                    </noscript>
+					</div>
+				</div>
+			</div>
+		</div>
 
 
-        <!-- m3 begin -->
-        <div id="phonepage">
-            <div id="fb-root"></div>
-            <div id="container">
-                <?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/inc/footer.html"); ?>
-                <div class="sb-slidebar sb-right">
-                    <?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/sidemenu.html"); ?>
-                </div>
-                <!-- /container -->
-            </div>
-        </div>
-        <!-- m3 end -->
 
-    </body>
+		<p class="scroll_top"><a href="#header">お問い合わせ　ページトップへ</a></p>
 
-    </html>
+		<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/footer.php"; ?>
+
+
+		<!--Yahoo!タグマネージャー導入 2014.04 -->
+		<script type="text/javascript">
+			(function() {
+				var tagjs = document.createElement("script");
+				var s = document.getElementsByTagName("script")[0];
+				tagjs.async = true;
+				tagjs.src = "//s.yjtag.jp/tag.js#site=bTZi1c8";
+				s.parentNode.insertBefore(tagjs, s);
+			}());
+
+		</script>
+		<noscript>
+			<iframe src="//b.yjtag.jp/iframe?c=bTZi1c8" width="1" height="1" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+		</noscript>
+
+
+		<!-- m3 begin -->
+		<div id="phonepage">
+			<div id="fb-root"></div>
+			<div id="container">
+				<?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/inc/footer.html"); ?>
+				<div class="sb-slidebar sb-right">
+					<?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/sidemenu.html"); ?>
+				</div>
+			</div>
+		</div>
+		<!-- m3 end -->
+
+	</body>
+
+</html>
