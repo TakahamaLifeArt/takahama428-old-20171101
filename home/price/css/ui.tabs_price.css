@@ -1,0 +1,348 @@
+/* Caution! Ensure accessibility in print and other media types... */
+
+@media projection,
+screen {
+	/* Use class for showing/hiding tab content, so that visibility can be better controlled in different media types... */
+	.ui-tabs-hide {
+		display: none;
+	}
+}
+
+
+/* Hide useless elements in print layouts... */
+
+@media print {
+	.ui-tabs-nav {
+		display: none;
+	}
+}
+
+
+/* Skin */
+
+.ui-tabs-nav,
+.ui-tabs-panel {
+	font-family: "Trebuchet MS", Trebuchet, Verdana, Helvetica, Arial, sans-serif;
+	font-size: 12px;
+}
+
+.ui-tabs-nav {
+	list-style: none;
+	margin: 0;
+	height: 0px;
+}
+
+.ui-tabs-nav:after {
+	display: block;
+	clear: both;
+	content: " ";
+}
+
+.ui-tabs-nav li {
+	float: left;
+	min-width: 128px;
+	border-radius: 10px 10px 0 0;
+	display: inline-block;
+	background: #e5e5e5;
+	background: -moz-linear-gradient(left, #e5e5e5 0%, #ededed 10%, #ffffff 50%, #ededed 90%, #e5e5e5 100%);
+	background: -webkit-linear-gradient(left, #e5e5e5 0%, #ededed 10%, #ffffff 50%, #ededed 90%, #e5e5e5 100%);
+	background: linear-gradient(to right, #e5e5e5 0%, #ededed 10%, #ffffff 50%, #ededed 90%, #e5e5e5 100%);
+	border: 1px solid #999999;
+	border-bottom: none;
+}
+
+.ui-tabs-nav li {
+	min-width: 198px;
+	font-size: 16px;
+}
+
+.ui-tabs-nav a,
+.ui-tabs-nav a span {
+	display: block;
+}
+
+.ui-tabs-nav a {
+	margin: 1px 0 0;
+	/* position: relative makes opacity fail for disabled tab in IE */
+	padding-left: 0;
+	color: #27537a;
+	font-weight: bold;
+	line-height: 1.2;
+	text-align: center;
+	text-decoration: none;
+	white-space: nowrap;
+	/* required in IE 6 */
+	outline: 0;
+	/* prevent dotted border in Firefox */
+}
+
+.ui-tabs-nav .ui-tabs-selected a {
+	position: relative;
+	z-index: 2;
+	margin-top: 0;
+	color: #000;
+}
+
+.ui-tabs-nav a span {
+	width: 64px;
+	/* IE 6 treats width as min-width */
+	min-width: 64px;
+	height: 18px;
+	/* IE 6 treats height as min-height */
+	min-height: 18px;
+	padding-top: 6px;
+	padding-right: 0;
+}
+
+*>.ui-tabs-nav a span {
+	/* hide from IE 6 */
+	width: auto;
+	height: auto;
+}
+
+.ui-tabs-nav .ui-tabs-selected a span {
+	padding-bottom: 1px;
+}
+
+.ui-tabs-nav .ui-tabs-selected a,
+.ui-tabs-nav a:hover,
+.ui-tabs-nav a:focus,
+.ui-tabs-nav a:active {
+	background-position: 100% -150px;
+}
+
+.ui-tabs-nav a,
+.ui-tabs-nav .ui-tabs-disabled a:hover,
+.ui-tabs-nav .ui-tabs-disabled a:focus,
+.ui-tabs-nav .ui-tabs-disabled a:active {
+	background-position: 100% -100px;
+	padding: 5px 0px;
+	border-radius: 10px 10px 0 0;
+}
+
+.ui-tabs-nav .ui-tabs-selected a span,
+.ui-tabs-nav a:hover span,
+.ui-tabs-nav a:focus span,
+.ui-tabs-nav a:active span {
+	background-position: 0 -50px;
+}
+
+.ui-tabs-nav a span,
+.ui-tabs-nav .ui-tabs-disabled a:hover span,
+.ui-tabs-nav .ui-tabs-disabled a:focus span,
+.ui-tabs-nav .ui-tabs-disabled a:active span {
+	background-position: 0 0;
+}
+
+.ui-tabs-nav .ui-tabs-selected a:link,
+.ui-tabs-nav .ui-tabs-selected a:visited,
+.ui-tabs-nav .ui-tabs-disabled a:link,
+.ui-tabs-nav .ui-tabs-disabled a:visited {
+	cursor: text;
+	background-color: #ff9d5a;
+}
+
+.ui-tabs-nav a:hover,
+.ui-tabs-nav a:focus,
+.ui-tabs-nav a:active,
+.ui-tabs-nav .ui-tabs-deselectable a:hover,
+.ui-tabs-nav .ui-tabs-deselectable a:focus,
+.ui-tabs-nav .ui-tabs-deselectable a:active {
+	cursor: pointer;
+}
+
+.ui-tabs-disabled {
+	opacity: .4;
+	filter: alpha(opacity=40);
+}
+
+.ui-tabs-panel {
+	border: 1px solid #97a5b0;
+	border-top: 5px solid #ff9d5a;
+	padding: 0;
+	background: #fff;
+	clear: both;
+	overflow: hidden;
+}
+
+#fragment-6 {
+	border: 1px solid #97a5b0;
+	padding: 1em 8px;
+	background: #fff;
+	height: 680px;
+	clear: both;
+}
+
+#fragment-10 {
+	border: 1px solid #97a5b0;
+	padding: 1em 8px;
+	background: #fff;
+	height: 680px;
+	clear: both;
+}
+
+#fragment-11 {
+	border: 1px solid #97a5b0;
+	padding: 1em 8px;
+	background: #fff;
+	height: 680px;
+	clear: both;
+}
+
+#fragment-12 {
+	border: 1px solid #97a5b0;
+	padding: 1em 8px;
+	background: #fff;
+	height: 700px;
+	clear: both;
+}
+
+#fragment-13 {
+	border: 1px solid #97a5b0;
+	padding: 1em 8px;
+	background: #fff;
+	height: 720px;
+	clear: both;
+}
+
+#fragment-14 {
+	border: 1px solid #97a5b0;
+	padding: 1em 8px;
+	background: #fff;
+	height: 720px;
+	clear: both;
+}
+
+#fragment-15 {
+	border: 1px solid #97a5b0;
+	padding: 1em 8px;
+	background: #fff;
+	height: 720px;
+	clear: both;
+}
+
+.ui-tabs-loading em {
+	padding: 0 0 0 20px;
+	background: url(loading.gif) no-repeat 0 50%;
+}
+
+
+/* Additional IE specific bug fixes... */
+
+* html .ui-tabs-nav {
+	display: inline-block;
+}
+
+*:first-child+html .ui-tabs-nav {
+	display: inline-block;
+}
+
+.line_blu {
+	border: 2px solid #15b5b5;
+	width: 950px;
+	margin: 5px 10px 10px;
+}
+
+.line_red {
+	border: 2px solid #e40013;
+	width: 200px;
+	margin: -15px 10px 10px;
+}
+
+.blutxt {
+	font-weight: bold;
+	color: #15b5b5;
+}
+
+.redtxt {
+	font-weight: bold;
+	color: #e40013;
+}
+
+.ui-pants {
+	height: 700px;
+}
+
+
+/*===============================================
+画面の横幅が768pxまで
+===============================================*/
+
+@media screen and (max-width: 768px) {
+	.ui-tabs-nav li {
+		min-width: 19.7%;
+		font-size: 10px;
+		float: left;
+		border-radius: 10px 10px 0 0;
+		display: inline-block;
+		background: linear-gradient(to right, #e5e5e5 0%, #ededed 10%, #ffffff 50%, #ededed 90%, #e5e5e5 100%);
+		border: 1px solid #999999;
+	}
+	.ui-tabs-nav a span {
+		min-height: 24px;
+		padding: 0px 0px;
+	}
+}
+
+
+/*===============================================
+画面の横幅が663pxまで
+===============================================*/
+
+@media screen and (max-width: 663px) {
+	.ui-tabs-nav li {
+		min-width: 19.6%;
+		font-size: 10px;
+		float: left;
+		border-radius: 10px 10px 0 0;
+		display: inline-block;
+		background: linear-gradient(to right, #e5e5e5 0%, #ededed 10%, #ffffff 50%, #ededed 90%, #e5e5e5 100%);
+		border: 1px solid #999999;
+	}
+	.ui-tabs-nav a span {
+		min-height: 24px;
+		padding: 0px 0px;
+	}
+}
+
+
+/*===============================================
+画面の横幅が497pxまで
+===============================================*/
+
+@media screen and (max-width: 497px) {
+	.ui-tabs-nav li {
+		min-width: 19.5%;
+		font-size: 10px;
+		float: left;
+		border-radius: 10px 10px 0 0;
+		display: inline-block;
+		background: linear-gradient(to right, #e5e5e5 0%, #ededed 10%, #ffffff 50%, #ededed 90%, #e5e5e5 100%);
+		border: 1px solid #999999;
+	}
+	.ui-tabs-nav a span {
+		min-height: 24px;
+		padding: 0px 0px;
+	}
+}
+
+
+/*===============================================
+画面の横幅が429pxまで
+===============================================*/
+
+@media screen and (max-width: 429px) {
+	.ui-tabs-nav li {
+		min-width: 19.4%;
+		font-size: 10px;
+		float: left;
+		border-radius: 10px 10px 0 0;
+		display: inline-block;
+		background: linear-gradient(to right, #e5e5e5 0%, #ededed 10%, #ffffff 50%, #ededed 90%, #e5e5e5 100%);
+		border: 1px solid #999999;
+	}
+	.ui-tabs-nav a span {
+		min-height: 24px;
+		padding: 0px 0px;
+	}
+}
