@@ -10,7 +10,7 @@ define('_SESS_SAVE_PATH', $_SERVER['DOCUMENT_ROOT'].'/../cgi-bin/sesstmp/');
 define('_GUEST_IMAGE_PATH', 'user/guest/data/');
 define('_MEMBER_IMAGE_PATH', 'user/member/data/');
 
-define('_MAXIMUM_SIZE', 104857600);		// max upload file size is 100MB(1024*1024*100).
+define('_MAXIMUM_SIZE', 314572800);		// max upload file size is 100MB(1024*1024*300).
 
 define('_ALL_EMAIL', 'all@takahama428.com');
 define('_INFO_EMAIL', 'info@takahama428.com');
