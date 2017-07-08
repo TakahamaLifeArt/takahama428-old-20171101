@@ -1479,6 +1479,9 @@ th {
 		width: 180px;
 		margin: 5px 54px 10px;
 	}
+	.pc {
+		display: none;
+	}
 	.comment1 {
 		text-align: center;
 		font-size: 16px;
