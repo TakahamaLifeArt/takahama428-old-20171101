@@ -111,7 +111,6 @@ $(function(){
 		*	指定カテゴリのアイテム情報を初期化
 		*/
 			$.items.hash = {};
-			$.items.itemTag = [];
 		},
 		getStorage: function(key){
 		/*
@@ -155,7 +154,7 @@ $(function(){
 				posId[tagId] = ppId;
 			}
 			$.items.hash = {};
-			$.getJSON($.TLA.api+'?callback=?', {'act':'item', 'categoryid':categoryId,'show_site':$.TLA.show_site, 'output':'jsonp'}, function(r){
+			$.getJSON($.TLA.api+'?callback=?', {'act':'item', 'categoryid':categoryId, 'mode':tag,　'show_site':$.TLA.show_site, 'output':'jsonp'}, function(r){
 				jQuery.each(r, function(key, val){
 					$.items.hash[val.id] = [val.code, val.name, val.cost, val.cost_color, val.item_row, posId[val.tag_id]];
 				});
