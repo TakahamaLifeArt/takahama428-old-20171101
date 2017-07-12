@@ -55,9 +55,7 @@ $(function(){
 					var img = $(this);
 					var id = img.parent().attr('class').split('_')[1];
 					var src = img.attr('src');
-					var src_on = src.substr(0, src.lastIndexOf('.'))
-					+ postfix
-					+ src.substring(src.lastIndexOf('.'));
+					var src_on = src.substr(0, src.lastIndexOf('.')) + postfix + src.substring(src.lastIndexOf('.'));
 					$('<img>').attr('src', src_on);
 					img.hover(
 						function() {
@@ -206,21 +204,20 @@ $(function(){
 		*	見積計算
 		*	アイテムコード、枚数、インク色数、プリント位置の配列　[itemcode, amount, ink, pos][...]
 		*/
-			var vol = $('#order_amount').val();
-			var pos_count = 0;
+			var amount = $('#order_amount').val();
 			var itemid = [];
-			var amount = [];
 			var pos = [];
 			var ink = [];
-			var size = [];
-			var option = [];
+			var size = 0;	// デザインサイズを大で固定
 			var optionValue = 0;
+			var option = optionValue;
 			var ppID = $('#boxwrap .check_body:checked').val();	// 絵型ID
 			var category_key = $("#category_selector option:selected").attr("rel");
 
 			// Tシャツの場合のみアイテムカラー（白か白以外）を指定
 			if(category_key=='t-shirts'){
 				optionValue = $('#color_wrap input[name=color]:checked').val();
+				option = optionValue;
 			}
 
 			// デザインの数
@@ -228,24 +225,22 @@ $(function(){
 				var pos_name = $(this).parent().prev().text();
 				var ink_count = $(this).val();
 				if(ink_count==0) return true;		// continue
-				for(var itemId in $.items.hash){
-					if($.items.hash[itemId][5]!=ppID) continue;
-					itemid.push(itemId);
-					amount.push(vol);
-					pos.push(pos_name);
-					ink.push(ink_count);
-					size.push(0);
-					option.push(optionValue);
-				}
-				pos_count++;
+				pos.push(pos_name);
+				ink.push(ink_count);
 			});
 
 			$.init_result();
 
-			if(pos_count==0){
+			if(ink.length==0){
 				return;
 			}
-
+			
+			// 絵型に該当するアイテムを選別
+			for(var itemId in $.items.hash){
+				if($.items.hash[itemId][5]!=ppID) continue;
+				itemid.push(itemId);
+			}
+			
 			var args = {'sheetsize':'1', 'act':'printfeelist','show_site':$.TLA.show_site, 'output':'jsonp', 'itemid':itemid, 'amount':amount, 'pos':pos, 'ink':ink, 'size':size, 'option':option};
 			$.getJSON($.TLA.api+'?callback=?', args, function(r){
 				// 見積り額と表示順を設定
@@ -254,7 +249,7 @@ $(function(){
 				jQuery.each(r, function(key, val){
 					if (val.printfee==0) return true;
 					r[key]['row'] = $.items.hash[val.itemid][4]-0;
-					r[key]['base'] = ($.items.hash[val.itemid][costIndex]-0)*vol + (val.printfee-0);
+					r[key]['base'] = ($.items.hash[val.itemid][costIndex]-0)*amount + (val.printfee-0);
 				});
 				var r2 = r.slice(0);
 
@@ -284,7 +279,7 @@ $(function(){
 					var base = val.base-0;
 					var tax = Math.floor( base * (val.tax/100) );
 					var result = Math.floor( base * (1+val.tax/100) );
-					var perone = Math.ceil(result/vol);
+					var perone = Math.ceil(result/amount);
 					var itemHash = $.getStorage("itemhash", itemcode);
 					//var tc = $.getStorage("thumbcolor", itemcode);
 					num++;
@@ -318,7 +313,7 @@ $(function(){
 					base = r2[key].base-0;
 					tax = Math.floor( base * (r2[key].tax/100) );
 					result = Math.floor( base * (1+r2[key].tax/100) );
-					perone = Math.ceil(result/vol);
+					perone = Math.ceil(result/amount);
 					itemHash = $.getStorage("itemhash", itemcode);
 					//tc = $.getStorage("thumbcolor", itemcode);
 					TR[idx] +=  '<td>';
