@@ -49,8 +49,8 @@ class Items{
 			10=>array('tag'=>14,'label'=>'ジップパーカー')
 		),
 		array(
-			12=>array('tag'=>102,'label'=>'ポケット無し'),
-			13=>array('tag'=>8,'label'=>'ポケット有り')
+			63=>array('tag'=>102,'label'=>'ポケット無し'),
+			64=>array('tag'=>8,'label'=>'ポケット有り')
 		),
 		array(
 			3=>array('tag'=>103,'label'=>'GAME'),
@@ -58,7 +58,6 @@ class Items{
 		),
 		array(
 			3=>array('tag'=>2,'label'=>'ドライ'),
-			7=>array('tag'=>105,'label'=>'スウェット'),
 			41=>array('tag'=>93,'label'=>'綿素材')
 		),
 		array(
@@ -80,7 +79,6 @@ class Items{
 			34=>array('tag'=>42,'label'=>'腰巻き')
 		),
 		array(
-			18=>array('tag'=>106,'label'=>'ドリズラー'),
 			40=>array('tag'=>19,'label'=>'パンツ'),
 			43=>array('tag'=>108,'label'=>'シャツ')
 		),
