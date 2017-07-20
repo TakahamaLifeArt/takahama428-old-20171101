@@ -80,7 +80,7 @@ class Items{
 		),
 		array(
 			40=>array('tag'=>19,'label'=>'パンツ'),
-			43=>array('tag'=>108,'label'=>'シャツ')
+			43=>array('tag'=>101,'label'=>'シャツ')
 		),
 		array(
 			32=>array('tag'=>83,'label'=>'全アイテム')
