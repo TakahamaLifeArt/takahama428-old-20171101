@@ -669,7 +669,6 @@ class Ordermail extends Conndb{
 						if ($a2[$i]['ink']==0 && $opts['noprint']==0) continue;
 						if ($opts['noprint']==1 && $i>0) continue;
 						if (empty($a2[$i]['areakey']) || empty($a2[$i]['categorytype']) || empty($a2[$i]['itemtype'])) continue;
-						if (empty($a2[$i]['printing'])) continue;
 						$sizeFrom = $a2[$i]['printing']!='silk'? 0: 35;
 						$sizeTo = $a2[$i]['printing']!='silk'? 0: 27;
 						$areasize = 0;	// 大で固定
