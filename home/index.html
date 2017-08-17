@@ -752,9 +752,8 @@
 					</section>
 
 					<?php
-					$today = date("Y/m/d");
 					$target = strtotime("2017/08/16");
-					if($today < $target){
+					if(time() < $target){
 						echo '<div id="notification">
 							<p><a href="m3/guide/information.html"><span class="new">ニュース<br></span>
 							<span id="newinfo">【夏季休業のお知らせ】</span><span class="newback">詳細<br></span></a></p>
