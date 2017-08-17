@@ -92,8 +92,7 @@ $_SESSION['contactform']['mytoken'] = $mytoken;
 							</optgroup>  
 						</select><br>
         希望納期：<input type="date" name="cf_delivery_date" id="cf_delivery_date" value=""><br>
-        メッセージ：<textarea name="cf_message" id="cf_message" placeholder="ご要望などの詳細をご記入
-ください" cols="40" rows="7"></textarea><br>
+        メッセージ：<textarea name="cf_message" id="cf_message" placeholder="商品種類、枚数、文字の打ち替え等のご要望がございましたらご記入ください。" cols="40" rows="7"></textarea><br>
         <button id="btnSubmit">送信</button>
     </form>
 
