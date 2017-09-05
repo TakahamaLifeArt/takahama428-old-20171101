@@ -187,7 +187,6 @@ EOD;
 				<li><a href="/items/apron/"><img alt="エプロン" src="/common/img/thumbs/item/apron.png" />エプロン</a></li>
 				<li><a href="/items/baby/"><img alt="ベビー" src="/common/img/thumbs/item/baby.png" />ベビーウェア</a></li>
 				<li><a href="/items/overall/"><img alt="つなぎ" src="/common/img/thumbs/item/overall.png" />つなぎ</a></li>
-				<li><a href="/items/workwear/"><img alt="ワークウェア" src="/common/img/thumbs/item/workwear.png" />ワークウェア</a></li>
 				<li><a href="/items/cap/"><img alt="キャップ・バンダナ" src="/common/img/thumbs/item/cap.png" />キャップ・バンダナ</a></li>
 				<li><a href="/items/goods/"><img alt="プレゼント・グッズ" src="/common/img/thumbs/item/goods.png" />記念品・プレゼント</a></li>
 			</ul>

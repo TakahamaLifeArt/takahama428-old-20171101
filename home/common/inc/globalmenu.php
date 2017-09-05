@@ -65,11 +65,13 @@
 							<p>つなぎ</p>
 						</a>
 					</li>
-					<li>
-						<a href="/items/workwear/" onclick="ga('send','event’,'workwear','click','global');"><img src="/common/img/header/gnavi_workwear.png" alt="オリジナルワークウェア">
-							<p>ワークウェア</p>
-						</a>
-					</li>
+<!--
+<li>
+	<a href="/items/workwear/" onclick="ga('send','event’,'workwear','click','global');"><img src="/common/img/header/gnavi_workwear.png" alt="オリジナルワークウェア">
+		<p>ワークウェア</p>
+	</a>
+</li>
+-->
 					<li>
 						<a href="/items/cap/" onclick="ga('send','event’,'cap','click','global');"><img src="/common/img/header/gnavi_cap.png" alt="オリジナルキャップ・バンダナ">
 							<p>キャップ・バンダナ</p>
