@@ -231,14 +231,14 @@ class Ordermail extends Conndb{
 			$order_info .= "◇E-Mail：　".$user['email']."\n";
 			$order_info .= "------------------------------------------\n\n";
 			
-			$order_info .= "◇弊社ご利用について：　";
-			if($user['repeater']==1){
-				$order_info .= "初めてのご利用\n\n";
-			}else if($user['repeater']==2){
-				$order_info .= "以前にも注文したことがある\n\n";
-			}else{
-				$order_info .= "-\n\n";
-			}
+//			$order_info .= "◇弊社ご利用について：　";
+//			if($user['repeater']==1){
+//				$order_info .= "初めてのご利用\n\n";
+//			}else if($user['repeater']==2){
+//				$order_info .= "以前にも注文したことがある\n\n";
+//			}else{
+//				$order_info .= "-\n\n";
+//			}
 			
 			/*
 			$attr = array('','法人','学生','個人');
@@ -608,7 +608,7 @@ class Ordermail extends Conndb{
 		"0","0","","0","0",
 		"0","",$customer_id,$total,$sum['amount'],
 
-		"",$user['repeater'],"0","0",
+		"","0","0","0",
 		empty($opts['pack'])? 1: 0,
 		$opts['pack']!=2? 0: 1,
 		$opts['pack']!=2? 0: $sum['amount'],

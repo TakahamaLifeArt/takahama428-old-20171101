@@ -658,10 +658,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 											<h2>フリガナ:</h2><input type="text" id="customerruby" name="customerruby" value="<?php echo $user['customerruby']; ?>">　様
 										</li>
 										<li><h2>お電話番号:<span class="fontred">※</span></h2><input type="text" id="tel" name="tel" class="forPhone"  value="<?php echo $user['tel']; ?>" /></li>
+<!--
 										<li><h2>弊社ご利用について:<span class="fontred">※</span></h2>
 											<label class="lbl"><input type="radio" name="repeater" value="1" <?php if($user['repeater']==1) echo 'checked="checked"'; ?> /> 初めてのご利用</label>
 											<label class="lbl"><input type="radio" name="repeater" value="2" <?php if($user['repeater']==2) echo 'checked="checked"'; ?> /> 以前にも注文したことがある</label>
 										</li>
+-->
 									</ul>
 								</div>
 								<div class="fr">
@@ -798,7 +800,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 										<tr><th>お届け時間</th><td id="conf_deliverytime"></td></tr>
 										<tr><th>お支払方法</th><td id="conf_payment"></td></tr>
 										<tr><th>ご要望・ご質問など</th><td id="conf_comment"></td></tr>
-										<tr><th>弊社ご利用について</th><td id="conf_repeater"></td></tr>
 									</tbody>
 								</table>
 							</div>

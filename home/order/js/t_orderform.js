@@ -704,7 +704,6 @@ $(function(){
 		$("#userinfo").hide();
 		$('#step5 .goto_confirm').hide();
 		$('input[type="text"], textarea', '#userinfo').val("");
-		$(":radio[name='repeater']", "#userinfo").attr("checked",false);
 		$("#deli_selector_wrap").hide();
 		$('#deli').attr("checked",false);
 		$('#deli_list').hide();
@@ -1168,7 +1167,6 @@ $(function(){
 		*/
 			if(args){
 				$('#userinfo input[type="text"]').removeAttr("readonly");
-				$(":radio[name='repeater']", "#userinfo").val([1]);
 				$("#login_wrap").hide();
 				$("#userinfo").show();
 				$('#step5 .goto_confirm').show();
@@ -1194,9 +1192,6 @@ $(function(){
 						$("#addr0").val(data.customer["addr0"]);
 						$("#addr1").val(data.customer["addr1"]);
 						$("#addr2").val(data.customer["addr2"]);
-						
-						$(":radio[name='repeater']", "#userinfo").val([2]);
-						
 						$("#deli_selector_wrap").hide();
 						if(data.customer["deli"]==1){
 							$('#deli').attr("checked","checked");
@@ -1236,10 +1231,7 @@ $(function(){
 							}).fail(function(xhr, status, error){
 								alert("Error: "+error+"<br>xhr: "+xhr);
 							});
-							$(":radio[name='repeater']", "#userinfo").val([2]);
-							//$('#userinfo input[type="text"]').attr("readonly", "readonly");
 						}else{
-							$(":radio[name='repeater']", "#userinfo").val([1]);
 							$('#userinfo input[type="text"]').removeAttr("readonly");
 						}
 						
@@ -1360,9 +1352,6 @@ $(function(){
 				$("#addr0").val(data.user["addr0"]);
 				$("#addr1").val(data.user["addr1"]);
 				$("#addr2").val(data.user["addr2"]);
-				
-				$(":radio[name='repeater']", "#userinfo").val([2]);
-				
 				if(data.delivery){
 					var deli = data.delivery;
 					$("#deli_id").val(deli[0]["id"]);
@@ -2078,7 +2067,7 @@ $(function(){
 		*	ユーザー情報の登録
 		*/
 			var postData = {'act':'update', 'mode':'customer'};
-			$('input[type=text]:not([name$=_text]), :radio[name=repeater]:checked, #deli, #deli_id, textarea, select, #pass, #member', '#userinfo').each( function(){
+			$('input[type=text]:not([name$=_text]), #deli, #deli_id, textarea, select, #pass, #member', '#userinfo').each( function(){
 				var key = $(this).attr('name');
 				if(key==="undefined"){
 					return true;	// continue
@@ -2139,7 +2128,6 @@ $(function(){
 			if($('#pass').is(':visible') && $('#pass').val().trim()=='') required.push('<li>パスワード</li>');
 			if($('#tel').val().trim()=='') required.push('<li>お電話番号</li>');
 			if($('#addr1').val().trim()=='') required.push('<li>ご住所</li>');
-			if(!$(':radio[name=repeater]:checked').val()) required.push('<li>弊社ご利用について</li>');
 			if($('#deli').is(':checked')){
 				if($('#organization').val().trim()=='') required.push('<li>宛名</li>');
 				if($('#delitel').val().trim()=='') required.push('<li>お届け先のお電話番号</li>');
@@ -2267,14 +2255,6 @@ $(function(){
 					for(var u in r.user){
 						if(u=='deli'){
 							continue;
-						}else if(u=='repeater'){
-							if(r.user[u]==1){
-								$('#conf_'+u).html('初めてのご利用');
-							}else if(r.user[u]==2){
-								$('#conf_'+u).html('以前にも注文したことがある');
-							}else{
-								$('#conf_'+u).html('');
-							}
 						}else if(u.match(/^deli/) && r.user.deli!=1){
 							var tmp = u.slice(4);
 							$('#conf_'+u).html(r.user[tmp]);

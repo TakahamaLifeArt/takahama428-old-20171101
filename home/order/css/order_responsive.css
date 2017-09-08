@@ -1006,7 +1006,7 @@ p.thumb_h .notes_color {
 #estimation_wrap input.forNum,
 #estimation_wrap input[type=number],
 #estimation_wrap table tbody td input {
-	width: 3em;
+	width: 4em;
 	text-align: right;
 }
 

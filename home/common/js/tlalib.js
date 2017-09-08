@@ -76,7 +76,7 @@ $.getScript('/common/js/phonedata.js');
 		/********************************
 		*	move cursor and trim text in forms
 		*/
-		$('form input:not([class^=for])').on('keypress', function(e){
+		$('form input[type="text"]:not([class^=for])').on('keypress', function(e){
 			var my = (e.target || window.event.srcElement);
 			var code=(e.charCode) ? e.charCode : ((e.which) ? e.which : e.keyCode);
 			if(code == 13 || code == 3){
@@ -673,7 +673,7 @@ $.getScript('/common/js/phonedata.js');
 			}
 		},
 		TLA: {
-			'api':'http://takahamalifeart.com/v1/api',
+			'api':'//takahamalifeart.com/v1/api',
 			'show_site':'1',
 			'holidayInfo':{}			// カレンダーの祝祭日情報
 		}
