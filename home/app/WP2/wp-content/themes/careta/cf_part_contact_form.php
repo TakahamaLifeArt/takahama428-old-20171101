@@ -3,8 +3,8 @@
 $mytoken = md5(date('Y-m-d H:i:s'));
 $_SESSION['contactform']['mytoken'] = $mytoken;
 ?>
-<script src="http://www.takahama428.com/app/WP2/wp-content/themes/careta/js/jquery.validate.min.js"></script>
-<script src="http://www.takahama428.com/app/WP2/wp-content/themes/careta/js/detailContactForm.js"></script>
+<script src="//www.takahama428.com/app/WP2/wp-content/themes/careta/js/jquery.validate.min.js"></script>
+<script src="//www.takahama428.com/app/WP2/wp-content/themes/careta/js/detailContactForm.js"></script>
 <div class="boxDetailContactForm">
 <h2 id="Line01">お問い合わせフォーム</h2>
     <form name="detailContactForm" id="detailContactForm" action="#" method="post" style="width:91%;">
@@ -148,7 +148,7 @@ input[type="text"], textarea, select, input[type="submit"], input[type="button"]
 }
 
 #btnSubmit {
-    background-image: url(http://www.takahama428.com/order/express/img/next_btn.png);
+    background-image: url(/order/express/img/next_btn.png);
     background-position: top;
     background-repeat: no-repeat;
     width: 192px;

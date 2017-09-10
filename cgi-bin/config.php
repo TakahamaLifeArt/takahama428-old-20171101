@@ -2,7 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/php_libs/conndb_holiday.php';
 require_once dirname(__FILE__).'/JSON.php';
 
-define('_DOMAIN', 'http://'.$_SERVER['HTTP_HOST']);
+define('_DOMAIN', '//'.$_SERVER['HTTP_HOST']);
 
 define('_DOC_ROOT', $_SERVER['DOCUMENT_ROOT'].'/');
 define('_SESS_SAVE_PATH', $_SERVER['DOCUMENT_ROOT'].'/../cgi-bin/sesstmp/');
@@ -28,10 +28,10 @@ define('_PACK_FEE', 50);
 define('_NO_PACK_FEE', 10);
 define('_CREDIT_RATE', 0.05);	// カード手数料率
 
-define('_API', 'http://takahamalifeart.com/v1/api');
-define('_API_U', 'http://takahamalifeart.com/v1/apiu');
-define('_API_PSS', 'http://takahama428.co-site.jp/v1/api');		// Photo Sharing Service Member
-define('_IMG_PSS', 'http://takahamalifeart.com/weblib/img/');
+define('_API', 'https://takahamalifeart.com/v1/api');
+define('_API_U', 'https://takahamalifeart.com/v1/apiu');
+define('_API_PSS', 'https://takahama428.co-site.jp/v1/api');		// Photo Sharing Service Member
+define('_IMG_PSS', 'https://takahamalifeart.com/weblib/img/');
 
 // 注文情報の登録
 define('_ORDER_INFO', 'http://original-sweat.com/system/php_libs/ordersinfo.php');

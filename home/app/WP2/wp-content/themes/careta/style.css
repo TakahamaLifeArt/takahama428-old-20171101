@@ -2016,7 +2016,7 @@ Genericons
 	cursor: pointer;
 	text-decoration: none;
 	color: #383838;
-	background: url(http://www.takahama428.com/app/WP/wp-content/uploads/2015/12/tel_plate.png) 0 0 no-repeat;
+	background: url(/app/WP/wp-content/uploads/2015/12/tel_plate.png) 0 0 no-repeat;
 }
 #top_bar1 .h_tel p {
 	position: absolute;

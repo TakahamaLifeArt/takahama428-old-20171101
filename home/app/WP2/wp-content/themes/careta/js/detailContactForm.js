@@ -39,12 +39,12 @@ jQuery(function($){
         if(!confirm('送信します。よろしいでしょうか？')){
             return false;
         }
-        $("#detailContactForm").attr('action', 'http://www.takahama428.com/app/WP2/wp-content/themes/careta/cf_execute.php');
+        $("#detailContactForm").attr('action', '/app/WP2/wp-content/themes/careta/cf_execute.php');
         var $form = $("#detailContactForm");
         var $button = $('#btnSubmit');
 
         $.ajax({
-            url: 'http://www.takahama428.com/app/WP2/wp-content/themes/careta/cf_execute.php',
+            url: '/app/WP2/wp-content/themes/careta/cf_execute.php',
             type: 'post',
             data:$form.serialize(),
             timeout: 10000,

@@ -9,7 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 	<link rel="stylesheet" type="text/css" href="/common/css/base.css" media="screen" />
 	<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_template_directory_uri(); ?>/style.css" />
-	<link rel="profile" href="http://gmpg.org/xfn/11" />
+	<link rel="profile" href="//gmpg.org/xfn/11" />
 	<link href="<?php echo get_template_directory_uri(); ?>/genericons/genericons.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
@@ -88,26 +88,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			<div id="warapper">
 				<div class="inner1" style="width:99%;"></div>
 				<div class="inner1" style="width:99%; background-color: #fffdfa;">
-					<div class="h_wrap hw_1"><a href="http://www.takahama428.com/"><img src="http://www.takahama428.com/app/WP/wp-content/uploads/2015/12/logo1.png" alt="オリジナルTシャツ屋"></a></div>
-					<div class="h_wrap hw_2"><img src="http://www.takahama428.com/app/WP/wp-content/uploads/2015/12/no1_mark.png" alt="業界NO.1！スピード仕上げ 親切対応！"></div>
+					<div class="h_wrap hw_1"><a href="//www.takahama428.com/"><img src="//www.takahama428.com/app/WP/wp-content/uploads/2015/12/logo1.png" alt="オリジナルTシャツ屋"></a></div>
+					<div class="h_wrap hw_2"><img src="//www.takahama428.com/app/WP/wp-content/uploads/2015/12/no1_mark.png" alt="業界NO.1！スピード仕上げ 親切対応！"></div>
 					<div class="h_wrap hw_3">
 						<div class="h_tel">
 							<a href="/contact/guide/">
 								<p class="p1">お急ぎの方は<br>お電話下さい！</p>
 								<p class="p2"></p>
-								<p class="p3"><img src="http://www.takahama428.com/app/WP/wp-content/uploads/2015/12/tel.png" alt="電話"></p>
+								<p class="p3"><img src="//www.takahama428.com/app/WP/wp-content/uploads/2015/12/tel.png" alt="電話"></p>
 								<p class="p4">TEL</p>
 								<p class="p5">0120-130-428</p>
 								<p class="p6">受付時間：平日 10:00-18:00</p>
-								<p class="p7"><img src="http://www.takahama428.com/app/WP/wp-content/uploads/2015/12/arrow_b.png"></p>
+								<p class="p7"><img src="//www.takahama428.com/app/WP/wp-content/uploads/2015/12/arrow_b.png"></p>
 							</a>
 						</div>
 						<div class="h_mail">
 							<a href="/contact/">
-								<img src="http://www.takahama428.com/app/WP/wp-content/uploads/2015/12/mail.png" alt="メール">
+								<img src="//www.takahama428.com/app/WP/wp-content/uploads/2015/12/mail.png" alt="メール">
 								<span>MAIL</span>
 								<p>お問い合わせ（相談）</p>
-								<img src="http://www.takahama428.com/app/WP/wp-content/uploads/2015/12/arrow_w.png" class="h_arrow" style="margin-left: 40px;">
+								<img src="//www.takahama428.com/app/WP/wp-content/uploads/2015/12/arrow_w.png" class="h_arrow" style="margin-left: 40px;">
 							</a>
 						</div>
 					</div><!--eof h_wrap hw_3-->
