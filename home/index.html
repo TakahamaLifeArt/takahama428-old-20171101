@@ -296,7 +296,7 @@
 							<a href="/delivery/" onclick="ga('send','event','delivery','click','top');" class="fr_delivery"></a>
 						</div>
 						<div class="fr_image_01" style="" height="81">
-							<a href="/order/express/" onclick="ga('send','event','express','click','top');" class="fr_design"></a>
+							<a href="/user/uploader.php" onclick="ga('send','event','express','click','top');" class="fr_design"></a>
 						</div>
 					</div>
 					<div id="top_3bigbanner">
@@ -753,7 +753,7 @@
 
 					<?php
 					$target = strtotime("2017/09/04");
-					if(time() >= $target){
+					if(time() > $target){
 						echo '<div id="notification">
 							<p><a href="m3/guide/information.html"><span class="new">ニュース<br></span>
 							<span id="newinfo">【アイテム価格改定のお知らせ】</span><span class="newback">詳細<br></span></a></p>
