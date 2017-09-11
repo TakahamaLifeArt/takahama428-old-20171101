@@ -16,12 +16,8 @@ if($_SERVER['REQUEST_METHOD']!='POST'){
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 		<!--	<link rel="stylesheet" href="/common/css/mdb.min.css">-->
-<!--
 		<link rel="stylesheet" type="text/css" media="screen" href="/common/css/common.css">
 		<link rel="stylesheet" type="text/css" media="screen" href="/common/css/base.css">
--->
-		<link rel="stylesheet" type="text/css" media="screen" href="/common/css/dev-common_responsive.css">
-		<link rel="stylesheet" type="text/css" media="screen" href="/common/css/dev-base_responsive.css">
 		<link rel="stylesheet" type="text/css" media="screen" href="./css/style.css">
 		<link rel="stylesheet" type="text/css" media="screen" href="./js/upload/jquery.fileupload.css">
 		<link rel="stylesheet" type="text/css" media="screen" href="./js/upload/jquery.fileupload-ui.css">
@@ -76,11 +72,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		</script>
 		<!-- End Google Tag Manager -->
 
-		<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/dev-header.php"; ?>
+		<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/header.php"; ?>
 		<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/globalmenu.php"; ?>
 		<div id="container">
 
-			<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/dev-sidenavi.php"; ?>
+			<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/sidenavi.php"; ?>
 
 			<div class="contents">
 
