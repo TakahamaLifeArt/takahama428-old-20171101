@@ -458,7 +458,7 @@ li.firstlist {
 	background: url(/order/img/color.png) no-repeat;
 }
 
-.size {
+.item_info .size {
 	background: url(/order/img/size.png) no-repeat;
 }
 
@@ -2149,7 +2149,7 @@ hr {
 	#step2 .size_table input[type=number] {
 		width: 100%;
 		padding: 2px 5px;
-		text-align: right;
+		text-align: center;
 		font-size: 1.5em;
 	}
 	ul.color_thumb {
