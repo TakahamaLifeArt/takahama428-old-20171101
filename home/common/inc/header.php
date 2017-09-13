@@ -127,7 +127,7 @@
 			<div id="sns">
 			
 				<!-- Google+ -->
-				<div class="googleplus"><div class="g-plusone" data-href="http://www.takahama428.com" data-align="right"></div></div>
+				<div class="googleplus"><div class="g-plusone" data-href="//www.takahama428.com" data-align="right"></div></div>
 
 				<!-- twitter -->
 				<div class="twitter"><a href='https://twitter.com/share' class='twitter-share-button' data-lang='ja'>ツイート</a>

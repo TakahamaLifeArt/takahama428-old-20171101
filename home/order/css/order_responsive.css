@@ -2149,7 +2149,7 @@ hr {
 	#step2 .size_table input[type=number] {
 		width: 100%;
 		padding: 2px 5px;
-		text-align: center;
+		text-align: right;
 		font-size: 1.5em;
 	}
 	ul.color_thumb {
