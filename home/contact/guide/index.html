@@ -1,0 +1,203 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'].'/../cgi-bin/jd/myCalendar.php';
+list($year, $month) = explode(' ', date("Y n"));
+$myCalendar = new myCalendar($year, $month);
+list($year2, $month2) = explode(' ', date('Y n', mktime(0, 0, 0, date('n')+1, 1, date('Y'))));
+$myCalendar2 = new myCalendar($year2, $month2);
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="euc-jp" />
+	<title>営業案内 ｜ オリジナルTシャツ作成が早い、タカハマライフアート</title>
+	<meta name="Description" content="オリジナルTシャツ屋タカハマライフアートの営業案内です。受注スタッフが、プリント料金のお見積りや安く作成するコツなど何でも相談に乗ります。短納期制作、電話対応満NO,１を目指します！1枚からでも安い・お急ぎ製作・印刷は東京都内のタカハマライフアート！10秒で簡単・早いオリジナルTシャツ比較お見積もりも承ります。">
+	<meta name="keywords" content="プリント,料金,Tシャツ,安い,オリジナル">
+	<meta name="google-site-verification" content="PfzRZawLwE2znVhB5M7mPaNOKFoRepB2GO83P73fe5M" />
+	<link rel="shortcut icon" href="/icon/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="/common/css/common.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="/common/css/base.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="/common/js/modalbox/css/jquery.modalbox.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="/css/new.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="/common/css/header_1000.css" media="screen" />
+
+	<link rel=canonical href="http://www.takahama428.com/"/>
+	<script type="text/javascript" src="/common/js/jquery.js"></script>
+	<script type="text/javascript" src="/common/js/modalbox/jquery.modalbox-min.js"></script>
+	<script type="text/javascript" src="/common/js/tlalib.js"></script>
+
+	<!-- OGP -->
+	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#  website: http://ogp.me/ns/website#">
+	<meta property="og:title" content="営業案内｜ オリジナルTシャツ屋タカハマライフアート！" />
+	<meta property="og:type" content="website" /> 
+	<meta property="og:description" content="安い！プリント料金案内。プリント方法別（シルクスクリーン・デジタル転写・インクジェット・カッティングシート）の料金算出詳細をわかりやすく説明します。オリジナルTシャツの作成のスピードには自信かあります！短納期制作、電話対応満NO,１を目指します！特急のお急きプリントは早い・丁寧・親切の東京都で作る品質タカハマライフアートへ！" />
+	<meta property="og:url" content="http://www.takahama428.com/" />
+	<meta property="og:site_name" content="オリジナルTシャツの作成・プリントはタカハマライフアート" />
+	<meta property="fb:app_id" content="1605142019732010" />
+	<!--  -->
+
+</head>
+<body>
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-T5NQFM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T5NQFM');</script>
+<!-- End Google Tag Manager -->
+	<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/header.php"; ?>
+	
+	<div id="container">
+ 
+	<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/globalmenu.php"; ?>
+		<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/sidenavi.php"; ?>
+		
+		<div class="contents">
+			<ul class="pan">
+				<li><a href="/">オリジナルＴシャツ屋ＴＯＰ</a></li>
+				<li>営業案内</li>
+			</ul>
+
+
+			<div class="heading1_wrapper_new">
+				<h1>営業案内<img src="img/guide_mainrogo.png" alt="営業案内" width="75" height="35"></h1>
+				<p class="sub">Business Guidance</p>
+				<p class="comment">営業時間や問い合わせ方法などを紹介いたします。</p>
+</div>
+<h3 class="guide">受注スタッフにおまかせください!</h3>
+<p class="ml100"><img src="img/guide_illustration.png" width="136" height="160" class="fr mr120">日本一の電話対応を目指しています！<br>
+多くのお客様から「親切」「わかりやすい」「迅速」など<br>
+好評価を頂いております。<br>
+なんでもご相談に乗りますので<br>
+お気軽にお問い合わせください！<br>
+サイトには掲載していないけど<br>
+「こんなのできる？」「こんなアイテムないの？」などの<br>
+ご要望にも応えてしまうことも！</p>
+<table width="780" border="0" class="time">
+<tr>
+<th width="50%">営業時間</th>
+<th>コールセンター対応</th>
+</tr>
+<tr>
+<td class="time01">タカハマライフアートの営業時間を<br>
+お知らせいたします。</td>
+<td class="time03">コールセンタースタッフがご要望や担当者への<br>
+伝言を受け付けます。<br>
+受け付けた内容の返答は翌営業日に担当者から<br>
+返答致します。</td>
+</tr>
+<tr>
+<td class="time02"><span class="fs20">営業時間：10:00〜18:00<br>
+定休日　：土日祝</span><br>
+<span class="fontred">注文確定〆：13時まで</span></td>
+<td class="time04"><span class="fs20">平日　 18:00〜21:00<br>
+土曜日 10:00〜18:00</span><br>
+<span class="fontred">注文確定〆：承りません</span></td>
+</tr>
+</table>
+<div class="guidecal clearfix">
+	<div class="workday_calendar_wrap">
+		<table class="workday_calendar">
+			<caption><?php echo "{$year} 年{$month} 月　営業日"; ?></caption>
+			<thead>
+		    	<tr>
+			        <td class="sun">日</td>
+			        <td>月</td>
+			        <td>火</td>
+			        <td>水</td>
+			        <td>木</td>
+			        <td>金</td>
+			        <td class="sat">土</td>
+			    </tr>
+		    </thead>
+		    <tbody><?php echo $myCalendar->makeCalendar(); ?></tbody>
+		</table>
+		<table class="workday_calendar">
+			<caption><?php echo "{$year2} 年{$month2} 月　営業日"; ?></caption>
+			<thead>
+		    	<tr>
+			        <td class="sun">日</td>
+			        <td>月</td>
+			        <td>火</td>
+			        <td>水</td>
+			        <td>木</td>
+			        <td>金</td>
+			        <td class="sat">土</td>
+			    </tr>
+		    </thead>
+		    <tbody><?php echo $myCalendar2->makeCalendar(); ?></tbody>
+		</table>
+	</div>
+<div class="calguide">
+<p><img src="img/Square_01.png" width="15" height="15">営業日<br>
+<img src="img/Square_02.png" width="15" height="15">定休日：土日祝</p>
+</div>
+<!--class guidecal--></div>
+<div class="guidecontact">
+<div class="wbox fl">
+<h3 class="ac fs20">お電話</h3>
+<div class="cbox" id="cbox01">
+<p class="txt">お急ぎの方は電話してください</p>
+<p class="tel"><span class="fs20">0120-130-428</span><br>
+受付時間：平日 10:00-18:00</p>
+<!--class cbox--></div>
+<!--class wbox--></div>
+
+<div class="wbox fl">
+<h3 class="ac fs20">お問い合わせ</h3>
+<div class="cbox" id="cbox02">
+<p class="txt">メールでのお問い合わせフォームは<br>
+こちらです。</p>
+<p class="mail"><a href="/contact/">問い合わせはこちら<img src="img/arrow_w.png" width="8" height="10"></a></p>
+<!--class cbox--></div>
+<!--class wbox--></div>
+
+<div class="wbox fl" id="fax">
+<h3 class="ac fs20">FAX</h3>
+<div class="cbox" id="cbox03">
+<p class="txt">FAXまたは郵送注文の方はこちら</p>
+<p class="fax"><span class="fs20">03-5670-0730</span><br>
+受付時間：24時間受信</p>
+<p class="pdf"><a href="/contact/faxorderform.pdf">手描き注文書(PDF)<br>
+印刷して使用ください<img src="img/arrow_w.png" width="8" height="10"></a></p>
+<!--class cbox--></div>
+<!--class wbox--></div>
+
+<div class="wbox fl">
+<h3 class="ac fs20 ls5">デザインシート【無料ダウンロード】</h3>
+<div class="cbox" id="cbox05">
+<p class="txt">ページ内に入稿フォームがあります。<br>
+使用すると1000円OFF !!</p>
+<p class="illust"><a href="https://www.takahama428.com/design/template_illust.html">イラレ入稿<img src="img/arrow_w.png" width="8" height="10"></a></p>
+<!--class cbox--></div>
+<!--class wbox--></div>
+
+<!--class guidecontact--></div>
+
+
+<!--contents--></div>
+	
+    <!--container--></div>
+<p class="scroll_top"><a href="#header">営業案内　ページトップへ</a></p>
+
+	<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/footer.php"; ?>
+	
+
+<!--Yahoo!タグマネージャー導入 2014.04 -->
+<script type="text/javascript">
+  (function () {
+    var tagjs = document.createElement("script");
+    var s = document.getElementsByTagName("script")[0];
+    tagjs.async = true;
+    tagjs.src = "//s.yjtag.jp/tag.js#site=bTZi1c8";
+    s.parentNode.insertBefore(tagjs, s);
+  }());
+</script>
+<noscript>
+  <iframe src="//b.yjtag.jp/iframe?c=bTZi1c8" width="1" height="1" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+</noscript>
+	
+</body>
+</html>
