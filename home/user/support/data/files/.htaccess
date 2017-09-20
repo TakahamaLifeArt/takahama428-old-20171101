@@ -11,17 +11,15 @@ Header set Content-Disposition attachment
 
 # The following unsets the forced type and Content-Disposition headers
 # for known image files:
-<FilesMatch "(?i)\.(ai|jpe?g|png)">
-	ForceType none
-	Header unset Content-Disposition
-	
-	# SetEnvIf Referer "^http(s)?://www.takahama428\.com" selfy
-	# SetEnvIf Referer "^$" selfy
-	RewriteEngine On
-	RewriteCond %{QUERY_STRING} !auth=admin
-	RewriteCond %{HTTP_REFERER} !(^http(s)?://www.takahama428\.com)
-	RewriteRule ^.*$ - [F,L]
+<FilesMatch "(?i)\.(jpe?g|png)">
+	# ForceType none
+	# Header unset Content-Disposition
 </FilesMatch>
+
+RewriteEngine On
+RewriteCond %{QUERY_STRING} !auth=admin
+RewriteCond %{HTTP_REFERER} !(^http(s)?://www.takahama428\.com)
+RewriteRule ^.*$ - [F,L]
 
 # The following directive prevents browsers from MIME-sniffing the content-type.
 # This is an important complement to the ForceType directive above:

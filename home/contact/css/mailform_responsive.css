@@ -1,0 +1,405 @@
+@charset "euc-jp";
+
+/*------------------------------------------------------------
+
+2012 takahama web css
+
+	File_name    : mailform.css
+	Description  : contacts us and request brochure 
+	Version      : 1.0
+	
+	log
+	2012.02.08	 : created
+	2012.08.08	 : お問合せ項目を追加
+				 : よく有るご質問を追加
+	
+--------------------------------------------------------------*/
+
+
+
+
+/*		common
+===============================================================*/
+#enq_table {
+	width: 660px;
+	margin: 0 auto;
+}
+.contents h2 {
+	margin-bottom: 5px;
+	padding: 0 0 0 10px;
+	color: #4e2210;
+	border-left: 5px solid #e1630e;
+}
+.contents .title_confirmation {
+	display: none;
+	padding: 0 0 0 10px;
+	color: #4e2210;
+	border-left: 5px solid #e1630e;
+}
+.heading3 {
+	margin-top: 1em;
+}
+
+/* override */
+dl.list dt {
+	width: 3em;
+}
+dl.list dt.que {
+	color: #c33;
+}
+dl.list dt.que + dd {
+	color: #e33;
+}
+dl.list dt.ans {
+	color: #33c;
+}
+dl.list dd {
+	padding-left: 3em;
+}
+dl.list dd.mb {
+	margin-bottom: 1.5em;
+}
+
+
+
+
+/*		メールフォーム
+===============================================================*/
+form {
+	margin-bottom: 60px;
+}
+.forPhone,
+.forZip,
+.email {
+	ime-mode: disabled;
+}
+#addr1 {
+	margin-bottom: 5px;
+}
+
+.round_inner table th,
+.round_inner table td {
+	padding-top: 10px;
+	border-bottom: 1px solid #ddd;
+}
+.round_inner table tr.last th,
+.round_inner table tr.last td {
+	border: none;
+}
+.round_inner td {
+	line-height: 1.6;
+}
+.round_inner th {
+	text-align: left;
+	vertical-align: middle;
+	font-weight: normal;
+}
+.point{
+	margin: 5px;
+	text-align: right;
+	color: #ff0019;
+}
+input[type="file"]{
+/*	height: 24px;*/
+}
+input[type="text"] {
+	width: 350px;
+	height: 18px;
+	padding: 3px;
+	border: 1px solid #aaa;
+	background-color: #ffffff;
+}
+input[type="text"].forZip {
+	width: 6em;
+	margin-bottom: 5px;
+	text-align: center;
+}
+input[type="text"]:focus {
+	border: 1px solid #237bc3;
+	background-color: #f1f8fe;
+}
+
+* html input{
+	width: 350px;
+	height: 24px;
+	padding: 3px;
+	border: 1px solid #aaa;
+	background-color: #ffffff;
+}
+* html input.forZip{
+	width: 6em;
+	margin-bottom: 5px;
+	text-align: center;
+}
+* html input:focus{
+	border: 1px solid #237bc3;
+	background-color: #f1f8fe;
+}
+#message,
+.message {
+	width: 450px;
+	height: 200px;
+	padding: 3px;
+	font-size: 100%;
+	border: 1px solid #aaa;
+	background-color: #ffffff;
+}
+#message:focus,
+.message:focus {
+	border: 1px solid #237bc3;
+	background-color: #f1f8fe;
+}
+
+/* 送信・リセット */
+.button_area {
+	margin-top: 30px;
+	text-align: center;
+	padding: 5px 0;
+	background: #f9f9f9;
+	border-bottom: 1px solid #ddd;
+}
+.button_area input.btn {
+	margin: 0 10px;
+	padding: 3px 20px;
+	cursor: pointer;
+}
+.button_area .msg {
+	display: none;
+	margin-bottom: 10px;
+}
+
+/* checkbox */
+#enq_table td label {
+	padding-right: 1.5em;
+	padding-left: 25%;
+	font-weight: normal;
+	display:block;
+}
+
+#enq_table td span {
+	padding-right: 1.5em;
+}
+
+/* list */
+dl.list ul {
+	margin: 1em 0 1em 2.5em;
+}
+dl.list ul li {
+	list-style: circle;
+}
+
+/* 添付ファイルの追加 */
+.add_attachfile{
+/*
+	height: 32px;
+	margin: 5px 0px 15px 200px;
+*/
+	padding-left: 30px;
+	line-height: 32px;
+	color: #0000de;
+	background: url(/contact/img/attachment.png) no-repeat left center;
+	cursor: pointer;
+	float: right;
+}
+.add_attachfile:hover{
+	text-decoration: underline;
+	color: #0066ff;
+}
+
+/* 添付ファイルの削除 */
+.abort {
+	padding: 0px 5px;
+	color: #c33;
+	cursor: pointer;
+}
+.abort:hover {
+	color: #ff0019;
+}
+
+/* 添付ファイルの説明 */
+table td.comment {
+	padding-top: 3em;
+	font-size: 85%;
+}
+
+/* 確認時に表示を切替える要素に適用 */
+.confirmation,
+form .txt {
+	display: none;
+}
+form .txt.confirmation {
+	display: block;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+form p.txt.confirmation {
+	height: 23px;
+}
+.form span.txt.confirmation {
+	display: inline;
+}
+#goback {
+	display: none;
+}
+
+
+
+
+/*		お問合せ先
+===============================================================*/
+.box_c {
+	padding-top: 120px;
+	margin-top: 20px;
+	border: 1px solid #eae7d2;
+	background: #fff url(/common/img/banner1.jpg) no-repeat top center;
+	border-radius: 3px;
+}
+.box_c span {
+	padding-right: 30px;
+}
+.box_c .bg {
+	padding: 20px 20px 10px;
+}
+.box_c .bg img {
+	vertical-align: text-top;
+}
+
+.bg p{
+	padding-bottom: 10px;
+}
+
+
+/*		住所検索
+===============================================================*/
+#find_addr {
+	margin: 5px;
+	cursor: pointer;
+}
+
+/* 住所検索の結果リスト */
+.address_list li {
+	cursor: pointer;
+	border-bottom: 1px solid #dedede;
+}
+.address_list li:hover {
+	background: #efefef;
+}
+
+
+
+/*		角丸ボーダー
+===============================================================*/
+.round_corner_wrapper,
+.round_corner_wrapper02 {
+	position: relative;
+	margin: 0px;
+	background: #fff;
+}
+.round_corner_wrapper .round_inner {
+	padding: 5px 20px;
+	border-left: 2px solid #f60;
+	border-right: 2px solid #f60;
+}
+
+/* ff6600 */
+.round_corner_wrapper .round_lt {
+	height: 15px;
+	margin-right: 15px;
+	padding-left: 15px;
+	background: url(../img/border_round_top.png) no-repeat left top;
+}
+.round_corner_wrapper .round_lb {
+	height: 15px;
+	margin-right: 15px;
+	padding-left: 15px;
+	background: url(../img/border_round_bottom.png) no-repeat left bottom;
+}
+.round_corner_wrapper .round_rt {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 15px;
+	height: 15px;
+	background: url(../img/border_round_top.png) no-repeat right top;
+}
+.round_corner_wrapper .round_rb {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	width: 15px;
+	height: 15px;
+	background: url(../img/border_round_bottom.png) no-repeat right bottom;
+}
+
+/* ffede0 */
+.round_corner_wrapper02 .round_inner {
+	padding: 5px 20px;
+	border-left: 2px solid #ffede0;
+	border-right: 2px solid #ffede0;
+}
+
+.round_corner_wrapper02 .round_lt {
+	height: 15px;
+	margin-right: 15px;
+	padding-left: 15px;
+	background: url(../img/border_round_top02.png) no-repeat left top;
+}
+.round_corner_wrapper02 .round_lb {
+	height: 15px;
+	margin-right: 15px;
+	padding-left: 15px;
+	background: url(../img/border_round_bottom02.png) no-repeat left bottom;
+}
+.round_corner_wrapper02 .round_rt {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 15px;
+	height: 15px;
+	background: url(../img/border_round_top02.png) no-repeat right top;
+}
+.round_corner_wrapper02 .round_rb {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	width: 15px;
+	height: 15px;
+	background: url(../img/border_round_bottom02.png) no-repeat right bottom;
+}
+
+
+/*
+	768px以下（携帯）
+--------------------------------------------------------------*/
+@media screen and (max-width: 768px){
+
+h1 {
+	font-size: 25px;
+}
+
+#enq_table td label {
+	padding-right: 1.5em;
+	padding-left: 0;
+	width: 80%;
+	display:block;
+	font-weight: normal;
+}
+
+#enq_table td span {
+	padding-right: 1.5em;
+	display: inline;
+	font-weight:bold;
+}
+
+
+#message,
+.message {
+	width: 80%;
+	height: 200px;
+	padding: 3px;
+	font-size: 100%;
+	border: 1px solid #aaa;
+	background-color: #ffffff;
+}
+
+}

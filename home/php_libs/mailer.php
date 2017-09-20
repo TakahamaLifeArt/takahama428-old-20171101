@@ -18,6 +18,8 @@
 				   2016.01.28 お悩み、解決フォーム
 				   2016.11.08 アンケート項目変更
 				   2017.07.05 サーバー移行に伴い文字コード設定を更新
+				   2017.09.20 send_multiの文字コード返還を更新
+				   2017.09.20 お問い合わせページのファイル添付廃止とアップロード機能実装
 				   
 -------------------------------------------------------------- */
 
@@ -50,7 +52,7 @@ class Mailer{
  *
  *	$_FILES
  *		['attachfile'][]	複数対応のため配列
- *		
+ *
  */
 	private $info = array();
 	
@@ -60,6 +62,7 @@ class Mailer{
 	
 	public function send(){
 		try{
+			define("_QUERY_STRING", "?auth=admin");
 			$titles = array(
 				'info'=>'お問い合わせ',
 				'request'=>'資料請求', 
@@ -419,15 +422,36 @@ class Mailer{
 					$mail_info .= "■----------------------------------------\n\n";
 				}
 				
-				$mail_info .= "■添付ファイル：\n";
-				$attach_count = count($attach);
-				for($i=0; $i<$attach_count; $i++){
-					$mail_info .= "　".$attach[$i]['name']."\n";
+				$add_info = array();
+				if ($this->info['title']!='info') {
+					$mail_info .= "■添付ファイル：\n";
+					$attach_count = count($attach);
+					for($i=0; $i<$attach_count; $i++){
+						$mail_info .= "　".$attach[$i]['name']."\n";
+					}
+					if($attach_count==0){
+						$mail_info .= "　なし\n";
+					}
+					$mail_info .= "\n■----------------------------------------\n\n";
+				} else {
+					$mail_info .= "■アップロードファイル：\n";
+					$upload_len = count($this->info['uploadfilename']);
+					if ($upload_len==0) {
+						$mail_info .= 'なし';
+						$mail_info .= "----------------------------------------\n\n";
+					} else {
+						for ($i=0; $i<$upload_len; $i++) {
+							$mail_info_admin .= ($i+1).",\n";
+							$mail_info_admin .= $this->info['uploadfilename'][$i]._QUERY_STRING."\n\n";
+
+							$mail_info_user .= ($i+1).",\n";
+							$mail_info_user .= basename($this->info['uploadfilename'][$i])."\n\n";
+						}
+						$mail_info_admin .= "----------------------------------------\n\n";
+						$mail_info_user .= "----------------------------------------\n\n";
+						$add_info = array($mail_info_admin, $mail_info_user);
+					}
 				}
-				if($attach_count==0){
-					$mail_info .= "　なし\n";
-				}
-				$mail_info .= "\n■----------------------------------------\n\n";
 				
 				// 資料請求で住所が無い場合は中止
 				if($this->info['title']=='request' && empty($this->info['addr0'])){
@@ -456,7 +480,7 @@ class Mailer{
 					$conn->requestmail($args);
 				}
 				
-				$result = $this->send_mail($mail_info, $this->info['customername'], $this->info['email'], $attach, $this->info['title']);
+				$result = $this->send_mail($mail_info, $this->info['customername'], $this->info['email'], $attach, $this->info['title'], $add_info);
 			
 			}
 			
@@ -577,7 +601,8 @@ class Mailer{
 	*	@to				返信先のメールアドレス
 	*	@attach			添付ファイル情報
 	*	@mailuser		送信を受け付けるアドレスのユーザー部 default: info
-	*	
+	*	@add_info		本文の追加情報[送信メール, 返信メール]
+	*
 	*	define('_INFO_EMAIL', 'info@takahama428.com');
 	*	define('_REQUEST_EMAIL', 'request@takahama428.com');
 	*	define('_ESTIMATE_EMAIL', 'estimate@takahama428.com');
@@ -585,7 +610,7 @@ class Mailer{
 	*
 	*	返り値			true:送信成功 , false:送信失敗
 	*/
-	protected function send_mail($mail_text, $name, $to, $attach, $mailuser='info'){
+	protected function send_mail($mail_text, $name, $to, $attach, $mailuser='info', $add_info=array()){
 		mb_language("japanese");
 		mb_internal_encoding("EUC-JP");
 		
@@ -666,7 +691,7 @@ class Mailer{
 			$header .= "Content-Transfer-Encoding: 7bit\n";
 		}
 		
-		$msg .= mb_convert_encoding($mail_text,"JIS","EUC-JP");	// ここで注文情報をエンコードして設定
+		$msg .= mb_convert_encoding($mail_text.$add_info[0],"JIS","EUC-JP");	// ここで注文情報をエンコードして設定
 		
 		if(!empty($attach)){		// 添付ファイル情報
 			for($i=0; $i<count($attach); $i++){
@@ -712,7 +737,7 @@ class Mailer{
 				$msg .= "以下の内容で".$subtitle."を受付いたしました。\n";
 			}
 			$msg .= "\n";
-			$msg .= $mail_text;
+			$msg .= $mail_text.$add_info[1];
 			
 			
 			// 休業の告知文を挿入
@@ -888,11 +913,13 @@ class Mailer{
 	*/
 	public function send_multi($mail_info, $subject, $sendto, $fromname, $formaddr, $bcc="", $cc="", $attach=""){
 		mb_language("japanese");
+		mb_internal_encoding("EUC-JP");
 		$autoReply = false;					// 返信メールの有無（trueで返信する）
 		$msg = "";							// 送信文
 		$boundary = md5(uniqid(rand())); 	// バウンダリー文字（メールメッセージと添付ファイルの境界とする文字列を設定）
+		$fromname = mb_convert_encoding($fromname,'euc-jp','utf-8');
 		$from = mb_encode_mimeheader($fromname,"JIS")."<"._ESTIMATE_EMAIL.">";
-		$replay = mb_encode_mimeheader($fromname,"JIS")."<".$formaddr.">";
+		$replay = mb_encode_mimeheader($fromname,"JIS")."<".mb_convert_encoding($formaddr,'euc-jp','utf-8').">";
 		$header = "From: $from\n";
 		$header .= "Reply-To: $replay\n";
 		if(!empty($bcc)){
@@ -926,7 +953,7 @@ class Mailer{
 		$footer .= "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
 		
 		$mail_info .= mb_convert_encoding($footer,'JIS','euc-jp');
-		$msg .= mb_convert_encoding($mail_info,"JIS","euc-jp");	// ここで本文をエンコードして設定
+		$msg .= mb_convert_encoding($mail_info,"JIS","utf-8");	// ここで本文をエンコードして設定
 
 		if(!empty($attach)){		// 添付ファイル情報
 			for($i=0; $i<count($attach); $i++){
@@ -942,6 +969,7 @@ class Mailer{
 		}
 
 		// 件名のマルチバイトをエンコード
+		$subject = mb_convert_encoding($subject,'euc-jp','utf-8');
 		$subject  = mb_encode_mimeheader($subject,"JIS");
 
 		// メール送信
