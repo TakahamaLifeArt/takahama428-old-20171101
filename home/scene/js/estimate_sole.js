@@ -415,13 +415,13 @@ $(function(){
 			    var base = itemsum + (r.printfee-0);
 			    var tax = Math.floor( base * (r.tax/100) );
 			    var result = Math.floor( base * (1+r.tax/100) );
-			    var perone = Math.ceil(result/r.volume);
+				var perone = Math.ceil(result/tmpVol);
 
 				if(!output){
 			    	$('#baseprice span').text($.addFigure(base));
 					$('#salestax span').text($.addFigure(tax));
 					$('#result span').text($.addFigure(result));
-					$('#totamount span').text(r.volume);
+					$('#totamount span').text(tmpVol);
 					$('#perone span').text($.addFigure(perone));
 			    }else{
 			    	if(typeof output.attr('value')=='undefined') output.text($.addFigure(perone));
@@ -626,7 +626,7 @@ $(function(){
 			var ink = $(this).val()-0;
 			if(ink>0){
 				var id = $(this).attr('class').split('_')[1];
-				var posname = $('#pos_wrap tbody tr:eq(1)').find('.posname_'+id).text();
+				var posname = $(this).closest('.inks').find('.posname_'+id).text();
 				if(ink!=9){
 					posname += '　インク：'+ink+' 色';
 				}else{
@@ -635,20 +635,18 @@ $(function(){
 				pos.push(posname);
 			}
 		});
-		
+
 		var subject = $('#multimailform input[name="subject"]')[1].value;
 		if(subject==""){
 			subject = "お見積り";
 		}
-		
-		var tr = $('#mail_text tr', '#multimailform');
-		var total = $('td:first', tr[0]).html();
-		var per = $('td:first', tr[1]).text();
-		var amount = $('td:first', tr[2]).text();
-		var item_name = $('#item_title h1').text();
-		var color_name = $('#notes_color').text();
-		var message = $('textarea', '#multimailform').val();
-		var f = document.forms.multimailform;
+
+		var total = $('#result span').text();
+		var per = $('#perone span').text();
+		var amount = $('#totamount span').text();
+		var item_name = $('#item_selector option:selected').text();
+		var color_name = $('#price_wrap .notes_color').text();
+		var message = $('#multimailform textarea')[1].value;
 		var myname = $('#multimailform input[name="myname"]')[1].value;
 		var myemail = $('#multimailform input[name="myemail"]')[1].value;
 
