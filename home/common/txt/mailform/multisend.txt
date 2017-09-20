@@ -1,0 +1,59 @@
+<div id="mailform_contents">
+	<form id="multimailform" name="multimailform" action="" method="post" onsubmit="return false">
+		<div class="inner">
+			<h2>この御見積り内容をメールするアドレス。</h2>
+			<div class="half_l">
+				<p><label>メール1<input type="text" name="email[]" value="" class="email" /></label></p>
+				<p><label>メール2<input type="text" name="email[]" value="" class="email" /></label></p>
+				<p><label>メール3<input type="text" name="email[]" value="" class="email" /></label></p>
+			</div>
+
+			<div class="half_r">
+				<p><label>メール4<input type="text" name="email[]" value="" class="email" /></label></p>
+				<p><label>メール5<input type="text" name="email[]" value="" class="email" /></label></p>
+				<p><label>メール6<input type="text" name="email[]" value="" class="email" /></label></p>
+			</div>
+		</div>
+
+		<div class="inner">
+			<h2>送信者</h2>
+			<div class="box_l">
+				<p>お客様のお名前<span class="fontred">※</span></p>
+				<p>お客様のメールアドレス<span class="fontred">※</span></p>
+				<p>メールのタイトル（件名）</p>
+			</div>
+			<div class="box_r">
+				<p><input type="text" name="myname" value="" /></p>
+				<p><input type="text" name="myemail" value="" class="email" /></p>
+				<p><input type="text" name="subject" value="" /></p>
+			</div>
+		</div>
+
+		<div class="inner">
+			<h2>メールの内容</h2>
+			<div class="box_l">
+				<p>お客様からのメッセージ</p>
+			</div>
+			<div class="box_r">
+				<div class="wrap"><textarea rows="5" cols="50" name="message"></textarea></div>
+			</div>
+		</div>
+
+		<div class="inner">
+			<table id="mail_text">
+			<tbody>
+				<tr><th>制作費 TOTAL</th><td class="data"></td><td><span class="fontred">30,000円以上で送料無料</span></td></tr>
+				<tr><th>１枚あたり</th><td class="data"></td><td></td></tr>
+				<tr><th>枚数</th><td class="data"></td><td></td></tr>
+			</tbody>
+			</table>
+		</div>
+
+		<p id="mail_comment">
+			このアイテムの写真　https://takahama428.com<span></span><br />
+			WEBショップのURL　https://takahama428.com/
+		</p>
+		<div class="send_mail">送　信</div>
+		<p class="note"><span>※</span> は、必須です。</p>
+	</form>
+</div>
