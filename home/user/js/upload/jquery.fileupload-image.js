@@ -18,14 +18,14 @@
 	if (typeof define === 'function' && define.amd) {
 		// Register as an anonymous AMD module:
 		define([
-            'jquery',
-            'load-image',
-            'load-image-meta',
-            'load-image-scale',
-            'load-image-exif',
-            'canvas-to-blob',
-            './jquery.fileupload-process'
-        ], factory);
+			'jquery',
+			'load-image',
+			'load-image-meta',
+			'load-image-scale',
+			'load-image-exif',
+			'canvas-to-blob',
+			'./jquery.fileupload-process'
+		], factory);
 	} else if (typeof exports === 'object') {
 		// Node/CommonJS:
 		factory(
@@ -284,11 +284,11 @@
 				}
 				var file = data.files[data.index],
 					blob = new Blob([
-                        data.imageHead,
-                        // Resized images always have a head size of 20 bytes,
-                        // including the JPEG marker and a minimal JFIF header:
-                        this._blobSlice.call(file, 20)
-                    ], {
+						data.imageHead,
+						// Resized images always have a head size of 20 bytes,
+						// including the JPEG marker and a minimal JFIF header:
+						this._blobSlice.call(file, 20)
+					], {
 						type: file.type
 					});
 				blob.name = file.name;

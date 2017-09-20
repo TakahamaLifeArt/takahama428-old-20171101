@@ -157,10 +157,10 @@ $(function () {
 				.test(window.navigator.userAgent),
 			maxFileSize: 104857600,	// 100MB
 			maxNumberOfFiles: 5,
-			acceptFileTypes: /(\.|\/)(ai|jpe?g|png)$/i,
+			acceptFileTypes: /(\.|\/)(ai|jpe?g|png|psd|pdf|zip)$/i,
 			messages: {
 				maxNumberOfFiles: '一度にアップできる最大数（5個）を超えています',
-				acceptFileTypes: 'ファイル形式は、jpeg, png, ai のみです',
+				acceptFileTypes: 'ファイル形式は、jpeg, png, ai, psd, pdf のみです',
 				maxFileSize: 'ファイルサイズは100MBまでです',
 				minFileSize: 'File is too small'
 			}

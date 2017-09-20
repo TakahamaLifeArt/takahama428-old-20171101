@@ -17,9 +17,9 @@
 	if (typeof define === 'function' && define.amd) {
 		// Register as an anonymous AMD module:
 		define([
-            'jquery',
-            './jquery.fileupload-process'
-        ], factory);
+			'jquery',
+			'./jquery.fileupload-process'
+		], factory);
 	} else if (typeof exports === 'object') {
 		// Node/CommonJS:
 		factory(

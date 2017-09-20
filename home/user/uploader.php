@@ -5,13 +5,15 @@ if($_SERVER['REQUEST_METHOD']!='POST'){
 }else{
 	chkToken();
 }
+// for script
+$_version = time();
 ?>
 <!DOCTYPE html>
 <html>
 
 	<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#  website: http://ogp.me/ns/website#">
 		<meta charset="euc-jp" />
-		<title>デザインのアップロード - TLAメンバーズ | タカハマライフアート</title>
+		<title>大きいデータを送る方 | タカハマライフアート</title>
 		<link rel="shortcut icon" href="/icon/favicon.ico" />
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
@@ -82,16 +84,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 				<div class="toolbar">
 					<div class="toolbar_inner clearfix">
-						<h1>デザインのアップロード</h1>
+						<h1>大きいデータを送る方</h1>
 					</div>
 				</div>
 
 				<div>
-					<h2>ご注文される方</h2>
+					<h2>こちらからデータを送信できます</h2>
 					<ul>
-						<li>ファイルサイズが大きい場合は、こちらからアップロードをお願い致します。</li>
-						<li>一括アップロードされますと、ファイルが弊社へ自動送信されます。</li>
-						<li>(※対応ファイルは、jpg.png.ai のみです。ご了承ください。)</li>
+						<li>入稿したいデザインファイルサイズが大きい場合は、こちらから送信をお願い致します。</li>
+						<li>一括送信ボタンを押すと、ファイルが弊社へ自動送信されます。</li>
+						<li>(※対応ファイルは、jpg,png,ai,psd,pdf 及びzip圧縮 のみです。ご了承ください。)</li>
 					</ul>
 				</div>
 				
@@ -142,10 +144,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								<span>ファイルを選択...</span>
 								<input type="file" name="files[]" multiple>
 							</span>
-							<button type="submit" class="btn btn-primary start fade">
-								<i class="fa fa-cloud-upload" aria-hidden="true"></i>
-								<span>一括アップロード</span>
-							</button>
 							<!-- The global file processing state -->
 							<span class="fileupload-process"></span>
 						</div>
@@ -168,6 +166,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<table role="presentation" class="table table-striped" id="fileupload-table">
 						<tbody class="files"></tbody>
 					</table>
+					
+					<div class="fileupload-buttonbar">
+						<button type="submit" class="btn btn-primary start fade">
+							<i class="fa fa-cloud-upload" aria-hidden="true"></i>
+							<span>一括送信</span>
+						</button>
+					</div>
 				</form>
 
 <script id="template-upload" type="text/x-tmpl">
@@ -279,7 +284,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<script src="js/upload/jquery.fileupload-image.js"></script>
 		<script src="js/upload/jquery.fileupload-validate.js"></script>
 		<script src="js/upload/jquery.fileupload-ui.js"></script>
-		<script src="./js/upload/main.js"></script>
+		<script src="./js/upload/main.js?v=<?php echo $_version;?>"></script>
 		<script src="/common/js/tlalib.js"></script>
 	</body>
 

@@ -18,9 +18,9 @@
 	if (typeof define === 'function' && define.amd) {
 		// Register as an anonymous AMD module:
 		define([
-            'jquery',
-            'jquery-ui/ui/widget'
-        ], factory);
+			'jquery',
+			'jquery-ui/ui/widget'
+		], factory);
 	} else if (typeof exports === 'object') {
 		// Node/CommonJS:
 		factory(
@@ -287,12 +287,12 @@
 		// A list of options that require reinitializing event listeners and/or
 		// special initialization code:
 		_specialOptions: [
-            'fileInput',
-            'dropZone',
-            'pasteZone',
-            'multipart',
-            'forceIframeTransport'
-        ],
+			'fileInput',
+			'dropZone',
+			'pasteZone',
+			'multipart',
+			'forceIframeTransport'
+		],
 
 		_blobSlice: $.support.blobSlice && function () {
 			var slice = this.slice || this.webkitSlice || this.mozSlice;
@@ -1155,7 +1155,7 @@
 				})
 			).then(function () {
 				return Array.prototype.concat.apply(
-                    [],
+					[],
 					arguments
 				);
 			});
@@ -1226,7 +1226,7 @@
 				$.map(fileInput, this._getSingleFileInputFiles)
 			).then(function () {
 				return Array.prototype.concat.apply(
-                    [],
+					[],
 					arguments
 				);
 			});
