@@ -5,10 +5,10 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/php_libs/mailer.php';
 if( isset($_POST['ticket'], $_SESSION['ticket']) && $_POST['ticket']==$_SESSION['ticket'] ) {
 	$mailer = new Mailer($_POST);
 	$isSend = $mailer->send_enquete();
-}else if(isset($_GET['enq'])){
+}else if(isset($_REQUEST['enq'])){
 	$ticket = htmlspecialchars(md5(uniqid().mt_rand()), ENT_QUOTES);
 	$_SESSION['ticket'] = $ticket;
-	$enq = preg_replace('/^\w/', '', $_GET['enq']);
+	$enq = preg_replace('/^\w/', '', $_REQUEST['enq']);
 	$customer_id = sprintf("%d", $enq);
 	$number = 'K'.str_pad($customer_id, 6, '0', STR_PAD_LEFT);
 }else{
@@ -20,7 +20,7 @@ if( isset($_POST['ticket'], $_SESSION['ticket']) && $_POST['ticket']==$_SESSION[
 <head>
 	<meta charset="euc-jp" />
 	<title>アンケート　|　オリジナルTシャツ屋タカハマライフアート</title>
-	<meta name="Description" content="1枚~大量のプリントまで、トレーナー・ポロシャツ・オリジナルTシャツの作成・プリントについてのお問合せは、東京都葛飾区のタカハマライフアートにお任せ下さい！" />
+	<meta name="Description" content="1枚〜大量のプリントまで、トレーナー・ポロシャツ・オリジナルTシャツの作成・プリントについてのお問合せは、東京都葛飾区のタカハマライフアートにお任せ下さい！" />
 	<meta name="keywords" content="資料請求,無料サンプル,アンケート" />
 	<meta name="google-site-verification" content="PfzRZawLwE2znVhB5M7mPaNOKFoRepB2GO83P73fe5M" />
 

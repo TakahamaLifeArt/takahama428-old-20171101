@@ -57,23 +57,23 @@ $(function () {
 				f.submit();
 			}
 		}
-//		,
-//		add_attach: function (id) {
-//			var new_row = '<tr><td><div id="table_left">添付ファイル</div>';
-//			new_row += '<div id="table_right"><input type="file" name="attachfile[]"></div><ins class="abort">×取消</ins></td></tr>';
-//			$('#' + id + ' tbody tr:last').before(new_row);
-//			// 追加した添付ファイルを削除
-//			$('.abort').on('click', function () {
-//				$(this).closest('tr').remove();
-//			});
-//		}
+		,
+		add_attach: function (id) {
+			var new_row = '<tr><td><div id="table_left">添付ファイル</div>';
+			new_row += '<div id="table_right"><input type="file" name="attachfile[]"></div><ins class="abort">×取消</ins></td></tr>';
+			$('#' + id + ' tbody tr:last').before(new_row);
+			// 追加した添付ファイルを削除
+			$('.abort').on('click', function () {
+				$(this).closest('tr').remove();
+			});
+		}
 	});
 
 
 	// 追加した添付ファイルを削除
-//	$('.abort').on('click', function () {
-//		$(this).closest('tr').remove();
-//	});
+	$('.abort').on('click', function () {
+		$(this).closest('tr').remove();
+	});
 
 
 	// 確認画面の戻るボタン
@@ -92,9 +92,9 @@ $(function () {
 
 
 	/* calendar */
-//	if (typeof (datepicker) == 'function') {
-//		$("#datepicker").datepicker();
-//	}
+	if (typeof (datepicker) == 'function') {
+		$("#datepicker").datepicker();
+	}
 
 
 	// 添付ファイルの追加
@@ -104,7 +104,7 @@ $(function () {
 
 
 	// お名前にフォーカス
-	document.forms.fileupload.customername.focus();
+	$('input[name="customername"]').focus();
 	$.scrollto($('body'));
 
 });
