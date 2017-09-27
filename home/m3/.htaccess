@@ -1,0 +1,12 @@
+AddType application/x-httpd-php .php .htm .html
+
+php_value max_execution_time 200
+php_value max_input_time 200
+php_value memory_limit 256M
+php_value post_max_size 150M
+php_value upload_max_filesize 100M
+php_value mbstring.internal_encoding EUC-JP
+php_value mbstring.detect_order UTF-8,EUC-JP,SJIS,JIS,ASCII
+php_flag mbstring.encoding_translation off
+php_value session.gc_maxlifetime 3600
+php_value default_charset "EUC-JP"
