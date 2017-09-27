@@ -4,11 +4,10 @@
 	require_once dirname(__FILE__).'/ordermail.php';
 	
 	$customer = mb_convert_encoding($_SESSION['orders']['customer']['customername'], 'euc-jp', auto);
-//	if( isset($_POST['ticket'], $_SESSION['ticket'], $_SESSION['orders']) && $_POST['ticket']==$_SESSION['ticket'] ) {
 	if ( isset($_SESSION['orders']) ) {
 		$email = $_SESSION['orders']['customer']['email'];
 		$ordermail = new Ordermail();
-		$isSend = $ordermail->send();
+		$isSend = $ordermail->send($_POST['uploadfilename']);
 	} else {
 		$isSend = false;
 	}
@@ -156,37 +155,21 @@ DOC;
 		
 	</div>
 	
-    <p class="scroll_top"><a href="#header">お申し込みメールの送信完了　ページトップへ</a></p>
+	<p class="scroll_top"><a href="#header">お申し込みメールの送信完了　ページトップへ</a></p>
 
 	<?php include $_SERVER['DOCUMENT_ROOT']."/common/inc/footer.php"; ?>
 
-
-<!--Yahoo!タグマネージャー導入 2014.04 -->
-<script type="text/javascript">
-  (function () {
-    var tagjs = document.createElement("script");
-    var s = document.getElementsByTagName("script")[0];
-    tagjs.async = true;
-    tagjs.src = "//s.yjtag.jp/tag.js#site=bTZi1c8";
-    s.parentNode.insertBefore(tagjs, s);
-  }());
-</script>
-<noscript>
-  <iframe src="//b.yjtag.jp/iframe?c=bTZi1c8" width="1" height="1" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-</noscript>
-
 <!-- m3 begin -->
-<div id="phonepage">
-<div id="fb-root"></div>
-<div id="container">
-	<?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/inc/footer.html"); ?>
-	<div class="sb-slidebar sb-right">
-	<?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/sidemenu.html"); ?>
+	<div id="phonepage">
+		<div id="fb-root"></div>
+		<div id="container">
+			<?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/inc/footer.html"); ?>
+			<div class="sb-slidebar sb-right">
+				<?php include($_SERVER['DOCUMENT_ROOT']."/m3/common/sidemenu.html"); ?>
+			</div>
+		</div>
 	</div>
-<!-- /container --></div>
-</div>
 <!-- m3 end -->
 
-	
 </body>
 </html>

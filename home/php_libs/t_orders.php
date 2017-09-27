@@ -466,6 +466,7 @@ class Orders Extends Conndb {
 		/*
 		*	添付ファイルの更新
 		*
+		*	廃止
 		*	['attach'][0]['img']['file']
 		*						['name']
 		*						['type']
@@ -474,14 +475,14 @@ class Orders Extends Conndb {
 		*						['posname']
 		*/
 			
-			// formからのPOSTデータのエンコード
-			/*
-			$pos = array(
-					'id'=>$_REQUEST['posid'],
-					'base'=>mb_convert_encoding($_REQUEST['base'], 'utf-8', 'euc-jp'),
-					'posname'=>mb_convert_encoding($_REQUEST['posname'], 'utf-8', 'euc-jp')
-					);
-			*/
+			
+			// デザインファイルのメールへの添付を廃止
+			if (!in_array($_REQUEST['val'], $_SESSION['orders']['attach'])) {
+				$_SESSION['orders']['attach'][] = $_REQUEST['val'];
+			}
+			
+			return;
+			
 			$_SESSION['orders']['attach'] = array();;
 			$error_msg = "";
 			$attach_count = count($_FILES['attach']['tmp_name']);
@@ -1247,7 +1248,7 @@ class Orders Extends Conndb {
 	*														 ['areakey']
 	*														 ['areasize']
 	*														 ['printing']
-	*	
+	*
 	*	return		 { 'items':[{'itemid','name','color','sizeid','size','cost','amount','subtotal','pos':[...]},{}, ...],
 	*				   'option':{'discount':割引, 'carriage':送料, 'codfee':代引手数料, pack:袋詰代, discountname:[...]},
 	*				   'user':{SESSION情報} }

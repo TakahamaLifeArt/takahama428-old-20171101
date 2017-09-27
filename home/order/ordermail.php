@@ -5,7 +5,7 @@
 	Description	: takahama428 web site send order mail class
 	Hash		: Session data
 					$_SESSION['orders']['items'];		商品
-					$_SESSION['orders']['attach'];		添付ファイル
+					$_SESSION['orders']['attach'];		添付ファイル（廃止）
 					$_SESSION['orders']['customer'];	ユーザー
 					$_SESSION['orders']['options'];		オプション
 					$_SESSION['orders']['sum'];			合計値（商品代、プリント代、枚数）
@@ -17,8 +17,8 @@
 				  2014.08.13 特急料金の有無を追加
 				  2017-05-25 プリント代計算の仕様変更によるプリント情報の更新
 				  2017-06-16 デザインサイズの指定を廃止して「大」で固定
+				  2017-09-12 デザインファイルのメール添付を廃止
 
-	
 -------------------------------------------------------------- */
 require_once dirname(__FILE__).'/../php_libs/http.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/php_libs/conndb.php';
@@ -26,10 +26,29 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/../cgi-bin/config.php';
 
 class Ordermail extends Conndb{
 
-	public function send(){
-		try{
+	/**
+	 * 注文メール送信
+	 * @param {array} uploadfilename アップロードしたデザインファイルのURI
+	 * @return {boolean} true:成功
+	 *					 false:失敗
+	 */
+	public function send($uploadfilename) {
+		try {
+			mb_internal_encoding("UTF-8");
+			
+			// db
+			$uploadURL = array();
+			if (!empty($uploadfilename)) {
+				for($a=0; $a<count($uploadfilename); $a++){
+					$tmpDir = "dev_takahama428.com/home/"._MEMBER_IMAGE_PATH."files/".basename(dirname($uploadfilename[$a], 1))."/";
+					$fname = mb_convert_encoding(rawurldecode(basename($uploadfilename[$a])), 'utf-8');
+					$uploadURL[] = $tmpDir.$fname;
+				}
+			}
+			$order_id = $this->insertOrderToDB($uploadURL);
+			
 			$items = $_SESSION['orders']['items'];
-			$attach = $_SESSION['orders']['attach'];
+			$attach = null;
 			$user = $_SESSION['orders']['customer'];
 			$opts = $_SESSION['orders']['options'];
 			$sum = $_SESSION['orders']['sum'];
@@ -95,12 +114,11 @@ class Ordermail extends Conndb{
 					}
 					$order_info .= "\n\n";
 /*
-*	プリント位置と添付ファイル
+*	プリント位置
 *	['items'][category_id]['item'][id]['name']
 *									  ['posid']
 *									  ['design'][base][0]['posname']
 *												   		 ['ink']
-*														 ['attachname']
 */
 					$attach_info[$posid]['design'] = $v2['design'];
 					$attach_info[$posid]['item'][] = $item_name;
@@ -116,7 +134,6 @@ class Ordermail extends Conndb{
 *	[posid]['item'][アイテム名, ...]
 *		   ['design'][base][0]['posname']
 *					   		  ['ink']
-*							  ['attachname']
 *							  ['img']['file']
 *									 ['name']
 *									 ['type']
@@ -133,7 +150,7 @@ class Ordermail extends Conndb{
 					
 					$tmp = "";
 					for($i=0; $i<count($a2); $i++){
-						if($a2[$i]['ink']==0 && empty($a2[$i]['attachname'])) continue;
+						if($a2[$i]['ink']==0) continue;
 						if($a2[$i]['ink']>=9) $ink = "フルカラー\n";
 						else $ink = $a2[$i]['ink']."色\n";
 						$tmp = $a2[$i]['posname']."　".$ink;
@@ -164,19 +181,6 @@ class Ordermail extends Conndb{
 			//$order_info .= "◇プリントカラー：　\n".$opts['note_printcolor']."\n\n";
 			//$order_info .= "◇文字入力の確認：　\n".$opts['note_write']."\n\n";
 			$order_info .= "━━━━━━━━━━━━━━━━━━━━━\n\n\n";
-
-			$order_info .= "┏━━━━━━━━━┓\n";
-			$order_info .= "◆　　添付ファイル\n";
-			$order_info .= "┗━━━━━━━━━┛\n";
-			if(empty($attach)){
-				$order_info .= "添付なし\n";
-			}else{
-				for($a=0; $a<count($attach); $a++){
-					$order_info .= "◇ファイル名：　".mb_convert_encoding($attach[$a]['img']['name'], 'utf-8')."\n";
-				}
-			}
-			$order_info .= "━━━━━━━━━━━━━━━━━━━━━\n\n\n";
-			
 			
 			$order_info .= "┏━━━━━┓\n";
 			$order_info .= "◆　　割引\n";
@@ -316,6 +320,25 @@ class Ordermail extends Conndb{
 			}
 			$order_info .= "━━━━━━━━━━━━━━━━━━━━━\n\n";
 
+			$order_info .= "┏━━━━━━━━━━━┓\n";
+			$order_info .= "◆　　デザインファイル\n";
+			$order_info .= "┗━━━━━━━━━━━┛\n";
+			if (empty($uploadfilename)) {
+				$order_info .= "なし\n";
+				$order_info .= "━━━━━━━━━━━━━━━━━━━━━\n\n\n";
+				$order_info_admin = "";
+				$order_info_user = "";
+			} else {
+				for($a=0; $a<count($uploadfilename); $a++){
+					$order_info_admin .= "◇ファイル名：　"._ORDER_DOMAIN."/system/attatchfile/".$order_id."/".basename($uploadfilename[$a])."\n\n";
+					$fname = mb_convert_encoding(rawurldecode(basename($uploadfilename[$a])), 'utf-8');
+					$order_info_user .= "◇ファイル名：　".$fname."\n";
+				}
+				$order_info_admin .= "━━━━━━━━━━━━━━━━━━━━━\n\n\n";
+				$order_info_user .= "━━━━━━━━━━━━━━━━━━━━━\n\n\n";
+			}
+			$addition = array($order_info_admin, $order_info_user);
+			
 			/*
 			$order_info .= "┏━━━━━━━┓\n";
 			$order_info .= "◆　　お届け先\n";
@@ -344,13 +367,10 @@ class Ordermail extends Conndb{
 			*/
 			
 			// send mail
-			$res = $this->send_mail($order_info, $user['customername'], $user['email'], $attach);
+			$res = $this->send_mail($order_info, $user['customername'], $user['email'], $attach, $addition);
 			if (!$res) {
 				throw new Exception();
 			}
-			
-			// db
-			$res = $this->insertOrderToDB();
 			
 			return $res;
 			
@@ -366,13 +386,13 @@ class Ordermail extends Conndb{
 	*	@name			お客様の名前
 	*	@to				返信先のメールアドレス
 	*	@attach			添付ファイル情報
+	*	@addition		本文への追加[注文メール, 顧客への返信]
 	*	返り値			true:送信成功 , false:送信失敗
 	*/
-	protected function send_mail($mail_text, $name, $to, $attach){
+	protected function send_mail($mail_text, $name, $to, $attach, $addition){
 		mb_language("japanese");
 		mb_internal_encoding("UTF-8");
 		$sendto = _ORDER_EMAIL;						// 送信先
-//		$sendto = _TEST_EMAIL;						// 送信先（TEST）
 		$suffix = "【takahama428】"; 				// 件名の後ろに付加するテキスト
 		$subject = "お申し込み".$suffix;			// 件名
 		$msg = "";									// 送信文
@@ -399,7 +419,7 @@ class Ordermail extends Conndb{
 		}
 		
 		// ここで本文をエンコードして設定
-		$msg .= mb_convert_encoding("お名前：　".$name."　様\n".$mail_text,"JIS","UTF-8");
+		$msg .= mb_convert_encoding("お名前：　".$name."　様\n".$mail_text.$addition[0], "JIS","UTF-8");
 		
 		if(!empty($attach)){		// 添付ファイル情報
 			for($i=0; $i<count($attach); $i++){
@@ -453,7 +473,7 @@ class Ordermail extends Conndb{
 			$msg .= "間違いが無いかご確認の上、確認メールに記載の方法でお支払いください。\n\n";
 			$msg .= "引き続き、どうぞよろしくお願いいたします。\n\n";
 			
-			$msg .= $mail_text;
+			$msg .= $mail_text.$addition[1];
 			
 			// 臨時の告知文を挿入
 			//$msg .= _EXTRA_NOTICE;
@@ -483,13 +503,17 @@ class Ordermail extends Conndb{
 		
 	}
 
-	public function insertOrderToDB(){
+	/**
+	 * 受注システムに登録
+	 * @param {array} uploadpath 
+	 * @return {int} OrderID
+	 */
+	public function insertOrderToDB($uploadpath){
 		$httpObj = new HTTP(_ORDER_INFO);
 		$items = $_SESSION['orders']['items'];
-		$attach = $_SESSION['orders']['attach'];
 		$user = $_SESSION['orders']['customer'];
 		$opts = $_SESSION['orders']['options'];
-		$sum = $_SESSION['orders']['sum'];		
+		$sum = $_SESSION['orders']['sum'];
 
 		// 顧客情報
 		$customer_id = "";
@@ -564,7 +588,7 @@ class Ordermail extends Conndb{
 		$comment[] = $user['note_printcolor'];
 		$comment[] = $user['note_printmethod'];
 		$comment[] = $user['comment'];
-		$strComment = implode("\n", $comment);	
+		$strComment = implode("\n", $comment);
 		
 		$field3 = array(
 		"id","reception","destination","order_comment","paymentdate",
@@ -697,15 +721,14 @@ class Ordermail extends Conndb{
 		}
 		$field9 = array("inkid", "area_id", "ink_name", "ink_code", "ink_position");
 		$orderink = array();
-	  	$field10= array("exchid","ink_id","exchink_name","exchink_code","exchink_volume");
-	  	$exchink = array();
-	  	$field12 = array();
-	  	$data12 = array();
+		$field10= array("exchid","ink_id","exchink_name","exchink_code","exchink_volume");
+		$exchink = array();
+		$field12 = array();
+		$data12 = array();
 
-		//添付ファイル
-		for($i=0;$i<count($attach);$i++){
-			$file[$i] = $attach[$i]['img']['file'];
-			$filename[$i] = $attach[$i]['img']['name'];
+		// アップロードファイル
+		if (!empty($uploadpath)) {
+			$file = $uploadpath;
 		}
 
 		//管理システムにpost
@@ -714,7 +737,9 @@ class Ordermail extends Conndb{
 				'field6'=>$field6, 'data6'=>$orderprint, 'field7'=>$field7, 'data7'=>$orderarea,
 				'field8'=>$field8, 'data8'=>$orderselectivearea, 'field9'=>$field9, 'data9'=>$orderink,
 				'field10'=>$field10, 'data10'=>$exchink, 'field12'=>$field12, 'data12'=>$data12, 'file'=>$file, 'name'=>$filename,'site'=>_SITE));
-		return $res;
+		$response = explode(',', $res);
+
+		return $response[0];
 	}
 }
 ?>

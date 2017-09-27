@@ -5,6 +5,7 @@
 *	log
 *	2017-05-25	プリント代計算の仕様変更
 *	2017-06-16	デザインサイズの指定を廃止
+*	2017-09-12	アップロード（入稿）機能を実装
 */
 
 $(function(){
@@ -91,6 +92,20 @@ $(function(){
 			}
 		}else if($(this).is('.goto_user')){
 		// Step5へ
+			// アップロードの進捗確認
+			var rest = 0;
+			$('#fileupload-table tbody tr').each(function(){
+				var self = $(this);
+				if (self.is('.template-upload')) {
+					if (self.find('.error').text()=="") {
+						rest++;
+					}
+				}
+			});
+			if (rest>0) {
+				$.msgbox("デザインファイルの入稿が完了していません。<br>ご確認ください。");
+				return;
+			}
 			if($('#nodeliday').prop('checked')){
 				$.next(4);
 			}else{
@@ -137,24 +152,24 @@ $(function(){
 				dataType: 'json',
 				async: true
 			}).done(function(me){
-    		if(typeof me.id !='undefined'){
-						if($('#delivery_customer').val() == "-1") {
-							$('#tel').val(me.tel);
-							$('#zipcode1').val(me.zipcode);
-							$('#addr0').val(me.addr0);
-							$('#addr1').val(me.addr1);
-							$('#addr2').val(me.addr2);
-						} else {
-							for(var i=0; i<me.delivery.length; i++) {
-								if($('#delivery_customer').val() == me.delivery[i].id) {
-									$('#tel').val(me.delivery[i].delitel);
-									$('#zipcode1').val(me.delivery[i].delizipcode);
-									$('#addr0').val(me.delivery[i].deliaddr0);
-									$('#addr1').val(me.delivery[i].deliaddr1);
-									$('#addr2').val(me.delivery[i].deliaddr2+me.delivery[i].deliaddr3+me.delivery[i].deliaddr4);
-								}
+				if(typeof me.id !='undefined'){
+					if($('#delivery_customer').val() == "-1") {
+						$('#tel').val(me.tel);
+						$('#zipcode1').val(me.zipcode);
+						$('#addr0').val(me.addr0);
+						$('#addr1').val(me.addr1);
+						$('#addr2').val(me.addr2);
+					} else {
+						for(var i=0; i<me.delivery.length; i++) {
+							if($('#delivery_customer').val() == me.delivery[i].id) {
+								$('#tel').val(me.delivery[i].delitel);
+								$('#zipcode1').val(me.delivery[i].delizipcode);
+								$('#addr0').val(me.delivery[i].deliaddr0);
+								$('#addr1').val(me.delivery[i].deliaddr1);
+								$('#addr2').val(me.delivery[i].deliaddr2+me.delivery[i].deliaddr3+me.delivery[i].deliaddr4);
 							}
 						}
+					}
 				}
 			}).fail(function(xhr, status, error){
 				alert("Error: "+error+"<br>xhr: "+xhr);
@@ -181,14 +196,16 @@ $(function(){
 	*	カートを見る
 	*/
 	$('.viewcart').click( function(){
-		$.ajax({url:'/php_libs/t_orders.php', type:'get', dataType:'json', async:false, data:{'act':'details'}, 
-			success: function(r){
-				if(r.design.length==0 && r.options.noprint==0){
-					$.msgbox('プリントするデザインの色数を指定してください。');
-				}else{
-					$.setCart(r);
-				}
+		$.ajax({
+			url:'/php_libs/t_orders.php', type:'get', dataType:'json', async:true, timeout:5000, data:{'act':'details'}
+		}).done(function(r){
+			if(r.design.length==0 && r.options.noprint==0){
+				$.msgbox('プリントするデザインの色数を指定してください。');
+			}else{
+				$.setCart(r);
 			}
+		}).fail(function(xhr, status, error){
+			$.msgbox("Error: "+error+"<br>カート情報が取得できませんでした。");
 		});
 	});
 	
@@ -196,7 +213,6 @@ $(function(){
 	/********************************
 	*	ガイダンスのポップアップ
 	*/
-//	$('.pop_size', '#step2').on('click', function(){
 	$('#step2').on('click', '.pop_size', function(){
 		var msg = '<h3>サイズの目安</h3><hr>';
 		msg += '<p class="toc"><img alt="サイズ" src="./img/measuretable.jpg"></p>';
@@ -268,7 +284,6 @@ $(function(){
 				var i=0;
 				var firstlist = '';
 				var suffix = '';
-				//var folder = ($.itemparam.categorykey=='baby')? 't-shirts': $.itemparam.categorykey;
 				var tmp = [];
 				
 				// ソート
@@ -380,7 +395,6 @@ $(function(){
 	/********************************
 	*	アイテムの指定でStep2へ
 	*/
-//	$('.recitembox > ul, .listitems_ex > ul', '#itemlist_wrap').on('click', function(){
 	$('#itemlist_wrap').on('click', '.recitembox > ul, .listitems_ex > ul', function(){
 		var maker_id = $(this).attr('class').split('_')[1];
 		var self = $(this).parent();
@@ -405,7 +419,6 @@ $(function(){
 	/********************************
 	*	アイテムカラーの変更
 	*/
-//	$('.color_thumb li img').on('click', function(){
 	$('#step2').on('click', '.color_thumb li img', function(){
 		if($(this).parent().is('.nowimg')) return;
 		
@@ -468,7 +481,6 @@ $(function(){
 	/********************************
 	*	アイテムカラーを削除
 	*/
-//	$('.del_item_color').on('click', function(){
 	$('#step2').on('click', '.del_item_color', function(){
 		$(this).closest('.pane').slideUp('normal', function(){$(this).remove();});
 	});
@@ -488,7 +500,6 @@ $(function(){
 	/********************************
 	*	枚数の合計表示
 	*/
-//	$('.size_table tbody tr:not(".heading") td[class*="size_"] input').on('change', function(){
 	$('#step2').on('change', '.size_table tbody tr:not(".heading") td[class*="size_"] input', function(){
 		$.check_NaN(this);
 		var amount = 0;
@@ -512,7 +523,7 @@ $(function(){
 	
 	/********************************
 	*	プリントなしで購入
-	*/		
+	*/
 	$('#noprint').change( function(){
 		var isFunProcessed = false;
 		var func = function(){
@@ -573,7 +584,6 @@ $(function(){
 	/********************************
 	*	カートで枚数の変更
 	*/
-//	$('#estimation_wrap tbody input[type="number"]').on( 'change', function(){
 	$('#estimation_wrap').on( 'change','tbody input[type="number"]', function(){
 		$.check_NaN(this, '1');
 		var args = $(this).attr('class').split('_');
@@ -646,30 +656,6 @@ $(function(){
 		var val = $(this).val();
 		var postData = {'act':'update', 'mode':'options', 'key':key, 'val':val};
 		$.ajax({url:'/php_libs/t_orders.php', type:'post', dataType:'json', async:true, data:postData});
-	});
-	
-	
-	/********************************
-	*	添付ファイルの追加
-	*/
-	$('.add_attach', '#uploaderform').click( function(){
-		if($('input[type=file]', '#uploaderform').length>3){
-			$.msgbox('一度に添付できるファイルは4つまでです。');
-			return;
-		}
-		$(this).parent().before('<p><input type="file" onChange="this.form.submit()" name="attach[]" size="19" title="デザインファイルを指定してください" /><span class="del_attach"><img src="/common/img/delete.png" alt="取消">取消</span></p>');
-	});
-	
-	
-	/********************************
-	*	添付ファイルの取消（非同期）
-	*/
-	$('#uploaderform').on('click', '.del_attach', function(){
-		if($('input[type=file]', '#uploaderform').length==1){
-			$(this).parent().before('<p><input type="file" onChange="this.form.submit()" name="attach[]" size="19" title="デザインファイルを指定してください" /><span class="del_attach"><img src="/common/img/delete.png" alt="取消">取消</span></p>');
-		}
-		$(this).parent().remove();
-		document.forms.uploaderform.submit();
 	});
 	
 	
@@ -1052,7 +1038,7 @@ $(function(){
 			$.itemparam.colorcode = '001';
 			
 
-			$('.datepicker', '#step4').datepicker({
+			$('#datepicker').datepicker({
 				beforeShowDay: function(date){
 					var weeks = date.getDay();
 					var texts = "";
@@ -1084,7 +1070,7 @@ $(function(){
 					else if(weeks == 6) return [true, 'days_blue'];
 					return [true];
 				},
-				onClose: function(dateText, inst){
+				onSelect: function(dateText, inst){
 					var yy, mm, dd;
 //					if(dateText.match(/^(\d{4})-([01]?\d{1})-([0123]?\d{1})$/)){
 //						var res = dateText.split('-');
@@ -1101,6 +1087,8 @@ $(function(){
 						$(this).datepicker('setDate', "");
 					}
 					
+					$('.datepicker').val(dateText);
+
 					// update the session
 					var postData = {'act':'update', 'mode':'options', 'key':'deliveryday', 'val':dateText.replace(/[\/-]/g, "-")};
 					$.ajax({url:'/php_libs/t_orders.php', async:true, type:'POST', dataType:'json', data:postData,
@@ -2240,16 +2228,6 @@ $(function(){
 					$('#conf_item tfoot .credit ins').text($.addFigure(credit));
 					$('#conf_item tfoot .tot ins').text($.addFigure(total));
 					$('#conf_item tfoot .per ins').text($.addFigure(perone));
-					
-					var attachfiles = '';
-					if(r.option.attach.length==0){
-						attachfiles = 'なし';
-					}else{
-						for(var a=0; a<r.option.attach.length; a++){
-							attachfiles += '<p>'+r.option.attach[a]+'</p>';
-						}
-					}
-					$('#conf_attach').html(attachfiles);
 					
 					$('#conf_note_design').html('');
 					for(var u in r.user){
