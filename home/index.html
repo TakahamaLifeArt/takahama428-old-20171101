@@ -669,6 +669,8 @@
 							<div class="news_wrap">
 								<div class="news_list">
 									<dl class="list">
+										<dt>2017.09.27</dt>
+										<dd><a href="/guide/information_001.html">【ホームページ一時使用不能、復旧のお知らせ】</a></dd>
 										<dt>2017.05.25</dt>
 										<dd><a href="/guide/information_001.html">【初回追加価格終了のお知らせ】</a></dd>
 										<dt>2017.04.24</dt>
@@ -757,128 +759,128 @@
 					if(time() > $target){
 						echo '<div id="notification">
 							<p><a href="m3/guide/information.html"><span class="new">ニュース<br></span>
-							<span id="newinfo">【アイテム価格改定のお知らせ】</span><span class="newback">詳細<br></span></a></p>
+<span id="newinfo">【アイテム価格改定のお知らせ】<br>【ホームページ一時使用不能、復旧のお知らせ】</span><span class="newback">詳細<br></span></a></p>
 							</div>';
 					}
 					?>
 
-					<div>
-						<section class="customer">
-							<p class="txt-ong">＼Web上でお見積もり可能／</p>
-							<h2 class="home" style="margin-top:0px;">プリントするアイテムを選ぶ</h2>
-							<ul class="linkUl">
-								<li>
-									<a href="items/t-shirts" onclick="ga('send','event','t-shirts','click','sp-top');"><img src="m3/img/sp_category_01.jpg" alt="Tシャツ"></a>
+						<div>
+							<section class="customer">
+								<p class="txt-ong">＼Web上でお見積もり可能／</p>
+								<h2 class="home" style="margin-top:0px;">プリントするアイテムを選ぶ</h2>
+								<ul class="linkUl">
+									<li>
+										<a href="items/t-shirts" onclick="ga('send','event','t-shirts','click','sp-top');"><img src="m3/img/sp_category_01.jpg" alt="Tシャツ"></a>
+									</li>
+									<li>
+										<a href="items/sweat" onclick="ga('send','event','sportswear','click','sp-top');"><img src="m3/img/sp_category_02.jpg" alt="パーカー・スウェット"></a>
+									</li>
+									<li>
+										<a href="items/towel" onclick="ga('send','event','polo-shirts','click','sp-top');"><img src="m3/img/sp_category_03.jpg" alt="タオル"></a>
+									</li>
+								</ul>
+								<!-- customer -->
+							</section>
+						</div>
+						<div class="cate">
+							<a href="m3/items/category.html" onclick="ga('send','event','sameday','order','sp-top');" class="linkbtn">
+								<p>カテゴリーをもっと見る</p>
+							</a>
+						</div>
+
+						<section class="delivery">
+							<a id="plan"></a>
+
+							<div class="rightnow">
+								<div class="short">
+									<p class="txt"><span>最短</span></p>
+									<p class="txt-spacing"><span id="shortMonth"><?php echo $delidate[0]["month"];?></span>月<span id="shortDay"><?php echo $delidate[0]["day"];?></span>日<span id="shortWeek">（<?php echo $delidate[0]["weekname"];?>）</span></p>
+								</div>
+
+								<div class="normal">
+									<p class="txt"><span>通常</span></p>
+									<p class="txt-spacing"><span id="normalMonth"><?php echo $delidate[1]["month"];?></span>月<span id="normalDay"><?php echo $delidate[1]["day"];?></span>日<span id="normalWeek">（<?php echo $delidate[1]["weekname"];?>）</span></p>
+								</div>
+								<div align="right" id="serchday">
+									<a href="http://www.takahama428.com/m3/guide/delivery.html" class="moji" onclick="ga('send','event','delivery','click','sp-top');">
+										<p>他の日付で調べる?</p>
+									</a>
+								</div>
+							</div>
+						</section>
+						<div class="bnr">
+							<h2 class="home">おすすめサービス</h2>
+							<section class="price">
+								<p class="txt-ong">＼1番安いアイテムは？／</p>
+								<a href="price/estimate.html" onclick="ga('send','event','estimate','click','sp-top');">
+									<div>まず料金を知りたい方！</div>
+								</a>
+								<a href="price/estimate.html" onclick="ga('send','event','estimate','click','sp-top');"><img src="m3/img/m_estimate.jpg" alt="早い 10秒見積もり" width="100%"></a>
+							</section>
+							<a href="/m3/sameday/" onclick="ga('send','event','express','click','sp-top');"><img src="m3/img/m_hurry.png" alt="お急ぎの方！当日特急プラン" width="100%"></a>
+							<a href="/m3/items/parkaguide.html" onclick="ga('send','event','parkaguide','click','sp-top');"><img src="m3/img/sp_attention_parker.jpg" alt="パーカーを選ぶコツ" width="100%"></a>
+							<a href="/items/towel" onclick="ga('send','event','towel','click','sp-top');"><img src="m3/img/sp_attention_towel.png" alt="オリジナルタオルを作成" width="100%"></a>
+							<a href="/m3/contact/line.html" onclick="ga('send','event','estimate','click','sp-top');"><img src="m3/img/sp_attention_01_line.png" alt="LINEでお問い合せ！" width="100%"></a>
+						</div>
+						<section class="menu">
+							<h2 class="home">メニュー</h2>
+							<ul class="halfNav clearfix">
+								<li class="blc">
+									<a href="/m3/order/big.html"><img src="m3/img/sp_menu_01.png" alt="オリジナルTシャツ 制作 大口注文" width="100%"></a>
 								</li>
-								<li>
-									<a href="items/sweat" onclick="ga('send','event','sportswear','click','sp-top');"><img src="m3/img/sp_category_02.jpg" alt="パーカー・スウェット"></a>
+								<li class="blc">
+									<a href="http://www.takahama428.com/designtemplate/" onclick="ga('send','event','line','click','sp-menu');"><img src="m3/img/sp_menu_07.png" alt="デザインテンプレート" width="100%"></a>
 								</li>
-								<li>
-									<a href="items/towel" onclick="ga('send','event','polo-shirts','click','sp-top');"><img src="m3/img/sp_category_03.jpg" alt="タオル"></a>
+								<li class="blctxt">
+									<p class="tx2">150枚以上は大幅値引き！</p>
+								</li>
+								<li class="blctxt">
+									<p class="tx2">無料！デザインテンプレート</p>
+								</li>
+								<li class="blc">
+									<a href="/blog/thanks_blog/"><img src="m3/img/sp_menu_03.png" alt="オリジナルTシャツ お客様ブログ" width="100%"></a>
+								</li>
+								<li class="blc">
+									<a href="/m3/contact/request.html" onclick="ga('send','event','carriage','click','sp-menu');"><img src="m3/img/sp_menu_04.png" alt="オリジナルTシャツ 資料請求" width="100%"></a>
+								</li>
+								<li class="blctxt">
+									<p class="tx2">掲載可能なお客様は3%OFF!</p>
+								</li>
+								<li class="blctxt">
+									<p class="tx2">カタログ･サンプルお届け!</p>
+								</li>
+								<li class="blc">
+									<a href="/m3/userreviews/"><img src="m3/img/sp_menu_05.png" alt="オリジナルTシャツ お客様レビュー" width="100%"></a>
+								</li>
+								<li class="blc">
+									<a href="/m3/corporate/overview.html"><img src="m3/img/sp_menu_06.png" alt="会社概要" width="100%"></a>
+								</li>
+								<li class="blctxt">
+									<p class="tx2">嬉しいお声をいただきました</p>
+								</li>
+								<li class="blctxt">
+									<p class="tx2">タカハマについてのご案内</p>
 								</li>
 							</ul>
-							<!-- customer -->
 						</section>
-					</div>
-					<div class="cate">
-						<a href="m3/items/category.html" onclick="ga('send','event','sameday','order','sp-top');" class="linkbtn">
-							<p>カテゴリーをもっと見る</p>
-						</a>
-					</div>
-
-					<section class="delivery">
-						<a id="plan"></a>
-
-						<div class="rightnow">
-							<div class="short">
-								<p class="txt"><span>最短</span></p>
-								<p class="txt-spacing"><span id="shortMonth"><?php echo $delidate[0]["month"];?></span>月<span id="shortDay"><?php echo $delidate[0]["day"];?></span>日<span id="shortWeek">（<?php echo $delidate[0]["weekname"];?>）</span></p>
-							</div>
-
-							<div class="normal">
-								<p class="txt"><span>通常</span></p>
-								<p class="txt-spacing"><span id="normalMonth"><?php echo $delidate[1]["month"];?></span>月<span id="normalDay"><?php echo $delidate[1]["day"];?></span>日<span id="normalWeek">（<?php echo $delidate[1]["weekname"];?>）</span></p>
-							</div>
-							<div align="right" id="serchday">
-								<a href="http://www.takahama428.com/m3/guide/delivery.html" class="moji" onclick="ga('send','event','delivery','click','sp-top');">
-									<p>他の日付で調べる?</p>
-								</a>
-							</div>
+						<div class="over">
+							<ul>
+								<li class="txt">
+									<h2>オリジナルTシャツ業界最速！最短当日発送！</h2>
+									<p>
+										タカハマライフアートは本当に業界最速です。納期プランは「3営業日発送」「2営業日発送」「1営業日発送」「即日発送」です。その早い理由はオリジナルプリントを自社工場で製作しているからです。 最近では「最短翌日」「2営業日発送」と早いお届けを打ち出しているサイトは他にも多くありますが、実際に電話で問い合わせてみると翌日に対応できる会社はほとんどなくて困っているというお声を多くのお客様からいただきます。
+									</p>
+									<img src="m3/img/top_img.jpg" alt="オリジナルTシャツ お急ぎの方" width="100%">
+								</li>
+								<li class="txt">
+									<h2>激安で即日作成致します！</h2>
+									<p>
+										タカハマライフアートでは東京葛飾区の工場直売価格のため、<b>一流アパレルプリント</b>の技術で製品をお店価格より安い価格でTシャツを作成できます。激安といえども、プリント方法も色々あって、ご希望のイメージを相談にのりながら形にします。オリジナルデザインのTシャツをチームなどで着用することで団結力を高め、ぜひイベントを成功させて頂きたいと思います。オリジナルのTシャツやポロシャツ・スウェット・トレーナー、そしてジャンパーやエプロンなどのグッズ、学園祭などのイベントがギリギリに迫ってしまった時もご相談ください。タカハマライフアートのスピード対応と相談力には、お客様から高い評価を頂いております。オリジナルのTシャツ作成について疑問があればお気軽にお問合わせください。 まずは、フリーダイヤル0120-130-428へ。
+									</p>
+									<img src="m3/img/campus_banner.jpg" alt="オリジナルTシャツ 作成 イベント クラスTシャツ" width="100%">
+								</li>
+							</ul>
 						</div>
-					</section>
-					<div class="bnr">
-						<h2 class="home">おすすめサービス</h2>
-						<section class="price">
-							<p class="txt-ong">＼1番安いアイテムは？／</p>
-							<a href="price/estimate.html" onclick="ga('send','event','estimate','click','sp-top');">
-								<div>まず料金を知りたい方！</div>
-							</a>
-							<a href="price/estimate.html" onclick="ga('send','event','estimate','click','sp-top');"><img src="m3/img/m_estimate.jpg" alt="早い 10秒見積もり" width="100%"></a>
-						</section>
-						<a href="/m3/sameday/" onclick="ga('send','event','express','click','sp-top');"><img src="m3/img/m_hurry.png" alt="お急ぎの方！当日特急プラン" width="100%"></a>
-						<a href="/m3/items/parkaguide.html" onclick="ga('send','event','parkaguide','click','sp-top');"><img src="m3/img/sp_attention_parker.jpg" alt="パーカーを選ぶコツ" width="100%"></a>
-						<a href="/items/towel" onclick="ga('send','event','towel','click','sp-top');"><img src="m3/img/sp_attention_towel.png" alt="オリジナルタオルを作成" width="100%"></a>
-						<a href="/m3/contact/line.html" onclick="ga('send','event','estimate','click','sp-top');"><img src="m3/img/sp_attention_01_line.png" alt="LINEでお問い合せ！" width="100%"></a>
-					</div>
-					<section class="menu">
-						<h2 class="home">メニュー</h2>
-						<ul class="halfNav clearfix">
-							<li class="blc">
-								<a href="/m3/order/big.html"><img src="m3/img/sp_menu_01.png" alt="オリジナルTシャツ 制作 大口注文" width="100%"></a>
-							</li>
-							<li class="blc">
-								<a href="http://www.takahama428.com/designtemplate/" onclick="ga('send','event','line','click','sp-menu');"><img src="m3/img/sp_menu_07.png" alt="デザインテンプレート" width="100%"></a>
-							</li>
-							<li class="blctxt">
-								<p class="tx2">150枚以上は大幅値引き！</p>
-							</li>
-							<li class="blctxt">
-								<p class="tx2">無料！デザインテンプレート</p>
-							</li>
-							<li class="blc">
-								<a href="/blog/thanks_blog/"><img src="m3/img/sp_menu_03.png" alt="オリジナルTシャツ お客様ブログ" width="100%"></a>
-							</li>
-							<li class="blc">
-								<a href="/m3/contact/request.html" onclick="ga('send','event','carriage','click','sp-menu');"><img src="m3/img/sp_menu_04.png" alt="オリジナルTシャツ 資料請求" width="100%"></a>
-							</li>
-							<li class="blctxt">
-								<p class="tx2">掲載可能なお客様は3%OFF!</p>
-							</li>
-							<li class="blctxt">
-								<p class="tx2">カタログ･サンプルお届け!</p>
-							</li>
-							<li class="blc">
-								<a href="/m3/userreviews/"><img src="m3/img/sp_menu_05.png" alt="オリジナルTシャツ お客様レビュー" width="100%"></a>
-							</li>
-							<li class="blc">
-								<a href="/m3/corporate/overview.html"><img src="m3/img/sp_menu_06.png" alt="会社概要" width="100%"></a>
-							</li>
-							<li class="blctxt">
-								<p class="tx2">嬉しいお声をいただきました</p>
-							</li>
-							<li class="blctxt">
-								<p class="tx2">タカハマについてのご案内</p>
-							</li>
-						</ul>
-					</section>
-					<div class="over">
-						<ul>
-							<li class="txt">
-								<h2>オリジナルTシャツ業界最速！最短当日発送！</h2>
-								<p>
-									タカハマライフアートは本当に業界最速です。納期プランは「3営業日発送」「2営業日発送」「1営業日発送」「即日発送」です。その早い理由はオリジナルプリントを自社工場で製作しているからです。 最近では「最短翌日」「2営業日発送」と早いお届けを打ち出しているサイトは他にも多くありますが、実際に電話で問い合わせてみると翌日に対応できる会社はほとんどなくて困っているというお声を多くのお客様からいただきます。
-								</p>
-								<img src="m3/img/top_img.jpg" alt="オリジナルTシャツ お急ぎの方" width="100%">
-							</li>
-							<li class="txt">
-								<h2>激安で即日作成致します！</h2>
-								<p>
-									タカハマライフアートでは東京葛飾区の工場直売価格のため、<b>一流アパレルプリント</b>の技術で製品をお店価格より安い価格でTシャツを作成できます。激安といえども、プリント方法も色々あって、ご希望のイメージを相談にのりながら形にします。オリジナルデザインのTシャツをチームなどで着用することで団結力を高め、ぜひイベントを成功させて頂きたいと思います。オリジナルのTシャツやポロシャツ・スウェット・トレーナー、そしてジャンパーやエプロンなどのグッズ、学園祭などのイベントがギリギリに迫ってしまった時もご相談ください。タカハマライフアートのスピード対応と相談力には、お客様から高い評価を頂いております。オリジナルのTシャツ作成について疑問があればお気軽にお問合わせください。 まずは、フリーダイヤル0120-130-428へ。
-								</p>
-								<img src="m3/img/campus_banner.jpg" alt="オリジナルTシャツ 作成 イベント クラスTシャツ" width="100%">
-							</li>
-						</ul>
-					</div>
 				</div>
 				<?php include(dirname(__FILE__)."/m3/common/inc/footer.html"); ?>
 
