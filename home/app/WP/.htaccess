@@ -1,0 +1,29 @@
+AddType application/x-httpd-php .php .htm .html
+
+php_value max_execution_time 200
+php_value max_input_time 200
+php_value memory_limit 256M
+php_value post_max_size 150M
+php_value upload_max_filesize 100M
+php_value mbstring.internal_encoding EUC-JP
+php_value mbstring.detect_order EUC-JP,UTF-8,SJIS,JIS,ASCII
+php_flag mbstring.encoding_translation off
+php_value session.gc_maxlifetime 3600
+php_value default_charset "UTF-8"
+
+RewriteEngine On
+RewriteBase /app/WP/
+RewriteRule ^index\.php$ - [L]
+
+# uploaded files
+RewriteRule ^([_0-9a-zA-Z-]+/)?files/(.+) wp-includes/ms-files.php?file=$2 [L]
+
+# add a trailing slash to /wp-admin
+RewriteRule ^([_0-9a-zA-Z-]+/)?wp-admin$ $1wp-admin/ [L]
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+RewriteRule ^([_0-9a-zA-Z-]+/)?(wp-(content|admin|includes).*) $2 [L]
+RewriteRule ^([_0-9a-zA-Z-]+/)?(.*\.php)$ $2 [L]
+RewriteRule . index.php [L]
