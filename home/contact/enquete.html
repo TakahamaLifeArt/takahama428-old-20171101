@@ -5,7 +5,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/php_libs/mailer.php';
 if( isset($_POST['ticket'], $_SESSION['ticket']) && $_POST['ticket']==$_SESSION['ticket'] ) {
 	$mailer = new Mailer($_POST);
 	$isSend = $mailer->send_enquete();
-}else if(isset($_REQUEST['enq'])){
+}else if(isset($_REQUEST['enq']) && !empty($_REQUEST['enq'])){
 	$ticket = htmlspecialchars(md5(uniqid().mt_rand()), ENT_QUOTES);
 	$_SESSION['ticket'] = $ticket;
 	$enq = preg_replace('/^\w/', '', $_REQUEST['enq']);
