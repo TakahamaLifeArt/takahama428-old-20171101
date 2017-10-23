@@ -102,7 +102,7 @@ class Orders Extends Conndb {
 	
 	
 	/*
-	*	セッションの初期化	
+	*	セッションの初期化
 	*	@mode			初期化するセッションのキー、default:null 全て
 	*/
 	public function init($mode=null){
@@ -199,8 +199,10 @@ class Orders Extends Conndb {
 		*				  'options': {'discount':割引, 'carriage':送料, 'codfee':代引手数料, pack:袋詰代},
 		*				  'category': [{category_id,category_key,category_name,item_id,item_code,item_name,color_code,color_name,cost,amount},{} ...] }
 		*/
-			$catid = $_REQUEST['categoryid'];
-			$itemid = $_REQUEST['itemid'];
+			$json = new Services_JSON(SERVICES_JSON_LOOSE_TYPE);
+			$itemData = $json->decode($_REQUEST['jsondata']);
+			$catid = $itemData['categoryid'];
+			$itemid = $itemData['itemid'];
 			
 			if(isset($_SESSION['orders']['items'][$catid])){
 				$isExist = 'category';
@@ -210,29 +212,29 @@ class Orders Extends Conndb {
 			}
 			
 			if(!$isExist){
-				$_SESSION['orders']['items'][$catid]['category_key'] = $_REQUEST['categorykey'];
-				$_SESSION['orders']['items'][$catid]['category_name'] = $_REQUEST['categoryname'];
+				$_SESSION['orders']['items'][$catid]['category_key'] = $itemData['categorykey'];
+				$_SESSION['orders']['items'][$catid]['category_name'] = $itemData['categoryname'];
 				
-				$_SESSION['orders']['items'][$catid]['item'][$itemid]['code'] = $_REQUEST['itemcode'];
-				$_SESSION['orders']['items'][$catid]['item'][$itemid]['name'] = $_REQUEST['itemname'];
-				$_SESSION['orders']['items'][$catid]['item'][$itemid]['posid'] = $_REQUEST['posid'];
-				$_SESSION['orders']['items'][$catid]['item'][$itemid]['makerid'] = $_REQUEST['makerid'];
+				$_SESSION['orders']['items'][$catid]['item'][$itemid]['code'] = $itemData['itemcode'];
+				$_SESSION['orders']['items'][$catid]['item'][$itemid]['name'] = $itemData['itemname'];
+				$_SESSION['orders']['items'][$catid]['item'][$itemid]['posid'] = $itemData['posid'];
+				$_SESSION['orders']['items'][$catid]['item'][$itemid]['makerid'] = $itemData['makerid'];
 			}else if($isExist=='category'){
-				$_SESSION['orders']['items'][$catid]['item'][$itemid]['code'] = $_REQUEST['itemcode'];
-				$_SESSION['orders']['items'][$catid]['item'][$itemid]['name'] = $_REQUEST['itemname'];
-				$_SESSION['orders']['items'][$catid]['item'][$itemid]['posid'] = $_REQUEST['posid'];
-				$_SESSION['orders']['items'][$catid]['item'][$itemid]['makerid'] = $_REQUEST['makerid'];
+				$_SESSION['orders']['items'][$catid]['item'][$itemid]['code'] = $itemData['itemcode'];
+				$_SESSION['orders']['items'][$catid]['item'][$itemid]['name'] = $itemData['itemname'];
+				$_SESSION['orders']['items'][$catid]['item'][$itemid]['posid'] = $itemData['posid'];
+				$_SESSION['orders']['items'][$catid]['item'][$itemid]['makerid'] = $itemData['makerid'];
 			}
 			
-			//$_SESSION['orders']['items'][$catid]['item'][$itemid]['noprint'] = $_REQUEST['noprint'];
-			//$_SESSION['orders']['items'][$catid]['item'][$itemid]['color'][$colorcode]['name'] = $_REQUEST['colorname'];
+			//$_SESSION['orders']['items'][$catid]['item'][$itemid]['noprint'] = $itemData['noprint'];
+			//$_SESSION['orders']['items'][$catid]['item'][$itemid]['color'][$colorcode]['name'] = $itemData['colorname'];
 			//$item_sum = 0;
 			$amount = 0;
 			$tmp = $_SESSION['orders']['items'][$catid]['item'][$itemid]['color'];
-			$cnt= count($_REQUEST['sizeid']);
+			$cnt= count($itemData['sizeid']);
 			for($i=0; $i<$cnt; $i++){
-				$sizeid = $_REQUEST['sizeid'][$i];
-				if($colorcode!=$_REQUEST['colorcode'][$i]){
+				$sizeid = $itemData['sizeid'][$i];
+				if($colorcode!=$itemData['colorcode'][$i]){
 					if($colorcode!=""){
 						if($amount==0){
 							unset($_SESSION['orders']['items'][$catid]['item'][$itemid]['color'][$colorcode]);
@@ -241,29 +243,29 @@ class Orders Extends Conndb {
 							}
 						}
 					}
-					$colorcode = $_REQUEST['colorcode'][$i];
+					$colorcode = $itemData['colorcode'][$i];
 					$amount = 0;
 					unset($tmp[$colorcode]);
 				}
 				
-				if($_REQUEST['noprint']==1){	// プリントなしで10％UPし1円単位を切り上げる
-					$cost = round($_REQUEST['cost'][$i]*1.1+4, -1);
+				if($itemData['noprint']==1){	// プリントなしで10％UPし1円単位を切り上げる
+					$cost = round($itemData['cost'][$i]*1.1+4, -1);
 				}else{
-					$cost = $_REQUEST['cost'][$i];
+					$cost = $itemData['cost'][$i];
 				}
 				
 				if(!isset($_SESSION['orders']['items'][$catid]['item'][$itemid]['color'][$colorcode]['master_id'])){
-					$_SESSION['orders']['items'][$catid]['item'][$itemid]['color'][$colorcode]['master_id'] = $_REQUEST['master_id'][$i];
+					$_SESSION['orders']['items'][$catid]['item'][$itemid]['color'][$colorcode]['master_id'] = $itemData['master_id'][$i];
 				}
 				if(!isset($_SESSION['orders']['items'][$catid]['item'][$itemid]['color'][$colorcode]['name'])){
-					$_SESSION['orders']['items'][$catid]['item'][$itemid]['color'][$colorcode]['name'] = $_REQUEST['colorname'][$i];
+					$_SESSION['orders']['items'][$catid]['item'][$itemid]['color'][$colorcode]['name'] = $itemData['colorname'][$i];
 				}
 				
-				$_SESSION['orders']['items'][$catid]['item'][$itemid]['color'][$colorcode]['size'][$sizeid]['sizename'] = $_REQUEST['sizename'][$i];
-				$_SESSION['orders']['items'][$catid]['item'][$itemid]['color'][$colorcode]['size'][$sizeid]['amount'] = $_REQUEST['amount'][$i];
+				$_SESSION['orders']['items'][$catid]['item'][$itemid]['color'][$colorcode]['size'][$sizeid]['sizename'] = $itemData['sizename'][$i];
+				$_SESSION['orders']['items'][$catid]['item'][$itemid]['color'][$colorcode]['size'][$sizeid]['amount'] = $itemData['amount'][$i];
 				$_SESSION['orders']['items'][$catid]['item'][$itemid]['color'][$colorcode]['size'][$sizeid]['cost'] = $cost;
-				$amount += $_REQUEST['amount'][$i];
-				//$item_sum += $_REQUEST['cost'][$i]*$_REQUEST['amount'][$i];
+				$amount += $itemData['amount'][$i];
+				//$item_sum += $itemData['cost'][$i]*$itemData['amount'][$i];
 			}
 			
 			// Step2で削除されたカラーのアイテム情報を消去
@@ -624,13 +626,15 @@ class Orders Extends Conndb {
 		*				  'options': {'discount':割引, 'carriage':送料, 'codfee':代引手数料, pack:袋詰代},
 		*				  'category': [{category_id,category_key,category_name,item_id,item_code,item_name,color_code,color_name,cost,amount},{} ...] }
 		*/
-			$catid = $_REQUEST['categoryid'];
-			$itemid = $_REQUEST['itemid'];
-			$colorcode = $_REQUEST['colorcode'];
-			$sizeid = $_REQUEST['sizeid'];
-			
+			$json = new Services_JSON(SERVICES_JSON_LOOSE_TYPE);
+			$itemData = $json->decode($_REQUEST['jsondata']);
+			$catid = $itemData['categoryid'];
+			$itemid = $itemData['itemid'];
+			$colorcode = $itemData['colorcode'];
+			$sizeid = $itemData['sizeid'];
+
 			if(empty($catid)){
-			// 全てのアイテム情報を削除
+				// 全てのアイテム情報を削除
 				$_SESSION['orders']['items'] = array();
 			}else{
 				$isExist = false;
@@ -641,7 +645,7 @@ class Orders Extends Conndb {
 						break;
 					}
 				}
-				
+
 				if(!$isExist){
 					$_SESSION['orders']['items'][$catid]['item'][$itemid]['color'][$colorcode] = array();
 					unset($_SESSION['orders']['items'][$catid]['item'][$itemid]['color'][$colorcode]);

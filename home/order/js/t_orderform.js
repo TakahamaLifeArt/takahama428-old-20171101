@@ -340,7 +340,7 @@ $(function(){
 									'<li class="item_info_s clearfix">'+
 										'<div class="colors">'+v['colors']+'</div>'+
 										'<div class="sizes">'+v['sizes']+'</div>'+
-										'<p class="price_s" style="white-space: nowrap;"><p style="display:inline-block;">TAKAHAMA価格</p><span id="price_cost" style="white-space: nowrap;"><span>'+v['minprice']+'</span>円~</span></p>'+
+										'<p class="price_s" style="white-space: nowrap;"><p style="display:inline-block;">TAKAHAMA価格</p><span id="price_cost" style="white-space: nowrap;"><span>'+v['minprice']+'</span>円〜</span></p>'+
 									'</li>'+
 								'</ul>'+
 								'<p class="tor"><a href="../items/'+folder+'/item.html?id='+code+'">アイテムの詳細へ</a></p>'+
@@ -375,7 +375,7 @@ $(function(){
 									'<li class="item_info clearfix">'+
 										'<div class="color">'+v['colors']+'</div>'+
 										'<div class="size">'+v['sizes']+'</div>'+
-										'<p class="price" style="white-space: nowrap;"><p style="display:inline-block;">TAKAHAMA価格</p><span id="price_cost" style="white-space: nowrap;"><span>'+v['minprice']+'</span>円~</span></p>'+
+										'<p class="price" style="white-space: nowrap;"><p style="display:inline-block;">TAKAHAMA価格</p><span id="price_cost" style="white-space: nowrap;"><span>'+v['minprice']+'</span>円〜</span></p>'+
 									'</li>'+
 								'</ul>'+
 							'</li>';
@@ -992,7 +992,7 @@ $(function(){
 				$.editItem(_CAT_KEY, _ITEM_ID);
 			}else if(_UPDATED==2){
 			// カートを見るBOXのボタンで遷移
-				$.itemparam.categoryid = 1;
+				$.itemparam.categoryid = '1';
 				$.itemparam.categorykey = 't-shirts';
 				$.itemparam.categoryname = 'Tシャツ';
 				$.ajax({url:'/php_libs/t_orders.php', type:'get', dataType:'json', async:false, data:{'act':'details'}, 
@@ -1025,11 +1025,11 @@ $(function(){
 				$.changeItem(_ITEM_ID);
 				*/
 			}else{
-				$.itemparam.categoryid = 1;
+				$.itemparam.categoryid = '1';
 				$.itemparam.categorykey = 't-shirts';
 				$.itemparam.categoryname = 'Tシャツ';
 				
-				$.itemparam.itemid = 4;
+				$.itemparam.itemid = '4';
 				$.itemparam.itemcode = '085-cvt';
 				$.itemparam.itemname = 'ヘビーウエイトＴシャツ';
 			}
@@ -1813,21 +1813,20 @@ $(function(){
 		*	@引数がある場合は削除
 		*/
 			var postData = {};
-			var mode = 'update';
+			var act = 'update';
 			var isResult = false;
 			if(arguments.length>0){
-				mode = 'remove';
+				act = 'remove';
 				var args = arguments[0];
-				postData = {'act':'remove', 'mode':'items', 'categoryid':args[0], 'itemid':args[1], 'colorcode':args[2], 'sizeid':args[3]};
+				postData = {'categoryid':args[0], 'itemid':args[1], 'colorcode':args[2], 'sizeid':args[3]};
 			}else{
-				postData = {'act':'update', 'mode':'items'};
 				for(var key in $.itemparam){
 					postData[key] = $.itemparam[key];
 				}
 				var prop = $('#cur_item_name').attr('class').split('_');
 				postData['posid'] = prop[1];
 				postData['makerid'] = prop[2];
-				postData['noprint'] = $('#noprint').prop('checked')? 1: 0;
+				postData['noprint'] = $('#noprint').prop('checked')? '1': '0';
 				
 				// 全サイズを上書する
 				var color_code = [];
@@ -1847,7 +1846,7 @@ $(function(){
 				$('.size_table', '#step2').each( function(index){
 					var master_id = $(this).find('caption').text();
 					$('tbody tr:not(".heading") td[class*="size_"]', this).each( function(){
-						var amount = $(this).children('input').val()-0;
+						var amount = $(this).children('input').val();
 						var tmp = $(this).attr('class').split('_');
 						postData['sizeid'].push(tmp[1]);
 						postData['sizename'].push(tmp[2]);
@@ -1866,7 +1865,9 @@ $(function(){
 				}
 			}
 			var curRow = 0;
-			$.ajax({url:'/php_libs/t_orders.php', async:false, type:'POST', dataType:'json', data:postData, 
+			var jsonData = JSON.stringify(postData);
+			$.ajax({url:'/php_libs/t_orders.php', async:false, type:'POST', dataType:'json', 
+				data:{'act':act, 'mode':'items', 'jsondata':jsonData}, 
 				success:function(r){
 					if(r.length!=0){
 						isResult = r;
