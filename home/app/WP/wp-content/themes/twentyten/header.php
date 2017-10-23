@@ -34,8 +34,8 @@
 
 	?></title>
 <link rel="profile" href="//gmpg.org/xfn/11" />
-<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
-	<link rel="stylesheet" type="text/css" href="/common/css/base.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/common/css/base.css" media="screen" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />	
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <?php
 	/*
@@ -76,7 +76,7 @@
 
 			</div>
 		</div>
-			<div class="inner">
+<div class="inner">
 				<div class="h_wrap hw_1"><a href="//www.takahama428.com/"><img src="//www.takahama428.com/app/WP/wp-content/uploads/2015/12/logo1.png" alt="オリジナルTシャツ屋"></a></div>
 					<div class="h_wrap hw_2"><img src="//www.takahama428.com/app/WP/wp-content/uploads/2015/12/no1_mark.png" alt="業界NO.1！スピード仕上げ 親切対応！"></div>
 		

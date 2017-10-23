@@ -254,6 +254,8 @@ function twentyten_page_menu_args( $args ) {
 }
 add_filter( 'wp_page_menu_args', 'twentyten_page_menu_args' );
 
+
+
 /**
  * Set the post excerpt length to 40 characters.
  *
@@ -321,7 +323,7 @@ function twentyten_custom_excerpt_more( $output ) {
 	}
 	return $output;
 }
-add_filter( 'get_the_excerpt', 'twentyten_custom_excerpt_more' );
+
 
 /**
  * Remove inline styles printed when the gallery shortcode is used.
