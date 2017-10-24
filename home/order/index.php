@@ -631,7 +631,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 								<div class="line">
 									<label class="title">ご希望納期</label><input class="datepicker" type="text" size="14" name="deliveryday" value="<?php echo $regist['options']['deliveryday']; ?>" <?php if($regist[ 'options'][ 'nodeliday']==1) echo 'disabled'; ?> />
-									<label><input type="checkbox" name="nodeliday" id="nodeliday" value="1" <?php if($regist['options']['nodeliday']==1) echo 'checked="checked"'; ?> > 納期の指定なし</label>
+<!--									<label><input type="checkbox" name="nodeliday" id="nodeliday" value="1" <?php if($regist['options']['nodeliday']==1) echo 'checked="checked"'; ?> > 納期の指定なし</label>-->
 									<div id="datepicker"></div>
 									<p id="express_notice"><span class="highlights">※<ins></ins></span><span class="anchor" id="pop_express">特急料金について</span></p>
 									<p class="note"><span>※</span>袋詰め10枚以上で製作日数にプラス1日いただきます。</p>

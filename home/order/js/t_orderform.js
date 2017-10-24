@@ -599,6 +599,20 @@ $(function(){
 
 
 	/********************************
+	*	アップロードファイルの削除で確認画面の表示を更新
+	*/
+	$('#fileupload-table tbody').on('click', '.template-download td button.delete', function(){
+		var path = $(this).closest('tr').find('.path').text();
+		$('#conf_attach p').each(function(){
+			if($(this).children('input').val() == path) {
+				$(this).remove();
+				return true;
+			}
+		});
+	});
+	
+	
+	/********************************
 	*	割引などのチェック
 	*/
 	$('input[type=radio]', '#option_table').change( function(){
