@@ -1,2 +1,4 @@
 # takahama428
-www.takahama428.com
+sub.takahama428.com
+
+2017-10-31 リニューアル前のバージョン
